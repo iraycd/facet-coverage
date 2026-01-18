@@ -10,27 +10,27 @@
  */
 export type FacetId =
   | 'features/core/technical:technical-requirements'
-  | 'features/core/technical:typescript'
-  | 'features/core/technical:typescript/typescript-source'
-  | 'features/core/technical:typescript/typescript-exports'
-  | 'features/core/technical:typescript/typescript-strict'
-  | 'features/core/technical:typescript/typescript-esm'
-  | 'features/core/technical:bun'
-  | 'features/core/technical:bun/bun-deps'
-  | 'features/core/technical:bun/bun-scripts'
-  | 'features/core/technical:bun/bun-fs'
-  | 'features/core/technical:bun/bun-glob'
-  | 'features/core/technical:glob'
-  | 'features/core/technical:glob/glob-syntax'
-  | 'features/core/technical:glob/glob-multiple'
-  | 'features/core/technical:glob/glob-paths'
-  | 'features/core/technical:glob/glob-edge-cases'
-  | 'features/core/technical:markdown-parsing'
-  | 'features/core/technical:markdown-parsing/md-heading-levels'
-  | 'features/core/technical:markdown-parsing/md-slug-gen'
-  | 'features/core/technical:markdown-parsing/md-special-chars'
-  | 'features/core/technical:markdown-parsing/md-code-blocks'
-  | 'features/core/technical:markdown-parsing/md-ignore-code-headings'
+  | 'features/core/technical:typescript-support'
+  | 'features/core/technical:typescript-support/typescript-source'
+  | 'features/core/technical:typescript-support/typescript-exports'
+  | 'features/core/technical:typescript-support/typescript-strict'
+  | 'features/core/technical:typescript-support/typescript-esm'
+  | 'features/core/technical:bun-compatibility'
+  | 'features/core/technical:bun-compatibility/bun-deps'
+  | 'features/core/technical:bun-compatibility/bun-scripts'
+  | 'features/core/technical:bun-compatibility/bun-fs'
+  | 'features/core/technical:bun-compatibility/bun-glob'
+  | 'features/core/technical:glob-pattern-handling'
+  | 'features/core/technical:glob-pattern-handling/glob-syntax'
+  | 'features/core/technical:glob-pattern-handling/glob-multiple'
+  | 'features/core/technical:glob-pattern-handling/glob-paths'
+  | 'features/core/technical:glob-pattern-handling/glob-edge-cases'
+  | 'features/core/technical:markdown-parsing-accuracy'
+  | 'features/core/technical:markdown-parsing-accuracy/md-heading-levels'
+  | 'features/core/technical:markdown-parsing-accuracy/md-slug-gen'
+  | 'features/core/technical:markdown-parsing-accuracy/md-special-chars'
+  | 'features/core/technical:markdown-parsing-accuracy/md-code-blocks'
+  | 'features/core/technical:markdown-parsing-accuracy/md-ignore-code-headings'
   | 'features/core/dx:developer-experience'
   | 'features/core/dx:error-messages'
   | 'features/core/dx:error-messages/error-file-paths'
@@ -55,9 +55,11 @@ export type FacetId =
   | 'features/core/product:markdown-parsing/heading-extraction'
   | 'features/core/product:markdown-parsing/slug-generation'
   | 'features/core/product:markdown-parsing/custom-slug'
+  | 'features/core/product:markdown-parsing/custom-slug'
   | 'features/core/product:markdown-parsing/heading-hierarchy'
   | 'features/core/product:markdown-parsing/section-validation'
   | 'features/core/product:markdown-parsing/frontmatter-handling'
+  | 'features/core/product:markdown-parsing/id'
   | 'features/core/product:guest-purchase'
   | 'features/core/product:test-scanning'
   | 'features/core/product:test-scanning/test-file-discovery'
@@ -86,47 +88,47 @@ export const Facets = {
  /** Technical Requirements */
   FEATURES_CORE_TECHNICAL_TECHNICAL_REQUIREMENTS: 'features/core/technical:technical-requirements' as const,
  /** TypeScript Support */
-  FEATURES_CORE_TECHNICAL_TYPESCRIPT: 'features/core/technical:typescript' as const,
+  FEATURES_CORE_TECHNICAL_TYPESCRIPT_SUPPORT: 'features/core/technical:typescript-support' as const,
 
-  FEATURES_CORE_TECHNICAL_TYPESCRIPT__TYPESCRIPT_SOURCE: 'features/core/technical:typescript/typescript-source' as const,
+  FEATURES_CORE_TECHNICAL_TYPESCRIPT_SUPPORT__TYPESCRIPT_SOURCE: 'features/core/technical:typescript-support/typescript-source' as const,
 
-  FEATURES_CORE_TECHNICAL_TYPESCRIPT__TYPESCRIPT_EXPORTS: 'features/core/technical:typescript/typescript-exports' as const,
+  FEATURES_CORE_TECHNICAL_TYPESCRIPT_SUPPORT__TYPESCRIPT_EXPORTS: 'features/core/technical:typescript-support/typescript-exports' as const,
 
-  FEATURES_CORE_TECHNICAL_TYPESCRIPT__TYPESCRIPT_STRICT: 'features/core/technical:typescript/typescript-strict' as const,
+  FEATURES_CORE_TECHNICAL_TYPESCRIPT_SUPPORT__TYPESCRIPT_STRICT: 'features/core/technical:typescript-support/typescript-strict' as const,
 
-  FEATURES_CORE_TECHNICAL_TYPESCRIPT__TYPESCRIPT_ESM: 'features/core/technical:typescript/typescript-esm' as const,
+  FEATURES_CORE_TECHNICAL_TYPESCRIPT_SUPPORT__TYPESCRIPT_ESM: 'features/core/technical:typescript-support/typescript-esm' as const,
  /** Bun Compatibility */
-  FEATURES_CORE_TECHNICAL_BUN: 'features/core/technical:bun' as const,
+  FEATURES_CORE_TECHNICAL_BUN_COMPATIBILITY: 'features/core/technical:bun-compatibility' as const,
 
-  FEATURES_CORE_TECHNICAL_BUN__BUN_DEPS: 'features/core/technical:bun/bun-deps' as const,
+  FEATURES_CORE_TECHNICAL_BUN_COMPATIBILITY__BUN_DEPS: 'features/core/technical:bun-compatibility/bun-deps' as const,
 
-  FEATURES_CORE_TECHNICAL_BUN__BUN_SCRIPTS: 'features/core/technical:bun/bun-scripts' as const,
+  FEATURES_CORE_TECHNICAL_BUN_COMPATIBILITY__BUN_SCRIPTS: 'features/core/technical:bun-compatibility/bun-scripts' as const,
 
-  FEATURES_CORE_TECHNICAL_BUN__BUN_FS: 'features/core/technical:bun/bun-fs' as const,
+  FEATURES_CORE_TECHNICAL_BUN_COMPATIBILITY__BUN_FS: 'features/core/technical:bun-compatibility/bun-fs' as const,
 
-  FEATURES_CORE_TECHNICAL_BUN__BUN_GLOB: 'features/core/technical:bun/bun-glob' as const,
+  FEATURES_CORE_TECHNICAL_BUN_COMPATIBILITY__BUN_GLOB: 'features/core/technical:bun-compatibility/bun-glob' as const,
  /** Glob Pattern Handling */
-  FEATURES_CORE_TECHNICAL_GLOB: 'features/core/technical:glob' as const,
+  FEATURES_CORE_TECHNICAL_GLOB_PATTERN_HANDLING: 'features/core/technical:glob-pattern-handling' as const,
 
-  FEATURES_CORE_TECHNICAL_GLOB__GLOB_SYNTAX: 'features/core/technical:glob/glob-syntax' as const,
+  FEATURES_CORE_TECHNICAL_GLOB_PATTERN_HANDLING__GLOB_SYNTAX: 'features/core/technical:glob-pattern-handling/glob-syntax' as const,
 
-  FEATURES_CORE_TECHNICAL_GLOB__GLOB_MULTIPLE: 'features/core/technical:glob/glob-multiple' as const,
+  FEATURES_CORE_TECHNICAL_GLOB_PATTERN_HANDLING__GLOB_MULTIPLE: 'features/core/technical:glob-pattern-handling/glob-multiple' as const,
 
-  FEATURES_CORE_TECHNICAL_GLOB__GLOB_PATHS: 'features/core/technical:glob/glob-paths' as const,
+  FEATURES_CORE_TECHNICAL_GLOB_PATTERN_HANDLING__GLOB_PATHS: 'features/core/technical:glob-pattern-handling/glob-paths' as const,
 
-  FEATURES_CORE_TECHNICAL_GLOB__GLOB_EDGE_CASES: 'features/core/technical:glob/glob-edge-cases' as const,
+  FEATURES_CORE_TECHNICAL_GLOB_PATTERN_HANDLING__GLOB_EDGE_CASES: 'features/core/technical:glob-pattern-handling/glob-edge-cases' as const,
  /** Markdown Parsing Accuracy */
-  FEATURES_CORE_TECHNICAL_MARKDOWN_PARSING: 'features/core/technical:markdown-parsing' as const,
+  FEATURES_CORE_TECHNICAL_MARKDOWN_PARSING_ACCURACY: 'features/core/technical:markdown-parsing-accuracy' as const,
 
-  FEATURES_CORE_TECHNICAL_MARKDOWN_PARSING__MD_HEADING_LEVELS: 'features/core/technical:markdown-parsing/md-heading-levels' as const,
+  FEATURES_CORE_TECHNICAL_MARKDOWN_PARSING_ACCURACY__MD_HEADING_LEVELS: 'features/core/technical:markdown-parsing-accuracy/md-heading-levels' as const,
 
-  FEATURES_CORE_TECHNICAL_MARKDOWN_PARSING__MD_SLUG_GEN: 'features/core/technical:markdown-parsing/md-slug-gen' as const,
+  FEATURES_CORE_TECHNICAL_MARKDOWN_PARSING_ACCURACY__MD_SLUG_GEN: 'features/core/technical:markdown-parsing-accuracy/md-slug-gen' as const,
 
-  FEATURES_CORE_TECHNICAL_MARKDOWN_PARSING__MD_SPECIAL_CHARS: 'features/core/technical:markdown-parsing/md-special-chars' as const,
+  FEATURES_CORE_TECHNICAL_MARKDOWN_PARSING_ACCURACY__MD_SPECIAL_CHARS: 'features/core/technical:markdown-parsing-accuracy/md-special-chars' as const,
 
-  FEATURES_CORE_TECHNICAL_MARKDOWN_PARSING__MD_CODE_BLOCKS: 'features/core/technical:markdown-parsing/md-code-blocks' as const,
+  FEATURES_CORE_TECHNICAL_MARKDOWN_PARSING_ACCURACY__MD_CODE_BLOCKS: 'features/core/technical:markdown-parsing-accuracy/md-code-blocks' as const,
 
-  FEATURES_CORE_TECHNICAL_MARKDOWN_PARSING__MD_IGNORE_CODE_HEADINGS: 'features/core/technical:markdown-parsing/md-ignore-code-headings' as const,
+  FEATURES_CORE_TECHNICAL_MARKDOWN_PARSING_ACCURACY__MD_IGNORE_CODE_HEADINGS: 'features/core/technical:markdown-parsing-accuracy/md-ignore-code-headings' as const,
  /** Developer Experience */
   FEATURES_CORE_DX_DEVELOPER_EXPERIENCE: 'features/core/dx:developer-experience' as const,
  /** Error Messages */
@@ -173,7 +175,9 @@ export const Facets = {
   FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__HEADING_EXTRACTION: 'features/core/product:markdown-parsing/heading-extraction' as const,
 
   FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__SLUG_GENERATION: 'features/core/product:markdown-parsing/slug-generation' as const,
- /** Support explicit anchor syntax: '## Heading */
+
+  FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__CUSTOM_SLUG: 'features/core/product:markdown-parsing/custom-slug' as const,
+
   FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__CUSTOM_SLUG: 'features/core/product:markdown-parsing/custom-slug' as const,
 
   FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__HEADING_HIERARCHY: 'features/core/product:markdown-parsing/heading-hierarchy' as const,
@@ -181,6 +185,8 @@ export const Facets = {
   FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__SECTION_VALIDATION: 'features/core/product:markdown-parsing/section-validation' as const,
 
   FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__FRONTMATTER_HANDLING: 'features/core/product:markdown-parsing/frontmatter-handling' as const,
+
+  FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__ID: 'features/core/product:markdown-parsing/id' as const,
  /** Guest Purchase Flow */
   FEATURES_CORE_PRODUCT_GUEST_PURCHASE: 'features/core/product:guest-purchase' as const,
  /** Test Scanning */
@@ -248,27 +254,27 @@ export function facet<T extends FacetId>(...facetIds: T[]): { facets: T[]; toStr
  */
 export const allFacetIds: FacetId[] = [
   'features/core/technical:technical-requirements',
-  'features/core/technical:typescript',
-  'features/core/technical:typescript/typescript-source',
-  'features/core/technical:typescript/typescript-exports',
-  'features/core/technical:typescript/typescript-strict',
-  'features/core/technical:typescript/typescript-esm',
-  'features/core/technical:bun',
-  'features/core/technical:bun/bun-deps',
-  'features/core/technical:bun/bun-scripts',
-  'features/core/technical:bun/bun-fs',
-  'features/core/technical:bun/bun-glob',
-  'features/core/technical:glob',
-  'features/core/technical:glob/glob-syntax',
-  'features/core/technical:glob/glob-multiple',
-  'features/core/technical:glob/glob-paths',
-  'features/core/technical:glob/glob-edge-cases',
-  'features/core/technical:markdown-parsing',
-  'features/core/technical:markdown-parsing/md-heading-levels',
-  'features/core/technical:markdown-parsing/md-slug-gen',
-  'features/core/technical:markdown-parsing/md-special-chars',
-  'features/core/technical:markdown-parsing/md-code-blocks',
-  'features/core/technical:markdown-parsing/md-ignore-code-headings',
+  'features/core/technical:typescript-support',
+  'features/core/technical:typescript-support/typescript-source',
+  'features/core/technical:typescript-support/typescript-exports',
+  'features/core/technical:typescript-support/typescript-strict',
+  'features/core/technical:typescript-support/typescript-esm',
+  'features/core/technical:bun-compatibility',
+  'features/core/technical:bun-compatibility/bun-deps',
+  'features/core/technical:bun-compatibility/bun-scripts',
+  'features/core/technical:bun-compatibility/bun-fs',
+  'features/core/technical:bun-compatibility/bun-glob',
+  'features/core/technical:glob-pattern-handling',
+  'features/core/technical:glob-pattern-handling/glob-syntax',
+  'features/core/technical:glob-pattern-handling/glob-multiple',
+  'features/core/technical:glob-pattern-handling/glob-paths',
+  'features/core/technical:glob-pattern-handling/glob-edge-cases',
+  'features/core/technical:markdown-parsing-accuracy',
+  'features/core/technical:markdown-parsing-accuracy/md-heading-levels',
+  'features/core/technical:markdown-parsing-accuracy/md-slug-gen',
+  'features/core/technical:markdown-parsing-accuracy/md-special-chars',
+  'features/core/technical:markdown-parsing-accuracy/md-code-blocks',
+  'features/core/technical:markdown-parsing-accuracy/md-ignore-code-headings',
   'features/core/dx:developer-experience',
   'features/core/dx:error-messages',
   'features/core/dx:error-messages/error-file-paths',
@@ -293,9 +299,11 @@ export const allFacetIds: FacetId[] = [
   'features/core/product:markdown-parsing/heading-extraction',
   'features/core/product:markdown-parsing/slug-generation',
   'features/core/product:markdown-parsing/custom-slug',
+  'features/core/product:markdown-parsing/custom-slug',
   'features/core/product:markdown-parsing/heading-hierarchy',
   'features/core/product:markdown-parsing/section-validation',
   'features/core/product:markdown-parsing/frontmatter-handling',
+  'features/core/product:markdown-parsing/id',
   'features/core/product:guest-purchase',
   'features/core/product:test-scanning',
   'features/core/product:test-scanning/test-file-discovery',

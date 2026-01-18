@@ -10,13 +10,13 @@
  */
 export type FacetId =
   | 'features/cli/config:configuration'
-  | 'features/cli/config:file-discovery'
-  | 'features/cli/config:file-discovery/search-js'
-  | 'features/cli/config:file-discovery/search-mjs'
-  | 'features/cli/config:file-discovery/search-json'
-  | 'features/cli/config:file-discovery/config-flag'
-  | 'features/cli/config:file-discovery/merge-defaults'
-  | 'features/cli/config:file-discovery/cwd-config'
+  | 'features/cli/config:config-file-discovery'
+  | 'features/cli/config:config-file-discovery/search-js'
+  | 'features/cli/config:config-file-discovery/search-mjs'
+  | 'features/cli/config:config-file-discovery/search-json'
+  | 'features/cli/config:config-file-discovery/config-flag'
+  | 'features/cli/config:config-file-discovery/merge-defaults'
+  | 'features/cli/config:config-file-discovery/cwd-config'
   | 'features/cli/config:facet-patterns'
   | 'features/cli/config:facet-patterns/pattern-types'
   | 'features/cli/config:facet-patterns/default-patterns'
@@ -37,64 +37,63 @@ export type FacetId =
   | 'features/cli/dx:cli-ergonomics/color-coding'
   | 'features/cli/dx:cli-ergonomics/emoji-indicators'
   | 'features/cli/dx:cli-ergonomics/common-flags'
-  | 'features/cli/dx:config-discovery'
-  | 'features/cli/dx:config-discovery/config-locations'
-  | 'features/cli/dx:config-discovery/config-formats'
-  | 'features/cli/dx:config-discovery/config-flag'
-  | 'features/cli/dx:config-discovery/config-merge'
-  | 'features/cli/dx:config-discovery/config-warning'
+  | 'features/cli/dx:configuration-discovery'
+  | 'features/cli/dx:configuration-discovery/config-locations'
+  | 'features/cli/dx:configuration-discovery/config-formats'
+  | 'features/cli/dx:configuration-discovery/config-flag'
+  | 'features/cli/dx:configuration-discovery/config-merge'
+  | 'features/cli/dx:configuration-discovery/config-warning'
   | 'features/cli/product:cli-commands'
-  | 'features/cli/product:generate'
-  | 'features/cli/product:generate/directory-argument'
-  | 'features/cli/product:generate/config-pattern'
-  | 'features/cli/product:generate/file-scanning'
-  | 'features/cli/product:generate/heading-parsing'
-  | 'features/cli/product:generate/auto-ids'
-  | 'features/cli/product:generate/stable-id'
-  | 'features/cli/product:generate/structure-output'
-  | 'features/cli/product:generate/types-generation'
-  | 'features/cli/product:generate/output-flag'
-  | 'features/cli/product:generate/type-flag'
-  | 'features/cli/product:generate/global-flag'
-  | 'features/cli/product:generate/no-types-flag'
-  | 'features/cli/product:generate/quiet-flag'
-  | 'features/cli/product:generate/id-change-detection'
-  | 'features/cli/product:generate/id-change-detection/compare-structures'
-  | 'features/cli/product:generate/id-change-detection/warn-renames'
-  | 'features/cli/product:generate/id-change-detection/warn-removals'
-  | 'features/cli/product:generate/id-change-detection/show-affected-tests'
-  | 'features/cli/product:generate/id-change-detection/suggest-anchors'
-  | 'features/cli/product:generate/type-gen'
-  | 'features/cli/product:generate/type-gen/facet-id-type'
-  | 'features/cli/product:generate/type-gen/facets-const'
-  | 'features/cli/product:generate/type-gen/facet-function'
-  | 'features/cli/product:generate/type-gen/all-facet-ids'
-  | 'features/cli/product:analyze'
-  | 'features/cli/product:analyze/config-loading'
-  | 'features/cli/product:analyze/structure-reading'
-  | 'features/cli/product:analyze/test-scanning'
-  | 'features/cli/product:analyze/coverage-metrics'
-  | 'features/cli/product:analyze/report-generation'
-  | 'features/cli/product:analyze/console-summary'
-  | 'features/cli/product:analyze/threshold-exit'
-  | 'features/cli/product:analyze/json-flag'
-  | 'features/cli/product:analyze/silent-flag'
-  | 'features/cli/product:validate'
-  | 'features/cli/product:validate/structure-validity'
-  | 'features/cli/product:validate/source-verification'
-  | 'features/cli/product:validate/duplicate-check'
-  | 'features/cli/product:validate/orphan-detection'
-  | 'features/cli/product:validate/validation-display'
-  | 'features/cli/product:validate/strict-mode'
-  | 'features/cli/product:validate/json-output'
-  | 'features/cli/product:validate/validation-exit'
-  | 'features/cli/product:watch'
-  | 'features/cli/product:watch/monitor-facets'
-  | 'features/cli/product:watch/monitor-tests'
-  | 'features/cli/product:watch/monitor-structures'
-  | 'features/cli/product:watch/rerun-analysis'
-  | 'features/cli/product:watch/validate-flag'
-  | 'features/cli/product:watch/timestamps';
+  | 'features/cli/product:generate-command'
+  | 'features/cli/product:generate-command/directory-argument'
+  | 'features/cli/product:generate-command/config-pattern'
+  | 'features/cli/product:generate-command/file-scanning'
+  | 'features/cli/product:generate-command/heading-parsing'
+  | 'features/cli/product:generate-command/auto-ids'
+  | 'features/cli/product:generate-command/stable-id'
+  | 'features/cli/product:generate-command/explicit-anchor-syntax'
+  | 'features/cli/product:generate-command/structure-output'
+  | 'features/cli/product:generate-command/types-generation'
+  | 'features/cli/product:generate-command/output-flag'
+  | 'features/cli/product:generate-command/type-flag'
+  | 'features/cli/product:generate-command/global-flag'
+  | 'features/cli/product:generate-command/no-types-flag'
+  | 'features/cli/product:generate-command/quiet-flag'
+  | 'features/cli/product:generate-command/compare-structures'
+  | 'features/cli/product:generate-command/warn-renames'
+  | 'features/cli/product:generate-command/warn-removals'
+  | 'features/cli/product:generate-command/show-affected-tests'
+  | 'features/cli/product:generate-command/suggest-anchors'
+  | 'features/cli/product:generate-command/facet-id-type'
+  | 'features/cli/product:generate-command/facets-const'
+  | 'features/cli/product:generate-command/facet-function'
+  | 'features/cli/product:generate-command/all-facet-ids'
+  | 'features/cli/product:analyze-command'
+  | 'features/cli/product:analyze-command/config-loading'
+  | 'features/cli/product:analyze-command/structure-reading'
+  | 'features/cli/product:analyze-command/test-scanning'
+  | 'features/cli/product:analyze-command/coverage-metrics'
+  | 'features/cli/product:analyze-command/report-generation'
+  | 'features/cli/product:analyze-command/console-summary'
+  | 'features/cli/product:analyze-command/threshold-exit'
+  | 'features/cli/product:analyze-command/json-flag'
+  | 'features/cli/product:analyze-command/silent-flag'
+  | 'features/cli/product:validate-command'
+  | 'features/cli/product:validate-command/structure-validity'
+  | 'features/cli/product:validate-command/source-verification'
+  | 'features/cli/product:validate-command/duplicate-check'
+  | 'features/cli/product:validate-command/orphan-detection'
+  | 'features/cli/product:validate-command/validation-display'
+  | 'features/cli/product:validate-command/strict-mode'
+  | 'features/cli/product:validate-command/json-output'
+  | 'features/cli/product:validate-command/validation-exit'
+  | 'features/cli/product:watch-command'
+  | 'features/cli/product:watch-command/monitor-facets'
+  | 'features/cli/product:watch-command/monitor-tests'
+  | 'features/cli/product:watch-command/monitor-structures'
+  | 'features/cli/product:watch-command/rerun-analysis'
+  | 'features/cli/product:watch-command/validate-flag'
+  | 'features/cli/product:watch-command/timestamps';
 
 /**
  * Facet ID constants for autocomplete and type-safe references
@@ -103,19 +102,19 @@ export const Facets = {
  /** Configuration */
   FEATURES_CLI_CONFIG_CONFIGURATION: 'features/cli/config:configuration' as const,
  /** Config File Discovery */
-  FEATURES_CLI_CONFIG_FILE_DISCOVERY: 'features/cli/config:file-discovery' as const,
+  FEATURES_CLI_CONFIG_CONFIG_FILE_DISCOVERY: 'features/cli/config:config-file-discovery' as const,
 
-  FEATURES_CLI_CONFIG_FILE_DISCOVERY__SEARCH_JS: 'features/cli/config:file-discovery/search-js' as const,
+  FEATURES_CLI_CONFIG_CONFIG_FILE_DISCOVERY__SEARCH_JS: 'features/cli/config:config-file-discovery/search-js' as const,
 
-  FEATURES_CLI_CONFIG_FILE_DISCOVERY__SEARCH_MJS: 'features/cli/config:file-discovery/search-mjs' as const,
+  FEATURES_CLI_CONFIG_CONFIG_FILE_DISCOVERY__SEARCH_MJS: 'features/cli/config:config-file-discovery/search-mjs' as const,
 
-  FEATURES_CLI_CONFIG_FILE_DISCOVERY__SEARCH_JSON: 'features/cli/config:file-discovery/search-json' as const,
+  FEATURES_CLI_CONFIG_CONFIG_FILE_DISCOVERY__SEARCH_JSON: 'features/cli/config:config-file-discovery/search-json' as const,
 
-  FEATURES_CLI_CONFIG_FILE_DISCOVERY__CONFIG_FLAG: 'features/cli/config:file-discovery/config-flag' as const,
+  FEATURES_CLI_CONFIG_CONFIG_FILE_DISCOVERY__CONFIG_FLAG: 'features/cli/config:config-file-discovery/config-flag' as const,
 
-  FEATURES_CLI_CONFIG_FILE_DISCOVERY__MERGE_DEFAULTS: 'features/cli/config:file-discovery/merge-defaults' as const,
+  FEATURES_CLI_CONFIG_CONFIG_FILE_DISCOVERY__MERGE_DEFAULTS: 'features/cli/config:config-file-discovery/merge-defaults' as const,
 
-  FEATURES_CLI_CONFIG_FILE_DISCOVERY__CWD_CONFIG: 'features/cli/config:file-discovery/cwd-config' as const,
+  FEATURES_CLI_CONFIG_CONFIG_FILE_DISCOVERY__CWD_CONFIG: 'features/cli/config:config-file-discovery/cwd-config' as const,
  /** Facet Patterns */
   FEATURES_CLI_CONFIG_FACET_PATTERNS: 'features/cli/config:facet-patterns' as const,
 
@@ -157,121 +156,119 @@ export const Facets = {
 
   FEATURES_CLI_DX_CLI_ERGONOMICS__COMMON_FLAGS: 'features/cli/dx:cli-ergonomics/common-flags' as const,
  /** Configuration Discovery */
-  FEATURES_CLI_DX_CONFIG_DISCOVERY: 'features/cli/dx:config-discovery' as const,
+  FEATURES_CLI_DX_CONFIGURATION_DISCOVERY: 'features/cli/dx:configuration-discovery' as const,
 
-  FEATURES_CLI_DX_CONFIG_DISCOVERY__CONFIG_LOCATIONS: 'features/cli/dx:config-discovery/config-locations' as const,
+  FEATURES_CLI_DX_CONFIGURATION_DISCOVERY__CONFIG_LOCATIONS: 'features/cli/dx:configuration-discovery/config-locations' as const,
 
-  FEATURES_CLI_DX_CONFIG_DISCOVERY__CONFIG_FORMATS: 'features/cli/dx:config-discovery/config-formats' as const,
+  FEATURES_CLI_DX_CONFIGURATION_DISCOVERY__CONFIG_FORMATS: 'features/cli/dx:configuration-discovery/config-formats' as const,
 
-  FEATURES_CLI_DX_CONFIG_DISCOVERY__CONFIG_FLAG: 'features/cli/dx:config-discovery/config-flag' as const,
+  FEATURES_CLI_DX_CONFIGURATION_DISCOVERY__CONFIG_FLAG: 'features/cli/dx:configuration-discovery/config-flag' as const,
 
-  FEATURES_CLI_DX_CONFIG_DISCOVERY__CONFIG_MERGE: 'features/cli/dx:config-discovery/config-merge' as const,
+  FEATURES_CLI_DX_CONFIGURATION_DISCOVERY__CONFIG_MERGE: 'features/cli/dx:configuration-discovery/config-merge' as const,
 
-  FEATURES_CLI_DX_CONFIG_DISCOVERY__CONFIG_WARNING: 'features/cli/dx:config-discovery/config-warning' as const,
+  FEATURES_CLI_DX_CONFIGURATION_DISCOVERY__CONFIG_WARNING: 'features/cli/dx:configuration-discovery/config-warning' as const,
  /** CLI Commands */
   FEATURES_CLI_PRODUCT_CLI_COMMANDS: 'features/cli/product:cli-commands' as const,
  /** Generate Command */
-  FEATURES_CLI_PRODUCT_GENERATE: 'features/cli/product:generate' as const,
+  FEATURES_CLI_PRODUCT_GENERATE_COMMAND: 'features/cli/product:generate-command' as const,
 
-  FEATURES_CLI_PRODUCT_GENERATE__DIRECTORY_ARGUMENT: 'features/cli/product:generate/directory-argument' as const,
+  FEATURES_CLI_PRODUCT_GENERATE_COMMAND__DIRECTORY_ARGUMENT: 'features/cli/product:generate-command/directory-argument' as const,
 
-  FEATURES_CLI_PRODUCT_GENERATE__CONFIG_PATTERN: 'features/cli/product:generate/config-pattern' as const,
+  FEATURES_CLI_PRODUCT_GENERATE_COMMAND__CONFIG_PATTERN: 'features/cli/product:generate-command/config-pattern' as const,
 
-  FEATURES_CLI_PRODUCT_GENERATE__FILE_SCANNING: 'features/cli/product:generate/file-scanning' as const,
+  FEATURES_CLI_PRODUCT_GENERATE_COMMAND__FILE_SCANNING: 'features/cli/product:generate-command/file-scanning' as const,
 
-  FEATURES_CLI_PRODUCT_GENERATE__HEADING_PARSING: 'features/cli/product:generate/heading-parsing' as const,
+  FEATURES_CLI_PRODUCT_GENERATE_COMMAND__HEADING_PARSING: 'features/cli/product:generate-command/heading-parsing' as const,
 
-  FEATURES_CLI_PRODUCT_GENERATE__AUTO_IDS: 'features/cli/product:generate/auto-ids' as const,
- /** Support explicit anchor syntax for stable IDs: '## Heading */
-  FEATURES_CLI_PRODUCT_GENERATE__STABLE_ID: 'features/cli/product:generate/stable-id' as const,
+  FEATURES_CLI_PRODUCT_GENERATE_COMMAND__AUTO_IDS: 'features/cli/product:generate-command/auto-ids' as const,
 
-  FEATURES_CLI_PRODUCT_GENERATE__STRUCTURE_OUTPUT: 'features/cli/product:generate/structure-output' as const,
+  FEATURES_CLI_PRODUCT_GENERATE_COMMAND__STABLE_ID: 'features/cli/product:generate-command/stable-id' as const,
 
-  FEATURES_CLI_PRODUCT_GENERATE__TYPES_GENERATION: 'features/cli/product:generate/types-generation' as const,
+  FEATURES_CLI_PRODUCT_GENERATE_COMMAND__EXPLICIT_ANCHOR_SYNTAX: 'features/cli/product:generate-command/explicit-anchor-syntax' as const,
 
-  FEATURES_CLI_PRODUCT_GENERATE__OUTPUT_FLAG: 'features/cli/product:generate/output-flag' as const,
+  FEATURES_CLI_PRODUCT_GENERATE_COMMAND__STRUCTURE_OUTPUT: 'features/cli/product:generate-command/structure-output' as const,
 
-  FEATURES_CLI_PRODUCT_GENERATE__TYPE_FLAG: 'features/cli/product:generate/type-flag' as const,
+  FEATURES_CLI_PRODUCT_GENERATE_COMMAND__TYPES_GENERATION: 'features/cli/product:generate-command/types-generation' as const,
 
-  FEATURES_CLI_PRODUCT_GENERATE__GLOBAL_FLAG: 'features/cli/product:generate/global-flag' as const,
+  FEATURES_CLI_PRODUCT_GENERATE_COMMAND__OUTPUT_FLAG: 'features/cli/product:generate-command/output-flag' as const,
 
-  FEATURES_CLI_PRODUCT_GENERATE__NO_TYPES_FLAG: 'features/cli/product:generate/no-types-flag' as const,
+  FEATURES_CLI_PRODUCT_GENERATE_COMMAND__TYPE_FLAG: 'features/cli/product:generate-command/type-flag' as const,
 
-  FEATURES_CLI_PRODUCT_GENERATE__QUIET_FLAG: 'features/cli/product:generate/quiet-flag' as const,
- /** ID Change Detection */
-  FEATURES_CLI_PRODUCT_GENERATE__ID_CHANGE_DETECTION: 'features/cli/product:generate/id-change-detection' as const,
+  FEATURES_CLI_PRODUCT_GENERATE_COMMAND__GLOBAL_FLAG: 'features/cli/product:generate-command/global-flag' as const,
 
-  FEATURES_CLI_PRODUCT_GENERATE__ID_CHANGE_DETECTION__COMPARE_STRUCTURES: 'features/cli/product:generate/id-change-detection/compare-structures' as const,
+  FEATURES_CLI_PRODUCT_GENERATE_COMMAND__NO_TYPES_FLAG: 'features/cli/product:generate-command/no-types-flag' as const,
 
-  FEATURES_CLI_PRODUCT_GENERATE__ID_CHANGE_DETECTION__WARN_RENAMES: 'features/cli/product:generate/id-change-detection/warn-renames' as const,
+  FEATURES_CLI_PRODUCT_GENERATE_COMMAND__QUIET_FLAG: 'features/cli/product:generate-command/quiet-flag' as const,
 
-  FEATURES_CLI_PRODUCT_GENERATE__ID_CHANGE_DETECTION__WARN_REMOVALS: 'features/cli/product:generate/id-change-detection/warn-removals' as const,
+  FEATURES_CLI_PRODUCT_GENERATE_COMMAND__COMPARE_STRUCTURES: 'features/cli/product:generate-command/compare-structures' as const,
 
-  FEATURES_CLI_PRODUCT_GENERATE__ID_CHANGE_DETECTION__SHOW_AFFECTED_TESTS: 'features/cli/product:generate/id-change-detection/show-affected-tests' as const,
+  FEATURES_CLI_PRODUCT_GENERATE_COMMAND__WARN_RENAMES: 'features/cli/product:generate-command/warn-renames' as const,
 
-  FEATURES_CLI_PRODUCT_GENERATE__ID_CHANGE_DETECTION__SUGGEST_ANCHORS: 'features/cli/product:generate/id-change-detection/suggest-anchors' as const,
- /** Type Generation */
-  FEATURES_CLI_PRODUCT_GENERATE__TYPE_GEN: 'features/cli/product:generate/type-gen' as const,
+  FEATURES_CLI_PRODUCT_GENERATE_COMMAND__WARN_REMOVALS: 'features/cli/product:generate-command/warn-removals' as const,
 
-  FEATURES_CLI_PRODUCT_GENERATE__TYPE_GEN__FACET_ID_TYPE: 'features/cli/product:generate/type-gen/facet-id-type' as const,
+  FEATURES_CLI_PRODUCT_GENERATE_COMMAND__SHOW_AFFECTED_TESTS: 'features/cli/product:generate-command/show-affected-tests' as const,
 
-  FEATURES_CLI_PRODUCT_GENERATE__TYPE_GEN__FACETS_CONST: 'features/cli/product:generate/type-gen/facets-const' as const,
+  FEATURES_CLI_PRODUCT_GENERATE_COMMAND__SUGGEST_ANCHORS: 'features/cli/product:generate-command/suggest-anchors' as const,
 
-  FEATURES_CLI_PRODUCT_GENERATE__TYPE_GEN__FACET_FUNCTION: 'features/cli/product:generate/type-gen/facet-function' as const,
+  FEATURES_CLI_PRODUCT_GENERATE_COMMAND__FACET_ID_TYPE: 'features/cli/product:generate-command/facet-id-type' as const,
 
-  FEATURES_CLI_PRODUCT_GENERATE__TYPE_GEN__ALL_FACET_IDS: 'features/cli/product:generate/type-gen/all-facet-ids' as const,
+  FEATURES_CLI_PRODUCT_GENERATE_COMMAND__FACETS_CONST: 'features/cli/product:generate-command/facets-const' as const,
+
+  FEATURES_CLI_PRODUCT_GENERATE_COMMAND__FACET_FUNCTION: 'features/cli/product:generate-command/facet-function' as const,
+
+  FEATURES_CLI_PRODUCT_GENERATE_COMMAND__ALL_FACET_IDS: 'features/cli/product:generate-command/all-facet-ids' as const,
  /** Analyze Command */
-  FEATURES_CLI_PRODUCT_ANALYZE: 'features/cli/product:analyze' as const,
+  FEATURES_CLI_PRODUCT_ANALYZE_COMMAND: 'features/cli/product:analyze-command' as const,
 
-  FEATURES_CLI_PRODUCT_ANALYZE__CONFIG_LOADING: 'features/cli/product:analyze/config-loading' as const,
+  FEATURES_CLI_PRODUCT_ANALYZE_COMMAND__CONFIG_LOADING: 'features/cli/product:analyze-command/config-loading' as const,
 
-  FEATURES_CLI_PRODUCT_ANALYZE__STRUCTURE_READING: 'features/cli/product:analyze/structure-reading' as const,
+  FEATURES_CLI_PRODUCT_ANALYZE_COMMAND__STRUCTURE_READING: 'features/cli/product:analyze-command/structure-reading' as const,
 
-  FEATURES_CLI_PRODUCT_ANALYZE__TEST_SCANNING: 'features/cli/product:analyze/test-scanning' as const,
+  FEATURES_CLI_PRODUCT_ANALYZE_COMMAND__TEST_SCANNING: 'features/cli/product:analyze-command/test-scanning' as const,
 
-  FEATURES_CLI_PRODUCT_ANALYZE__COVERAGE_METRICS: 'features/cli/product:analyze/coverage-metrics' as const,
+  FEATURES_CLI_PRODUCT_ANALYZE_COMMAND__COVERAGE_METRICS: 'features/cli/product:analyze-command/coverage-metrics' as const,
 
-  FEATURES_CLI_PRODUCT_ANALYZE__REPORT_GENERATION: 'features/cli/product:analyze/report-generation' as const,
+  FEATURES_CLI_PRODUCT_ANALYZE_COMMAND__REPORT_GENERATION: 'features/cli/product:analyze-command/report-generation' as const,
 
-  FEATURES_CLI_PRODUCT_ANALYZE__CONSOLE_SUMMARY: 'features/cli/product:analyze/console-summary' as const,
+  FEATURES_CLI_PRODUCT_ANALYZE_COMMAND__CONSOLE_SUMMARY: 'features/cli/product:analyze-command/console-summary' as const,
 
-  FEATURES_CLI_PRODUCT_ANALYZE__THRESHOLD_EXIT: 'features/cli/product:analyze/threshold-exit' as const,
+  FEATURES_CLI_PRODUCT_ANALYZE_COMMAND__THRESHOLD_EXIT: 'features/cli/product:analyze-command/threshold-exit' as const,
 
-  FEATURES_CLI_PRODUCT_ANALYZE__JSON_FLAG: 'features/cli/product:analyze/json-flag' as const,
+  FEATURES_CLI_PRODUCT_ANALYZE_COMMAND__JSON_FLAG: 'features/cli/product:analyze-command/json-flag' as const,
 
-  FEATURES_CLI_PRODUCT_ANALYZE__SILENT_FLAG: 'features/cli/product:analyze/silent-flag' as const,
+  FEATURES_CLI_PRODUCT_ANALYZE_COMMAND__SILENT_FLAG: 'features/cli/product:analyze-command/silent-flag' as const,
  /** Validate Command */
-  FEATURES_CLI_PRODUCT_VALIDATE: 'features/cli/product:validate' as const,
+  FEATURES_CLI_PRODUCT_VALIDATE_COMMAND: 'features/cli/product:validate-command' as const,
 
-  FEATURES_CLI_PRODUCT_VALIDATE__STRUCTURE_VALIDITY: 'features/cli/product:validate/structure-validity' as const,
+  FEATURES_CLI_PRODUCT_VALIDATE_COMMAND__STRUCTURE_VALIDITY: 'features/cli/product:validate-command/structure-validity' as const,
 
-  FEATURES_CLI_PRODUCT_VALIDATE__SOURCE_VERIFICATION: 'features/cli/product:validate/source-verification' as const,
+  FEATURES_CLI_PRODUCT_VALIDATE_COMMAND__SOURCE_VERIFICATION: 'features/cli/product:validate-command/source-verification' as const,
 
-  FEATURES_CLI_PRODUCT_VALIDATE__DUPLICATE_CHECK: 'features/cli/product:validate/duplicate-check' as const,
+  FEATURES_CLI_PRODUCT_VALIDATE_COMMAND__DUPLICATE_CHECK: 'features/cli/product:validate-command/duplicate-check' as const,
 
-  FEATURES_CLI_PRODUCT_VALIDATE__ORPHAN_DETECTION: 'features/cli/product:validate/orphan-detection' as const,
+  FEATURES_CLI_PRODUCT_VALIDATE_COMMAND__ORPHAN_DETECTION: 'features/cli/product:validate-command/orphan-detection' as const,
 
-  FEATURES_CLI_PRODUCT_VALIDATE__VALIDATION_DISPLAY: 'features/cli/product:validate/validation-display' as const,
+  FEATURES_CLI_PRODUCT_VALIDATE_COMMAND__VALIDATION_DISPLAY: 'features/cli/product:validate-command/validation-display' as const,
 
-  FEATURES_CLI_PRODUCT_VALIDATE__STRICT_MODE: 'features/cli/product:validate/strict-mode' as const,
+  FEATURES_CLI_PRODUCT_VALIDATE_COMMAND__STRICT_MODE: 'features/cli/product:validate-command/strict-mode' as const,
 
-  FEATURES_CLI_PRODUCT_VALIDATE__JSON_OUTPUT: 'features/cli/product:validate/json-output' as const,
+  FEATURES_CLI_PRODUCT_VALIDATE_COMMAND__JSON_OUTPUT: 'features/cli/product:validate-command/json-output' as const,
 
-  FEATURES_CLI_PRODUCT_VALIDATE__VALIDATION_EXIT: 'features/cli/product:validate/validation-exit' as const,
+  FEATURES_CLI_PRODUCT_VALIDATE_COMMAND__VALIDATION_EXIT: 'features/cli/product:validate-command/validation-exit' as const,
  /** Watch Command */
-  FEATURES_CLI_PRODUCT_WATCH: 'features/cli/product:watch' as const,
+  FEATURES_CLI_PRODUCT_WATCH_COMMAND: 'features/cli/product:watch-command' as const,
 
-  FEATURES_CLI_PRODUCT_WATCH__MONITOR_FACETS: 'features/cli/product:watch/monitor-facets' as const,
+  FEATURES_CLI_PRODUCT_WATCH_COMMAND__MONITOR_FACETS: 'features/cli/product:watch-command/monitor-facets' as const,
 
-  FEATURES_CLI_PRODUCT_WATCH__MONITOR_TESTS: 'features/cli/product:watch/monitor-tests' as const,
+  FEATURES_CLI_PRODUCT_WATCH_COMMAND__MONITOR_TESTS: 'features/cli/product:watch-command/monitor-tests' as const,
 
-  FEATURES_CLI_PRODUCT_WATCH__MONITOR_STRUCTURES: 'features/cli/product:watch/monitor-structures' as const,
+  FEATURES_CLI_PRODUCT_WATCH_COMMAND__MONITOR_STRUCTURES: 'features/cli/product:watch-command/monitor-structures' as const,
 
-  FEATURES_CLI_PRODUCT_WATCH__RERUN_ANALYSIS: 'features/cli/product:watch/rerun-analysis' as const,
+  FEATURES_CLI_PRODUCT_WATCH_COMMAND__RERUN_ANALYSIS: 'features/cli/product:watch-command/rerun-analysis' as const,
 
-  FEATURES_CLI_PRODUCT_WATCH__VALIDATE_FLAG: 'features/cli/product:watch/validate-flag' as const,
+  FEATURES_CLI_PRODUCT_WATCH_COMMAND__VALIDATE_FLAG: 'features/cli/product:watch-command/validate-flag' as const,
 
-  FEATURES_CLI_PRODUCT_WATCH__TIMESTAMPS: 'features/cli/product:watch/timestamps' as const,
+  FEATURES_CLI_PRODUCT_WATCH_COMMAND__TIMESTAMPS: 'features/cli/product:watch-command/timestamps' as const,
 } as const;
 
 /**
@@ -299,13 +296,13 @@ export function facet<T extends FacetId>(...facetIds: T[]): { facets: T[]; toStr
  */
 export const allFacetIds: FacetId[] = [
   'features/cli/config:configuration',
-  'features/cli/config:file-discovery',
-  'features/cli/config:file-discovery/search-js',
-  'features/cli/config:file-discovery/search-mjs',
-  'features/cli/config:file-discovery/search-json',
-  'features/cli/config:file-discovery/config-flag',
-  'features/cli/config:file-discovery/merge-defaults',
-  'features/cli/config:file-discovery/cwd-config',
+  'features/cli/config:config-file-discovery',
+  'features/cli/config:config-file-discovery/search-js',
+  'features/cli/config:config-file-discovery/search-mjs',
+  'features/cli/config:config-file-discovery/search-json',
+  'features/cli/config:config-file-discovery/config-flag',
+  'features/cli/config:config-file-discovery/merge-defaults',
+  'features/cli/config:config-file-discovery/cwd-config',
   'features/cli/config:facet-patterns',
   'features/cli/config:facet-patterns/pattern-types',
   'features/cli/config:facet-patterns/default-patterns',
@@ -326,62 +323,61 @@ export const allFacetIds: FacetId[] = [
   'features/cli/dx:cli-ergonomics/color-coding',
   'features/cli/dx:cli-ergonomics/emoji-indicators',
   'features/cli/dx:cli-ergonomics/common-flags',
-  'features/cli/dx:config-discovery',
-  'features/cli/dx:config-discovery/config-locations',
-  'features/cli/dx:config-discovery/config-formats',
-  'features/cli/dx:config-discovery/config-flag',
-  'features/cli/dx:config-discovery/config-merge',
-  'features/cli/dx:config-discovery/config-warning',
+  'features/cli/dx:configuration-discovery',
+  'features/cli/dx:configuration-discovery/config-locations',
+  'features/cli/dx:configuration-discovery/config-formats',
+  'features/cli/dx:configuration-discovery/config-flag',
+  'features/cli/dx:configuration-discovery/config-merge',
+  'features/cli/dx:configuration-discovery/config-warning',
   'features/cli/product:cli-commands',
-  'features/cli/product:generate',
-  'features/cli/product:generate/directory-argument',
-  'features/cli/product:generate/config-pattern',
-  'features/cli/product:generate/file-scanning',
-  'features/cli/product:generate/heading-parsing',
-  'features/cli/product:generate/auto-ids',
-  'features/cli/product:generate/stable-id',
-  'features/cli/product:generate/structure-output',
-  'features/cli/product:generate/types-generation',
-  'features/cli/product:generate/output-flag',
-  'features/cli/product:generate/type-flag',
-  'features/cli/product:generate/global-flag',
-  'features/cli/product:generate/no-types-flag',
-  'features/cli/product:generate/quiet-flag',
-  'features/cli/product:generate/id-change-detection',
-  'features/cli/product:generate/id-change-detection/compare-structures',
-  'features/cli/product:generate/id-change-detection/warn-renames',
-  'features/cli/product:generate/id-change-detection/warn-removals',
-  'features/cli/product:generate/id-change-detection/show-affected-tests',
-  'features/cli/product:generate/id-change-detection/suggest-anchors',
-  'features/cli/product:generate/type-gen',
-  'features/cli/product:generate/type-gen/facet-id-type',
-  'features/cli/product:generate/type-gen/facets-const',
-  'features/cli/product:generate/type-gen/facet-function',
-  'features/cli/product:generate/type-gen/all-facet-ids',
-  'features/cli/product:analyze',
-  'features/cli/product:analyze/config-loading',
-  'features/cli/product:analyze/structure-reading',
-  'features/cli/product:analyze/test-scanning',
-  'features/cli/product:analyze/coverage-metrics',
-  'features/cli/product:analyze/report-generation',
-  'features/cli/product:analyze/console-summary',
-  'features/cli/product:analyze/threshold-exit',
-  'features/cli/product:analyze/json-flag',
-  'features/cli/product:analyze/silent-flag',
-  'features/cli/product:validate',
-  'features/cli/product:validate/structure-validity',
-  'features/cli/product:validate/source-verification',
-  'features/cli/product:validate/duplicate-check',
-  'features/cli/product:validate/orphan-detection',
-  'features/cli/product:validate/validation-display',
-  'features/cli/product:validate/strict-mode',
-  'features/cli/product:validate/json-output',
-  'features/cli/product:validate/validation-exit',
-  'features/cli/product:watch',
-  'features/cli/product:watch/monitor-facets',
-  'features/cli/product:watch/monitor-tests',
-  'features/cli/product:watch/monitor-structures',
-  'features/cli/product:watch/rerun-analysis',
-  'features/cli/product:watch/validate-flag',
-  'features/cli/product:watch/timestamps',
+  'features/cli/product:generate-command',
+  'features/cli/product:generate-command/directory-argument',
+  'features/cli/product:generate-command/config-pattern',
+  'features/cli/product:generate-command/file-scanning',
+  'features/cli/product:generate-command/heading-parsing',
+  'features/cli/product:generate-command/auto-ids',
+  'features/cli/product:generate-command/stable-id',
+  'features/cli/product:generate-command/explicit-anchor-syntax',
+  'features/cli/product:generate-command/structure-output',
+  'features/cli/product:generate-command/types-generation',
+  'features/cli/product:generate-command/output-flag',
+  'features/cli/product:generate-command/type-flag',
+  'features/cli/product:generate-command/global-flag',
+  'features/cli/product:generate-command/no-types-flag',
+  'features/cli/product:generate-command/quiet-flag',
+  'features/cli/product:generate-command/compare-structures',
+  'features/cli/product:generate-command/warn-renames',
+  'features/cli/product:generate-command/warn-removals',
+  'features/cli/product:generate-command/show-affected-tests',
+  'features/cli/product:generate-command/suggest-anchors',
+  'features/cli/product:generate-command/facet-id-type',
+  'features/cli/product:generate-command/facets-const',
+  'features/cli/product:generate-command/facet-function',
+  'features/cli/product:generate-command/all-facet-ids',
+  'features/cli/product:analyze-command',
+  'features/cli/product:analyze-command/config-loading',
+  'features/cli/product:analyze-command/structure-reading',
+  'features/cli/product:analyze-command/test-scanning',
+  'features/cli/product:analyze-command/coverage-metrics',
+  'features/cli/product:analyze-command/report-generation',
+  'features/cli/product:analyze-command/console-summary',
+  'features/cli/product:analyze-command/threshold-exit',
+  'features/cli/product:analyze-command/json-flag',
+  'features/cli/product:analyze-command/silent-flag',
+  'features/cli/product:validate-command',
+  'features/cli/product:validate-command/structure-validity',
+  'features/cli/product:validate-command/source-verification',
+  'features/cli/product:validate-command/duplicate-check',
+  'features/cli/product:validate-command/orphan-detection',
+  'features/cli/product:validate-command/validation-display',
+  'features/cli/product:validate-command/strict-mode',
+  'features/cli/product:validate-command/json-output',
+  'features/cli/product:validate-command/validation-exit',
+  'features/cli/product:watch-command',
+  'features/cli/product:watch-command/monitor-facets',
+  'features/cli/product:watch-command/monitor-tests',
+  'features/cli/product:watch-command/monitor-structures',
+  'features/cli/product:watch-command/rerun-analysis',
+  'features/cli/product:watch-command/validate-flag',
+  'features/cli/product:watch-command/timestamps',
 ];

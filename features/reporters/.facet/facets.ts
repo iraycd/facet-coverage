@@ -10,48 +10,48 @@
  */
 export type FacetId =
   | 'features/reporters/dx:developer-experience'
-  | 'features/reporters/dx:readability'
-  | 'features/reporters/dx:readability/clear-headings'
-  | 'features/reporters/dx:readability/visual-indicators'
-  | 'features/reporters/dx:readability/info-priority'
-  | 'features/reporters/dx:readability/logical-grouping'
-  | 'features/reporters/dx:readability/consistent-formatting'
-  | 'features/reporters/dx:accessibility'
-  | 'features/reporters/dx:accessibility/no-js-required'
-  | 'features/reporters/dx:accessibility/github-compatible'
-  | 'features/reporters/dx:accessibility/valid-json'
-  | 'features/reporters/dx:accessibility/timestamps'
-  | 'features/reporters/dx:accessibility/relative-paths'
+  | 'features/reporters/dx:report-readability'
+  | 'features/reporters/dx:report-readability/clear-headings'
+  | 'features/reporters/dx:report-readability/visual-indicators'
+  | 'features/reporters/dx:report-readability/info-priority'
+  | 'features/reporters/dx:report-readability/logical-grouping'
+  | 'features/reporters/dx:report-readability/consistent-formatting'
+  | 'features/reporters/dx:report-accessibility'
+  | 'features/reporters/dx:report-accessibility/no-js-required'
+  | 'features/reporters/dx:report-accessibility/github-compatible'
+  | 'features/reporters/dx:report-accessibility/valid-json'
+  | 'features/reporters/dx:report-accessibility/timestamps'
+  | 'features/reporters/dx:report-accessibility/relative-paths'
   | 'features/reporters/product:report-generation'
-  | 'features/reporters/product:json'
-  | 'features/reporters/product:json/json-output'
-  | 'features/reporters/product:json/json-timestamp'
-  | 'features/reporters/product:json/json-summary'
-  | 'features/reporters/product:json/json-type-breakdown'
-  | 'features/reporters/product:json/json-feature-breakdown'
-  | 'features/reporters/product:json/json-test-list'
-  | 'features/reporters/product:json/json-uncovered'
-  | 'features/reporters/product:json/json-output-dir'
-  | 'features/reporters/product:html'
-  | 'features/reporters/product:html/html-self-contained'
-  | 'features/reporters/product:html/html-overall-display'
-  | 'features/reporters/product:html/html-color-bars'
-  | 'features/reporters/product:html/html-type-grid'
-  | 'features/reporters/product:html/html-feature-cards'
-  | 'features/reporters/product:html/html-uncovered-list'
-  | 'features/reporters/product:html/html-test-coverage'
-  | 'features/reporters/product:html/html-dark-theme'
-  | 'features/reporters/product:html/html-responsive'
-  | 'features/reporters/product:markdown'
-  | 'features/reporters/product:markdown/md-valid'
-  | 'features/reporters/product:markdown/md-timestamp'
-  | 'features/reporters/product:markdown/md-summary-table'
-  | 'features/reporters/product:markdown/md-type-table'
-  | 'features/reporters/product:markdown/md-feature-sections'
-  | 'features/reporters/product:markdown/md-emoji-indicators'
-  | 'features/reporters/product:markdown/md-test-list'
-  | 'features/reporters/product:markdown/md-uncovered-list'
-  | 'features/reporters/product:markdown/md-git-friendly';
+  | 'features/reporters/product:json-reporter'
+  | 'features/reporters/product:json-reporter/json-output'
+  | 'features/reporters/product:json-reporter/json-timestamp'
+  | 'features/reporters/product:json-reporter/json-summary'
+  | 'features/reporters/product:json-reporter/json-type-breakdown'
+  | 'features/reporters/product:json-reporter/json-feature-breakdown'
+  | 'features/reporters/product:json-reporter/json-test-list'
+  | 'features/reporters/product:json-reporter/json-uncovered'
+  | 'features/reporters/product:json-reporter/json-output-dir'
+  | 'features/reporters/product:html-reporter'
+  | 'features/reporters/product:html-reporter/html-self-contained'
+  | 'features/reporters/product:html-reporter/html-overall-display'
+  | 'features/reporters/product:html-reporter/html-color-bars'
+  | 'features/reporters/product:html-reporter/html-type-grid'
+  | 'features/reporters/product:html-reporter/html-feature-cards'
+  | 'features/reporters/product:html-reporter/html-uncovered-list'
+  | 'features/reporters/product:html-reporter/html-test-coverage'
+  | 'features/reporters/product:html-reporter/html-dark-theme'
+  | 'features/reporters/product:html-reporter/html-responsive'
+  | 'features/reporters/product:markdown-reporter'
+  | 'features/reporters/product:markdown-reporter/md-valid'
+  | 'features/reporters/product:markdown-reporter/md-timestamp'
+  | 'features/reporters/product:markdown-reporter/md-summary-table'
+  | 'features/reporters/product:markdown-reporter/md-type-table'
+  | 'features/reporters/product:markdown-reporter/md-feature-sections'
+  | 'features/reporters/product:markdown-reporter/md-emoji-indicators'
+  | 'features/reporters/product:markdown-reporter/md-test-list'
+  | 'features/reporters/product:markdown-reporter/md-uncovered-list'
+  | 'features/reporters/product:markdown-reporter/md-git-friendly';
 
 /**
  * Facet ID constants for autocomplete and type-safe references
@@ -60,89 +60,89 @@ export const Facets = {
  /** Developer Experience */
   FEATURES_REPORTERS_DX_DEVELOPER_EXPERIENCE: 'features/reporters/dx:developer-experience' as const,
  /** Report Readability */
-  FEATURES_REPORTERS_DX_READABILITY: 'features/reporters/dx:readability' as const,
+  FEATURES_REPORTERS_DX_REPORT_READABILITY: 'features/reporters/dx:report-readability' as const,
 
-  FEATURES_REPORTERS_DX_READABILITY__CLEAR_HEADINGS: 'features/reporters/dx:readability/clear-headings' as const,
+  FEATURES_REPORTERS_DX_REPORT_READABILITY__CLEAR_HEADINGS: 'features/reporters/dx:report-readability/clear-headings' as const,
 
-  FEATURES_REPORTERS_DX_READABILITY__VISUAL_INDICATORS: 'features/reporters/dx:readability/visual-indicators' as const,
+  FEATURES_REPORTERS_DX_REPORT_READABILITY__VISUAL_INDICATORS: 'features/reporters/dx:report-readability/visual-indicators' as const,
 
-  FEATURES_REPORTERS_DX_READABILITY__INFO_PRIORITY: 'features/reporters/dx:readability/info-priority' as const,
+  FEATURES_REPORTERS_DX_REPORT_READABILITY__INFO_PRIORITY: 'features/reporters/dx:report-readability/info-priority' as const,
 
-  FEATURES_REPORTERS_DX_READABILITY__LOGICAL_GROUPING: 'features/reporters/dx:readability/logical-grouping' as const,
+  FEATURES_REPORTERS_DX_REPORT_READABILITY__LOGICAL_GROUPING: 'features/reporters/dx:report-readability/logical-grouping' as const,
 
-  FEATURES_REPORTERS_DX_READABILITY__CONSISTENT_FORMATTING: 'features/reporters/dx:readability/consistent-formatting' as const,
+  FEATURES_REPORTERS_DX_REPORT_READABILITY__CONSISTENT_FORMATTING: 'features/reporters/dx:report-readability/consistent-formatting' as const,
  /** Report Accessibility */
-  FEATURES_REPORTERS_DX_ACCESSIBILITY: 'features/reporters/dx:accessibility' as const,
+  FEATURES_REPORTERS_DX_REPORT_ACCESSIBILITY: 'features/reporters/dx:report-accessibility' as const,
 
-  FEATURES_REPORTERS_DX_ACCESSIBILITY__NO_JS_REQUIRED: 'features/reporters/dx:accessibility/no-js-required' as const,
+  FEATURES_REPORTERS_DX_REPORT_ACCESSIBILITY__NO_JS_REQUIRED: 'features/reporters/dx:report-accessibility/no-js-required' as const,
 
-  FEATURES_REPORTERS_DX_ACCESSIBILITY__GITHUB_COMPATIBLE: 'features/reporters/dx:accessibility/github-compatible' as const,
+  FEATURES_REPORTERS_DX_REPORT_ACCESSIBILITY__GITHUB_COMPATIBLE: 'features/reporters/dx:report-accessibility/github-compatible' as const,
 
-  FEATURES_REPORTERS_DX_ACCESSIBILITY__VALID_JSON: 'features/reporters/dx:accessibility/valid-json' as const,
+  FEATURES_REPORTERS_DX_REPORT_ACCESSIBILITY__VALID_JSON: 'features/reporters/dx:report-accessibility/valid-json' as const,
 
-  FEATURES_REPORTERS_DX_ACCESSIBILITY__TIMESTAMPS: 'features/reporters/dx:accessibility/timestamps' as const,
+  FEATURES_REPORTERS_DX_REPORT_ACCESSIBILITY__TIMESTAMPS: 'features/reporters/dx:report-accessibility/timestamps' as const,
 
-  FEATURES_REPORTERS_DX_ACCESSIBILITY__RELATIVE_PATHS: 'features/reporters/dx:accessibility/relative-paths' as const,
+  FEATURES_REPORTERS_DX_REPORT_ACCESSIBILITY__RELATIVE_PATHS: 'features/reporters/dx:report-accessibility/relative-paths' as const,
  /** Report Generation */
   FEATURES_REPORTERS_PRODUCT_REPORT_GENERATION: 'features/reporters/product:report-generation' as const,
  /** JSON Reporter */
-  FEATURES_REPORTERS_PRODUCT_JSON: 'features/reporters/product:json' as const,
+  FEATURES_REPORTERS_PRODUCT_JSON_REPORTER: 'features/reporters/product:json-reporter' as const,
 
-  FEATURES_REPORTERS_PRODUCT_JSON__JSON_OUTPUT: 'features/reporters/product:json/json-output' as const,
+  FEATURES_REPORTERS_PRODUCT_JSON_REPORTER__JSON_OUTPUT: 'features/reporters/product:json-reporter/json-output' as const,
 
-  FEATURES_REPORTERS_PRODUCT_JSON__JSON_TIMESTAMP: 'features/reporters/product:json/json-timestamp' as const,
+  FEATURES_REPORTERS_PRODUCT_JSON_REPORTER__JSON_TIMESTAMP: 'features/reporters/product:json-reporter/json-timestamp' as const,
 
-  FEATURES_REPORTERS_PRODUCT_JSON__JSON_SUMMARY: 'features/reporters/product:json/json-summary' as const,
+  FEATURES_REPORTERS_PRODUCT_JSON_REPORTER__JSON_SUMMARY: 'features/reporters/product:json-reporter/json-summary' as const,
 
-  FEATURES_REPORTERS_PRODUCT_JSON__JSON_TYPE_BREAKDOWN: 'features/reporters/product:json/json-type-breakdown' as const,
+  FEATURES_REPORTERS_PRODUCT_JSON_REPORTER__JSON_TYPE_BREAKDOWN: 'features/reporters/product:json-reporter/json-type-breakdown' as const,
 
-  FEATURES_REPORTERS_PRODUCT_JSON__JSON_FEATURE_BREAKDOWN: 'features/reporters/product:json/json-feature-breakdown' as const,
+  FEATURES_REPORTERS_PRODUCT_JSON_REPORTER__JSON_FEATURE_BREAKDOWN: 'features/reporters/product:json-reporter/json-feature-breakdown' as const,
 
-  FEATURES_REPORTERS_PRODUCT_JSON__JSON_TEST_LIST: 'features/reporters/product:json/json-test-list' as const,
+  FEATURES_REPORTERS_PRODUCT_JSON_REPORTER__JSON_TEST_LIST: 'features/reporters/product:json-reporter/json-test-list' as const,
 
-  FEATURES_REPORTERS_PRODUCT_JSON__JSON_UNCOVERED: 'features/reporters/product:json/json-uncovered' as const,
+  FEATURES_REPORTERS_PRODUCT_JSON_REPORTER__JSON_UNCOVERED: 'features/reporters/product:json-reporter/json-uncovered' as const,
 
-  FEATURES_REPORTERS_PRODUCT_JSON__JSON_OUTPUT_DIR: 'features/reporters/product:json/json-output-dir' as const,
+  FEATURES_REPORTERS_PRODUCT_JSON_REPORTER__JSON_OUTPUT_DIR: 'features/reporters/product:json-reporter/json-output-dir' as const,
  /** HTML Reporter */
-  FEATURES_REPORTERS_PRODUCT_HTML: 'features/reporters/product:html' as const,
+  FEATURES_REPORTERS_PRODUCT_HTML_REPORTER: 'features/reporters/product:html-reporter' as const,
 
-  FEATURES_REPORTERS_PRODUCT_HTML__HTML_SELF_CONTAINED: 'features/reporters/product:html/html-self-contained' as const,
+  FEATURES_REPORTERS_PRODUCT_HTML_REPORTER__HTML_SELF_CONTAINED: 'features/reporters/product:html-reporter/html-self-contained' as const,
 
-  FEATURES_REPORTERS_PRODUCT_HTML__HTML_OVERALL_DISPLAY: 'features/reporters/product:html/html-overall-display' as const,
+  FEATURES_REPORTERS_PRODUCT_HTML_REPORTER__HTML_OVERALL_DISPLAY: 'features/reporters/product:html-reporter/html-overall-display' as const,
 
-  FEATURES_REPORTERS_PRODUCT_HTML__HTML_COLOR_BARS: 'features/reporters/product:html/html-color-bars' as const,
+  FEATURES_REPORTERS_PRODUCT_HTML_REPORTER__HTML_COLOR_BARS: 'features/reporters/product:html-reporter/html-color-bars' as const,
 
-  FEATURES_REPORTERS_PRODUCT_HTML__HTML_TYPE_GRID: 'features/reporters/product:html/html-type-grid' as const,
+  FEATURES_REPORTERS_PRODUCT_HTML_REPORTER__HTML_TYPE_GRID: 'features/reporters/product:html-reporter/html-type-grid' as const,
 
-  FEATURES_REPORTERS_PRODUCT_HTML__HTML_FEATURE_CARDS: 'features/reporters/product:html/html-feature-cards' as const,
+  FEATURES_REPORTERS_PRODUCT_HTML_REPORTER__HTML_FEATURE_CARDS: 'features/reporters/product:html-reporter/html-feature-cards' as const,
 
-  FEATURES_REPORTERS_PRODUCT_HTML__HTML_UNCOVERED_LIST: 'features/reporters/product:html/html-uncovered-list' as const,
+  FEATURES_REPORTERS_PRODUCT_HTML_REPORTER__HTML_UNCOVERED_LIST: 'features/reporters/product:html-reporter/html-uncovered-list' as const,
 
-  FEATURES_REPORTERS_PRODUCT_HTML__HTML_TEST_COVERAGE: 'features/reporters/product:html/html-test-coverage' as const,
+  FEATURES_REPORTERS_PRODUCT_HTML_REPORTER__HTML_TEST_COVERAGE: 'features/reporters/product:html-reporter/html-test-coverage' as const,
 
-  FEATURES_REPORTERS_PRODUCT_HTML__HTML_DARK_THEME: 'features/reporters/product:html/html-dark-theme' as const,
+  FEATURES_REPORTERS_PRODUCT_HTML_REPORTER__HTML_DARK_THEME: 'features/reporters/product:html-reporter/html-dark-theme' as const,
 
-  FEATURES_REPORTERS_PRODUCT_HTML__HTML_RESPONSIVE: 'features/reporters/product:html/html-responsive' as const,
+  FEATURES_REPORTERS_PRODUCT_HTML_REPORTER__HTML_RESPONSIVE: 'features/reporters/product:html-reporter/html-responsive' as const,
  /** Markdown Reporter */
-  FEATURES_REPORTERS_PRODUCT_MARKDOWN: 'features/reporters/product:markdown' as const,
+  FEATURES_REPORTERS_PRODUCT_MARKDOWN_REPORTER: 'features/reporters/product:markdown-reporter' as const,
 
-  FEATURES_REPORTERS_PRODUCT_MARKDOWN__MD_VALID: 'features/reporters/product:markdown/md-valid' as const,
+  FEATURES_REPORTERS_PRODUCT_MARKDOWN_REPORTER__MD_VALID: 'features/reporters/product:markdown-reporter/md-valid' as const,
 
-  FEATURES_REPORTERS_PRODUCT_MARKDOWN__MD_TIMESTAMP: 'features/reporters/product:markdown/md-timestamp' as const,
+  FEATURES_REPORTERS_PRODUCT_MARKDOWN_REPORTER__MD_TIMESTAMP: 'features/reporters/product:markdown-reporter/md-timestamp' as const,
 
-  FEATURES_REPORTERS_PRODUCT_MARKDOWN__MD_SUMMARY_TABLE: 'features/reporters/product:markdown/md-summary-table' as const,
+  FEATURES_REPORTERS_PRODUCT_MARKDOWN_REPORTER__MD_SUMMARY_TABLE: 'features/reporters/product:markdown-reporter/md-summary-table' as const,
 
-  FEATURES_REPORTERS_PRODUCT_MARKDOWN__MD_TYPE_TABLE: 'features/reporters/product:markdown/md-type-table' as const,
+  FEATURES_REPORTERS_PRODUCT_MARKDOWN_REPORTER__MD_TYPE_TABLE: 'features/reporters/product:markdown-reporter/md-type-table' as const,
 
-  FEATURES_REPORTERS_PRODUCT_MARKDOWN__MD_FEATURE_SECTIONS: 'features/reporters/product:markdown/md-feature-sections' as const,
+  FEATURES_REPORTERS_PRODUCT_MARKDOWN_REPORTER__MD_FEATURE_SECTIONS: 'features/reporters/product:markdown-reporter/md-feature-sections' as const,
 
-  FEATURES_REPORTERS_PRODUCT_MARKDOWN__MD_EMOJI_INDICATORS: 'features/reporters/product:markdown/md-emoji-indicators' as const,
+  FEATURES_REPORTERS_PRODUCT_MARKDOWN_REPORTER__MD_EMOJI_INDICATORS: 'features/reporters/product:markdown-reporter/md-emoji-indicators' as const,
 
-  FEATURES_REPORTERS_PRODUCT_MARKDOWN__MD_TEST_LIST: 'features/reporters/product:markdown/md-test-list' as const,
+  FEATURES_REPORTERS_PRODUCT_MARKDOWN_REPORTER__MD_TEST_LIST: 'features/reporters/product:markdown-reporter/md-test-list' as const,
 
-  FEATURES_REPORTERS_PRODUCT_MARKDOWN__MD_UNCOVERED_LIST: 'features/reporters/product:markdown/md-uncovered-list' as const,
+  FEATURES_REPORTERS_PRODUCT_MARKDOWN_REPORTER__MD_UNCOVERED_LIST: 'features/reporters/product:markdown-reporter/md-uncovered-list' as const,
 
-  FEATURES_REPORTERS_PRODUCT_MARKDOWN__MD_GIT_FRIENDLY: 'features/reporters/product:markdown/md-git-friendly' as const,
+  FEATURES_REPORTERS_PRODUCT_MARKDOWN_REPORTER__MD_GIT_FRIENDLY: 'features/reporters/product:markdown-reporter/md-git-friendly' as const,
 } as const;
 
 /**
@@ -170,46 +170,46 @@ export function facet<T extends FacetId>(...facetIds: T[]): { facets: T[]; toStr
  */
 export const allFacetIds: FacetId[] = [
   'features/reporters/dx:developer-experience',
-  'features/reporters/dx:readability',
-  'features/reporters/dx:readability/clear-headings',
-  'features/reporters/dx:readability/visual-indicators',
-  'features/reporters/dx:readability/info-priority',
-  'features/reporters/dx:readability/logical-grouping',
-  'features/reporters/dx:readability/consistent-formatting',
-  'features/reporters/dx:accessibility',
-  'features/reporters/dx:accessibility/no-js-required',
-  'features/reporters/dx:accessibility/github-compatible',
-  'features/reporters/dx:accessibility/valid-json',
-  'features/reporters/dx:accessibility/timestamps',
-  'features/reporters/dx:accessibility/relative-paths',
+  'features/reporters/dx:report-readability',
+  'features/reporters/dx:report-readability/clear-headings',
+  'features/reporters/dx:report-readability/visual-indicators',
+  'features/reporters/dx:report-readability/info-priority',
+  'features/reporters/dx:report-readability/logical-grouping',
+  'features/reporters/dx:report-readability/consistent-formatting',
+  'features/reporters/dx:report-accessibility',
+  'features/reporters/dx:report-accessibility/no-js-required',
+  'features/reporters/dx:report-accessibility/github-compatible',
+  'features/reporters/dx:report-accessibility/valid-json',
+  'features/reporters/dx:report-accessibility/timestamps',
+  'features/reporters/dx:report-accessibility/relative-paths',
   'features/reporters/product:report-generation',
-  'features/reporters/product:json',
-  'features/reporters/product:json/json-output',
-  'features/reporters/product:json/json-timestamp',
-  'features/reporters/product:json/json-summary',
-  'features/reporters/product:json/json-type-breakdown',
-  'features/reporters/product:json/json-feature-breakdown',
-  'features/reporters/product:json/json-test-list',
-  'features/reporters/product:json/json-uncovered',
-  'features/reporters/product:json/json-output-dir',
-  'features/reporters/product:html',
-  'features/reporters/product:html/html-self-contained',
-  'features/reporters/product:html/html-overall-display',
-  'features/reporters/product:html/html-color-bars',
-  'features/reporters/product:html/html-type-grid',
-  'features/reporters/product:html/html-feature-cards',
-  'features/reporters/product:html/html-uncovered-list',
-  'features/reporters/product:html/html-test-coverage',
-  'features/reporters/product:html/html-dark-theme',
-  'features/reporters/product:html/html-responsive',
-  'features/reporters/product:markdown',
-  'features/reporters/product:markdown/md-valid',
-  'features/reporters/product:markdown/md-timestamp',
-  'features/reporters/product:markdown/md-summary-table',
-  'features/reporters/product:markdown/md-type-table',
-  'features/reporters/product:markdown/md-feature-sections',
-  'features/reporters/product:markdown/md-emoji-indicators',
-  'features/reporters/product:markdown/md-test-list',
-  'features/reporters/product:markdown/md-uncovered-list',
-  'features/reporters/product:markdown/md-git-friendly',
+  'features/reporters/product:json-reporter',
+  'features/reporters/product:json-reporter/json-output',
+  'features/reporters/product:json-reporter/json-timestamp',
+  'features/reporters/product:json-reporter/json-summary',
+  'features/reporters/product:json-reporter/json-type-breakdown',
+  'features/reporters/product:json-reporter/json-feature-breakdown',
+  'features/reporters/product:json-reporter/json-test-list',
+  'features/reporters/product:json-reporter/json-uncovered',
+  'features/reporters/product:json-reporter/json-output-dir',
+  'features/reporters/product:html-reporter',
+  'features/reporters/product:html-reporter/html-self-contained',
+  'features/reporters/product:html-reporter/html-overall-display',
+  'features/reporters/product:html-reporter/html-color-bars',
+  'features/reporters/product:html-reporter/html-type-grid',
+  'features/reporters/product:html-reporter/html-feature-cards',
+  'features/reporters/product:html-reporter/html-uncovered-list',
+  'features/reporters/product:html-reporter/html-test-coverage',
+  'features/reporters/product:html-reporter/html-dark-theme',
+  'features/reporters/product:html-reporter/html-responsive',
+  'features/reporters/product:markdown-reporter',
+  'features/reporters/product:markdown-reporter/md-valid',
+  'features/reporters/product:markdown-reporter/md-timestamp',
+  'features/reporters/product:markdown-reporter/md-summary-table',
+  'features/reporters/product:markdown-reporter/md-type-table',
+  'features/reporters/product:markdown-reporter/md-feature-sections',
+  'features/reporters/product:markdown-reporter/md-emoji-indicators',
+  'features/reporters/product:markdown-reporter/md-test-list',
+  'features/reporters/product:markdown-reporter/md-uncovered-list',
+  'features/reporters/product:markdown-reporter/md-git-friendly',
 ];

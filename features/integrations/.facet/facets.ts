@@ -10,30 +10,30 @@
  */
 export type FacetId =
   | 'features/integrations/dx:developer-experience'
-  | 'features/integrations/dx:simplicity'
-  | 'features/integrations/dx:simplicity/minimal-config'
-  | 'features/integrations/dx:simplicity/clear-imports'
-  | 'features/integrations/dx:simplicity/playwright-compat'
-  | 'features/integrations/dx:simplicity/no-modifications'
+  | 'features/integrations/dx:integration-simplicity'
+  | 'features/integrations/dx:integration-simplicity/minimal-config'
+  | 'features/integrations/dx:integration-simplicity/clear-imports'
+  | 'features/integrations/dx:integration-simplicity/playwright-compat'
+  | 'features/integrations/dx:integration-simplicity/no-modifications'
   | 'features/integrations/dx:annotation-syntax'
   | 'features/integrations/dx:annotation-syntax/multi-id-annotation'
   | 'features/integrations/dx:annotation-syntax/natural-syntax'
   | 'features/integrations/dx:annotation-syntax/separation'
   | 'features/integrations/dx:annotation-syntax/annotation-types'
   | 'features/integrations/product:integrations'
-  | 'features/integrations/product:facet-function'
-  | 'features/integrations/product:facet-function/variadic-args'
-  | 'features/integrations/product:facet-function/typescript-autocomplete'
-  | 'features/integrations/product:facet-function/framework-agnostic'
-  | 'features/integrations/product:facet-function/constant-refs'
-  | 'features/integrations/product:facet-function/multiple-ids'
-  | 'features/integrations/product:facet-function/metadata-return'
-  | 'features/integrations/product:facet-function/compile-time-check'
-  | 'features/integrations/product:playwright-helper'
-  | 'features/integrations/product:playwright-helper/pw-facet-function'
-  | 'features/integrations/product:playwright-helper/pw-annotation-object'
-  | 'features/integrations/product:playwright-helper/pw-multiple-ids'
-  | 'features/integrations/product:playwright-helper/pw-test-syntax'
+  | 'features/integrations/product:type-safe-facet-function'
+  | 'features/integrations/product:type-safe-facet-function/variadic-args'
+  | 'features/integrations/product:type-safe-facet-function/typescript-autocomplete'
+  | 'features/integrations/product:type-safe-facet-function/framework-agnostic'
+  | 'features/integrations/product:type-safe-facet-function/constant-refs'
+  | 'features/integrations/product:type-safe-facet-function/multiple-ids'
+  | 'features/integrations/product:type-safe-facet-function/metadata-return'
+  | 'features/integrations/product:type-safe-facet-function/compile-time-check'
+  | 'features/integrations/product:playwright-annotation-helper'
+  | 'features/integrations/product:playwright-annotation-helper/pw-facet-function'
+  | 'features/integrations/product:playwright-annotation-helper/pw-annotation-object'
+  | 'features/integrations/product:playwright-annotation-helper/pw-multiple-ids'
+  | 'features/integrations/product:playwright-annotation-helper/pw-test-syntax'
   | 'features/integrations/product:playwright-reporter'
   | 'features/integrations/product:playwright-reporter/pw-reporter-interface'
   | 'features/integrations/product:playwright-reporter/pw-extract-annotations'
@@ -51,15 +51,15 @@ export const Facets = {
  /** Developer Experience */
   FEATURES_INTEGRATIONS_DX_DEVELOPER_EXPERIENCE: 'features/integrations/dx:developer-experience' as const,
  /** Integration Simplicity */
-  FEATURES_INTEGRATIONS_DX_SIMPLICITY: 'features/integrations/dx:simplicity' as const,
+  FEATURES_INTEGRATIONS_DX_INTEGRATION_SIMPLICITY: 'features/integrations/dx:integration-simplicity' as const,
 
-  FEATURES_INTEGRATIONS_DX_SIMPLICITY__MINIMAL_CONFIG: 'features/integrations/dx:simplicity/minimal-config' as const,
+  FEATURES_INTEGRATIONS_DX_INTEGRATION_SIMPLICITY__MINIMAL_CONFIG: 'features/integrations/dx:integration-simplicity/minimal-config' as const,
 
-  FEATURES_INTEGRATIONS_DX_SIMPLICITY__CLEAR_IMPORTS: 'features/integrations/dx:simplicity/clear-imports' as const,
+  FEATURES_INTEGRATIONS_DX_INTEGRATION_SIMPLICITY__CLEAR_IMPORTS: 'features/integrations/dx:integration-simplicity/clear-imports' as const,
 
-  FEATURES_INTEGRATIONS_DX_SIMPLICITY__PLAYWRIGHT_COMPAT: 'features/integrations/dx:simplicity/playwright-compat' as const,
+  FEATURES_INTEGRATIONS_DX_INTEGRATION_SIMPLICITY__PLAYWRIGHT_COMPAT: 'features/integrations/dx:integration-simplicity/playwright-compat' as const,
 
-  FEATURES_INTEGRATIONS_DX_SIMPLICITY__NO_MODIFICATIONS: 'features/integrations/dx:simplicity/no-modifications' as const,
+  FEATURES_INTEGRATIONS_DX_INTEGRATION_SIMPLICITY__NO_MODIFICATIONS: 'features/integrations/dx:integration-simplicity/no-modifications' as const,
  /** Annotation Syntax */
   FEATURES_INTEGRATIONS_DX_ANNOTATION_SYNTAX: 'features/integrations/dx:annotation-syntax' as const,
 
@@ -73,31 +73,31 @@ export const Facets = {
  /** Integrations */
   FEATURES_INTEGRATIONS_PRODUCT_INTEGRATIONS: 'features/integrations/product:integrations' as const,
  /** Type-Safe Facet Function */
-  FEATURES_INTEGRATIONS_PRODUCT_FACET_FUNCTION: 'features/integrations/product:facet-function' as const,
+  FEATURES_INTEGRATIONS_PRODUCT_TYPE_SAFE_FACET_FUNCTION: 'features/integrations/product:type-safe-facet-function' as const,
 
-  FEATURES_INTEGRATIONS_PRODUCT_FACET_FUNCTION__VARIADIC_ARGS: 'features/integrations/product:facet-function/variadic-args' as const,
+  FEATURES_INTEGRATIONS_PRODUCT_TYPE_SAFE_FACET_FUNCTION__VARIADIC_ARGS: 'features/integrations/product:type-safe-facet-function/variadic-args' as const,
 
-  FEATURES_INTEGRATIONS_PRODUCT_FACET_FUNCTION__TYPESCRIPT_AUTOCOMPLETE: 'features/integrations/product:facet-function/typescript-autocomplete' as const,
+  FEATURES_INTEGRATIONS_PRODUCT_TYPE_SAFE_FACET_FUNCTION__TYPESCRIPT_AUTOCOMPLETE: 'features/integrations/product:type-safe-facet-function/typescript-autocomplete' as const,
 
-  FEATURES_INTEGRATIONS_PRODUCT_FACET_FUNCTION__FRAMEWORK_AGNOSTIC: 'features/integrations/product:facet-function/framework-agnostic' as const,
+  FEATURES_INTEGRATIONS_PRODUCT_TYPE_SAFE_FACET_FUNCTION__FRAMEWORK_AGNOSTIC: 'features/integrations/product:type-safe-facet-function/framework-agnostic' as const,
 
-  FEATURES_INTEGRATIONS_PRODUCT_FACET_FUNCTION__CONSTANT_REFS: 'features/integrations/product:facet-function/constant-refs' as const,
+  FEATURES_INTEGRATIONS_PRODUCT_TYPE_SAFE_FACET_FUNCTION__CONSTANT_REFS: 'features/integrations/product:type-safe-facet-function/constant-refs' as const,
 
-  FEATURES_INTEGRATIONS_PRODUCT_FACET_FUNCTION__MULTIPLE_IDS: 'features/integrations/product:facet-function/multiple-ids' as const,
+  FEATURES_INTEGRATIONS_PRODUCT_TYPE_SAFE_FACET_FUNCTION__MULTIPLE_IDS: 'features/integrations/product:type-safe-facet-function/multiple-ids' as const,
 
-  FEATURES_INTEGRATIONS_PRODUCT_FACET_FUNCTION__METADATA_RETURN: 'features/integrations/product:facet-function/metadata-return' as const,
+  FEATURES_INTEGRATIONS_PRODUCT_TYPE_SAFE_FACET_FUNCTION__METADATA_RETURN: 'features/integrations/product:type-safe-facet-function/metadata-return' as const,
 
-  FEATURES_INTEGRATIONS_PRODUCT_FACET_FUNCTION__COMPILE_TIME_CHECK: 'features/integrations/product:facet-function/compile-time-check' as const,
+  FEATURES_INTEGRATIONS_PRODUCT_TYPE_SAFE_FACET_FUNCTION__COMPILE_TIME_CHECK: 'features/integrations/product:type-safe-facet-function/compile-time-check' as const,
  /** Playwright Annotation Helper */
-  FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_HELPER: 'features/integrations/product:playwright-helper' as const,
+  FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_ANNOTATION_HELPER: 'features/integrations/product:playwright-annotation-helper' as const,
 
-  FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_HELPER__PW_FACET_FUNCTION: 'features/integrations/product:playwright-helper/pw-facet-function' as const,
+  FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_ANNOTATION_HELPER__PW_FACET_FUNCTION: 'features/integrations/product:playwright-annotation-helper/pw-facet-function' as const,
 
-  FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_HELPER__PW_ANNOTATION_OBJECT: 'features/integrations/product:playwright-helper/pw-annotation-object' as const,
+  FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_ANNOTATION_HELPER__PW_ANNOTATION_OBJECT: 'features/integrations/product:playwright-annotation-helper/pw-annotation-object' as const,
 
-  FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_HELPER__PW_MULTIPLE_IDS: 'features/integrations/product:playwright-helper/pw-multiple-ids' as const,
+  FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_ANNOTATION_HELPER__PW_MULTIPLE_IDS: 'features/integrations/product:playwright-annotation-helper/pw-multiple-ids' as const,
 
-  FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_HELPER__PW_TEST_SYNTAX: 'features/integrations/product:playwright-helper/pw-test-syntax' as const,
+  FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_ANNOTATION_HELPER__PW_TEST_SYNTAX: 'features/integrations/product:playwright-annotation-helper/pw-test-syntax' as const,
  /** Playwright Reporter */
   FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_REPORTER: 'features/integrations/product:playwright-reporter' as const,
 
@@ -143,30 +143,30 @@ export function facet<T extends FacetId>(...facetIds: T[]): { facets: T[]; toStr
  */
 export const allFacetIds: FacetId[] = [
   'features/integrations/dx:developer-experience',
-  'features/integrations/dx:simplicity',
-  'features/integrations/dx:simplicity/minimal-config',
-  'features/integrations/dx:simplicity/clear-imports',
-  'features/integrations/dx:simplicity/playwright-compat',
-  'features/integrations/dx:simplicity/no-modifications',
+  'features/integrations/dx:integration-simplicity',
+  'features/integrations/dx:integration-simplicity/minimal-config',
+  'features/integrations/dx:integration-simplicity/clear-imports',
+  'features/integrations/dx:integration-simplicity/playwright-compat',
+  'features/integrations/dx:integration-simplicity/no-modifications',
   'features/integrations/dx:annotation-syntax',
   'features/integrations/dx:annotation-syntax/multi-id-annotation',
   'features/integrations/dx:annotation-syntax/natural-syntax',
   'features/integrations/dx:annotation-syntax/separation',
   'features/integrations/dx:annotation-syntax/annotation-types',
   'features/integrations/product:integrations',
-  'features/integrations/product:facet-function',
-  'features/integrations/product:facet-function/variadic-args',
-  'features/integrations/product:facet-function/typescript-autocomplete',
-  'features/integrations/product:facet-function/framework-agnostic',
-  'features/integrations/product:facet-function/constant-refs',
-  'features/integrations/product:facet-function/multiple-ids',
-  'features/integrations/product:facet-function/metadata-return',
-  'features/integrations/product:facet-function/compile-time-check',
-  'features/integrations/product:playwright-helper',
-  'features/integrations/product:playwright-helper/pw-facet-function',
-  'features/integrations/product:playwright-helper/pw-annotation-object',
-  'features/integrations/product:playwright-helper/pw-multiple-ids',
-  'features/integrations/product:playwright-helper/pw-test-syntax',
+  'features/integrations/product:type-safe-facet-function',
+  'features/integrations/product:type-safe-facet-function/variadic-args',
+  'features/integrations/product:type-safe-facet-function/typescript-autocomplete',
+  'features/integrations/product:type-safe-facet-function/framework-agnostic',
+  'features/integrations/product:type-safe-facet-function/constant-refs',
+  'features/integrations/product:type-safe-facet-function/multiple-ids',
+  'features/integrations/product:type-safe-facet-function/metadata-return',
+  'features/integrations/product:type-safe-facet-function/compile-time-check',
+  'features/integrations/product:playwright-annotation-helper',
+  'features/integrations/product:playwright-annotation-helper/pw-facet-function',
+  'features/integrations/product:playwright-annotation-helper/pw-annotation-object',
+  'features/integrations/product:playwright-annotation-helper/pw-multiple-ids',
+  'features/integrations/product:playwright-annotation-helper/pw-test-syntax',
   'features/integrations/product:playwright-reporter',
   'features/integrations/product:playwright-reporter/pw-reporter-interface',
   'features/integrations/product:playwright-reporter/pw-extract-annotations',

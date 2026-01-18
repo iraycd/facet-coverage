@@ -10,11 +10,11 @@
  */
 export type FacetId =
   | 'features/cli/generate/product:generate-command'
-  | 'features/cli/generate/product:config-discovery'
-  | 'features/cli/generate/product:config-discovery/read-config'
-  | 'features/cli/generate/product:config-discovery/glob-array'
-  | 'features/cli/generate/product:config-discovery/recursive-discovery'
-  | 'features/cli/generate/product:config-discovery/group-by-feature'
+  | 'features/cli/generate/product:config-based-discovery'
+  | 'features/cli/generate/product:config-based-discovery/read-config'
+  | 'features/cli/generate/product:config-based-discovery/glob-array'
+  | 'features/cli/generate/product:config-based-discovery/recursive-discovery'
+  | 'features/cli/generate/product:config-based-discovery/group-by-feature'
   | 'features/cli/generate/product:type-generation'
   | 'features/cli/generate/product:type-generation/facet-id-union'
   | 'features/cli/generate/product:type-generation/facets-const-object'
@@ -33,15 +33,15 @@ export const Facets = {
  /** Generate Command */
   FEATURES_CLI_GENERATE_PRODUCT_GENERATE_COMMAND: 'features/cli/generate/product:generate-command' as const,
  /** Config-Based Discovery */
-  FEATURES_CLI_GENERATE_PRODUCT_CONFIG_DISCOVERY: 'features/cli/generate/product:config-discovery' as const,
+  FEATURES_CLI_GENERATE_PRODUCT_CONFIG_BASED_DISCOVERY: 'features/cli/generate/product:config-based-discovery' as const,
 
-  FEATURES_CLI_GENERATE_PRODUCT_CONFIG_DISCOVERY__READ_CONFIG: 'features/cli/generate/product:config-discovery/read-config' as const,
+  FEATURES_CLI_GENERATE_PRODUCT_CONFIG_BASED_DISCOVERY__READ_CONFIG: 'features/cli/generate/product:config-based-discovery/read-config' as const,
 
-  FEATURES_CLI_GENERATE_PRODUCT_CONFIG_DISCOVERY__GLOB_ARRAY: 'features/cli/generate/product:config-discovery/glob-array' as const,
+  FEATURES_CLI_GENERATE_PRODUCT_CONFIG_BASED_DISCOVERY__GLOB_ARRAY: 'features/cli/generate/product:config-based-discovery/glob-array' as const,
 
-  FEATURES_CLI_GENERATE_PRODUCT_CONFIG_DISCOVERY__RECURSIVE_DISCOVERY: 'features/cli/generate/product:config-discovery/recursive-discovery' as const,
+  FEATURES_CLI_GENERATE_PRODUCT_CONFIG_BASED_DISCOVERY__RECURSIVE_DISCOVERY: 'features/cli/generate/product:config-based-discovery/recursive-discovery' as const,
 
-  FEATURES_CLI_GENERATE_PRODUCT_CONFIG_DISCOVERY__GROUP_BY_FEATURE: 'features/cli/generate/product:config-discovery/group-by-feature' as const,
+  FEATURES_CLI_GENERATE_PRODUCT_CONFIG_BASED_DISCOVERY__GROUP_BY_FEATURE: 'features/cli/generate/product:config-based-discovery/group-by-feature' as const,
  /** Type Generation */
   FEATURES_CLI_GENERATE_PRODUCT_TYPE_GENERATION: 'features/cli/generate/product:type-generation' as const,
 
@@ -89,11 +89,11 @@ export function facet<T extends FacetId>(...facetIds: T[]): { facets: T[]; toStr
  */
 export const allFacetIds: FacetId[] = [
   'features/cli/generate/product:generate-command',
-  'features/cli/generate/product:config-discovery',
-  'features/cli/generate/product:config-discovery/read-config',
-  'features/cli/generate/product:config-discovery/glob-array',
-  'features/cli/generate/product:config-discovery/recursive-discovery',
-  'features/cli/generate/product:config-discovery/group-by-feature',
+  'features/cli/generate/product:config-based-discovery',
+  'features/cli/generate/product:config-based-discovery/read-config',
+  'features/cli/generate/product:config-based-discovery/glob-array',
+  'features/cli/generate/product:config-based-discovery/recursive-discovery',
+  'features/cli/generate/product:config-based-discovery/group-by-feature',
   'features/cli/generate/product:type-generation',
   'features/cli/generate/product:type-generation/facet-id-union',
   'features/cli/generate/product:type-generation/facets-const-object',

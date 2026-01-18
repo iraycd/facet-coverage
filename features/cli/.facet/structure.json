@@ -11,78 +11,78 @@
       "title": "Configuration"
     },
     {
-      "id": "features/cli/config:file-discovery",
+      "id": "features/cli/config:config-file-discovery",
       "source": {
         "file": "config.facet.md",
-        "section": "file-discovery"
+        "section": "config-file-discovery"
       },
       "type": "config",
       "title": "Config File Discovery"
     },
     {
-      "id": "features/cli/config:file-discovery/search-js",
+      "id": "features/cli/config:config-file-discovery/search-js",
       "source": {
         "file": "config.facet.md",
-        "section": "file-discovery",
+        "section": "config-file-discovery",
+        "line": 8
+      },
+      "type": "config",
+      "parentId": "features/cli/config:config-file-discovery",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/config:config-file-discovery/search-mjs",
+      "source": {
+        "file": "config.facet.md",
+        "section": "config-file-discovery",
         "line": 9
       },
       "type": "config",
-      "parentId": "features/cli/config:file-discovery",
+      "parentId": "features/cli/config:config-file-discovery",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/config:file-discovery/search-mjs",
+      "id": "features/cli/config:config-file-discovery/search-json",
       "source": {
         "file": "config.facet.md",
-        "section": "file-discovery",
+        "section": "config-file-discovery",
         "line": 10
       },
       "type": "config",
-      "parentId": "features/cli/config:file-discovery",
+      "parentId": "features/cli/config:config-file-discovery",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/config:file-discovery/search-json",
+      "id": "features/cli/config:config-file-discovery/config-flag",
       "source": {
         "file": "config.facet.md",
-        "section": "file-discovery",
+        "section": "config-file-discovery",
         "line": 11
       },
       "type": "config",
-      "parentId": "features/cli/config:file-discovery",
+      "parentId": "features/cli/config:config-file-discovery",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/config:file-discovery/config-flag",
+      "id": "features/cli/config:config-file-discovery/merge-defaults",
       "source": {
         "file": "config.facet.md",
-        "section": "file-discovery",
+        "section": "config-file-discovery",
         "line": 12
       },
       "type": "config",
-      "parentId": "features/cli/config:file-discovery",
+      "parentId": "features/cli/config:config-file-discovery",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/config:file-discovery/merge-defaults",
+      "id": "features/cli/config:config-file-discovery/cwd-config",
       "source": {
         "file": "config.facet.md",
-        "section": "file-discovery",
+        "section": "config-file-discovery",
         "line": 13
       },
       "type": "config",
-      "parentId": "features/cli/config:file-discovery",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/cli/config:file-discovery/cwd-config",
-      "source": {
-        "file": "config.facet.md",
-        "section": "file-discovery",
-        "line": 14
-      },
-      "type": "config",
-      "parentId": "features/cli/config:file-discovery",
+      "parentId": "features/cli/config:config-file-discovery",
       "isSubFacet": true
     },
     {
@@ -99,7 +99,7 @@
       "source": {
         "file": "config.facet.md",
         "section": "facet-patterns",
-        "line": 22
+        "line": 20
       },
       "type": "config",
       "parentId": "features/cli/config:facet-patterns",
@@ -110,7 +110,7 @@
       "source": {
         "file": "config.facet.md",
         "section": "facet-patterns",
-        "line": 23
+        "line": 21
       },
       "type": "config",
       "parentId": "features/cli/config:facet-patterns",
@@ -121,7 +121,7 @@
       "source": {
         "file": "config.facet.md",
         "section": "facet-patterns",
-        "line": 24
+        "line": 22
       },
       "type": "config",
       "parentId": "features/cli/config:facet-patterns",
@@ -132,7 +132,7 @@
       "source": {
         "file": "config.facet.md",
         "section": "facet-patterns",
-        "line": 25
+        "line": 23
       },
       "type": "config",
       "parentId": "features/cli/config:facet-patterns",
@@ -143,7 +143,7 @@
       "source": {
         "file": "config.facet.md",
         "section": "facet-patterns",
-        "line": 26
+        "line": 24
       },
       "type": "config",
       "parentId": "features/cli/config:facet-patterns",
@@ -163,7 +163,7 @@
       "source": {
         "file": "config.facet.md",
         "section": "facet-types",
-        "line": 34
+        "line": 31
       },
       "type": "config",
       "parentId": "features/cli/config:facet-types",
@@ -174,7 +174,7 @@
       "source": {
         "file": "config.facet.md",
         "section": "facet-types",
-        "line": 35
+        "line": 32
       },
       "type": "config",
       "parentId": "features/cli/config:facet-types",
@@ -185,7 +185,7 @@
       "source": {
         "file": "config.facet.md",
         "section": "facet-types",
-        "line": 36
+        "line": 33
       },
       "type": "config",
       "parentId": "features/cli/config:facet-types",
@@ -196,7 +196,7 @@
       "source": {
         "file": "config.facet.md",
         "section": "facet-types",
-        "line": 37
+        "line": 34
       },
       "type": "config",
       "parentId": "features/cli/config:facet-types",
@@ -207,7 +207,7 @@
       "source": {
         "file": "config.facet.md",
         "section": "facet-types",
-        "line": 38
+        "line": 35
       },
       "type": "config",
       "parentId": "features/cli/config:facet-types",
@@ -236,7 +236,7 @@
       "source": {
         "file": "facets/dx.md",
         "section": "cli-ergonomics",
-        "line": 9
+        "line": 8
       },
       "type": "dx",
       "parentId": "features/cli/dx:cli-ergonomics",
@@ -247,7 +247,7 @@
       "source": {
         "file": "facets/dx.md",
         "section": "cli-ergonomics",
-        "line": 10
+        "line": 9
       },
       "type": "dx",
       "parentId": "features/cli/dx:cli-ergonomics",
@@ -258,7 +258,7 @@
       "source": {
         "file": "facets/dx.md",
         "section": "cli-ergonomics",
-        "line": 11
+        "line": 10
       },
       "type": "dx",
       "parentId": "features/cli/dx:cli-ergonomics",
@@ -269,7 +269,7 @@
       "source": {
         "file": "facets/dx.md",
         "section": "cli-ergonomics",
-        "line": 12
+        "line": 11
       },
       "type": "dx",
       "parentId": "features/cli/dx:cli-ergonomics",
@@ -280,7 +280,7 @@
       "source": {
         "file": "facets/dx.md",
         "section": "cli-ergonomics",
-        "line": 13
+        "line": 12
       },
       "type": "dx",
       "parentId": "features/cli/dx:cli-ergonomics",
@@ -291,74 +291,74 @@
       "source": {
         "file": "facets/dx.md",
         "section": "cli-ergonomics",
-        "line": 14
+        "line": 13
       },
       "type": "dx",
       "parentId": "features/cli/dx:cli-ergonomics",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/dx:config-discovery",
+      "id": "features/cli/dx:configuration-discovery",
       "source": {
         "file": "facets/dx.md",
-        "section": "config-discovery"
+        "section": "configuration-discovery"
       },
       "type": "dx",
       "title": "Configuration Discovery"
     },
     {
-      "id": "features/cli/dx:config-discovery/config-locations",
+      "id": "features/cli/dx:configuration-discovery/config-locations",
       "source": {
         "file": "facets/dx.md",
-        "section": "config-discovery",
+        "section": "configuration-discovery",
+        "line": 20
+      },
+      "type": "dx",
+      "parentId": "features/cli/dx:configuration-discovery",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/dx:configuration-discovery/config-formats",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "configuration-discovery",
+        "line": 21
+      },
+      "type": "dx",
+      "parentId": "features/cli/dx:configuration-discovery",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/dx:configuration-discovery/config-flag",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "configuration-discovery",
         "line": 22
       },
       "type": "dx",
-      "parentId": "features/cli/dx:config-discovery",
+      "parentId": "features/cli/dx:configuration-discovery",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/dx:config-discovery/config-formats",
+      "id": "features/cli/dx:configuration-discovery/config-merge",
       "source": {
         "file": "facets/dx.md",
-        "section": "config-discovery",
+        "section": "configuration-discovery",
         "line": 23
       },
       "type": "dx",
-      "parentId": "features/cli/dx:config-discovery",
+      "parentId": "features/cli/dx:configuration-discovery",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/dx:config-discovery/config-flag",
+      "id": "features/cli/dx:configuration-discovery/config-warning",
       "source": {
         "file": "facets/dx.md",
-        "section": "config-discovery",
+        "section": "configuration-discovery",
         "line": 24
       },
       "type": "dx",
-      "parentId": "features/cli/dx:config-discovery",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/cli/dx:config-discovery/config-merge",
-      "source": {
-        "file": "facets/dx.md",
-        "section": "config-discovery",
-        "line": 25
-      },
-      "type": "dx",
-      "parentId": "features/cli/dx:config-discovery",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/cli/dx:config-discovery/config-warning",
-      "source": {
-        "file": "facets/dx.md",
-        "section": "config-discovery",
-        "line": 26
-      },
-      "type": "dx",
-      "parentId": "features/cli/dx:config-discovery",
+      "parentId": "features/cli/dx:configuration-discovery",
       "isSubFacet": true
     },
     {
@@ -371,559 +371,545 @@
       "title": "CLI Commands"
     },
     {
-      "id": "features/cli/product:generate",
+      "id": "features/cli/product:generate-command",
       "source": {
         "file": "facets/product.md",
-        "section": "generate"
+        "section": "generate-command"
       },
       "type": "product",
       "title": "Generate Command"
     },
     {
-      "id": "features/cli/product:generate/directory-argument",
+      "id": "features/cli/product:generate-command/directory-argument",
       "source": {
         "file": "facets/product.md",
-        "section": "generate",
+        "section": "generate-command",
+        "line": 8
+      },
+      "type": "product",
+      "parentId": "features/cli/product:generate-command",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:generate-command/config-pattern",
+      "source": {
+        "file": "facets/product.md",
+        "section": "generate-command",
         "line": 9
       },
       "type": "product",
-      "parentId": "features/cli/product:generate",
+      "parentId": "features/cli/product:generate-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:generate/config-pattern",
+      "id": "features/cli/product:generate-command/file-scanning",
       "source": {
         "file": "facets/product.md",
-        "section": "generate",
+        "section": "generate-command",
         "line": 10
       },
       "type": "product",
-      "parentId": "features/cli/product:generate",
+      "parentId": "features/cli/product:generate-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:generate/file-scanning",
+      "id": "features/cli/product:generate-command/heading-parsing",
       "source": {
         "file": "facets/product.md",
-        "section": "generate",
+        "section": "generate-command",
         "line": 11
       },
       "type": "product",
-      "parentId": "features/cli/product:generate",
+      "parentId": "features/cli/product:generate-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:generate/heading-parsing",
+      "id": "features/cli/product:generate-command/auto-ids",
       "source": {
         "file": "facets/product.md",
-        "section": "generate",
+        "section": "generate-command",
         "line": 12
       },
       "type": "product",
-      "parentId": "features/cli/product:generate",
+      "parentId": "features/cli/product:generate-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:generate/auto-ids",
+      "id": "features/cli/product:generate-command/stable-id",
       "source": {
         "file": "facets/product.md",
-        "section": "generate",
+        "section": "generate-command",
         "line": 13
       },
       "type": "product",
-      "parentId": "features/cli/product:generate",
+      "parentId": "features/cli/product:generate-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:generate/stable-id",
+      "id": "features/cli/product:generate-command/explicit-anchor-syntax",
       "source": {
         "file": "facets/product.md",
-        "section": "generate",
+        "section": "generate-command",
+        "line": 13
+      },
+      "type": "product",
+      "parentId": "features/cli/product:generate-command",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:generate-command/structure-output",
+      "source": {
+        "file": "facets/product.md",
+        "section": "generate-command",
         "line": 14
       },
       "type": "product",
-      "title": "Support explicit anchor syntax for stable IDs: `## Heading",
-      "parentId": "features/cli/product:generate",
+      "parentId": "features/cli/product:generate-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:generate/structure-output",
+      "id": "features/cli/product:generate-command/types-generation",
       "source": {
         "file": "facets/product.md",
-        "section": "generate",
+        "section": "generate-command",
         "line": 15
       },
       "type": "product",
-      "parentId": "features/cli/product:generate",
+      "parentId": "features/cli/product:generate-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:generate/types-generation",
+      "id": "features/cli/product:generate-command/output-flag",
       "source": {
         "file": "facets/product.md",
-        "section": "generate",
+        "section": "generate-command",
         "line": 16
       },
       "type": "product",
-      "parentId": "features/cli/product:generate",
+      "parentId": "features/cli/product:generate-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:generate/output-flag",
+      "id": "features/cli/product:generate-command/type-flag",
       "source": {
         "file": "facets/product.md",
-        "section": "generate",
+        "section": "generate-command",
         "line": 17
       },
       "type": "product",
-      "parentId": "features/cli/product:generate",
+      "parentId": "features/cli/product:generate-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:generate/type-flag",
+      "id": "features/cli/product:generate-command/global-flag",
       "source": {
         "file": "facets/product.md",
-        "section": "generate",
+        "section": "generate-command",
         "line": 18
       },
       "type": "product",
-      "parentId": "features/cli/product:generate",
+      "parentId": "features/cli/product:generate-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:generate/global-flag",
+      "id": "features/cli/product:generate-command/no-types-flag",
       "source": {
         "file": "facets/product.md",
-        "section": "generate",
+        "section": "generate-command",
         "line": 19
       },
       "type": "product",
-      "parentId": "features/cli/product:generate",
+      "parentId": "features/cli/product:generate-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:generate/no-types-flag",
+      "id": "features/cli/product:generate-command/quiet-flag",
       "source": {
         "file": "facets/product.md",
-        "section": "generate",
+        "section": "generate-command",
         "line": 20
       },
       "type": "product",
-      "parentId": "features/cli/product:generate",
+      "parentId": "features/cli/product:generate-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:generate/quiet-flag",
+      "id": "features/cli/product:generate-command/compare-structures",
       "source": {
         "file": "facets/product.md",
-        "section": "generate",
-        "line": 21
+        "section": "generate-command",
+        "line": 25
       },
       "type": "product",
-      "parentId": "features/cli/product:generate",
+      "parentId": "features/cli/product:generate-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:generate/id-change-detection",
+      "id": "features/cli/product:generate-command/warn-renames",
       "source": {
         "file": "facets/product.md",
-        "section": "generate",
-        "line": 23
+        "section": "generate-command",
+        "line": 26
       },
       "type": "product",
-      "title": "ID Change Detection",
-      "parentId": "features/cli/product:generate",
+      "parentId": "features/cli/product:generate-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:generate/id-change-detection/compare-structures",
+      "id": "features/cli/product:generate-command/warn-removals",
       "source": {
         "file": "facets/product.md",
-        "section": "generate",
+        "section": "generate-command",
         "line": 27
       },
       "type": "product",
-      "parentId": "features/cli/product:generate/id-change-detection",
+      "parentId": "features/cli/product:generate-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:generate/id-change-detection/warn-renames",
+      "id": "features/cli/product:generate-command/show-affected-tests",
       "source": {
         "file": "facets/product.md",
-        "section": "generate",
+        "section": "generate-command",
         "line": 28
       },
       "type": "product",
-      "parentId": "features/cli/product:generate/id-change-detection",
+      "parentId": "features/cli/product:generate-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:generate/id-change-detection/warn-removals",
+      "id": "features/cli/product:generate-command/suggest-anchors",
       "source": {
         "file": "facets/product.md",
-        "section": "generate",
+        "section": "generate-command",
         "line": 29
       },
       "type": "product",
-      "parentId": "features/cli/product:generate/id-change-detection",
+      "parentId": "features/cli/product:generate-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:generate/id-change-detection/show-affected-tests",
+      "id": "features/cli/product:generate-command/facet-id-type",
       "source": {
         "file": "facets/product.md",
-        "section": "generate",
-        "line": 30
+        "section": "generate-command",
+        "line": 34
       },
       "type": "product",
-      "parentId": "features/cli/product:generate/id-change-detection",
+      "parentId": "features/cli/product:generate-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:generate/id-change-detection/suggest-anchors",
+      "id": "features/cli/product:generate-command/facets-const",
       "source": {
         "file": "facets/product.md",
-        "section": "generate",
-        "line": 31
+        "section": "generate-command",
+        "line": 35
       },
       "type": "product",
-      "parentId": "features/cli/product:generate/id-change-detection",
+      "parentId": "features/cli/product:generate-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:generate/type-gen",
+      "id": "features/cli/product:generate-command/facet-function",
       "source": {
         "file": "facets/product.md",
-        "section": "generate",
-        "line": 33
+        "section": "generate-command",
+        "line": 36
       },
       "type": "product",
-      "title": "Type Generation",
-      "parentId": "features/cli/product:generate",
+      "parentId": "features/cli/product:generate-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:generate/type-gen/facet-id-type",
+      "id": "features/cli/product:generate-command/all-facet-ids",
       "source": {
         "file": "facets/product.md",
-        "section": "generate",
+        "section": "generate-command",
         "line": 37
       },
       "type": "product",
-      "parentId": "features/cli/product:generate/type-gen",
+      "parentId": "features/cli/product:generate-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:generate/type-gen/facets-const",
+      "id": "features/cli/product:analyze-command",
       "source": {
         "file": "facets/product.md",
-        "section": "generate",
-        "line": 38
-      },
-      "type": "product",
-      "parentId": "features/cli/product:generate/type-gen",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/cli/product:generate/type-gen/facet-function",
-      "source": {
-        "file": "facets/product.md",
-        "section": "generate",
-        "line": 39
-      },
-      "type": "product",
-      "parentId": "features/cli/product:generate/type-gen",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/cli/product:generate/type-gen/all-facet-ids",
-      "source": {
-        "file": "facets/product.md",
-        "section": "generate",
-        "line": 40
-      },
-      "type": "product",
-      "parentId": "features/cli/product:generate/type-gen",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/cli/product:analyze",
-      "source": {
-        "file": "facets/product.md",
-        "section": "analyze"
+        "section": "analyze-command"
       },
       "type": "product",
       "title": "Analyze Command"
     },
     {
-      "id": "features/cli/product:analyze/config-loading",
+      "id": "features/cli/product:analyze-command/config-loading",
       "source": {
         "file": "facets/product.md",
-        "section": "analyze",
+        "section": "analyze-command",
+        "line": 44
+      },
+      "type": "product",
+      "parentId": "features/cli/product:analyze-command",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:analyze-command/structure-reading",
+      "source": {
+        "file": "facets/product.md",
+        "section": "analyze-command",
+        "line": 45
+      },
+      "type": "product",
+      "parentId": "features/cli/product:analyze-command",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:analyze-command/test-scanning",
+      "source": {
+        "file": "facets/product.md",
+        "section": "analyze-command",
+        "line": 46
+      },
+      "type": "product",
+      "parentId": "features/cli/product:analyze-command",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:analyze-command/coverage-metrics",
+      "source": {
+        "file": "facets/product.md",
+        "section": "analyze-command",
+        "line": 47
+      },
+      "type": "product",
+      "parentId": "features/cli/product:analyze-command",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:analyze-command/report-generation",
+      "source": {
+        "file": "facets/product.md",
+        "section": "analyze-command",
         "line": 48
       },
       "type": "product",
-      "parentId": "features/cli/product:analyze",
+      "parentId": "features/cli/product:analyze-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:analyze/structure-reading",
+      "id": "features/cli/product:analyze-command/console-summary",
       "source": {
         "file": "facets/product.md",
-        "section": "analyze",
+        "section": "analyze-command",
         "line": 49
       },
       "type": "product",
-      "parentId": "features/cli/product:analyze",
+      "parentId": "features/cli/product:analyze-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:analyze/test-scanning",
+      "id": "features/cli/product:analyze-command/threshold-exit",
       "source": {
         "file": "facets/product.md",
-        "section": "analyze",
+        "section": "analyze-command",
         "line": 50
       },
       "type": "product",
-      "parentId": "features/cli/product:analyze",
+      "parentId": "features/cli/product:analyze-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:analyze/coverage-metrics",
+      "id": "features/cli/product:analyze-command/json-flag",
       "source": {
         "file": "facets/product.md",
-        "section": "analyze",
+        "section": "analyze-command",
         "line": 51
       },
       "type": "product",
-      "parentId": "features/cli/product:analyze",
+      "parentId": "features/cli/product:analyze-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:analyze/report-generation",
+      "id": "features/cli/product:analyze-command/silent-flag",
       "source": {
         "file": "facets/product.md",
-        "section": "analyze",
+        "section": "analyze-command",
         "line": 52
       },
       "type": "product",
-      "parentId": "features/cli/product:analyze",
+      "parentId": "features/cli/product:analyze-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:analyze/console-summary",
+      "id": "features/cli/product:validate-command",
       "source": {
         "file": "facets/product.md",
-        "section": "analyze",
-        "line": 53
-      },
-      "type": "product",
-      "parentId": "features/cli/product:analyze",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/cli/product:analyze/threshold-exit",
-      "source": {
-        "file": "facets/product.md",
-        "section": "analyze",
-        "line": 54
-      },
-      "type": "product",
-      "parentId": "features/cli/product:analyze",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/cli/product:analyze/json-flag",
-      "source": {
-        "file": "facets/product.md",
-        "section": "analyze",
-        "line": 55
-      },
-      "type": "product",
-      "parentId": "features/cli/product:analyze",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/cli/product:analyze/silent-flag",
-      "source": {
-        "file": "facets/product.md",
-        "section": "analyze",
-        "line": 56
-      },
-      "type": "product",
-      "parentId": "features/cli/product:analyze",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/cli/product:validate",
-      "source": {
-        "file": "facets/product.md",
-        "section": "validate"
+        "section": "validate-command"
       },
       "type": "product",
       "title": "Validate Command"
     },
     {
-      "id": "features/cli/product:validate/structure-validity",
+      "id": "features/cli/product:validate-command/structure-validity",
       "source": {
         "file": "facets/product.md",
-        "section": "validate",
+        "section": "validate-command",
+        "line": 59
+      },
+      "type": "product",
+      "parentId": "features/cli/product:validate-command",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:validate-command/source-verification",
+      "source": {
+        "file": "facets/product.md",
+        "section": "validate-command",
+        "line": 60
+      },
+      "type": "product",
+      "parentId": "features/cli/product:validate-command",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:validate-command/duplicate-check",
+      "source": {
+        "file": "facets/product.md",
+        "section": "validate-command",
+        "line": 61
+      },
+      "type": "product",
+      "parentId": "features/cli/product:validate-command",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:validate-command/orphan-detection",
+      "source": {
+        "file": "facets/product.md",
+        "section": "validate-command",
+        "line": 62
+      },
+      "type": "product",
+      "parentId": "features/cli/product:validate-command",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:validate-command/validation-display",
+      "source": {
+        "file": "facets/product.md",
+        "section": "validate-command",
+        "line": 63
+      },
+      "type": "product",
+      "parentId": "features/cli/product:validate-command",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:validate-command/strict-mode",
+      "source": {
+        "file": "facets/product.md",
+        "section": "validate-command",
         "line": 64
       },
       "type": "product",
-      "parentId": "features/cli/product:validate",
+      "parentId": "features/cli/product:validate-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:validate/source-verification",
+      "id": "features/cli/product:validate-command/json-output",
       "source": {
         "file": "facets/product.md",
-        "section": "validate",
+        "section": "validate-command",
         "line": 65
       },
       "type": "product",
-      "parentId": "features/cli/product:validate",
+      "parentId": "features/cli/product:validate-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:validate/duplicate-check",
+      "id": "features/cli/product:validate-command/validation-exit",
       "source": {
         "file": "facets/product.md",
-        "section": "validate",
+        "section": "validate-command",
         "line": 66
       },
       "type": "product",
-      "parentId": "features/cli/product:validate",
+      "parentId": "features/cli/product:validate-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:validate/orphan-detection",
+      "id": "features/cli/product:watch-command",
       "source": {
         "file": "facets/product.md",
-        "section": "validate",
-        "line": 67
-      },
-      "type": "product",
-      "parentId": "features/cli/product:validate",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/cli/product:validate/validation-display",
-      "source": {
-        "file": "facets/product.md",
-        "section": "validate",
-        "line": 68
-      },
-      "type": "product",
-      "parentId": "features/cli/product:validate",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/cli/product:validate/strict-mode",
-      "source": {
-        "file": "facets/product.md",
-        "section": "validate",
-        "line": 69
-      },
-      "type": "product",
-      "parentId": "features/cli/product:validate",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/cli/product:validate/json-output",
-      "source": {
-        "file": "facets/product.md",
-        "section": "validate",
-        "line": 70
-      },
-      "type": "product",
-      "parentId": "features/cli/product:validate",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/cli/product:validate/validation-exit",
-      "source": {
-        "file": "facets/product.md",
-        "section": "validate",
-        "line": 71
-      },
-      "type": "product",
-      "parentId": "features/cli/product:validate",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/cli/product:watch",
-      "source": {
-        "file": "facets/product.md",
-        "section": "watch"
+        "section": "watch-command"
       },
       "type": "product",
       "title": "Watch Command"
     },
     {
-      "id": "features/cli/product:watch/monitor-facets",
+      "id": "features/cli/product:watch-command/monitor-facets",
       "source": {
         "file": "facets/product.md",
-        "section": "watch",
-        "line": 79
+        "section": "watch-command",
+        "line": 73
       },
       "type": "product",
-      "parentId": "features/cli/product:watch",
+      "parentId": "features/cli/product:watch-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:watch/monitor-tests",
+      "id": "features/cli/product:watch-command/monitor-tests",
       "source": {
         "file": "facets/product.md",
-        "section": "watch",
-        "line": 80
+        "section": "watch-command",
+        "line": 74
       },
       "type": "product",
-      "parentId": "features/cli/product:watch",
+      "parentId": "features/cli/product:watch-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:watch/monitor-structures",
+      "id": "features/cli/product:watch-command/monitor-structures",
       "source": {
         "file": "facets/product.md",
-        "section": "watch",
-        "line": 81
+        "section": "watch-command",
+        "line": 75
       },
       "type": "product",
-      "parentId": "features/cli/product:watch",
+      "parentId": "features/cli/product:watch-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:watch/rerun-analysis",
+      "id": "features/cli/product:watch-command/rerun-analysis",
       "source": {
         "file": "facets/product.md",
-        "section": "watch",
-        "line": 82
+        "section": "watch-command",
+        "line": 76
       },
       "type": "product",
-      "parentId": "features/cli/product:watch",
+      "parentId": "features/cli/product:watch-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:watch/validate-flag",
+      "id": "features/cli/product:watch-command/validate-flag",
       "source": {
         "file": "facets/product.md",
-        "section": "watch",
-        "line": 83
+        "section": "watch-command",
+        "line": 77
       },
       "type": "product",
-      "parentId": "features/cli/product:watch",
+      "parentId": "features/cli/product:watch-command",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:watch/timestamps",
+      "id": "features/cli/product:watch-command/timestamps",
       "source": {
         "file": "facets/product.md",
-        "section": "watch",
-        "line": 84
+        "section": "watch-command",
+        "line": 78
       },
       "type": "product",
-      "parentId": "features/cli/product:watch",
+      "parentId": "features/cli/product:watch-command",
       "isSubFacet": true
     }
   ]
