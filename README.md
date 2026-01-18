@@ -4,7 +4,7 @@
 
 **Test every facet of your features**
 
-*Natural specifications. Multiple perspectives. Rigorous coverage.*
+*Write requirements naturally. Know what's tested. Track multi-stakeholder coverage automatically.*
 
 [![npm version](https://img.shields.io/npm/v/@facet-coverage/core.svg)](https://www.npmjs.com/package/@facet-coverage/core)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -17,8 +17,8 @@
 
 ## Table of Contents
 
-- [What is Facet?](#what-is-facet)
 - [Why Facet?](#why-facet)
+- [What is Facet?](#what-is-facet)
 - [Installation](#installation)
 - [Quick Start](#quick-start)
 - [Linking Tests to Facets](#linking-tests-to-facets)
@@ -36,6 +36,16 @@
 
 ---
 
+## Why Facet?
+
+Traditional testing asks "what did developers test?" Facet asks "what do stakeholders need, and is it tested?"
+
+Real products serve multiple stakeholders—product owners, compliance teams, UX designers, security architects—each with their own requirements. Facet lets every stakeholder write requirements in natural language, then tracks whether tests actually cover them. No Gherkin syntax. No translation layers. Just requirements linked to tests.
+
+Read the full [Vision](VISION.md) to understand the philosophy behind multi-stakeholder coverage.
+
+---
+
 ## What is Facet?
 
 Facet is a modern testing framework that lets you document features from multiple stakeholder perspectives while maintaining exact traceability to your tests.
@@ -50,16 +60,6 @@ Facet is a modern testing framework that lets you document features from multipl
 | **Technical specs** | Architecture and API contracts |
 
 All connected to the same tests. All tracked for coverage.
-
----
-
-## Why Facet?
-
-Traditional testing asks "what did developers test?" Facet asks "what do stakeholders need, and is it tested?"
-
-Real products serve multiple stakeholders—product owners, compliance teams, UX designers, security architects—each with their own requirements. Facet lets every stakeholder write requirements in natural language, then tracks whether tests actually cover them. No Gherkin syntax. No translation layers. Just requirements linked to tests.
-
-Read the full [Vision](VISION.md) to understand the philosophy behind multi-stakeholder coverage.
 
 ---
 
