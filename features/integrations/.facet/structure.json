@@ -27,7 +27,6 @@
         "line": 9
       },
       "type": "dx",
-      "title": "Minimal configuration required to get started",
       "parentId": "features/integrations/dx:simplicity",
       "isSubFacet": true
     },
@@ -39,7 +38,6 @@
         "line": 10
       },
       "type": "dx",
-      "title": "Clear import paths for integration modules",
       "parentId": "features/integrations/dx:simplicity",
       "isSubFacet": true
     },
@@ -51,7 +49,6 @@
         "line": 11
       },
       "type": "dx",
-      "title": "Work with standard Playwright setup",
       "parentId": "features/integrations/dx:simplicity",
       "isSubFacet": true
     },
@@ -63,7 +60,6 @@
         "line": 12
       },
       "type": "dx",
-      "title": "No modifications to existing tests required for basic usage",
       "parentId": "features/integrations/dx:simplicity",
       "isSubFacet": true
     },
@@ -84,7 +80,6 @@
         "line": 20
       },
       "type": "dx",
-      "title": "Support multiple facet IDs in single annotation",
       "parentId": "features/integrations/dx:annotation-syntax",
       "isSubFacet": true
     },
@@ -96,7 +91,6 @@
         "line": 21
       },
       "type": "dx",
-      "title": "Annotation syntax feels natural in test code",
       "parentId": "features/integrations/dx:annotation-syntax",
       "isSubFacet": true
     },
@@ -108,7 +102,6 @@
         "line": 22
       },
       "type": "dx",
-      "title": "Clear separation between annotation and test logic",
       "parentId": "features/integrations/dx:annotation-syntax",
       "isSubFacet": true
     },
@@ -120,7 +113,6 @@
         "line": 23
       },
       "type": "dx",
-      "title": "Support both inline and comment-based annotations",
       "parentId": "features/integrations/dx:annotation-syntax",
       "isSubFacet": true
     },
@@ -150,7 +142,6 @@
         "line": 9
       },
       "type": "product",
-      "title": "Accept variable number of facet IDs",
       "parentId": "features/integrations/product:facet-function",
       "isSubFacet": true
     },
@@ -162,7 +153,6 @@
         "line": 10
       },
       "type": "product",
-      "title": "Provide TypeScript autocomplete via generated types",
       "parentId": "features/integrations/product:facet-function",
       "isSubFacet": true
     },
@@ -174,7 +164,6 @@
         "line": 11
       },
       "type": "product",
-      "title": "Work with any testing framework (bun:test, jest, vitest, mocha, Playwright)",
       "parentId": "features/integrations/product:facet-function",
       "isSubFacet": true
     },
@@ -186,7 +175,6 @@
         "line": 12
       },
       "type": "product",
-      "title": "Support constant references: `facet(Facets.BUSINESS_GUEST_PURCHASE)`",
       "parentId": "features/integrations/product:facet-function",
       "isSubFacet": true
     },
@@ -198,7 +186,6 @@
         "line": 13
       },
       "type": "product",
-      "title": "Support multiple IDs: `facet(Facets.A, Facets.B)`",
       "parentId": "features/integrations/product:facet-function",
       "isSubFacet": true
     },
@@ -210,7 +197,6 @@
         "line": 14
       },
       "type": "product",
-      "title": "Return metadata object for debugging and runtime introspection",
       "parentId": "features/integrations/product:facet-function",
       "isSubFacet": true
     },
@@ -222,7 +208,6 @@
         "line": 15
       },
       "type": "product",
-      "title": "Type-check at compile time to prevent invalid facet IDs",
       "parentId": "features/integrations/product:facet-function",
       "isSubFacet": true
     },
@@ -243,7 +228,6 @@
         "line": 34
       },
       "type": "product",
-      "title": "Export `facet()` function that accepts variable number of facet IDs",
       "parentId": "features/integrations/product:playwright-helper",
       "isSubFacet": true
     },
@@ -255,7 +239,6 @@
         "line": 35
       },
       "type": "product",
-      "title": "Return Playwright-compatible annotation object with type and description",
       "parentId": "features/integrations/product:playwright-helper",
       "isSubFacet": true
     },
@@ -267,7 +250,6 @@
         "line": 36
       },
       "type": "product",
-      "title": "Support single or multiple facet IDs per test",
       "parentId": "features/integrations/product:playwright-helper",
       "isSubFacet": true
     },
@@ -279,7 +261,6 @@
         "line": 37
       },
       "type": "product",
-      "title": "Work with Playwright's test annotation syntax",
       "parentId": "features/integrations/product:playwright-helper",
       "isSubFacet": true
     },
@@ -300,7 +281,6 @@
         "line": 45
       },
       "type": "product",
-      "title": "Implement Playwright Reporter interface (onBegin, onTestEnd, onEnd)",
       "parentId": "features/integrations/product:playwright-reporter",
       "isSubFacet": true
     },
@@ -312,7 +292,6 @@
         "line": 46
       },
       "type": "product",
-      "title": "Extract facet annotations from test metadata during execution",
       "parentId": "features/integrations/product:playwright-reporter",
       "isSubFacet": true
     },
@@ -324,7 +303,6 @@
         "line": 47
       },
       "type": "product",
-      "title": "Only count passed tests toward coverage (failed tests excluded)",
       "parentId": "features/integrations/product:playwright-reporter",
       "isSubFacet": true
     },
@@ -336,7 +314,6 @@
         "line": 48
       },
       "type": "product",
-      "title": "Merge runtime execution data with static scanning",
       "parentId": "features/integrations/product:playwright-reporter",
       "isSubFacet": true
     },
@@ -348,7 +325,6 @@
         "line": 49
       },
       "type": "product",
-      "title": "Generate all configured report formats on test suite completion",
       "parentId": "features/integrations/product:playwright-reporter",
       "isSubFacet": true
     },
@@ -360,7 +336,6 @@
         "line": 50
       },
       "type": "product",
-      "title": "Print coverage summary to console",
       "parentId": "features/integrations/product:playwright-reporter",
       "isSubFacet": true
     },
@@ -372,7 +347,6 @@
         "line": 51
       },
       "type": "product",
-      "title": "Support configuration via reporter options",
       "parentId": "features/integrations/product:playwright-reporter",
       "isSubFacet": true
     },
@@ -384,7 +358,6 @@
         "line": 52
       },
       "type": "product",
-      "title": "Work alongside other Playwright reporters (html, json, etc.)",
       "parentId": "features/integrations/product:playwright-reporter",
       "isSubFacet": true
     }

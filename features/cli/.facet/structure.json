@@ -27,7 +27,6 @@
         "line": 9
       },
       "type": "config",
-      "title": "Search for `facet.config.js` (ESM or CommonJS)",
       "parentId": "features/cli/config:file-discovery",
       "isSubFacet": true
     },
@@ -39,7 +38,6 @@
         "line": 10
       },
       "type": "config",
-      "title": "Search for `facet.config.mjs` (ESM only)",
       "parentId": "features/cli/config:file-discovery",
       "isSubFacet": true
     },
@@ -51,7 +49,6 @@
         "line": 11
       },
       "type": "config",
-      "title": "Search for `facet.config.json` (JSON)",
       "parentId": "features/cli/config:file-discovery",
       "isSubFacet": true
     },
@@ -63,7 +60,6 @@
         "line": 12
       },
       "type": "config",
-      "title": "Support `--config` flag to specify custom path",
       "parentId": "features/cli/config:file-discovery",
       "isSubFacet": true
     },
@@ -75,7 +71,6 @@
         "line": 13
       },
       "type": "config",
-      "title": "Merge with default configuration values",
       "parentId": "features/cli/config:file-discovery",
       "isSubFacet": true
     },
@@ -87,7 +82,6 @@
         "line": 14
       },
       "type": "config",
-      "title": "Support configuration in current working directory",
       "parentId": "features/cli/config:file-discovery",
       "isSubFacet": true
     },
@@ -108,7 +102,6 @@
         "line": 22
       },
       "type": "config",
-      "title": "Support `facetPattern` as string or array",
       "parentId": "features/cli/config:facet-patterns",
       "isSubFacet": true
     },
@@ -120,7 +113,6 @@
         "line": 23
       },
       "type": "config",
-      "title": "Default patterns: `['features/**/*.facet.md', 'features/**/facets/*.md']`",
       "parentId": "features/cli/config:facet-patterns",
       "isSubFacet": true
     },
@@ -132,7 +124,6 @@
         "line": 24
       },
       "type": "config",
-      "title": "Expand patterns relative to project root",
       "parentId": "features/cli/config:facet-patterns",
       "isSubFacet": true
     },
@@ -144,7 +135,6 @@
         "line": 25
       },
       "type": "config",
-      "title": "Remove duplicate matches",
       "parentId": "features/cli/config:facet-patterns",
       "isSubFacet": true
     },
@@ -156,7 +146,6 @@
         "line": 26
       },
       "type": "config",
-      "title": "Group discovered files by feature directory",
       "parentId": "features/cli/config:facet-patterns",
       "isSubFacet": true
     },
@@ -177,7 +166,6 @@
         "line": 34
       },
       "type": "config",
-      "title": "Support `facetTypes` array in configuration",
       "parentId": "features/cli/config:facet-types",
       "isSubFacet": true
     },
@@ -189,7 +177,6 @@
         "line": 35
       },
       "type": "config",
-      "title": "Default types: `['product', 'dx', 'technical', 'compliance', 'business', 'ux']`",
       "parentId": "features/cli/config:facet-types",
       "isSubFacet": true
     },
@@ -201,7 +188,6 @@
         "line": 36
       },
       "type": "config",
-      "title": "Use for converting `Facets.BUSINESS_X` to `business:x`",
       "parentId": "features/cli/config:facet-types",
       "isSubFacet": true
     },
@@ -213,7 +199,6 @@
         "line": 37
       },
       "type": "config",
-      "title": "Support hierarchical IDs in nested structures",
       "parentId": "features/cli/config:facet-types",
       "isSubFacet": true
     },
@@ -225,7 +210,6 @@
         "line": 38
       },
       "type": "config",
-      "title": "Allow custom types per project",
       "parentId": "features/cli/config:facet-types",
       "isSubFacet": true
     },
@@ -255,7 +239,6 @@
         "line": 9
       },
       "type": "dx",
-      "title": "Support both `facet` and `facet-coverage` as command names",
       "parentId": "features/cli/dx:cli-ergonomics",
       "isSubFacet": true
     },
@@ -267,7 +250,6 @@
         "line": 10
       },
       "type": "dx",
-      "title": "Display help text with usage examples",
       "parentId": "features/cli/dx:cli-ergonomics",
       "isSubFacet": true
     },
@@ -279,7 +261,6 @@
         "line": 11
       },
       "type": "dx",
-      "title": "Show progress indicators during long operations",
       "parentId": "features/cli/dx:cli-ergonomics",
       "isSubFacet": true
     },
@@ -291,7 +272,6 @@
         "line": 12
       },
       "type": "dx",
-      "title": "Use color coding for success/warning/error messages",
       "parentId": "features/cli/dx:cli-ergonomics",
       "isSubFacet": true
     },
@@ -303,7 +283,6 @@
         "line": 13
       },
       "type": "dx",
-      "title": "Display emoji indicators for quick visual scanning",
       "parentId": "features/cli/dx:cli-ergonomics",
       "isSubFacet": true
     },
@@ -315,7 +294,6 @@
         "line": 14
       },
       "type": "dx",
-      "title": "Support common flags like `--help` and `--version`",
       "parentId": "features/cli/dx:cli-ergonomics",
       "isSubFacet": true
     },
@@ -336,7 +314,6 @@
         "line": 22
       },
       "type": "dx",
-      "title": "Look for configuration in standard locations",
       "parentId": "features/cli/dx:config-discovery",
       "isSubFacet": true
     },
@@ -348,7 +325,6 @@
         "line": 23
       },
       "type": "dx",
-      "title": "Support multiple config file formats (js, mjs, json)",
       "parentId": "features/cli/dx:config-discovery",
       "isSubFacet": true
     },
@@ -360,7 +336,6 @@
         "line": 24
       },
       "type": "dx",
-      "title": "Support custom config path via `-c` flag",
       "parentId": "features/cli/dx:config-discovery",
       "isSubFacet": true
     },
@@ -372,7 +347,6 @@
         "line": 25
       },
       "type": "dx",
-      "title": "Merge user config with sensible defaults",
       "parentId": "features/cli/dx:config-discovery",
       "isSubFacet": true
     },
@@ -384,7 +358,6 @@
         "line": 26
       },
       "type": "dx",
-      "title": "Warn when no config file is found",
       "parentId": "features/cli/dx:config-discovery",
       "isSubFacet": true
     },
@@ -414,7 +387,6 @@
         "line": 9
       },
       "type": "product",
-      "title": "Accept optional directory path as argument",
       "parentId": "features/cli/product:generate",
       "isSubFacet": true
     },
@@ -426,7 +398,6 @@
         "line": 10
       },
       "type": "product",
-      "title": "When no directory specified, use `facetPattern` from config",
       "parentId": "features/cli/product:generate",
       "isSubFacet": true
     },
@@ -438,7 +409,6 @@
         "line": 11
       },
       "type": "product",
-      "title": "Scan directory for markdown files (both `*.facet.md` and `facets/*.md`)",
       "parentId": "features/cli/product:generate",
       "isSubFacet": true
     },
@@ -450,7 +420,6 @@
         "line": 12
       },
       "type": "product",
-      "title": "Parse each markdown file for heading sections",
       "parentId": "features/cli/product:generate",
       "isSubFacet": true
     },
@@ -462,7 +431,6 @@
         "line": 13
       },
       "type": "product",
-      "title": "Create facet entries with auto-generated IDs (format: `type:section-slug`)",
       "parentId": "features/cli/product:generate",
       "isSubFacet": true
     },
@@ -486,7 +454,6 @@
         "line": 15
       },
       "type": "product",
-      "title": "Write structure.json to `.facet/` directory",
       "parentId": "features/cli/product:generate",
       "isSubFacet": true
     },
@@ -498,7 +465,6 @@
         "line": 16
       },
       "type": "product",
-      "title": "Generate TypeScript types file (`facets.ts`) with type-safe constants",
       "parentId": "features/cli/product:generate",
       "isSubFacet": true
     },
@@ -510,7 +476,6 @@
         "line": 17
       },
       "type": "product",
-      "title": "Support custom output directory via `-o` flag",
       "parentId": "features/cli/product:generate",
       "isSubFacet": true
     },
@@ -522,7 +487,6 @@
         "line": 18
       },
       "type": "product",
-      "title": "Support type override via `-t` flag",
       "parentId": "features/cli/product:generate",
       "isSubFacet": true
     },
@@ -534,7 +498,6 @@
         "line": 19
       },
       "type": "product",
-      "title": "Support `--global` flag to generate combined types at root",
       "parentId": "features/cli/product:generate",
       "isSubFacet": true
     },
@@ -546,7 +509,6 @@
         "line": 20
       },
       "type": "product",
-      "title": "Support `--no-types` flag to skip TypeScript generation",
       "parentId": "features/cli/product:generate",
       "isSubFacet": true
     },
@@ -558,7 +520,6 @@
         "line": 21
       },
       "type": "product",
-      "title": "Support `-q, --quiet` flag to suppress ID change warnings",
       "parentId": "features/cli/product:generate",
       "isSubFacet": true
     },
@@ -582,7 +543,6 @@
         "line": 27
       },
       "type": "product",
-      "title": "Compare new structure.json with existing",
       "parentId": "features/cli/product:generate/id-change-detection",
       "isSubFacet": true
     },
@@ -594,7 +554,6 @@
         "line": 28
       },
       "type": "product",
-      "title": "Warn about renamed IDs (heading text changed)",
       "parentId": "features/cli/product:generate/id-change-detection",
       "isSubFacet": true
     },
@@ -606,7 +565,6 @@
         "line": 29
       },
       "type": "product",
-      "title": "Warn about removed IDs",
       "parentId": "features/cli/product:generate/id-change-detection",
       "isSubFacet": true
     },
@@ -618,7 +576,6 @@
         "line": 30
       },
       "type": "product",
-      "title": "Show affected tests that may need updates",
       "parentId": "features/cli/product:generate/id-change-detection",
       "isSubFacet": true
     },
@@ -630,7 +587,6 @@
         "line": 31
       },
       "type": "product",
-      "title": "Suggest using explicit anchors for stability",
       "parentId": "features/cli/product:generate/id-change-detection",
       "isSubFacet": true
     },
@@ -654,7 +610,6 @@
         "line": 37
       },
       "type": "product",
-      "title": "`FacetId` union type of all valid IDs",
       "parentId": "features/cli/product:generate/type-gen",
       "isSubFacet": true
     },
@@ -666,7 +621,6 @@
         "line": 38
       },
       "type": "product",
-      "title": "`Facets` const object for autocomplete",
       "parentId": "features/cli/product:generate/type-gen",
       "isSubFacet": true
     },
@@ -678,7 +632,6 @@
         "line": 39
       },
       "type": "product",
-      "title": "`facet()` helper function for test annotations",
       "parentId": "features/cli/product:generate/type-gen",
       "isSubFacet": true
     },
@@ -690,7 +643,6 @@
         "line": 40
       },
       "type": "product",
-      "title": "`allFacetIds` array of all IDs",
       "parentId": "features/cli/product:generate/type-gen",
       "isSubFacet": true
     },
@@ -711,7 +663,6 @@
         "line": 48
       },
       "type": "product",
-      "title": "Load configuration from facet.config.json or specified file",
       "parentId": "features/cli/product:analyze",
       "isSubFacet": true
     },
@@ -723,7 +674,6 @@
         "line": 49
       },
       "type": "product",
-      "title": "Read all structure files",
       "parentId": "features/cli/product:analyze",
       "isSubFacet": true
     },
@@ -735,7 +685,6 @@
         "line": 50
       },
       "type": "product",
-      "title": "Scan all test files for facet annotations",
       "parentId": "features/cli/product:analyze",
       "isSubFacet": true
     },
@@ -747,7 +696,6 @@
         "line": 51
       },
       "type": "product",
-      "title": "Calculate coverage metrics",
       "parentId": "features/cli/product:analyze",
       "isSubFacet": true
     },
@@ -759,7 +707,6 @@
         "line": 52
       },
       "type": "product",
-      "title": "Generate reports in configured formats (JSON, HTML, Markdown)",
       "parentId": "features/cli/product:analyze",
       "isSubFacet": true
     },
@@ -771,7 +718,6 @@
         "line": 53
       },
       "type": "product",
-      "title": "Display coverage summary in console",
       "parentId": "features/cli/product:analyze",
       "isSubFacet": true
     },
@@ -783,7 +729,6 @@
         "line": 54
       },
       "type": "product",
-      "title": "Exit with code 1 if thresholds not met (for CI/CD)",
       "parentId": "features/cli/product:analyze",
       "isSubFacet": true
     },
@@ -795,7 +740,6 @@
         "line": 55
       },
       "type": "product",
-      "title": "Support `--json` flag for machine-readable output",
       "parentId": "features/cli/product:analyze",
       "isSubFacet": true
     },
@@ -807,7 +751,6 @@
         "line": 56
       },
       "type": "product",
-      "title": "Support `--silent` flag to suppress console output",
       "parentId": "features/cli/product:analyze",
       "isSubFacet": true
     },
@@ -828,7 +771,6 @@
         "line": 64
       },
       "type": "product",
-      "title": "Check all structure files for validity",
       "parentId": "features/cli/product:validate",
       "isSubFacet": true
     },
@@ -840,7 +782,6 @@
         "line": 65
       },
       "type": "product",
-      "title": "Verify source files and sections exist",
       "parentId": "features/cli/product:validate",
       "isSubFacet": true
     },
@@ -852,7 +793,6 @@
         "line": 66
       },
       "type": "product",
-      "title": "Check for duplicate facet IDs",
       "parentId": "features/cli/product:validate",
       "isSubFacet": true
     },
@@ -864,7 +804,6 @@
         "line": 67
       },
       "type": "product",
-      "title": "Identify orphan tests and uncovered facets",
       "parentId": "features/cli/product:validate",
       "isSubFacet": true
     },
@@ -876,7 +815,6 @@
         "line": 68
       },
       "type": "product",
-      "title": "Display validation results with errors and warnings",
       "parentId": "features/cli/product:validate",
       "isSubFacet": true
     },
@@ -888,7 +826,6 @@
         "line": 69
       },
       "type": "product",
-      "title": "Support `--strict` mode requiring all tests to be linked",
       "parentId": "features/cli/product:validate",
       "isSubFacet": true
     },
@@ -900,7 +837,6 @@
         "line": 70
       },
       "type": "product",
-      "title": "Support `--json` flag for structured output",
       "parentId": "features/cli/product:validate",
       "isSubFacet": true
     },
@@ -912,7 +848,6 @@
         "line": 71
       },
       "type": "product",
-      "title": "Exit with code 1 if validation fails",
       "parentId": "features/cli/product:validate",
       "isSubFacet": true
     },
@@ -933,7 +868,6 @@
         "line": 79
       },
       "type": "product",
-      "title": "Monitor facet markdown files for changes",
       "parentId": "features/cli/product:watch",
       "isSubFacet": true
     },
@@ -945,7 +879,6 @@
         "line": 80
       },
       "type": "product",
-      "title": "Monitor test files for changes",
       "parentId": "features/cli/product:watch",
       "isSubFacet": true
     },
@@ -957,7 +890,6 @@
         "line": 81
       },
       "type": "product",
-      "title": "Monitor structure.json files for changes",
       "parentId": "features/cli/product:watch",
       "isSubFacet": true
     },
@@ -969,7 +901,6 @@
         "line": 82
       },
       "type": "product",
-      "title": "Re-run analysis on detected changes",
       "parentId": "features/cli/product:watch",
       "isSubFacet": true
     },
@@ -981,7 +912,6 @@
         "line": 83
       },
       "type": "product",
-      "title": "Support optional validation before analysis via `-v` flag",
       "parentId": "features/cli/product:watch",
       "isSubFacet": true
     },
@@ -993,7 +923,6 @@
         "line": 84
       },
       "type": "product",
-      "title": "Display timestamps for each analysis run",
       "parentId": "features/cli/product:watch",
       "isSubFacet": true
     }

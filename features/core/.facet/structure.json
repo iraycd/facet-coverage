@@ -27,7 +27,6 @@
         "line": 9
       },
       "type": "technical",
-      "title": "All source code written in TypeScript",
       "parentId": "features/core/technical:typescript",
       "isSubFacet": true
     },
@@ -39,7 +38,6 @@
         "line": 10
       },
       "type": "technical",
-      "title": "Export type definitions for all public interfaces",
       "parentId": "features/core/technical:typescript",
       "isSubFacet": true
     },
@@ -51,7 +49,6 @@
         "line": 11
       },
       "type": "technical",
-      "title": "Use strict TypeScript configuration",
       "parentId": "features/core/technical:typescript",
       "isSubFacet": true
     },
@@ -63,7 +60,6 @@
         "line": 12
       },
       "type": "technical",
-      "title": "Support ESM module system (NodeNext)",
       "parentId": "features/core/technical:typescript",
       "isSubFacet": true
     },
@@ -84,7 +80,6 @@
         "line": 20
       },
       "type": "technical",
-      "title": "All dependencies compatible with Bun",
       "parentId": "features/core/technical:bun",
       "isSubFacet": true
     },
@@ -96,7 +91,6 @@
         "line": 21
       },
       "type": "technical",
-      "title": "Build scripts work with `bun run`",
       "parentId": "features/core/technical:bun",
       "isSubFacet": true
     },
@@ -108,7 +102,6 @@
         "line": 22
       },
       "type": "technical",
-      "title": "File system operations work in Bun",
       "parentId": "features/core/technical:bun",
       "isSubFacet": true
     },
@@ -120,7 +113,6 @@
         "line": 23
       },
       "type": "technical",
-      "title": "Glob patterns work correctly in Bun",
       "parentId": "features/core/technical:bun",
       "isSubFacet": true
     },
@@ -141,7 +133,6 @@
         "line": 31
       },
       "type": "technical",
-      "title": "Support standard glob syntax (`**`, `*`, etc.)",
       "parentId": "features/core/technical:glob",
       "isSubFacet": true
     },
@@ -153,7 +144,6 @@
         "line": 32
       },
       "type": "technical",
-      "title": "Handle multiple patterns in configuration",
       "parentId": "features/core/technical:glob",
       "isSubFacet": true
     },
@@ -165,7 +155,6 @@
         "line": 33
       },
       "type": "technical",
-      "title": "Work with both relative and absolute paths",
       "parentId": "features/core/technical:glob",
       "isSubFacet": true
     },
@@ -177,7 +166,6 @@
         "line": 34
       },
       "type": "technical",
-      "title": "Handle edge cases (empty directories, no matches)",
       "parentId": "features/core/technical:glob",
       "isSubFacet": true
     },
@@ -198,7 +186,6 @@
         "line": 42
       },
       "type": "technical",
-      "title": "Handle all heading levels (h1-h6)",
       "parentId": "features/core/technical:markdown-parsing",
       "isSubFacet": true
     },
@@ -210,7 +197,6 @@
         "line": 43
       },
       "type": "technical",
-      "title": "Correctly generate slugs from heading text",
       "parentId": "features/core/technical:markdown-parsing",
       "isSubFacet": true
     },
@@ -222,7 +208,6 @@
         "line": 44
       },
       "type": "technical",
-      "title": "Handle special characters in headings",
       "parentId": "features/core/technical:markdown-parsing",
       "isSubFacet": true
     },
@@ -234,7 +219,6 @@
         "line": 45
       },
       "type": "technical",
-      "title": "Support markdown with code blocks and fences",
       "parentId": "features/core/technical:markdown-parsing",
       "isSubFacet": true
     },
@@ -246,7 +230,6 @@
         "line": 46
       },
       "type": "technical",
-      "title": "Ignore headings inside code blocks",
       "parentId": "features/core/technical:markdown-parsing",
       "isSubFacet": true
     },
@@ -276,7 +259,6 @@
         "line": 9
       },
       "type": "dx",
-      "title": "Include file paths in error messages for easy navigation",
       "parentId": "features/core/dx:error-messages",
       "isSubFacet": true
     },
@@ -288,7 +270,6 @@
         "line": 10
       },
       "type": "dx",
-      "title": "Include line numbers where applicable",
       "parentId": "features/core/dx:error-messages",
       "isSubFacet": true
     },
@@ -300,7 +281,6 @@
         "line": 11
       },
       "type": "dx",
-      "title": "Explain what went wrong and how to fix it",
       "parentId": "features/core/dx:error-messages",
       "isSubFacet": true
     },
@@ -312,7 +292,6 @@
         "line": 12
       },
       "type": "dx",
-      "title": "Distinguish between errors (blocking) and warnings (informational)",
       "parentId": "features/core/dx:error-messages",
       "isSubFacet": true
     },
@@ -324,7 +303,6 @@
         "line": 13
       },
       "type": "dx",
-      "title": "Use consistent message formatting across all modules",
       "parentId": "features/core/dx:error-messages",
       "isSubFacet": true
     },
@@ -345,7 +323,6 @@
         "line": 21
       },
       "type": "dx",
-      "title": "Export all core classes from main package entry point",
       "parentId": "features/core/dx:api-design",
       "isSubFacet": true
     },
@@ -357,7 +334,6 @@
         "line": 22
       },
       "type": "dx",
-      "title": "Use TypeScript interfaces for all configuration and return types",
       "parentId": "features/core/dx:api-design",
       "isSubFacet": true
     },
@@ -369,7 +345,6 @@
         "line": 23
       },
       "type": "dx",
-      "title": "Provide sensible defaults for all optional configuration",
       "parentId": "features/core/dx:api-design",
       "isSubFacet": true
     },
@@ -381,7 +356,6 @@
         "line": 24
       },
       "type": "dx",
-      "title": "Support method chaining where appropriate",
       "parentId": "features/core/dx:api-design",
       "isSubFacet": true
     },
@@ -393,7 +367,6 @@
         "line": 25
       },
       "type": "dx",
-      "title": "Document public methods with JSDoc comments",
       "parentId": "features/core/dx:api-design",
       "isSubFacet": true
     },
@@ -423,7 +396,6 @@
         "line": 9
       },
       "type": "product",
-      "title": "Find structure files via glob patterns from configuration",
       "parentId": "features/core/product:structure-reading",
       "isSubFacet": true
     },
@@ -435,7 +407,6 @@
         "line": 10
       },
       "type": "product",
-      "title": "Parse JSON with proper validation and error handling",
       "parentId": "features/core/product:structure-reading",
       "isSubFacet": true
     },
@@ -447,7 +418,6 @@
         "line": 11
       },
       "type": "product",
-      "title": "Support multiple structure files per project",
       "parentId": "features/core/product:structure-reading",
       "isSubFacet": true
     },
@@ -459,7 +429,6 @@
         "line": 12
       },
       "type": "product",
-      "title": "Resolve file paths relative to structure file location",
       "parentId": "features/core/product:structure-reading",
       "isSubFacet": true
     },
@@ -471,7 +440,6 @@
         "line": 13
       },
       "type": "product",
-      "title": "Return all facets across all structures",
       "parentId": "features/core/product:structure-reading",
       "isSubFacet": true
     },
@@ -492,7 +460,6 @@
         "line": 21
       },
       "type": "product",
-      "title": "Extract headings at all levels as sections",
       "parentId": "features/core/product:markdown-parsing",
       "isSubFacet": true
     },
@@ -504,7 +471,6 @@
         "line": 22
       },
       "type": "product",
-      "title": "Generate URL-friendly slugs from heading text",
       "parentId": "features/core/product:markdown-parsing",
       "isSubFacet": true
     },
@@ -528,7 +494,6 @@
         "line": 24
       },
       "type": "product",
-      "title": "Support nested heading levels with proper hierarchy",
       "parentId": "features/core/product:markdown-parsing",
       "isSubFacet": true
     },
@@ -540,7 +505,6 @@
         "line": 25
       },
       "type": "product",
-      "title": "Validate that referenced sections exist in source files",
       "parentId": "features/core/product:markdown-parsing",
       "isSubFacet": true
     },
@@ -552,7 +516,6 @@
         "line": 26
       },
       "type": "product",
-      "title": "Handle markdown with frontmatter and code blocks",
       "parentId": "features/core/product:markdown-parsing",
       "isSubFacet": true
     },
@@ -582,7 +545,6 @@
         "line": 44
       },
       "type": "product",
-      "title": "Find test files matching configured glob patterns",
       "parentId": "features/core/product:test-scanning",
       "isSubFacet": true
     },
@@ -594,7 +556,6 @@
         "line": 45
       },
       "type": "product",
-      "title": "Support Playwright-style annotations: `annotation: facet('id')`",
       "parentId": "features/core/product:test-scanning",
       "isSubFacet": true
     },
@@ -606,7 +567,6 @@
         "line": 46
       },
       "type": "product",
-      "title": "Support comment-based annotations: `// @facet id1, id2`",
       "parentId": "features/core/product:test-scanning",
       "isSubFacet": true
     },
@@ -618,7 +578,6 @@
         "line": 47
       },
       "type": "product",
-      "title": "Track describe block nesting for full test titles",
       "parentId": "features/core/product:test-scanning",
       "isSubFacet": true
     },
@@ -630,7 +589,6 @@
         "line": 48
       },
       "type": "product",
-      "title": "Return test file path, title, and linked facet IDs",
       "parentId": "features/core/product:test-scanning",
       "isSubFacet": true
     },
@@ -651,7 +609,6 @@
         "line": 56
       },
       "type": "product",
-      "title": "Detect duplicate facet IDs across structure files",
       "parentId": "features/core/product:validation",
       "isSubFacet": true
     },
@@ -663,7 +620,6 @@
         "line": 57
       },
       "type": "product",
-      "title": "Verify source markdown files exist",
       "parentId": "features/core/product:validation",
       "isSubFacet": true
     },
@@ -675,7 +631,6 @@
         "line": 58
       },
       "type": "product",
-      "title": "Verify referenced sections exist in source files",
       "parentId": "features/core/product:validation",
       "isSubFacet": true
     },
@@ -687,7 +642,6 @@
         "line": 59
       },
       "type": "product",
-      "title": "Identify tests referencing non-existent facets (orphan tests)",
       "parentId": "features/core/product:validation",
       "isSubFacet": true
     },
@@ -699,7 +653,6 @@
         "line": 60
       },
       "type": "product",
-      "title": "Identify facets without any test coverage (uncovered facets)",
       "parentId": "features/core/product:validation",
       "isSubFacet": true
     },
@@ -711,7 +664,6 @@
         "line": 61
       },
       "type": "product",
-      "title": "Return structured errors and warnings",
       "parentId": "features/core/product:validation",
       "isSubFacet": true
     },
@@ -732,7 +684,6 @@
         "line": 69
       },
       "type": "product",
-      "title": "Calculate overall coverage percentage",
       "parentId": "features/core/product:coverage-calculation",
       "isSubFacet": true
     },
@@ -744,7 +695,6 @@
         "line": 70
       },
       "type": "product",
-      "title": "Calculate coverage by facet type (business, compliance, ux, etc.)",
       "parentId": "features/core/product:coverage-calculation",
       "isSubFacet": true
     },
@@ -756,7 +706,6 @@
         "line": 71
       },
       "type": "product",
-      "title": "Calculate coverage per feature",
       "parentId": "features/core/product:coverage-calculation",
       "isSubFacet": true
     },
@@ -768,7 +717,6 @@
         "line": 72
       },
       "type": "product",
-      "title": "Check coverage against configured thresholds",
       "parentId": "features/core/product:coverage-calculation",
       "isSubFacet": true
     },
@@ -780,7 +728,6 @@
         "line": 73
       },
       "type": "product",
-      "title": "Return comprehensive coverage report with all metrics",
       "parentId": "features/core/product:coverage-calculation",
       "isSubFacet": true
     }

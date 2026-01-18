@@ -27,7 +27,6 @@
         "line": 9
       },
       "type": "dx",
-      "title": "Use clear headings and section organization",
       "parentId": "features/reporters/dx:readability",
       "isSubFacet": true
     },
@@ -39,7 +38,6 @@
         "line": 10
       },
       "type": "dx",
-      "title": "Include visual coverage indicators (bars, percentages, emoji)",
       "parentId": "features/reporters/dx:readability",
       "isSubFacet": true
     },
@@ -51,7 +49,6 @@
         "line": 11
       },
       "type": "dx",
-      "title": "Show most important information first (overall coverage)",
       "parentId": "features/reporters/dx:readability",
       "isSubFacet": true
     },
@@ -63,7 +60,6 @@
         "line": 12
       },
       "type": "dx",
-      "title": "Group related information logically",
       "parentId": "features/reporters/dx:readability",
       "isSubFacet": true
     },
@@ -75,7 +71,6 @@
         "line": 13
       },
       "type": "dx",
-      "title": "Use consistent formatting throughout",
       "parentId": "features/reporters/dx:readability",
       "isSubFacet": true
     },
@@ -96,7 +91,6 @@
         "line": 21
       },
       "type": "dx",
-      "title": "HTML reports work without JavaScript for basic viewing",
       "parentId": "features/reporters/dx:accessibility",
       "isSubFacet": true
     },
@@ -108,7 +102,6 @@
         "line": 22
       },
       "type": "dx",
-      "title": "Markdown reports render correctly in GitHub/GitLab",
       "parentId": "features/reporters/dx:accessibility",
       "isSubFacet": true
     },
@@ -120,7 +113,6 @@
         "line": 23
       },
       "type": "dx",
-      "title": "JSON reports are valid and parseable",
       "parentId": "features/reporters/dx:accessibility",
       "isSubFacet": true
     },
@@ -132,7 +124,6 @@
         "line": 24
       },
       "type": "dx",
-      "title": "Reports include timestamps for tracking history",
       "parentId": "features/reporters/dx:accessibility",
       "isSubFacet": true
     },
@@ -144,7 +135,6 @@
         "line": 25
       },
       "type": "dx",
-      "title": "File paths are relative for portability",
       "parentId": "features/reporters/dx:accessibility",
       "isSubFacet": true
     },
@@ -174,7 +164,6 @@
         "line": 9
       },
       "type": "product",
-      "title": "Output complete coverage data as JSON",
       "parentId": "features/reporters/product:json",
       "isSubFacet": true
     },
@@ -186,7 +175,6 @@
         "line": 10
       },
       "type": "product",
-      "title": "Include timestamp of report generation",
       "parentId": "features/reporters/product:json",
       "isSubFacet": true
     },
@@ -198,7 +186,6 @@
         "line": 11
       },
       "type": "product",
-      "title": "Include summary with total, covered, uncovered counts and percentage",
       "parentId": "features/reporters/product:json",
       "isSubFacet": true
     },
@@ -210,7 +197,6 @@
         "line": 12
       },
       "type": "product",
-      "title": "Include coverage breakdown by type",
       "parentId": "features/reporters/product:json",
       "isSubFacet": true
     },
@@ -222,7 +208,6 @@
         "line": 13
       },
       "type": "product",
-      "title": "Include coverage breakdown by feature",
       "parentId": "features/reporters/product:json",
       "isSubFacet": true
     },
@@ -234,7 +219,6 @@
         "line": 14
       },
       "type": "product",
-      "title": "Include list of all tests with their facet linkages",
       "parentId": "features/reporters/product:json",
       "isSubFacet": true
     },
@@ -246,7 +230,6 @@
         "line": 15
       },
       "type": "product",
-      "title": "Include list of uncovered facets",
       "parentId": "features/reporters/product:json",
       "isSubFacet": true
     },
@@ -258,7 +241,6 @@
         "line": 16
       },
       "type": "product",
-      "title": "Write to configurable output directory",
       "parentId": "features/reporters/product:json",
       "isSubFacet": true
     },
@@ -279,7 +261,6 @@
         "line": 24
       },
       "type": "product",
-      "title": "Generate self-contained HTML file (no external dependencies)",
       "parentId": "features/reporters/product:html",
       "isSubFacet": true
     },
@@ -291,7 +272,6 @@
         "line": 25
       },
       "type": "product",
-      "title": "Display overall coverage percentage prominently",
       "parentId": "features/reporters/product:html",
       "isSubFacet": true
     },
@@ -303,7 +283,6 @@
         "line": 26
       },
       "type": "product",
-      "title": "Show color-coded coverage bars (green/yellow/red)",
       "parentId": "features/reporters/product:html",
       "isSubFacet": true
     },
@@ -315,7 +294,6 @@
         "line": 27
       },
       "type": "product",
-      "title": "Show coverage breakdown by type in grid layout",
       "parentId": "features/reporters/product:html",
       "isSubFacet": true
     },
@@ -327,7 +305,6 @@
         "line": 28
       },
       "type": "product",
-      "title": "Show expandable feature cards with facet details",
       "parentId": "features/reporters/product:html",
       "isSubFacet": true
     },
@@ -339,7 +316,6 @@
         "line": 29
       },
       "type": "product",
-      "title": "List uncovered facets with source information",
       "parentId": "features/reporters/product:html",
       "isSubFacet": true
     },
@@ -351,7 +327,6 @@
         "line": 30
       },
       "type": "product",
-      "title": "Show which tests cover each facet",
       "parentId": "features/reporters/product:html",
       "isSubFacet": true
     },
@@ -363,7 +338,6 @@
         "line": 31
       },
       "type": "product",
-      "title": "Support dark theme for readability",
       "parentId": "features/reporters/product:html",
       "isSubFacet": true
     },
@@ -375,7 +349,6 @@
         "line": 32
       },
       "type": "product",
-      "title": "Include responsive design for various screen sizes",
       "parentId": "features/reporters/product:html",
       "isSubFacet": true
     },
@@ -396,7 +369,6 @@
         "line": 40
       },
       "type": "product",
-      "title": "Generate valid Markdown document",
       "parentId": "features/reporters/product:markdown",
       "isSubFacet": true
     },
@@ -408,7 +380,6 @@
         "line": 41
       },
       "type": "product",
-      "title": "Include generation timestamp",
       "parentId": "features/reporters/product:markdown",
       "isSubFacet": true
     },
@@ -420,7 +391,6 @@
         "line": 42
       },
       "type": "product",
-      "title": "Include summary table with key metrics",
       "parentId": "features/reporters/product:markdown",
       "isSubFacet": true
     },
@@ -432,7 +402,6 @@
         "line": 43
       },
       "type": "product",
-      "title": "Include coverage by type table",
       "parentId": "features/reporters/product:markdown",
       "isSubFacet": true
     },
@@ -444,7 +413,6 @@
         "line": 44
       },
       "type": "product",
-      "title": "Include per-feature sections with facet lists",
       "parentId": "features/reporters/product:markdown",
       "isSubFacet": true
     },
@@ -456,7 +424,6 @@
         "line": 45
       },
       "type": "product",
-      "title": "Use emoji indicators for coverage status",
       "parentId": "features/reporters/product:markdown",
       "isSubFacet": true
     },
@@ -468,7 +435,6 @@
         "line": 46
       },
       "type": "product",
-      "title": "List tests covering each facet",
       "parentId": "features/reporters/product:markdown",
       "isSubFacet": true
     },
@@ -480,7 +446,6 @@
         "line": 47
       },
       "type": "product",
-      "title": "List all uncovered facets at the end",
       "parentId": "features/reporters/product:markdown",
       "isSubFacet": true
     },
@@ -492,7 +457,6 @@
         "line": 48
       },
       "type": "product",
-      "title": "Suitable for Git repositories and documentation",
       "parentId": "features/reporters/product:markdown",
       "isSubFacet": true
     }

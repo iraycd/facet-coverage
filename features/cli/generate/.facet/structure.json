@@ -27,7 +27,6 @@
         "line": 11
       },
       "type": "product",
-      "title": "Read facetPattern from facet.config.json, .js, or .mjs",
       "parentId": "features/cli/generate/product:config-discovery",
       "isSubFacet": true
     },
@@ -39,7 +38,6 @@
         "line": 12
       },
       "type": "product",
-      "title": "Support both single string and array of glob patterns",
       "parentId": "features/cli/generate/product:config-discovery",
       "isSubFacet": true
     },
@@ -51,7 +49,6 @@
         "line": 13
       },
       "type": "product",
-      "title": "Discover files matching patterns recursively",
       "parentId": "features/cli/generate/product:config-discovery",
       "isSubFacet": true
     },
@@ -63,7 +60,6 @@
         "line": 14
       },
       "type": "product",
-      "title": "Group discovered files by their parent feature directory",
       "parentId": "features/cli/generate/product:config-discovery",
       "isSubFacet": true
     },
@@ -84,7 +80,6 @@
         "line": 22
       },
       "type": "product",
-      "title": "Generate `FacetId` union type with all valid facet IDs",
       "parentId": "features/cli/generate/product:type-generation",
       "isSubFacet": true
     },
@@ -96,7 +91,6 @@
         "line": 23
       },
       "type": "product",
-      "title": "Generate `Facets` const object for autocomplete",
       "parentId": "features/cli/generate/product:type-generation",
       "isSubFacet": true
     },
@@ -108,7 +102,6 @@
         "line": 24
       },
       "type": "product",
-      "title": "Generate `facet()` helper function for test annotations",
       "parentId": "features/cli/generate/product:type-generation",
       "isSubFacet": true
     },
@@ -120,7 +113,6 @@
         "line": 25
       },
       "type": "product",
-      "title": "Support `--no-types` flag to skip TypeScript generation",
       "parentId": "features/cli/generate/product:type-generation",
       "isSubFacet": true
     },
@@ -141,7 +133,6 @@
         "line": 33
       },
       "type": "product",
-      "title": "Create `.facet/facets.ts` at project root",
       "parentId": "features/cli/generate/product:global-types",
       "isSubFacet": true
     },
@@ -153,7 +144,6 @@
         "line": 34
       },
       "type": "product",
-      "title": "Re-export all feature-specific types",
       "parentId": "features/cli/generate/product:global-types",
       "isSubFacet": true
     },
@@ -165,7 +155,6 @@
         "line": 35
       },
       "type": "product",
-      "title": "Generate combined `FacetId` union across all features",
       "parentId": "features/cli/generate/product:global-types",
       "isSubFacet": true
     },
@@ -177,7 +166,6 @@
         "line": 36
       },
       "type": "product",
-      "title": "Generate combined `Facets` const with all facet IDs",
       "parentId": "features/cli/generate/product:global-types",
       "isSubFacet": true
     }
