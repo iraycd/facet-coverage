@@ -1,25 +1,64 @@
+<div align="center">
+
 # Facet Coverage
 
-> **Test every facet of your features**
-> Natural specifications. Multiple perspectives. Rigorous coverage.
+**Test every facet of your features**
+
+*Natural specifications. Multiple perspectives. Rigorous coverage.*
+
+[![npm version](https://img.shields.io/npm/v/@facet-coverage/core.svg)](https://www.npmjs.com/package/@facet-coverage/core)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![CircleCI](https://dl.circleci.com/status-badge/img/gh/iraycd/facet-coverage/tree/main.svg?style=svg)](https://dl.circleci.com/pipelines/gh/iraycd/facet-coverage)
+[![Node.js Version](https://img.shields.io/node/v/@facet-coverage/core.svg)](https://nodejs.org)
+
+</div>
+
+---
+
+## Table of Contents
+
+- [What is Facet?](#what-is-facet)
+- [Installation](#installation)
+- [Quick Start](#quick-start)
+- [Linking Tests to Facets](#linking-tests-to-facets)
+- [Project Structure](#project-structure)
+- [CLI Commands](#cli-commands)
+- [Playwright Integration](#playwright-integration)
+- [Configuration](#configuration)
+- [ID Patterns](#id-patterns)
+- [Programmatic API](#programmatic-api)
+- [Benefits](#benefits)
+- [How Facet Differs](#how-facet-differs)
+- [Key Principles](#key-principles)
+- [Contributing](#contributing)
+- [License](#license)
+
+---
 
 ## What is Facet?
 
 Facet is a modern testing framework that lets you document features from multiple stakeholder perspectives while maintaining exact traceability to your tests.
 
 **One feature. Many facets.**
-- Business requirements
-- Compliance mandates
-- UX standards
-- Technical specs
+
+| Perspective | Description |
+|-------------|-------------|
+| **Business requirements** | Product owner specifications |
+| **Compliance mandates** | Regulatory requirements (PCI-DSS, GDPR, etc.) |
+| **UX standards** | Design system and accessibility rules |
+| **Technical specs** | Architecture and API contracts |
 
 All connected to the same tests. All tracked for coverage.
+
+---
 
 ## Installation
 
 ```bash
 bun add -d @facet-coverage/core
 ```
+
+---
 
 ## Quick Start
 
@@ -56,13 +95,17 @@ We handle credit card data, so PCI-DSS compliance is mandatory:
 3. **Card masking** - Display only last 4 digits
 ```
 
-### 2. Generate Structure
+### 2. Generate Structure & Types
 
 ```bash
 bunx facet generate features/checkout/facets/
 ```
 
-This creates `features/checkout/.facet/structure.json`:
+This creates two files in `features/checkout/.facet/`:
+- `structure.json` - facet definitions
+- `facets.ts` - TypeScript types for type-safe linking
+
+**structure.json:**
 
 ```json
 {
@@ -90,25 +133,26 @@ This creates `features/checkout/.facet/structure.json`:
 
 ### 3. Link Tests
 
+Import the generated types and use `facet()` in your tests:
+
 ```typescript
 // features/checkout/tests/checkout.spec.ts
-import { test, expect } from '@playwright/test';
-import { facet } from '@facet-coverage/core/playwright';
+import { test, expect } from 'bun:test';  // or jest, vitest, mocha...
+import { Facets, facet } from '../.facet/facets';
 
-test('guest user completes purchase', {
-  annotation: facet(
-    'business:guest-purchase-flow',
-    'compliance:pci-dss-payment-requirements'
-  )
-}, async ({ page }) => {
-  await page.goto('/checkout');
-  // ... test code
+test('guest user completes purchase', () => {
+  // Declare which facets this test covers
+  facet(Facets.BUSINESS_GUEST_PURCHASE_FLOW);
+  facet(Facets.COMPLIANCE_PCI_DSS_PAYMENT_REQUIREMENTS);
 
-  // Verify compliance: card masking
-  const maskedCard = page.locator('.card-last-four');
-  await expect(maskedCard).toHaveText('•••• 4242');
+  // Your test code
+  const order = checkout(cart, 'user@example.com', '4242...');
+  expect(order.confirmed).toBe(true);
+  expect(order.maskedCard).toBe('•••• 4242');  // PCI-DSS compliance
 });
 ```
+
+The `facet()` function is type-safe - TypeScript will error if you use an invalid facet ID!
 
 ### 4. Run Coverage
 
@@ -118,19 +162,21 @@ bunx facet analyze
 
 **Output:**
 ```
-💎 Facet Coverage Report
+Facet Coverage Report
 
 Overall: 100%
 
 By Type:
-  ✅ business: 100% (1/1)
-  ✅ compliance: 100% (1/1)
+  business: 100% (1/1)
+  compliance: 100% (1/1)
 
 Reports generated:
-  📄 .facet-coverage/coverage.json
-  📄 .facet-coverage/coverage.html
-  📄 .facet-coverage/coverage.md
+  .facet-coverage/coverage.json
+  .facet-coverage/coverage.html
+  .facet-coverage/coverage.md
 ```
+
+---
 
 ## Project Structure
 
@@ -141,9 +187,10 @@ project/
 │   │   ├── facets/
 │   │   │   ├── business.md      # Product owner writes
 │   │   │   ├── compliance.md    # Compliance team writes
-│   │   │   └── ux.md           # UX designer writes
+│   │   │   └── ux.md            # UX designer writes
 │   │   ├── .facet/
-│   │   │   └── structure.json   # Generated or manual
+│   │   │   ├── structure.json   # Generated facet definitions
+│   │   │   └── facets.ts        # Generated TypeScript types
 │   │   └── tests/
 │   │       └── checkout.spec.ts
 │   │
@@ -160,17 +207,80 @@ project/
 └── facet.config.js               # Configuration
 ```
 
+---
+
+## Linking Tests to Facets
+
+Use the `facet()` function inside your tests - just like `expect()` but for coverage tracking!
+
+### Recommended: Type-Safe with `facet()` Function
+
+```typescript
+import { test, expect } from 'bun:test';  // or jest, vitest, mocha...
+import { Facets, facet } from '../.facet/facets';
+
+test('guest user can complete a purchase', () => {
+  // Declare which facets this test covers - type-safe with autocomplete!
+  facet(Facets.BUSINESS_GUEST_PURCHASE_FLOW);
+  facet(Facets.COMPLIANCE_PCI_DSS_PAYMENT_REQUIREMENTS);
+
+  // Your test code
+  const order = checkout(cart, email, card);
+  expect(order.confirmed).toBe(true);
+});
+
+test('payment meets compliance', () => {
+  // Multiple facets in one call
+  facet(Facets.COMPLIANCE_PCI_DSS, Facets.COMPLIANCE_GDPR);
+
+  expect(payment.encrypted).toBe(true);
+});
+```
+
+**Benefits:**
+- Full TypeScript autocomplete
+- Compile-time validation (invalid facet IDs cause errors)
+- Clean, readable syntax
+- Works with any testing framework
+
+**Generated `facets.ts` includes:**
+- `FacetId` - Union type of all valid facet IDs
+- `Facets` - Object with constants for each facet
+- `facet()` - Type-safe function to declare coverage
+
+### Alternative: Comment Annotations
+
+For quick setup without imports, use comment annotations:
+
+```typescript
+// @facet business:guest-purchase-flow, compliance:pci-dss
+test('guest user completes purchase', () => {
+  // Your test code
+});
+```
+
+### All Linking Methods
+
+| Method | Type-Safe | Syntax |
+|--------|-----------|--------|
+| `facet()` function | Yes | `facet(Facets.ID)` inside test body |
+| Comment annotation | No | `// @facet id` above test |
+| Playwright annotation | Yes | `{ annotation: facet(...) }` in test options |
+
+---
+
 ## CLI Commands
 
-### Generate Structure
+### Generate Structure & Types
 
 ```bash
-# Generate structure from facet documents
+# Generate structure.json and facets.ts from facet documents
 bunx facet generate <facets-dir>
 
 # Options
-bunx facet generate features/checkout/facets/ -o ./custom-output
-bunx facet generate features/checkout/facets/ -t business
+bunx facet generate features/checkout/facets/ -o ./custom-output  # Custom output dir
+bunx facet generate features/checkout/facets/ -t business         # Override type
+bunx facet generate features/checkout/facets/ --no-types          # Skip TypeScript generation
 ```
 
 ### Analyze Coverage
@@ -208,7 +318,17 @@ bunx facet watch
 bunx facet watch -v    # Validate before analysis
 ```
 
+---
+
 ## Playwright Integration
+
+> **Note:** Playwright works with [comment annotations](#method-1-comment-annotations-any-framework) and [generated types](#method-2-type-safe-with-generated-types-recommended) out of the box. This section covers the **optional** enhanced integration with a custom reporter and annotation helper.
+
+### Why Use the Playwright Integration?
+
+- **Automatic coverage on test run** - Coverage reports generated after `playwright test`
+- **Runtime annotation capture** - Works with dynamic test generation
+- **Native annotation syntax** - Uses Playwright's built-in annotation system
 
 ### Reporter Setup
 
@@ -260,6 +380,8 @@ test('comprehensive test', {
 });
 ```
 
+---
+
 ## Configuration
 
 **facet.config.js:**
@@ -300,6 +422,8 @@ export default {
 };
 ```
 
+---
+
 ## ID Patterns
 
 ### Auto-Generated (Recommended)
@@ -334,6 +458,8 @@ facet('guest-checkout-flow')                      // Custom slug
 facet('business:guest-purchase-flow')             // Auto-generated
 facet('facets/business.md#guest-purchase-flow')   // Direct path
 ```
+
+---
 
 ## Programmatic API
 
@@ -375,7 +501,13 @@ const mdReporter = new MarkdownReporter();
 mdReporter.write(report);
 ```
 
+---
+
 ## Benefits
+
+<table>
+<tr>
+<td width="50%">
 
 ### For Product Owners
 - Write in natural language
@@ -395,6 +527,9 @@ mdReporter.write(report);
 - Track accessibility coverage
 - Mobile/desktop requirements clear
 
+</td>
+<td width="50%">
+
 ### For Developers
 - One test covers multiple facets
 - Clear requirements from all stakeholders
@@ -407,16 +542,77 @@ mdReporter.write(report);
 - Multi-perspective coverage
 - Progress tracking
 
+</td>
+</tr>
+</table>
+
+---
+
+## How Facet Differs
+
+| Approach | Focus | Facet's Difference |
+|----------|-------|-------------------|
+| **TDD** | Code correctness via unit tests | Facet tracks *what* is covered, not *how* to write code |
+| **BDD** | Behavior via Given-When-Then | Facet uses free-form natural language, not structured syntax |
+| **ATDD** | Acceptance criteria drive development | Facet maps multiple perspectives to tests, not just acceptance |
+| **Traditional Coverage** | Lines/branches executed | Facet measures *requirement* coverage, not code coverage |
+
+**Key insight:** TDD/BDD/ATDD are *development methodologies*. Facet is a *coverage framework*. Use them together.
+
+### Why Facet Works for AI-Driven Testing
+
+AI coding assistants excel at generating tests but struggle with *what to test*. Facet solves this:
+
+- **Natural language specs** → AI understands requirements without parsing Gherkin
+- **Multi-perspective facets** → AI generates tests covering business, compliance, UX in one pass
+- **Type-safe linking** → AI can programmatically verify coverage completeness
+- **Gap detection** → AI identifies untested facets and generates missing tests
+
+```
+Human: "Generate tests for checkout"
+AI: Reads facets → Understands business rules, PCI compliance, UX requirements → Generates comprehensive tests → Links to facets automatically
+```
+
+Facet bridges human intent and AI execution with traceable, verifiable coverage.
+
+---
+
 ## Key Principles
 
-1. **Multi-Perspective**: Every feature has multiple facets
-2. **Natural Language**: Write like humans, not machines
-3. **Evolutionary**: Documentation grows with understanding
-4. **Traceable**: Exact test-to-facet mapping
-5. **Feature-Modular**: Self-contained, team-owned
-6. **Lightweight**: Markdown + JSON, nothing heavy
-7. **Flexible**: Adopt incrementally, customize freely
+| Principle | Description |
+|-----------|-------------|
+| **Multi-Perspective** | Every feature has multiple facets |
+| **Natural Language** | Write like humans, not machines |
+| **Evolutionary** | Documentation grows with understanding |
+| **Traceable** | Exact test-to-facet mapping |
+| **Feature-Modular** | Self-contained, team-owned |
+| **Lightweight** | Markdown + JSON, nothing heavy |
+| **Flexible** | Adopt incrementally, customize freely |
+
+---
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request. For major changes, please open an issue first to discuss what you would like to change.
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+---
 
 ## License
 
-MIT
+MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+<div align="center">
+
+**[Report Bug](https://github.com/iraycd/facet-coverage/issues) | [Request Feature](https://github.com/iraycd/facet-coverage/issues)**
+
+If you find this project useful, please consider giving it a star!
+
+</div>
