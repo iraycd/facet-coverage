@@ -18,6 +18,7 @@
 ## Table of Contents
 
 - [What is Facet?](#what-is-facet)
+- [Why Facet?](#why-facet)
 - [Installation](#installation)
 - [Quick Start](#quick-start)
 - [Linking Tests to Facets](#linking-tests-to-facets)
@@ -49,6 +50,16 @@ Facet is a modern testing framework that lets you document features from multipl
 | **Technical specs** | Architecture and API contracts |
 
 All connected to the same tests. All tracked for coverage.
+
+---
+
+## Why Facet?
+
+Traditional testing asks "what did developers test?" Facet asks "what do stakeholders need, and is it tested?"
+
+Real products serve multiple stakeholders—product owners, compliance teams, UX designers, security architects—each with their own requirements. Facet lets every stakeholder write requirements in natural language, then tracks whether tests actually cover them. No Gherkin syntax. No translation layers. Just requirements linked to tests.
+
+Read the full [Vision](VISION.md) to understand the philosophy behind multi-stakeholder coverage.
 
 ---
 
@@ -274,14 +285,21 @@ test('guest user completes purchase', () => {
 ### Generate Structure & Types
 
 ```bash
-# Generate structure.json and facets.ts from facet documents
+# Generate from config (uses facetPattern - recommended)
+bunx facet generate
+
+# Generate from specific directory
 bunx facet generate <facets-dir>
 
 # Options
 bunx facet generate features/checkout/facets/ -o ./custom-output  # Custom output dir
 bunx facet generate features/checkout/facets/ -t business         # Override type
-bunx facet generate features/checkout/facets/ --no-types          # Skip TypeScript generation
+bunx facet generate --global                                      # Combined types at project root
+bunx facet generate --no-types                                    # Skip TypeScript generation
+bunx facet generate --quiet                                       # Suppress ID change warnings
 ```
+
+**ID Change Detection:** When regenerating, facet warns if IDs have changed (renamed headings, removed sections). This helps catch breaking changes before they affect your tests. Use `--quiet` to suppress these warnings.
 
 ### Analyze Coverage
 
@@ -407,6 +425,9 @@ export default {
   testDir: './features/**/tests',
   testPatterns: ['**/*.spec.ts', '**/*.test.ts'],
 
+  // Known facet types for Facets.CONSTANT resolution
+  facetTypes: ['product', 'dx', 'technical', 'compliance', 'business', 'ux'],
+
   // Validation options
   validation: {
     requireSourceExists: true,
@@ -440,6 +461,7 @@ export default {
   "structureFiles": ["features/**/.facet/structure.json"],
   "testDir": "./features/**/tests",
   "testPatterns": ["**/*.spec.ts", "**/*.test.ts"],
+  "facetTypes": ["product", "dx", "technical", "compliance", "business", "ux"],
   "validation": {
     "requireSourceExists": true,
     "requireSectionExists": true,
@@ -466,6 +488,7 @@ export default {
 | `structureFiles` | `string[]` | `['features/**/.facet/structure.json']` | Glob patterns for structure files |
 | `testDir` | `string` | `'./features/**/tests'` | Test directory pattern |
 | `testPatterns` | `string[]` | `['**/*.spec.ts', '**/*.test.ts']` | Test file patterns |
+| `facetTypes` | `string[]` | `['product', 'dx', 'technical', ...]` | Known types for `Facets.CONSTANT` resolution |
 | `validation.requireSourceExists` | `boolean` | `true` | Check if source files exist |
 | `validation.requireSectionExists` | `boolean` | `true` | Check if sections exist in files |
 | `validation.requireAllTestsLinked` | `boolean` | `false` | Require every test links to a facet |
@@ -478,7 +501,7 @@ export default {
 
 ## ID Patterns
 
-### Auto-Generated (Recommended)
+### Auto-Generated (Default)
 
 ```
 Pattern: {filename}:{section-slug}
@@ -489,17 +512,49 @@ Examples:
 - ux:mobile-checkout-experience
 ```
 
-### Custom Slugs
+### Explicit ID Anchors (Recommended for Stability)
 
-```json
-{
-  "id": "guest-checkout-flow",
-  "source": {
-    "file": "facets/business.md",
-    "section": "guest-purchase-flow"
-  },
-  "type": "business"
-}
+Use explicit anchors to keep facet IDs stable when headings change:
+
+```markdown
+## Guest Purchase Flow {#guest-checkout}
+
+When you rename the heading later, the ID stays the same:
+
+## Complete Guest Checkout Experience {#guest-checkout}
+```
+
+This generates `business:guest-checkout` instead of deriving from the heading text.
+
+**Why use explicit anchors?**
+- IDs remain stable when you refactor documentation
+- Tests don't break when headings are reworded
+- Enables shorter, more readable IDs
+
+### Nested Features (Hierarchical IDs)
+
+For complex projects, organize features in nested directories:
+
+```
+features/
+├── checkout/
+│   ├── payments/
+│   │   ├── facets/
+│   │   │   └── compliance.md
+│   │   └── .facet/
+│   │       └── structure.json
+```
+
+This generates hierarchical IDs:
+
+```
+checkout/payments/compliance:pci-dss-requirements
+```
+
+Use in tests:
+
+```typescript
+facet(Facets.CHECKOUT_PAYMENTS_COMPLIANCE_PCI_DSS_REQUIREMENTS);
 ```
 
 ### Flexible Linking
@@ -611,6 +666,53 @@ mdReporter.write(report);
 
 **Key insight:** TDD/BDD/ATDD are *development methodologies*. Facet is a *coverage framework*. Use them together.
 
+### Facet vs Cucumber (and Similar BDD Tools)
+
+Cucumber, SpecFlow, Behave, and similar tools follow a **specification-as-test** architecture where `.feature` files written in Gherkin syntax are directly executed as tests. Facet takes a fundamentally different approach: **specification-as-documentation**.
+
+| Aspect | Cucumber / BDD Tools | Facet |
+|--------|---------------------|-------|
+| **Syntax** | Gherkin (Given-When-Then) | Free-form Markdown |
+| **Specifications** | Are the tests (executable) | Are documentation (linked to tests) |
+| **Step definitions** | Required for each step | Not needed - tests are regular code |
+| **Learning curve** | Must learn Gherkin syntax | Write in natural language |
+| **Perspectives** | Single specification file | Multiple facets per feature |
+| **Test framework** | Cucumber runner | Any framework (Jest, Vitest, Playwright, etc.) |
+| **Maintenance** | Step definitions can drift from specs | Direct linking prevents drift |
+
+**Architectural difference illustrated:**
+
+**Cucumber Approach:**
+```mermaid
+flowchart LR
+    A["Feature file<br/>(Gherkin)"] --> B["Step definitions<br/>(glue code)"]
+    B --> C["Test runner<br/>(Cucumber)"]
+```
+
+**Facet Approach:**
+```mermaid
+flowchart LR
+    A["Facet files<br/>(Markdown)"] <-->|"linked via IDs"| B["Your tests<br/>(any runner)"]
+    A --> C["Coverage report<br/>(what's tested)"]
+```
+
+**Why this matters:**
+
+1. **No translation layer** - Cucumber requires step definitions that translate Gherkin to code. These become a maintenance burden and can drift from specs. Facet links directly to existing tests.
+
+2. **Use your existing tests** - With Cucumber, you rewrite tests in Gherkin. With Facet, you add `facet()` calls to tests you already have.
+
+3. **Multiple perspectives** - A Cucumber feature file is one perspective. Facet lets business, compliance, UX, and technical teams each write their own facets for the same feature.
+
+4. **Natural language freedom** - Gherkin's structured syntax (`Given`/`When`/`Then`) forces a specific format. Facet accepts any prose - bullet points, paragraphs, tables - whatever communicates best.
+
+5. **Framework agnostic** - Cucumber requires the Cucumber test runner. Facet works with Jest, Vitest, Mocha, Playwright, or any testing framework.
+
+**When to use Cucumber vs Facet:**
+
+- **Cucumber**: When you want executable specifications and your team has invested in the Gherkin ecosystem
+- **Facet**: When you want coverage tracking across multiple perspectives without changing how you write tests
+
 ### Why Facet Works for AI-Driven Testing
 
 AI coding assistants excel at generating tests but struggle with *what to test*. Facet solves this:
@@ -620,9 +722,12 @@ AI coding assistants excel at generating tests but struggle with *what to test*.
 - **Type-safe linking** → AI can programmatically verify coverage completeness
 - **Gap detection** → AI identifies untested facets and generates missing tests
 
-```
-Human: "Generate tests for checkout"
-AI: Reads facets → Understands business rules, PCI compliance, UX requirements → Generates comprehensive tests → Links to facets automatically
+```mermaid
+flowchart LR
+    A["Human:<br/>Generate tests for checkout"] --> B["AI reads facets"]
+    B --> C["Understands business rules,<br/>PCI compliance, UX requirements"]
+    C --> D["Generates comprehensive tests"]
+    D --> E["Links to facets automatically"]
 ```
 
 Facet bridges human intent and AI execution with traceable, verifiable coverage.
