@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { facet } from '../../../dist/integrations/playwright.js';
+import { facet } from '@facet-coverage/core/playwright';
 
 test.describe('Checkout Flow', () => {
   test('guest user completes purchase', {

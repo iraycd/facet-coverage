@@ -18,7 +18,7 @@ All connected to the same tests. All tracked for coverage.
 ## Installation
 
 ```bash
-bun add -d facet-coverage
+bun add -d @facet-coverage/core
 ```
 
 ## Quick Start
@@ -93,7 +93,7 @@ This creates `features/checkout/.facet/structure.json`:
 ```typescript
 // features/checkout/tests/checkout.spec.ts
 import { test, expect } from '@playwright/test';
-import { facet } from 'facet-coverage/playwright';
+import { facet } from '@facet-coverage/core/playwright';
 
 test('guest user completes purchase', {
   annotation: facet(
@@ -214,7 +214,7 @@ bunx facet watch -v    # Validate before analysis
 
 ```typescript
 // playwright.config.ts
-import { FacetCoverageReporter } from 'facet-coverage/playwright';
+import { FacetCoverageReporter } from '@facet-coverage/core/playwright';
 
 export default {
   reporter: [
@@ -239,7 +239,7 @@ export default {
 
 ```typescript
 import { test } from '@playwright/test';
-import { facet } from 'facet-coverage/playwright';
+import { facet } from '@facet-coverage/core/playwright';
 
 // Single facet
 test('my test', {
@@ -346,7 +346,7 @@ import {
   JsonReporter,
   HtmlReporter,
   MarkdownReporter
-} from 'facet-coverage';
+} from '@facet-coverage/core';
 
 // Read structures
 const reader = new StructureReader();
