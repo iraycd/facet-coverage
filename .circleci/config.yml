@@ -38,7 +38,7 @@ jobs:
           command: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
       - run:
           name: Publish to npm
-          command: npm publish --access public
+          command: bun publish --access public
 
 workflows:
   ci:
