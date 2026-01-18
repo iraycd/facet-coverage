@@ -20,21 +20,20 @@ The section slug is created by:
 2. Replacing spaces with hyphens
 3. Removing special characters
 
-## Explicit ID Anchors (Recommended)
+## Explicit Heading IDs (Optional)
 
-Use explicit anchors to keep facet IDs stable when headings change:
+Use `[](#id)` on the line after a heading to keep facet IDs stable when headings change:
 
 ```markdown
-## Guest Purchase Flow {#guest-checkout}
+## Guest Purchase Flow
+[](#guest-checkout)
 
-When you rename the heading later, the ID stays the same:
-
-## Complete Guest Checkout Experience {#guest-checkout}
+Content here...
 ```
 
 This generates `business:guest-checkout` instead of deriving from the heading text.
 
-### Why Use Explicit Anchors?
+### Why Use Explicit IDs?
 
 - **IDs remain stable** when you refactor documentation
 - **Tests don't break** when headings are reworded
@@ -42,40 +41,36 @@ This generates `business:guest-checkout` instead of deriving from the heading te
 
 ### Syntax
 
-```markdown
-## Heading Text {#your-custom-id}
-```
-
-The `{#...}` anchor is standard Markdown extended syntax supported by most processors.
+Place `[](#your-custom-id)` on the first non-empty line after the heading. It renders invisibly in markdown.
 
 ## Sub-Facets (Fine-Grained IDs)
 
 When a single section covers multiple testable requirements, use sub-facets for precise tracking:
 
-### List Item IDs
+### Invisible Link Anchors
 
-Add `{#id}` to list items for structured checklists:
+Add `[](#id)` to list items for structured checklists. This renders invisibly in markdown:
 
 ```markdown
-## PCI-DSS Requirements {#pci-dss}
+## PCI-DSS Requirements
 
-1. **Encryption in transit** {#tls} - TLS 1.2+ required
-2. **No CVV storage** {#cvv} - Never store CVV
-3. **Card masking** {#masking} - Display only last 4 digits
+1. **Encryption in transit** [](#tls) - TLS 1.2+ required
+2. **No CVV storage** [](#cvv) - Never store CVV
+3. **Card masking** [](#masking) - Display only last 4 digits
 ```
 
 This generates:
-- `compliance:pci-dss` (parent)
-- `compliance:pci-dss/tls` (sub-facet)
-- `compliance:pci-dss/cvv` (sub-facet)
-- `compliance:pci-dss/masking` (sub-facet)
+- `compliance:pci-dss-requirements` (parent)
+- `compliance:pci-dss-requirements/tls` (sub-facet)
+- `compliance:pci-dss-requirements/cvv` (sub-facet)
+- `compliance:pci-dss-requirements/masking` (sub-facet)
 
 ### Comment Markers
 
 Use `<!-- @facet:id -->` for hidden markers that keep docs clean:
 
 ```markdown
-## Mobile Checkout {#mobile}
+## Mobile Checkout
 
 <!-- @facet:performance -->
 Load time must be under 2 seconds.
@@ -85,9 +80,9 @@ Full WCAG 2.1 AA compliance required.
 ```
 
 This generates:
-- `ux:mobile` (parent)
-- `ux:mobile/performance` (sub-facet)
-- `ux:mobile/accessibility` (sub-facet)
+- `ux:mobile-checkout` (parent)
+- `ux:mobile-checkout/performance` (sub-facet)
+- `ux:mobile-checkout/accessibility` (sub-facet)
 
 ### h3+ Headings as Sub-Facets
 
@@ -99,15 +94,17 @@ Configure heading levels to become sub-facets in `facet.config.json`:
 }
 ```
 
-Then use h3 headings with explicit IDs:
+Then use h3 headings:
 
 ```markdown
-## Mobile Checkout {#mobile-checkout}
+## Mobile Checkout
 
-### Layout Requirements {#responsive}
+### Layout Requirements
+[](#responsive)
 - Large touch targets (44px minimum)
 
-### Accessibility {#accessibility}
+### Accessibility
+[](#accessibility)
 - Full keyboard navigation
 ```
 
@@ -136,8 +133,8 @@ test('page loads under 2 seconds', () => {
 
 ### When to Use Sub-Facets
 
-- **Use list item IDs** for structured checklists where IDs are part of the documentation
-- **Use comment markers** for prose where visible IDs would disrupt readability
+- **Use invisible link anchors `[](#id)`** for structured checklists—renders invisibly in markdown
+- **Use comment markers `<!-- @facet:id -->`** for prose where even invisible links would clutter the source
 - **Use h3+ headings** when you have natural document structure with subsections
 
 ## Nested Features (Hierarchical IDs)
@@ -168,12 +165,9 @@ facet(Facets.CHECKOUT_PAYMENTS_COMPLIANCE_PCI_DSS_REQUIREMENTS);
 
 ## Flexible Linking
 
-All three formats work when linking tests to facets:
+Multiple formats work when linking tests to facets:
 
 ```typescript
-// Custom slug (from explicit anchor)
-facet('guest-checkout-flow')
-
 // Auto-generated (filename:section-slug)
 facet('business:guest-purchase-flow')
 
@@ -202,7 +196,7 @@ bunx facet generate --quiet
 
 ## Best Practices
 
-1. **Use explicit anchors** for important facets that tests link to
-2. **Keep IDs short** but descriptive: `guest-checkout` not `the-guest-checkout-flow-for-users`
+1. **Use invisible link anchors `[](#id)`** for sub-facets that tests link to
+2. **Keep IDs short** but descriptive: `tls` not `transport-layer-security-requirement`
 3. **Use consistent naming** across your team
 4. **Review ID changes** before merging—they break test links

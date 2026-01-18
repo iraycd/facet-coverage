@@ -43,10 +43,10 @@ Users should complete purchases without creating an account.
 
 **Compliance Team** — `facets/compliance.md`
 ```markdown
-## PCI-DSS Payment Requirements {#pci-dss}
-1. **Encryption in transit** {#tls} - TLS 1.2+ required
-2. **No CVV storage** {#cvv} - Never store CVV
-3. **Card masking** {#masking} - Show only last 4 digits
+## PCI-DSS Payment Requirements
+1. **Encryption in transit** [](#tls) - TLS 1.2+ required
+2. **No CVV storage** [](#cvv) - Never store CVV
+3. **Card masking** [](#masking) - Show only last 4 digits
 ```
 
 **UX Team** — `facets/ux.md`

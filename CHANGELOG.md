@@ -4,14 +4,26 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.4.1] - 2026-01-18
+
+### Changed
+- **Unified anchor syntax**: Replaced `{#id}` pattern with invisible link `[](#id)` for all use cases
+  - Heading explicit IDs: Place `[](#id)` on the line after the heading
+  - Sub-facet markers: Use `[](#id)` inline with content
+- Removed `'list-item'` sub-facet type (now all use `'link'` type)
+- Updated all documentation to use the new `[](#id)` syntax
+
+### Removed
+- `{#id}` syntax for heading anchors (use `[](#id)` on next line instead)
+- `{#id}` syntax for list item sub-facets (use `[](#id)` inline instead)
+
 ## [0.4.0] - 2026-01-18
 
 ### Added
 - **Sub-facet support** for fine-grained requirement tracking within sections
-- Three ways to define sub-facets:
-  - List item IDs: `1. **Item** {#sub-id} - description`
+- Two ways to define sub-facets:
+  - Invisible link anchors: `1. **Item** [](#sub-id) - description`
   - Comment markers: `<!-- @facet:sub-id -->`
-  - Configurable h3+ headings: `### Subsection {#sub-id}` (requires `subFacetHeadingLevels` config)
 - Hierarchical facet IDs with parent/child relationships (e.g., `compliance:pci-dss/tls`)
 - `subFacetHeadingLevels` config option to control which heading levels become sub-facets
 - Double underscore (`__`) convention in TypeScript constants for sub-facets (e.g., `COMPLIANCE_PCI_DSS__TLS`)
@@ -31,7 +43,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - Nested feature support with hierarchical facet IDs (e.g., `checkout/payments/pci:section`)
 - `--global` flag to generate combined types at project root `.facet/facets.ts`
 - `facetTypes` config option for resolving `Facets.CONSTANT` references in tests
-- Explicit ID anchors in markdown: `## Heading {#stable-id}` for stable facet IDs
+- Explicit ID anchors in markdown: `[](#stable-id)` on line after heading for stable facet IDs
 - ID change detection with warnings when facet IDs change during `generate`
 - `--quiet` flag to suppress ID change warnings
 - Comprehensive tests for explicit anchor parsing and ID change detection

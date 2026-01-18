@@ -90,13 +90,14 @@ describe('FacetParser', () => {
     expect(notExists).toBe(false);
   });
 
-  test('supports explicit anchor syntax {#custom-id}', () => {
+  test('supports explicit anchor syntax [](#custom-id)', () => {
     facet(Facets.FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__CUSTOM_SLUG);
 
     const parser = new FacetParser();
     const content = `# Main Title
 
-## Guest Purchase Flow {#guest-purchase}
+## Guest Purchase Flow
+[](#guest-purchase)
 
 Content here.
 
@@ -110,30 +111,34 @@ More content.
     const guestSection = parsed.sections.find(s => s.title === 'Guest Purchase Flow');
     expect(guestSection).toBeDefined();
     expect(guestSection!.slug).toBe('guest-purchase');
-    expect(guestSection!.explicitId).toBe('guest-purchase');
 
     // Section without explicit anchor should use auto-generated slug
     const anotherSection = parsed.sections.find(s => s.title === 'Another Section');
     expect(anotherSection).toBeDefined();
     expect(anotherSection!.slug).toBe('another-section');
-    expect(anotherSection!.explicitId).toBeUndefined();
   });
 
   test('explicit anchors work at all heading levels', () => {
     facet(Facets.FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__HEADING_HIERARCHY);
 
     const parser = new FacetParser();
-    const content = `# H1 {#h1-anchor}
+    const content = `# H1
+[](#h1-anchor)
 
-## H2 {#h2-anchor}
+## H2
+[](#h2-anchor)
 
-### H3 {#h3-anchor}
+### H3
+[](#h3-anchor)
 
-#### H4 {#h4-anchor}
+#### H4
+[](#h4-anchor)
 
-##### H5 {#h5-anchor}
+##### H5
+[](#h5-anchor)
 
-###### H6 {#h6-anchor}
+###### H6
+[](#h6-anchor)
 `;
     const parsed = parser.parseContent(content, 'test.md');
 
@@ -149,7 +154,8 @@ More content.
     facet(Facets.FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__CUSTOM_SLUG);
 
     const parser = new FacetParser();
-    const content = `## Very Long Heading That Would Make A Long Slug {#short}
+    const content = `## Very Long Heading That Would Make A Long Slug
+[](#short)
 
 Content.
 `;
@@ -158,34 +164,34 @@ Content.
     const section = parsed.sections[0];
     expect(section.title).toBe('Very Long Heading That Would Make A Long Slug');
     expect(section.slug).toBe('short');
-    expect(section.explicitId).toBe('short');
   });
 
   test('preserves heading title when using explicit anchor', () => {
     facet(Facets.FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__CUSTOM_SLUG);
 
     const parser = new FacetParser();
-    const content = `## Guest Purchase Flow {#guest-purchase}
+    const content = `## Guest Purchase Flow
+[](#guest-purchase)
 
 Content.
 `;
     const parsed = parser.parseContent(content, 'test.md');
 
     const section = parsed.sections[0];
-    // Title should NOT include the anchor syntax
     expect(section.title).toBe('Guest Purchase Flow');
-    expect(section.title).not.toContain('{#');
+    expect(section.slug).toBe('guest-purchase');
   });
 
-  test('parses sub-facets from list items with {#id}', () => {
+  test('parses sub-facets from list items with [](#id)', () => {
     facet(Facets.FEATURES_CORE_PRODUCT_MARKDOWN_PARSING);
 
     const parser = new FacetParser();
-    const content = `## PCI-DSS Requirements {#pci-dss}
+    const content = `## PCI-DSS Requirements
+[](#pci-dss)
 
-1. **Encryption in transit** {#tls} - TLS 1.2+ required
-2. **No CVV storage** {#cvv} - Never store CVV
-3. **Card masking** {#masking} - Display only last 4 digits
+1. **Encryption in transit** [](#tls) - TLS 1.2+ required
+2. **No CVV storage** [](#cvv) - Never store CVV
+3. **Card masking** [](#masking) - Display only last 4 digits
 `;
     const parsed = parser.parseContent(content, 'compliance.md');
 
@@ -195,21 +201,21 @@ Content.
     expect(section.subFacets!.length).toBe(3);
 
     expect(section.subFacets![0].id).toBe('tls');
-    expect(section.subFacets![0].title).toBe('Encryption in transit');
-    expect(section.subFacets![0].type).toBe('list-item');
+    expect(section.subFacets![0].type).toBe('link');
 
     expect(section.subFacets![1].id).toBe('cvv');
-    expect(section.subFacets![1].title).toBe('No CVV storage');
+    expect(section.subFacets![1].type).toBe('link');
 
     expect(section.subFacets![2].id).toBe('masking');
-    expect(section.subFacets![2].title).toBe('Card masking');
+    expect(section.subFacets![2].type).toBe('link');
   });
 
   test('parses sub-facets from comment markers', () => {
     facet(Facets.FEATURES_CORE_PRODUCT_MARKDOWN_PARSING);
 
     const parser = new FacetParser();
-    const content = `## Mobile Checkout {#mobile}
+    const content = `## Mobile Checkout
+[](#mobile)
 
 <!-- @facet:performance -->
 Load time must be under 2 seconds.
@@ -235,7 +241,8 @@ Full WCAG 2.1 AA compliance required.
     facet(Facets.FEATURES_CORE_PRODUCT_MARKDOWN_PARSING);
 
     const parser = new FacetParser();
-    const content = `## Business Requirements {#business}
+    const content = `## Business Requirements
+[](#business)
 
 [](#revenue-tracking)
 Track all revenue-generating events.
@@ -248,6 +255,7 @@ Monitor user retention metrics.
     const section = parsed.sections[0];
     expect(section.slug).toBe('business');
     expect(section.subFacets).toBeDefined();
+    // Note: first [](#business) is used for heading ID, remaining two are sub-facets
     expect(section.subFacets!.length).toBe(2);
 
     expect(section.subFacets![0].id).toBe('revenue-tracking');
@@ -257,14 +265,15 @@ Monitor user retention metrics.
     expect(section.subFacets![1].type).toBe('link');
   });
 
-  test('parses mixed sub-facet patterns (list-item, comment, link)', () => {
+  test('parses mixed sub-facet patterns (comment and link)', () => {
     facet(Facets.FEATURES_CORE_PRODUCT_MARKDOWN_PARSING);
 
     const parser = new FacetParser();
-    const content = `## Requirements {#reqs}
+    const content = `## Requirements
+[](#reqs)
 
-- Item one {#item-one}
-- Item two {#item-two}
+- Item one [](#item-one)
+- Item two [](#item-two)
 
 <!-- @facet:extra -->
 Additional requirement.
@@ -275,10 +284,14 @@ This uses the clean link syntax.
     const parsed = parser.parseContent(content, 'test.md');
 
     const section = parsed.sections[0];
+    expect(section.slug).toBe('reqs');
     expect(section.subFacets!.length).toBe(4);
-    expect(section.subFacets![0].type).toBe('list-item');
-    expect(section.subFacets![1].type).toBe('list-item');
+    expect(section.subFacets![0].type).toBe('link');
+    expect(section.subFacets![0].id).toBe('item-one');
+    expect(section.subFacets![1].type).toBe('link');
+    expect(section.subFacets![1].id).toBe('item-two');
     expect(section.subFacets![2].type).toBe('comment');
+    expect(section.subFacets![2].id).toBe('extra');
     expect(section.subFacets![3].type).toBe('link');
     expect(section.subFacets![3].id).toBe('clean-marker');
   });

@@ -1,7 +1,6 @@
 # Developer Experience
 
-## CLI Ergonomics {#cli-ergonomics}
-
+## CLI Ergonomics
 Provide intuitive command-line interface with helpful feedback.
 
 ### Requirements
@@ -13,8 +12,7 @@ Provide intuitive command-line interface with helpful feedback.
 - Display emoji indicators for quick visual scanning [](#emoji-indicators)
 - Support common flags like `--help` and `--version` [](#common-flags)
 
-## Configuration Discovery {#config-discovery}
-
+## Configuration Discovery
 Automatically find and load configuration files.
 
 ### Requirements

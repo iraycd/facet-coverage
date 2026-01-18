@@ -1,7 +1,6 @@
 # Configuration
 
-## Config File Discovery {#file-discovery}
-
+## Config File Discovery
 Auto-discover configuration files in multiple formats.
 
 ### Requirements
@@ -13,8 +12,7 @@ Auto-discover configuration files in multiple formats.
 - Merge with default configuration values [](#merge-defaults)
 - Support configuration in current working directory [](#cwd-config)
 
-## Facet Patterns {#facet-patterns}
-
+## Facet Patterns
 Configure glob patterns for discovering facet markdown files.
 
 ### Requirements
@@ -25,8 +23,7 @@ Configure glob patterns for discovering facet markdown files.
 - Remove duplicate matches [](#dedupe)
 - Group discovered files by feature directory [](#group-by-feature)
 
-## Facet Types {#facet-types}
-
+## Facet Types
 Configure known facet types for constant-to-ID conversion.
 
 ### Requirements

@@ -1,7 +1,6 @@
 # Developer Experience
 
-## Report Readability {#readability}
-
+## Report Readability
 Generate reports that are easy to read and understand.
 
 ### Requirements
@@ -12,8 +11,7 @@ Generate reports that are easy to read and understand.
 - Group related information logically [](#logical-grouping)
 - Use consistent formatting throughout [](#consistent-formatting)
 
-## Report Accessibility {#accessibility}
-
+## Report Accessibility
 Make reports accessible in various contexts.
 
 ### Requirements

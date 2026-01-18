@@ -96,7 +96,7 @@ describe('Test Feature', () => {
       }
     });
 
-    test('respects explicit anchor syntax {#custom-id}', async () => {
+    test('respects explicit anchor syntax [](#custom-id)', async () => {
       facet(Facets.FEATURES_CLI_PRODUCT_GENERATE_COMMAND);
 
       const originalCwd = process.cwd();
@@ -107,7 +107,8 @@ describe('Test Feature', () => {
         mkdirSync(join(testDir, 'features/anchor-test/facets'), { recursive: true });
         writeFileSync(join(testDir, 'features/anchor-test/facets/product.md'), `# Product
 
-## Guest Purchase Flow {#guest-purchase}
+## Guest Purchase Flow
+[](#guest-purchase)
 
 Guest purchase flow description.
 
