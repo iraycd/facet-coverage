@@ -1,7 +1,6 @@
 # Core Functionality
 
-## Structure Reading {#structure-reading}
-
+## Structure Reading
 The system must read and parse structure.json files that define facets for each feature.
 
 ### Requirements
@@ -12,31 +11,30 @@ The system must read and parse structure.json files that define facets for each 
 - Resolve file paths relative to structure file location [](#path-resolution)
 - Return all facets across all structures [](#facet-aggregation)
 
-## Markdown Parsing {#markdown-parsing}
-
+## Markdown Parsing
 Parse markdown documentation files to extract sections as facets.
 
 ### Requirements
 
 - Extract headings at all levels as sections [](#heading-extraction)
 - Generate URL-friendly slugs from heading text [](#slug-generation)
-- Support explicit anchor syntax: `## Heading {#custom-slug}` [](#custom-slug)
+- Support explicit anchor syntax via `[](#custom-slug)` on line after heading [](#custom-slug)
 - Support nested heading levels with proper hierarchy [](#heading-hierarchy)
 - Validate that referenced sections exist in source files [](#section-validation)
 - Handle markdown with frontmatter and code blocks [](#frontmatter-handling)
 
 ### Explicit Anchor Syntax
 
-Create stable facet IDs that survive heading renames:
+Create stable facet IDs that survive heading renames by placing `[](#id)` on the line after the heading:
 
 ```markdown
-## Guest Purchase Flow {#guest-purchase}
+## Guest Purchase Flow
+[](#guest-purchase)
 ```
 
 Generates `business:guest-purchase` instead of `business:guest-purchase-flow`. When the heading text changes, the facet ID remains stable.
 
-## Test Scanning {#test-scanning}
-
+## Test Scanning
 Scan test files to find facet annotations and build test-to-facet mappings.
 
 ### Requirements
@@ -47,8 +45,7 @@ Scan test files to find facet annotations and build test-to-facet mappings.
 - Track describe block nesting for full test titles [](#describe-nesting)
 - Return test file path, title, and linked facet IDs [](#test-metadata)
 
-## Validation {#validation}
-
+## Validation
 Validate the integrity of facet structures and test linkages.
 
 ### Requirements
@@ -60,8 +57,7 @@ Validate the integrity of facet structures and test linkages.
 - Identify facets without any test coverage (uncovered facets) [](#uncovered-facets)
 - Return structured errors and warnings [](#error-reporting)
 
-## Coverage Calculation {#coverage-calculation}
-
+## Coverage Calculation
 Calculate coverage metrics across all dimensions.
 
 ### Requirements

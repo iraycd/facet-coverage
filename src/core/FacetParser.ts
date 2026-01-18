@@ -21,10 +21,9 @@ export class FacetParser {
 
   /**
    * Parse sub-facet markers from content lines.
-   * Supports three patterns:
-   * 1. List item IDs: `1. **Item** {#sub-id} - description` or `- Item {#sub-id}`
-   * 2. Comment markers: `<!-- @facet:sub-id -->`
-   * 3. Empty link anchors: `[](#sub-id)` - renders invisibly in markdown
+   * Supports two patterns:
+   * 1. Comment markers: `<!-- @facet:sub-id -->`
+   * 2. Empty link anchors: `[](#sub-id)` - renders invisibly in markdown
    *
    * @param lines - Array of content lines
    * @param startLineNumber - The 1-indexed line number of the first line in the array
@@ -32,11 +31,6 @@ export class FacetParser {
    */
   static parseSubFacets(lines: string[], startLineNumber: number): SubFacetMarker[] {
     const subFacets: SubFacetMarker[] = [];
-
-    // Pattern for list item with {#id}: matches "1. **text** {#id} - rest", "- text {#id}", "* text {#id}"
-    // The {#id} can appear anywhere in the list item, followed by optional content
-    // Captures: list marker, text before {#id}, the ID, and optional rest
-    const listItemPattern = /^(\s*(?:[-*]|\d+\.)\s+)(.+?)\s*\{#([a-z0-9-]+)\}(.*)$/;
 
     // Pattern for comment markers: <!-- @facet:id --> or <!-- @facet: id -->
     const commentPattern = /<!--\s*@facet:\s*([a-z0-9-]+)\s*-->/g;
@@ -47,25 +41,6 @@ export class FacetParser {
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i];
       const lineNumber = startLineNumber + i;
-
-      // Check for list item with {#id}
-      const listMatch = line.match(listItemPattern);
-      if (listMatch) {
-        // Extract title: the text before {#id}
-        let title = listMatch[2].trim();
-        // Remove markdown bold: **text** -> text
-        title = title.replace(/\*\*([^*]+)\*\*/g, '$1');
-        // Clean up any trailing punctuation
-        title = title.replace(/[:\s-]+$/, '').trim();
-
-        subFacets.push({
-          id: listMatch[3],
-          title: title,
-          line: lineNumber,
-          type: 'list-item',
-        });
-        continue;
-      }
 
       // Check for comment markers (can have multiple per line)
       let commentMatch;
@@ -112,20 +87,34 @@ export class FacetParser {
     const lines = content.split('\n');
     const sections: MarkdownSection[] = [];
 
+    // Pattern for standalone explicit ID anchor: [](#id) on its own line
+    const explicitIdPattern = /^\s*\[\]\(\s*#([a-z0-9-]+)\s*\)\s*$/;
+
     // First pass: find all headings
-    // Supports explicit anchor syntax: ## Heading {#custom-id}
     const headings: { title: string; level: number; line: number; explicitId?: string }[] = [];
 
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i];
-      // Match heading with optional {#anchor-id} at the end
-      const match = line.match(/^(#{1,6})\s+(.+?)(?:\s*\{#([a-z0-9-]+)\})?\s*$/);
+      // Match heading
+      const match = line.match(/^(#{1,6})\s+(.+?)\s*$/);
 
       if (match) {
+        // Check if the next non-empty line is an explicit ID anchor
+        let explicitId: string | undefined;
+        for (let j = i + 1; j < lines.length; j++) {
+          const nextLine = lines[j];
+          if (nextLine.trim() === '') continue; // Skip empty lines
+          const idMatch = nextLine.match(explicitIdPattern);
+          if (idMatch) {
+            explicitId = idMatch[1];
+          }
+          break; // Only check the first non-empty line after heading
+        }
+
         headings.push({
           level: match[1].length,
           title: match[2].trim(),
-          explicitId: match[3] || undefined,
+          explicitId,
           line: i + 1, // 1-indexed
         });
       }
@@ -145,11 +134,19 @@ export class FacetParser {
 
       // Parse sub-facets from section content
       // Content starts at line after heading (startLine is the heading itself)
-      const subFacets = FacetParser.parseSubFacets(contentLines, startLine + 1);
+      let subFacets = FacetParser.parseSubFacets(contentLines, startLine + 1);
+
+      // Use explicit ID if provided, otherwise generate from title
+      const slug = heading.explicitId || FacetParser.slugify(heading.title);
+
+      // If heading has explicit ID, filter it out from sub-facets (it was used for heading slug)
+      if (heading.explicitId) {
+        subFacets = subFacets.filter(sf => sf.id !== heading.explicitId);
+      }
 
       sections.push({
         title: heading.title,
-        slug: heading.explicitId || FacetParser.slugify(heading.title),
+        slug,
         level: heading.level,
         startLine,
         endLine,

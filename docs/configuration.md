@@ -26,8 +26,8 @@ export default {
   // Known facet types for Facets.CONSTANT resolution
   facetTypes: ['product', 'dx', 'technical', 'compliance', 'business', 'ux'],
 
-  // Heading levels that become sub-facets when they have explicit {#id}
-  subFacetHeadingLevels: [3],  // h3 headings with {#id} become sub-facets
+  // Heading levels that become sub-facets
+  subFacetHeadingLevels: [3],  // h3 headings become sub-facets
 
   // Validation options
   validation: {

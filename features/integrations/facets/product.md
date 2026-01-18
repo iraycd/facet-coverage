@@ -1,7 +1,6 @@
 # Integrations
 
-## Type-Safe Facet Function {#facet-function}
-
+## Type-Safe Facet Function
 Export a generated `facet()` function for any testing framework with full TypeScript support.
 
 ### Requirements
@@ -25,8 +24,7 @@ test('guest can purchase', () => {
 });
 ```
 
-## Playwright Annotation Helper {#playwright-helper}
-
+## Playwright Annotation Helper
 Provide a helper function for annotating Playwright tests with facet IDs.
 
 ### Requirements
@@ -36,8 +34,7 @@ Provide a helper function for annotating Playwright tests with facet IDs.
 - Support single or multiple facet IDs per test [](#pw-multiple-ids)
 - Work with Playwright's test annotation syntax [](#pw-test-syntax)
 
-## Playwright Reporter {#playwright-reporter}
-
+## Playwright Reporter
 Integrate with Playwright's reporter API for automatic coverage tracking.
 
 ### Requirements

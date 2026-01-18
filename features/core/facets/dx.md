@@ -1,7 +1,6 @@
 # Developer Experience
 
-## Error Messages {#error-messages}
-
+## Error Messages
 Provide clear, actionable error messages for all failure scenarios.
 
 ### Requirements
@@ -12,8 +11,7 @@ Provide clear, actionable error messages for all failure scenarios.
 - Distinguish between errors (blocking) and warnings (informational) [](#error-severity)
 - Use consistent message formatting across all modules [](#error-formatting)
 
-## API Design {#api-design}
-
+## API Design
 Design clean, intuitive APIs for programmatic usage.
 
 ### Requirements

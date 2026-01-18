@@ -1,7 +1,6 @@
 # Report Generation
 
-## JSON Reporter {#json}
-
+## JSON Reporter
 Generate machine-readable JSON coverage reports.
 
 ### Requirements
@@ -15,8 +14,7 @@ Generate machine-readable JSON coverage reports.
 - Include list of uncovered facets [](#json-uncovered)
 - Write to configurable output directory [](#json-output-dir)
 
-## HTML Reporter {#html}
-
+## HTML Reporter
 Generate interactive HTML coverage dashboards.
 
 ### Requirements
@@ -31,8 +29,7 @@ Generate interactive HTML coverage dashboards.
 - Support dark theme for readability [](#html-dark-theme)
 - Include responsive design for various screen sizes [](#html-responsive)
 
-## Markdown Reporter {#markdown}
-
+## Markdown Reporter
 Generate human-readable Markdown coverage reports.
 
 ### Requirements

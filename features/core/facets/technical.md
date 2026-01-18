@@ -1,7 +1,6 @@
 # Technical Requirements
 
-## TypeScript Support {#typescript}
-
+## TypeScript Support
 Full TypeScript support with proper type definitions.
 
 ### Requirements
@@ -11,8 +10,7 @@ Full TypeScript support with proper type definitions.
 - Use strict TypeScript configuration [](#typescript-strict)
 - Support ESM module system (NodeNext) [](#typescript-esm)
 
-## Bun Compatibility {#bun}
-
+## Bun Compatibility
 Work correctly with Bun runtime and package manager.
 
 ### Requirements
@@ -22,8 +20,7 @@ Work correctly with Bun runtime and package manager.
 - File system operations work in Bun [](#bun-fs)
 - Glob patterns work correctly in Bun [](#bun-glob)
 
-## Glob Pattern Handling {#glob}
-
+## Glob Pattern Handling
 Correctly handle glob patterns for file discovery.
 
 ### Requirements
@@ -33,8 +30,7 @@ Correctly handle glob patterns for file discovery.
 - Work with both relative and absolute paths [](#glob-paths)
 - Handle edge cases (empty directories, no matches) [](#glob-edge-cases)
 
-## Markdown Parsing Accuracy {#markdown-parsing}
-
+## Markdown Parsing Accuracy
 Accurately parse markdown files for section extraction.
 
 ### Requirements

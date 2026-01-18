@@ -168,7 +168,7 @@ export interface FacetConfig {
   facetPattern?: string | string[];
   /** Known facet types used in this project (for resolving Facets.CONSTANT references) */
   facetTypes?: string[];
-  /** Heading levels that become sub-facets when they have explicit {#id} (e.g., [3] for h3, [3, 4] for h3 and h4) */
+  /** Heading levels that become sub-facets (e.g., [3] for h3, [3, 4] for h3 and h4) */
   subFacetHeadingLevels?: number[];
   /** Validation options */
   validation: {
@@ -225,7 +225,7 @@ export const defaultConfig: FacetConfig = {
 export interface MarkdownSection {
   /** Section title */
   title: string;
-  /** Slug (URL-friendly version of title, or explicit anchor if provided) */
+  /** Slug (URL-friendly version of title, or explicit ID if provided via [](#id)) */
   slug: string;
   /** Heading level (1-6) */
   level: number;
@@ -235,7 +235,7 @@ export interface MarkdownSection {
   endLine: number;
   /** Section content */
   content: string;
-  /** Explicit anchor ID if provided via {#anchor} syntax */
+  /** Explicit ID if provided via [](#id) on line after heading */
   explicitId?: string;
   /** Sub-facet markers found within this section */
   subFacets?: SubFacetMarker[];
@@ -243,17 +243,17 @@ export interface MarkdownSection {
 
 /**
  * Represents a sub-facet marker found within a section
- * Can be from list item {#id} syntax, <!-- @facet:id --> comment, [](#id) link, or heading with explicit ID
+ * Can be from <!-- @facet:id --> comment, [](#id) link, or heading
  */
 export interface SubFacetMarker {
   /** The sub-facet ID (local, will be combined with parent) */
   id: string;
-  /** Title extracted from the list item, heading, or nearby content */
+  /** Title extracted from the heading or nearby content */
   title?: string;
   /** Line number where the marker was found */
   line: number;
-  /** Type of marker: 'list-item' for {#id}, 'comment' for <!-- @facet:id -->, 'link' for [](#id), 'heading' for h3+ with explicit ID */
-  type: 'list-item' | 'comment' | 'link' | 'heading';
+  /** Type of marker: 'comment' for <!-- @facet:id -->, 'link' for [](#id), 'heading' for h3+ */
+  type: 'comment' | 'link' | 'heading';
 }
 
 /**

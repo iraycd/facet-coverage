@@ -1,7 +1,6 @@
 # Developer Experience
 
-## Integration Simplicity {#simplicity}
-
+## Integration Simplicity
 Make integrations easy to set up and use.
 
 ### Requirements
@@ -11,8 +10,7 @@ Make integrations easy to set up and use.
 - Work with standard Playwright setup [](#playwright-compat)
 - No modifications to existing tests required for basic usage [](#no-modifications)
 
-## Annotation Syntax {#annotation-syntax}
-
+## Annotation Syntax
 Provide intuitive syntax for annotating tests with facets.
 
 ### Requirements

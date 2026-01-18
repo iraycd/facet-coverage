@@ -1,7 +1,6 @@
 # CLI Commands
 
-## Generate Command {#generate}
-
+## Generate Command
 Generate structure.json and TypeScript types from markdown facet files.
 
 ### Requirements
@@ -11,7 +10,7 @@ Generate structure.json and TypeScript types from markdown facet files.
 - Scan directory for markdown files (both `*.facet.md` and `facets/*.md`) [](#file-scanning)
 - Parse each markdown file for heading sections [](#heading-parsing)
 - Create facet entries with auto-generated IDs (format: `type:section-slug`) [](#auto-ids)
-- Support explicit anchor syntax for stable IDs: `## Heading {#stable-id}` [](#explicit-anchor-syntax)
+- Support explicit anchor syntax for stable IDs via `[](#stable-id)` after heading [](#explicit-anchor-syntax)
 - Write structure.json to `.facet/` directory [](#structure-output)
 - Generate TypeScript types file (`facets.ts`) with type-safe constants [](#types-generation)
 - Support custom output directory via `-o` flag [](#output-flag)
@@ -20,8 +19,7 @@ Generate structure.json and TypeScript types from markdown facet files.
 - Support `--no-types` flag to skip TypeScript generation [](#no-types-flag)
 - Support `-q, --quiet` flag to suppress ID change warnings [](#quiet-flag)
 
-### ID Change Detection {#id-change-detection}
-
+### ID Change Detection
 When regenerating, detect changes to facet IDs:
 
 - Compare new structure.json with existing [](#compare-structures)
@@ -30,8 +28,7 @@ When regenerating, detect changes to facet IDs:
 - Show affected tests that may need updates [](#show-affected-tests)
 - Suggest using explicit anchors for stability [](#suggest-anchors)
 
-### Type Generation {#type-gen}
-
+### Type Generation
 Generate TypeScript types for type-safe facet references:
 
 - `FacetId` union type of all valid IDs [](#facet-id-type)
@@ -39,8 +36,7 @@ Generate TypeScript types for type-safe facet references:
 - `facet()` helper function for test annotations [](#facet-function)
 - `allFacetIds` array of all IDs [](#all-facet-ids)
 
-## Analyze Command {#analyze}
-
+## Analyze Command
 Analyze facet coverage and generate reports.
 
 ### Requirements
@@ -55,8 +51,7 @@ Analyze facet coverage and generate reports.
 - Support `--json` flag for machine-readable output [](#json-flag)
 - Support `--silent` flag to suppress console output [](#silent-flag)
 
-## Validate Command {#validate}
-
+## Validate Command
 Validate structure integrity and test-to-facet linkages.
 
 ### Requirements
@@ -70,8 +65,7 @@ Validate structure integrity and test-to-facet linkages.
 - Support `--json` flag for structured output [](#json-output)
 - Exit with code 1 if validation fails [](#validation-exit)
 
-## Watch Command {#watch}
-
+## Watch Command
 Watch for file changes and re-run analysis automatically.
 
 ### Requirements
