@@ -1,0 +1,77 @@
+{
+  "feature": "cli",
+  "facets": [
+    {
+      "id": "product:cli-commands",
+      "source": {
+        "file": "facets/product.md",
+        "section": "cli-commands"
+      },
+      "type": "product",
+      "title": "CLI Commands"
+    },
+    {
+      "id": "product:generate-command",
+      "source": {
+        "file": "facets/product.md",
+        "section": "generate-command"
+      },
+      "type": "product",
+      "title": "Generate Command"
+    },
+    {
+      "id": "product:analyze-command",
+      "source": {
+        "file": "facets/product.md",
+        "section": "analyze-command"
+      },
+      "type": "product",
+      "title": "Analyze Command"
+    },
+    {
+      "id": "product:validate-command",
+      "source": {
+        "file": "facets/product.md",
+        "section": "validate-command"
+      },
+      "type": "product",
+      "title": "Validate Command"
+    },
+    {
+      "id": "product:watch-command",
+      "source": {
+        "file": "facets/product.md",
+        "section": "watch-command"
+      },
+      "type": "product",
+      "title": "Watch Command"
+    },
+    {
+      "id": "dx:developer-experience",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "developer-experience"
+      },
+      "type": "dx",
+      "title": "Developer Experience"
+    },
+    {
+      "id": "dx:cli-ergonomics",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "cli-ergonomics"
+      },
+      "type": "dx",
+      "title": "CLI Ergonomics"
+    },
+    {
+      "id": "dx:configuration-discovery",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "configuration-discovery"
+      },
+      "type": "dx",
+      "title": "Configuration Discovery"
+    }
+  ]
+}

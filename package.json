@@ -1,0 +1,78 @@
+{
+  "name": "facet-coverage",
+  "version": "0.1.0",
+  "description": "Test every facet of your features - natural specifications with rigorous coverage tracking",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "bin": {
+    "facet-coverage": "bin/facet-coverage.js",
+    "facet": "bin/facet-coverage.js"
+  },
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./playwright": {
+      "import": "./dist/integrations/playwright.js",
+      "require": "./dist/integrations/playwright.js",
+      "types": "./dist/integrations/playwright.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "bin",
+    "templates",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "bun run tsc",
+    "dev": "bun run tsc --watch",
+    "test": "bun test features/core features/cli features/reporters features/integrations",
+    "test:all": "bun test",
+    "lint": "eslint src",
+    "prepublishOnly": "bun run build"
+  },
+  "keywords": [
+    "testing",
+    "coverage",
+    "playwright",
+    "requirements",
+    "traceability",
+    "documentation",
+    "facet",
+    "bdd",
+    "specifications"
+  ],
+  "peerDependencies": {
+    "@playwright/test": ">=1.40.0"
+  },
+  "peerDependenciesMeta": {
+    "@playwright/test": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^12.0.0",
+    "glob": "^10.3.10",
+    "chokidar": "^3.5.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0",
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.0",
+    "@types/bun": "latest"
+  },
+  "author": "",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

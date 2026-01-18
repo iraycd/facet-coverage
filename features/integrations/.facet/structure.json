@@ -1,0 +1,59 @@
+{
+  "feature": "integrations",
+  "facets": [
+    {
+      "id": "product:integrations",
+      "source": {
+        "file": "facets/product.md",
+        "section": "integrations"
+      },
+      "type": "product",
+      "title": "Integrations"
+    },
+    {
+      "id": "product:playwright-annotation-helper",
+      "source": {
+        "file": "facets/product.md",
+        "section": "playwright-annotation-helper"
+      },
+      "type": "product",
+      "title": "Playwright Annotation Helper"
+    },
+    {
+      "id": "product:playwright-reporter",
+      "source": {
+        "file": "facets/product.md",
+        "section": "playwright-reporter"
+      },
+      "type": "product",
+      "title": "Playwright Reporter"
+    },
+    {
+      "id": "dx:developer-experience",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "developer-experience"
+      },
+      "type": "dx",
+      "title": "Developer Experience"
+    },
+    {
+      "id": "dx:integration-simplicity",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "integration-simplicity"
+      },
+      "type": "dx",
+      "title": "Integration Simplicity"
+    },
+    {
+      "id": "dx:annotation-syntax",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "annotation-syntax"
+      },
+      "type": "dx",
+      "title": "Annotation Syntax"
+    }
+  ]
+}

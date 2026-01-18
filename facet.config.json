@@ -1,0 +1,24 @@
+{
+  "structureFiles": [
+    "features/**/.facet/structure.json"
+  ],
+  "testDir": "./features/**/tests",
+  "testPatterns": ["**/*.spec.ts", "**/*.test.ts"],
+  "validation": {
+    "requireSourceExists": true,
+    "requireSectionExists": true,
+    "requireAllTestsLinked": false
+  },
+  "output": {
+    "dir": ".facet-coverage",
+    "formats": ["json", "html", "markdown"]
+  },
+  "thresholds": {
+    "global": 50,
+    "byType": {
+      "product": 60,
+      "dx": 40,
+      "technical": 30
+    }
+  }
+}

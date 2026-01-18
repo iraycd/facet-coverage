@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.facet-coverage/
+*.log
+.DS_Store
+bun.lockb
+
+# Test fixtures (generated during testing)
+.test-fixtures/
+.cli-test-fixtures/
+.reporter-test-fixtures/
