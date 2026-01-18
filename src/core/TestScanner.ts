@@ -55,7 +55,8 @@ export class TestScanner {
 
   /**
    * Scan test content for facet annotations
-   * Supports both Playwright-style annotations and comment-based annotations:
+   * Supports multiple annotation styles:
+   * - Function call: facet('id1', 'id2') or facet(Facets.ID) inside test body
    * - Playwright: test('name', { annotation: facet('id1', 'id2') }, ...)
    * - Comment: // @facet id1, id2 \n test('name', ...)
    */
@@ -72,19 +73,32 @@ export class TestScanner {
     const describePattern = /describe\s*\(\s*(['"`])(.+?)\1/g;
 
     // Pattern for Playwright-style facet annotations
-    const facetPattern = /annotation\s*:\s*facet\s*\(\s*([^)]+)\s*\)/g;
+    const facetAnnotationPattern = /annotation\s*:\s*facet\s*\(\s*([^)]+)\s*\)/g;
+
+    // Pattern for facet() function calls inside test body
+    // Matches: facet('id'), facet("id"), facet(Facets.ID), facet(Facets.ID, Facets.ID2)
+    const facetCallPattern = /^\s*facet\s*\(\s*([^)]+)\s*\)\s*;?\s*$/;
+
+    // Pattern to extract string literals
     const facetIdsPattern = /(['"`])([^'"`]+)\1/g;
+
+    // Pattern to extract Facets.CONSTANT references
+    const facetsConstPattern = /Facets\.([A-Z_][A-Z0-9_]*)/g;
 
     // Pattern for comment-based facet annotations: // @facet id1, id2
     const commentFacetPattern = /^\s*\/\/\s*@facet\s+(.+)$/;
 
-    // Track brace depth for describe blocks
+    // Track brace depth for describe blocks and tests
     let braceDepth = 0;
     const describeDepths: number[] = [];
 
     // Track pending comment-based facet IDs
     let pendingFacetIds: string[] = [];
     let pendingFacetLine = -1;
+
+    // Track current test context for function-call style facets
+    let currentTest: { title: string; fullTitle: string; line: number; startBrace: number } | null = null;
+    let currentTestFacetIds: string[] = [];
 
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i];
@@ -111,12 +125,56 @@ export class TestScanner {
       // Count braces for scope tracking
       const openBraces = (line.match(/\{/g) || []).length;
       const closeBraces = (line.match(/\}/g) || []).length;
+
+      // Check for facet() function call inside current test
+      if (currentTest && braceDepth > currentTest.startBrace) {
+        const facetCallMatch = facetCallPattern.exec(line);
+        if (facetCallMatch) {
+          const facetArgs = facetCallMatch[1];
+
+          // Extract string literal facet IDs
+          let idMatch;
+          while ((idMatch = facetIdsPattern.exec(facetArgs)) !== null) {
+            currentTestFacetIds.push(idMatch[2]);
+          }
+          facetIdsPattern.lastIndex = 0;
+
+          // Extract Facets.CONSTANT references - convert to facet ID format
+          // The actual ID resolution happens at scan time by looking at the constant value
+          while ((idMatch = facetsConstPattern.exec(facetArgs)) !== null) {
+            // Store the constant name - we'll need to resolve it from the file's imports
+            // For now, we'll extract the value if it's defined inline
+            const constName = idMatch[1];
+            // Convert BUSINESS_GUEST_PURCHASE_FLOW to business:guest-purchase-flow
+            const facetId = constName.toLowerCase().replace(/_/g, '-').replace(/^([^-]+)-/, '$1:');
+            currentTestFacetIds.push(facetId);
+          }
+          facetsConstPattern.lastIndex = 0;
+        }
+      }
+
       braceDepth += openBraces - closeBraces;
 
       // Pop describe blocks when we exit their scope
       while (describeDepths.length > 0 && braceDepth <= describeDepths[describeDepths.length - 1]) {
         describeStack.pop();
         describeDepths.pop();
+      }
+
+      // Check if we're exiting the current test
+      if (currentTest && braceDepth <= currentTest.startBrace) {
+        // Save the test with collected facet IDs
+        if (currentTestFacetIds.length > 0) {
+          testLinks.push({
+            file: relative(cwd, filePath),
+            title: currentTest.title,
+            fullTitle: currentTest.fullTitle,
+            facetIds: [...new Set(currentTestFacetIds)], // Deduplicate
+            line: currentTest.line,
+          });
+        }
+        currentTest = null;
+        currentTestFacetIds = [];
       }
 
       // Look for test definitions
@@ -142,8 +200,8 @@ export class TestScanner {
         } else {
           // Look for Playwright-style facet annotation in the next few lines
           const annotationBlock = lines.slice(i, Math.min(i + 10, lines.length)).join('\n');
-          const facetMatch = facetPattern.exec(annotationBlock);
-          facetPattern.lastIndex = 0;
+          const facetMatch = facetAnnotationPattern.exec(annotationBlock);
+          facetAnnotationPattern.lastIndex = 0;
 
           if (facetMatch) {
             const facetArgs = facetMatch[1];
@@ -153,12 +211,21 @@ export class TestScanner {
               facetIds.push(idMatch[2]);
             }
             facetIdsPattern.lastIndex = 0;
+
+            // Also check for Facets.CONSTANT in annotation
+            while ((idMatch = facetsConstPattern.exec(facetArgs)) !== null) {
+              const constName = idMatch[1];
+              const facetId = constName.toLowerCase().replace(/_/g, '-').replace(/^([^-]+)-/, '$1:');
+              facetIds.push(facetId);
+            }
+            facetsConstPattern.lastIndex = 0;
           }
         }
 
-        if (facetIds.length > 0) {
-          const fullTitle = [...describeStack, testTitle].join(' > ');
+        const fullTitle = [...describeStack, testTitle].join(' > ');
 
+        if (facetIds.length > 0) {
+          // Has immediate facet IDs (comment or Playwright annotation)
           testLinks.push({
             file: relative(cwd, filePath),
             title: testTitle,
@@ -166,6 +233,15 @@ export class TestScanner {
             facetIds,
             line: lineNumber,
           });
+        } else {
+          // Start tracking for function-call style facets inside the test body
+          currentTest = {
+            title: testTitle,
+            fullTitle,
+            line: lineNumber,
+            startBrace: braceDepth - openBraces, // The brace level before this line's braces
+          };
+          currentTestFacetIds = [];
         }
       }
 
@@ -174,6 +250,17 @@ export class TestScanner {
         pendingFacetIds = [];
         pendingFacetLine = -1;
       }
+    }
+
+    // Handle case where file ends while still in a test
+    if (currentTest && currentTestFacetIds.length > 0) {
+      testLinks.push({
+        file: relative(cwd, filePath),
+        title: currentTest.title,
+        fullTitle: currentTest.fullTitle,
+        facetIds: [...new Set(currentTestFacetIds)],
+        line: currentTest.line,
+      });
     }
 
     return testLinks;

@@ -6,6 +6,7 @@ import { Validator } from '../../../src/core/Validator.js';
 import { CoverageCalculator } from '../../../src/core/CoverageCalculator.js';
 import { writeFileSync, mkdirSync, rmSync, existsSync } from 'fs';
 import { join } from 'path';
+import { Facets, facet } from '../.facet/facets';
 
 const testDir = join(import.meta.dir, '../../../.test-fixtures');
 
@@ -28,8 +29,9 @@ describe('StructureReader', () => {
     writeFileSync(join(testDir, 'feature1/facets/test.md'), '# Test\n\n## Facet One\n\nContent here.');
   });
 
-  // @facet product:structure-reading
   test('finds structure files via glob patterns', async () => {
+    facet(Facets.PRODUCT_STRUCTURE_READING);
+
     const reader = new StructureReader({
       structureFiles: ['.test-fixtures/**/.facet/structure.json']
     });
@@ -38,8 +40,9 @@ describe('StructureReader', () => {
     expect(files.some(f => f.includes('feature1'))).toBe(true);
   });
 
-  // @facet product:structure-reading
   test('parses structure.json with validation', async () => {
+    facet(Facets.PRODUCT_STRUCTURE_READING);
+
     const reader = new StructureReader();
     const structure = await reader.readStructure(join(testDir, 'feature1/.facet/structure.json'));
     expect(structure.feature).toBe('feature1');
@@ -47,8 +50,9 @@ describe('StructureReader', () => {
     expect(structure.facets[0].id).toBe('test:facet-one');
   });
 
-  // @facet product:structure-reading
   test('returns all facets across structures', async () => {
+    facet(Facets.PRODUCT_STRUCTURE_READING);
+
     const reader = new StructureReader({
       structureFiles: ['.test-fixtures/**/.facet/structure.json']
     });
@@ -58,23 +62,26 @@ describe('StructureReader', () => {
 });
 
 describe('FacetParser', () => {
-  // @facet product:markdown-parsing
   test('extracts headings as sections', async () => {
+    facet(Facets.PRODUCT_MARKDOWN_PARSING);
+
     const parser = new FacetParser();
     const parsed = await parser.parseFile(join(testDir, 'feature1/facets/test.md'));
     expect(parsed.sections.length).toBeGreaterThan(0);
     expect(parsed.sections.some(s => s.slug === 'facet-one')).toBe(true);
   });
 
-  // @facet product:markdown-parsing
   test('generates URL-friendly slugs', () => {
+    facet(Facets.PRODUCT_MARKDOWN_PARSING);
+
     expect(FacetParser.slugify('Hello World')).toBe('hello-world');
     expect(FacetParser.slugify('PCI-DSS Requirements')).toBe('pci-dss-requirements');
     expect(FacetParser.slugify('Test  Multiple   Spaces')).toBe('test-multiple-spaces');
   });
 
-  // @facet product:markdown-parsing
   test('validates section existence', async () => {
+    facet(Facets.PRODUCT_MARKDOWN_PARSING);
+
     const parser = new FacetParser();
     const exists = await parser.sectionExists(join(testDir, 'feature1/facets/test.md'), 'facet-one');
     expect(exists).toBe(true);
@@ -98,8 +105,9 @@ describe('Example', () => {
 `);
   });
 
-  // @facet product:test-scanning
   test('finds test files matching patterns', async () => {
+    facet(Facets.PRODUCT_TEST_SCANNING);
+
     const scanner = new TestScanner({
       testDir: '.test-fixtures/tests',
       testPatterns: ['**/*.spec.ts']
@@ -108,8 +116,9 @@ describe('Example', () => {
     expect(files.length).toBeGreaterThan(0);
   });
 
-  // @facet product:test-scanning
   test('supports comment-based annotations', () => {
+    facet(Facets.PRODUCT_TEST_SCANNING);
+
     const scanner = new TestScanner();
     const content = `
 describe('Test', () => {
@@ -123,8 +132,9 @@ describe('Test', () => {
     expect(links[0].facetIds).toContain('product:feature-b');
   });
 
-  // @facet product:test-scanning
   test('supports Playwright-style annotations', () => {
+    facet(Facets.PRODUCT_TEST_SCANNING);
+
     const scanner = new TestScanner();
     const content = `
 test('my test', {
@@ -136,8 +146,9 @@ test('my test', {
     expect(links[0].facetIds).toContain('product:feature-a');
   });
 
-  // @facet product:test-scanning
   test('tracks describe block nesting', () => {
+    facet(Facets.PRODUCT_TEST_SCANNING);
+
     const scanner = new TestScanner();
     const content = `
 describe('Outer', () => {
@@ -154,8 +165,9 @@ describe('Outer', () => {
 });
 
 describe('Validator', () => {
-  // @facet product:validation
   test('detects missing source files', async () => {
+    facet(Facets.PRODUCT_VALIDATION);
+
     const validator = new Validator({
       structureFiles: ['.test-fixtures/**/.facet/structure.json'],
       validation: { requireSourceExists: true, requireSectionExists: true, requireAllTestsLinked: false }
@@ -177,8 +189,9 @@ describe('Validator', () => {
     expect(result.errors.some(e => e.message.includes('not found'))).toBe(true);
   });
 
-  // @facet product:validation
   test('returns structured errors and warnings', async () => {
+    facet(Facets.PRODUCT_VALIDATION);
+
     const validator = new Validator({
       structureFiles: ['.test-fixtures/feature1/.facet/structure.json'],
       testDir: '.test-fixtures/tests',
@@ -194,8 +207,9 @@ describe('Validator', () => {
 });
 
 describe('CoverageCalculator', () => {
-  // @facet product:coverage-calculation
   test('calculates overall coverage percentage', async () => {
+    facet(Facets.PRODUCT_COVERAGE_CALCULATION);
+
     const calculator = new CoverageCalculator({
       structureFiles: ['.test-fixtures/feature1/.facet/structure.json'],
       testDir: '.test-fixtures/tests',
@@ -207,8 +221,9 @@ describe('CoverageCalculator', () => {
     expect(typeof report.summary.percentage).toBe('number');
   });
 
-  // @facet product:coverage-calculation
   test('calculates coverage by type', async () => {
+    facet(Facets.PRODUCT_COVERAGE_CALCULATION);
+
     const calculator = new CoverageCalculator({
       structureFiles: ['.test-fixtures/feature1/.facet/structure.json'],
       testDir: '.test-fixtures/tests',
@@ -219,8 +234,9 @@ describe('CoverageCalculator', () => {
     expect(Array.isArray(report.byType)).toBe(true);
   });
 
-  // @facet product:coverage-calculation
   test('returns comprehensive coverage report', async () => {
+    facet(Facets.PRODUCT_COVERAGE_CALCULATION);
+
     const calculator = new CoverageCalculator({
       structureFiles: ['.test-fixtures/feature1/.facet/structure.json'],
       testDir: '.test-fixtures/tests',
@@ -234,21 +250,23 @@ describe('CoverageCalculator', () => {
 });
 
 describe('Error Handling', () => {
-  // @facet dx:error-messages
   test('provides clear error messages for missing files', async () => {
+    facet(Facets.DX_ERROR_MESSAGES);
+
     const reader = new StructureReader();
     try {
       await reader.readStructure('/nonexistent/path/structure.json');
       expect(true).toBe(false); // Should not reach here
     } catch (error) {
-      expect(error.message).toContain('not found');
+      expect((error as Error).message).toContain('not found');
     }
   });
 });
 
 describe('TypeScript Support', () => {
-  // @facet technical:typescript-support
   test('exports type definitions', async () => {
+    facet(Facets.TECHNICAL_TYPESCRIPT_SUPPORT);
+
     const { Facet, FacetConfig, CoverageReport } = await import('../../../src/types.js');
     // These imports should succeed if types are properly exported
     expect(true).toBe(true);

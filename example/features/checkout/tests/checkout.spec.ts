@@ -1,56 +1,130 @@
-import { test, expect } from '@playwright/test';
-import { facet } from '@facet-coverage/core/playwright';
+/**
+ * Example: Linking Tests to Facets
+ *
+ * This file demonstrates how to use Facet Coverage with any testing framework.
+ * Works with: Jest, Vitest, Mocha, Bun, Node test runner, or any other framework.
+ */
 
-test.describe('Checkout Flow', () => {
-  test('guest user completes purchase', {
-    annotation: facet(
-      'business:guest-purchase-flow',
-      'compliance:pci-dss-payment-requirements'
-    )
-  }, async ({ page }) => {
-    // This is an example test
-    await page.goto('/checkout');
-    await page.fill('[data-test="email"]', 'user@example.com');
-    await page.fill('[data-test="card"]', '4242424242424242');
-    await page.click('[data-test="place-order"]');
+// Using Bun's test runner (replace with your framework's imports)
+// Jest/Vitest: import { test, expect } from 'vitest'
+// Mocha: import { describe, it } from 'mocha'; import { expect } from 'chai'
+import { test, expect } from 'bun:test';
 
-    // Verify business requirement
-    await expect(page.locator('.order-confirmation')).toBeVisible();
+// Import the generated types and facet() function for type-safe linking
+import { Facets, facet } from '../.facet/facets';
 
-    // Verify compliance: card masking
-    const maskedCard = page.locator('.card-last-four');
-    await expect(maskedCard).toHaveText('•••• 4242');
-  });
+// ============================================================================
+// RECOMMENDED: Use facet() function inside your tests
+// ============================================================================
+// Just call facet() at the start of your test - like expect() but for coverage!
 
-  test('cart management', {
-    annotation: facet('business:cart-management')
-  }, async ({ page }) => {
-    await page.goto('/cart');
-    // Add item
-    await page.click('[data-test="add-item"]');
-    await expect(page.locator('.cart-count')).toHaveText('1');
-  });
+test('guest user can complete a purchase', () => {
+  // Declare which facets this test covers - type-safe with autocomplete!
+  facet(Facets.BUSINESS_GUEST_PURCHASE_FLOW);
+  facet(Facets.COMPLIANCE_PCI_DSS_PAYMENT_REQUIREMENTS);
 
-  test('mobile checkout experience', {
-    annotation: facet(
-      'ux:mobile-checkout-experience',
-      'ux:form-validation'
-    )
-  }, async ({ page }) => {
-    await page.setViewportSize({ width: 375, height: 667 });
-    await page.goto('/checkout');
+  // Simulate checkout flow
+  const cart = { items: [{ id: 1, name: 'Product', price: 99 }] };
+  const order = checkout(cart, 'user@example.com', '4242424242424242');
 
-    // Verify touch targets
-    const submitButton = page.locator('[data-test="place-order"]');
-    const box = await submitButton.boundingBox();
-    expect(box!.height).toBeGreaterThanOrEqual(44);
-  });
+  // Verify business requirement: order confirmation
+  expect(order.confirmed).toBe(true);
+  expect(order.email).toBe('user@example.com');
 
-  test('GDPR consent', {
-    annotation: facet('compliance:gdpr-data-handling')
-  }, async ({ page }) => {
-    await page.goto('/checkout');
-    // Verify consent checkbox
-    await expect(page.locator('[data-test="gdpr-consent"]')).toBeVisible();
-  });
+  // Verify compliance: card is masked (PCI-DSS)
+  expect(order.maskedCard).toBe('•••• 4242');
 });
+
+test('user can add items to cart', () => {
+  facet(Facets.BUSINESS_CART_MANAGEMENT);
+
+  const cart = createCart();
+  cart.add({ id: 1, name: 'Product', price: 50 });
+
+  expect(cart.items.length).toBe(1);
+  expect(cart.total).toBe(50);
+});
+
+test('checkout form validates email format', () => {
+  facet(Facets.UX_FORM_VALIDATION);
+
+  expect(validateEmail('invalid')).toBe(false);
+  expect(validateEmail('user@example.com')).toBe(true);
+});
+
+test('user data is handled according to GDPR', () => {
+  facet(Facets.COMPLIANCE_GDPR_DATA_HANDLING);
+
+  const userData = collectUserData({ email: 'user@example.com', consent: true });
+
+  // Only collect data if consent is given
+  expect(userData).not.toBeNull();
+  expect(userData!.consent).toBe(true);
+  expect(userData!.collectedAt).toBeDefined();
+});
+
+test('mobile checkout has touch-friendly buttons', () => {
+  facet(Facets.UX_MOBILE_CHECKOUT_EXPERIENCE);
+
+  const button = renderCheckoutButton({ mobile: true });
+  expect(button.height).toBeGreaterThanOrEqual(44); // iOS minimum touch target
+});
+
+test('payment processing meets all compliance requirements', () => {
+  // You can call facet() multiple times or with multiple arguments
+  facet(Facets.COMPLIANCE_PCI_DSS_PAYMENT_REQUIREMENTS, Facets.COMPLIANCE_GDPR_DATA_HANDLING);
+
+  const payment = processPayment({
+    card: '4242424242424242',
+    consent: true,
+  });
+
+  expect(payment.encrypted).toBe(true);      // PCI-DSS
+  expect(payment.cvvStored).toBe(false);     // PCI-DSS
+  expect(payment.consentRecorded).toBe(true); // GDPR
+});
+
+// ============================================================================
+// Helper functions (mock implementations for demo)
+// ============================================================================
+
+function checkout(cart: { items: any[] }, email: string, card: string) {
+  return {
+    confirmed: cart.items.length > 0,
+    email,
+    maskedCard: `•••• ${card.slice(-4)}`,
+  };
+}
+
+function createCart() {
+  const items: any[] = [];
+  return {
+    items,
+    total: 0,
+    add(item: any) {
+      items.push(item);
+      this.total += item.price;
+    },
+  };
+}
+
+function validateEmail(email: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function collectUserData(data: { email: string; consent: boolean }) {
+  if (!data.consent) return null;
+  return { ...data, collectedAt: new Date() };
+}
+
+function renderCheckoutButton(options: { mobile: boolean }) {
+  return { height: options.mobile ? 48 : 36 };
+}
+
+function processPayment(data: { card: string; consent: boolean }) {
+  return {
+    encrypted: true,
+    cvvStored: false,
+    consentRecorded: data.consent,
+  };
+}

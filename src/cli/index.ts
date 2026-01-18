@@ -14,9 +14,10 @@ program
 // Generate command
 program
   .command('generate <dir>')
-  .description('Generate structure.json from facet markdown files')
-  .option('-o, --output <path>', 'Output directory for structure.json')
+  .description('Generate structure.json and TypeScript types from facet markdown files')
+  .option('-o, --output <path>', 'Output directory for structure.json and facets.ts')
   .option('-t, --type <type>', 'Override facet type (default: derived from filename)')
+  .option('--no-types', 'Skip TypeScript types generation')
   .action(generateCommand);
 
 // Analyze command

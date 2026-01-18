@@ -61,7 +61,7 @@
         "file": "facets/dx.md",
         "section": "developer-experience"
       },
-      "type": "product",
+      "type": "dx",
       "title": "Developer Experience"
     },
     {
@@ -70,7 +70,7 @@
         "file": "facets/dx.md",
         "section": "error-messages"
       },
-      "type": "product",
+      "type": "dx",
       "title": "Error Messages"
     },
     {
@@ -79,7 +79,7 @@
         "file": "facets/dx.md",
         "section": "api-design"
       },
-      "type": "product",
+      "type": "dx",
       "title": "API Design"
     },
     {
@@ -88,7 +88,7 @@
         "file": "facets/technical.md",
         "section": "technical-requirements"
       },
-      "type": "product",
+      "type": "technical",
       "title": "Technical Requirements"
     },
     {
@@ -97,7 +97,7 @@
         "file": "facets/technical.md",
         "section": "typescript-support"
       },
-      "type": "product",
+      "type": "technical",
       "title": "TypeScript Support"
     },
     {
@@ -106,7 +106,7 @@
         "file": "facets/technical.md",
         "section": "bun-compatibility"
       },
-      "type": "product",
+      "type": "technical",
       "title": "Bun Compatibility"
     },
     {
@@ -115,7 +115,7 @@
         "file": "facets/technical.md",
         "section": "glob-pattern-handling"
       },
-      "type": "product",
+      "type": "technical",
       "title": "Glob Pattern Handling"
     },
     {
@@ -124,7 +124,7 @@
         "file": "facets/technical.md",
         "section": "markdown-parsing-accuracy"
       },
-      "type": "product",
+      "type": "technical",
       "title": "Markdown Parsing Accuracy"
     }
   ]

@@ -5,6 +5,7 @@ import { generateCommand } from '../../../src/cli/commands/generate.js';
 import { CoverageCalculator } from '../../../src/core/CoverageCalculator.js';
 import { Validator } from '../../../src/core/Validator.js';
 import type { FacetConfig } from '../../../src/types.js';
+import { Facets, facet } from '../.facet/facets';
 
 const testDir = join(import.meta.dir, '../../../.cli-test-fixtures');
 
@@ -63,8 +64,9 @@ describe('Test Feature', () => {
   });
 
   describe('Generate Command', () => {
-    // @facet product:generate-command
     test('generates structure.json from markdown files', async () => {
+      facet(Facets.PRODUCT_GENERATE_COMMAND);
+
       const originalCwd = process.cwd();
       process.chdir(testDir);
 
@@ -76,8 +78,9 @@ describe('Test Feature', () => {
       }
     });
 
-    // @facet product:generate-command
     test('creates facet entries with auto-generated IDs', async () => {
+      facet(Facets.PRODUCT_GENERATE_COMMAND);
+
       const originalCwd = process.cwd();
       process.chdir(testDir);
 
@@ -95,8 +98,9 @@ describe('Test Feature', () => {
   });
 
   describe('Analyze Command', () => {
-    // @facet product:analyze-command
     test('calculates coverage metrics', async () => {
+      facet(Facets.PRODUCT_ANALYZE_COMMAND);
+
       const originalCwd = process.cwd();
       process.chdir(testDir);
 
@@ -114,8 +118,9 @@ describe('Test Feature', () => {
       }
     });
 
-    // @facet product:analyze-command
     test('identifies covered and uncovered facets', async () => {
+      facet(Facets.PRODUCT_ANALYZE_COMMAND);
+
       const originalCwd = process.cwd();
       process.chdir(testDir);
 
@@ -132,8 +137,9 @@ describe('Test Feature', () => {
       }
     });
 
-    // @facet product:analyze-command
     test('checks thresholds', async () => {
+      facet(Facets.PRODUCT_ANALYZE_COMMAND);
+
       const originalCwd = process.cwd();
       process.chdir(testDir);
 
@@ -157,8 +163,9 @@ describe('Test Feature', () => {
   });
 
   describe('Validate Command', () => {
-    // @facet product:validate-command
     test('validates structure integrity', async () => {
+      facet(Facets.PRODUCT_VALIDATE_COMMAND);
+
       const originalCwd = process.cwd();
       process.chdir(testDir);
 
@@ -176,8 +183,9 @@ describe('Test Feature', () => {
       }
     });
 
-    // @facet product:validate-command
     test('returns valid true for correct structure', async () => {
+      facet(Facets.PRODUCT_VALIDATE_COMMAND);
+
       const originalCwd = process.cwd();
       process.chdir(testDir);
 
@@ -197,8 +205,9 @@ describe('Test Feature', () => {
 });
 
 describe('CLI Ergonomics', () => {
-  // @facet dx:cli-ergonomics
   test('command modules export their functions', async () => {
+    facet(Facets.DX_CLI_ERGONOMICS);
+
     const generate = await import('../../../src/cli/commands/generate.js');
     const analyze = await import('../../../src/cli/commands/analyze.js');
     const validate = await import('../../../src/cli/commands/validate.js');
@@ -210,8 +219,9 @@ describe('CLI Ergonomics', () => {
     expect(watch.watchCommand).toBeDefined();
   });
 
-  // @facet dx:cli-ergonomics
   test('commands are functions', async () => {
+    facet(Facets.DX_CLI_ERGONOMICS);
+
     const generate = await import('../../../src/cli/commands/generate.js');
     const analyze = await import('../../../src/cli/commands/analyze.js');
     const validate = await import('../../../src/cli/commands/validate.js');
@@ -223,8 +233,9 @@ describe('CLI Ergonomics', () => {
 });
 
 describe('Configuration Discovery', () => {
-  // @facet dx:configuration-discovery
   test('default config has required fields', () => {
+    facet(Facets.DX_CONFIGURATION_DISCOVERY);
+
     // Test the default config from types.ts
     expect(testConfig.structureFiles).toBeDefined();
     expect(testConfig.testDir).toBeDefined();
@@ -232,8 +243,9 @@ describe('Configuration Discovery', () => {
     expect(testConfig.thresholds).toBeDefined();
   });
 
-  // @facet dx:configuration-discovery
   test('config can be serialized to JSON', () => {
+    facet(Facets.DX_CONFIGURATION_DISCOVERY);
+
     const jsonString = JSON.stringify(testConfig);
     expect(() => JSON.parse(jsonString)).not.toThrow();
 

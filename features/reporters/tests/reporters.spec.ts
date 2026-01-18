@@ -2,9 +2,10 @@ import { test, expect, describe, beforeAll, afterAll } from 'bun:test';
 import { JsonReporter } from '../../../src/reporters/JsonReporter.js';
 import { HtmlReporter } from '../../../src/reporters/HtmlReporter.js';
 import { MarkdownReporter } from '../../../src/reporters/MarkdownReporter.js';
-import { writeFileSync, readFileSync, mkdirSync, rmSync, existsSync } from 'fs';
+import { readFileSync, mkdirSync, rmSync, existsSync } from 'fs';
 import { join } from 'path';
 import type { CoverageReport } from '../../../src/types.js';
+import { Facets, facet } from '../.facet/facets';
 
 const testDir = join(import.meta.dir, '../../../.reporter-test-fixtures');
 
@@ -79,8 +80,9 @@ describe('JSON Reporter', () => {
     }
   });
 
-  // @facet product:json-reporter
   test('outputs complete coverage data as JSON', () => {
+    facet(Facets.PRODUCT_JSON_REPORTER);
+
     const reporter = new JsonReporter({ output: { dir: '.reporter-test-fixtures', formats: ['json'] } });
     const outputPath = reporter.write(mockReport, join(import.meta.dir, '../../..'));
 
@@ -91,8 +93,9 @@ describe('JSON Reporter', () => {
     expect(content.summary.percentage).toBe(50);
   });
 
-  // @facet product:json-reporter
   test('includes timestamp in report', () => {
+    facet(Facets.PRODUCT_JSON_REPORTER);
+
     const reporter = new JsonReporter({ output: { dir: '.reporter-test-fixtures', formats: ['json'] } });
     reporter.write(mockReport, join(import.meta.dir, '../../..'));
 
@@ -100,8 +103,9 @@ describe('JSON Reporter', () => {
     expect(content.timestamp).toBeDefined();
   });
 
-  // @facet product:json-reporter
   test('includes coverage breakdown by type', () => {
+    facet(Facets.PRODUCT_JSON_REPORTER);
+
     const reporter = new JsonReporter({ output: { dir: '.reporter-test-fixtures', formats: ['json'] } });
     reporter.write(mockReport, join(import.meta.dir, '../../..'));
 
@@ -110,8 +114,9 @@ describe('JSON Reporter', () => {
     expect(content.byType.length).toBe(2);
   });
 
-  // @facet dx:report-accessibility
   test('generates valid parseable JSON', () => {
+    facet(Facets.DX_REPORT_ACCESSIBILITY);
+
     const reporter = new JsonReporter({ output: { dir: '.reporter-test-fixtures', formats: ['json'] } });
     const jsonString = reporter.generate(mockReport);
     expect(() => JSON.parse(jsonString)).not.toThrow();
@@ -125,8 +130,9 @@ describe('HTML Reporter', () => {
     }
   });
 
-  // @facet product:html-reporter
   test('generates self-contained HTML file', () => {
+    facet(Facets.PRODUCT_HTML_REPORTER);
+
     const reporter = new HtmlReporter({ output: { dir: '.reporter-test-fixtures', formats: ['html'] } });
     const outputPath = reporter.write(mockReport, join(import.meta.dir, '../../..'));
 
@@ -138,31 +144,35 @@ describe('HTML Reporter', () => {
     expect(content).not.toContain('stylesheet" href='); // No external stylesheets
   });
 
-  // @facet product:html-reporter
   test('displays overall coverage percentage', () => {
+    facet(Facets.PRODUCT_HTML_REPORTER);
+
     const reporter = new HtmlReporter({ output: { dir: '.reporter-test-fixtures', formats: ['html'] } });
     const content = reporter.generate(mockReport);
     expect(content).toContain('50%');
   });
 
-  // @facet product:html-reporter
   test('shows coverage breakdown by type', () => {
+    facet(Facets.PRODUCT_HTML_REPORTER);
+
     const reporter = new HtmlReporter({ output: { dir: '.reporter-test-fixtures', formats: ['html'] } });
     const content = reporter.generate(mockReport);
     expect(content).toContain('product');
     expect(content).toContain('dx');
   });
 
-  // @facet product:html-reporter
   test('lists uncovered facets', () => {
+    facet(Facets.PRODUCT_HTML_REPORTER);
+
     const reporter = new HtmlReporter({ output: { dir: '.reporter-test-fixtures', formats: ['html'] } });
     const content = reporter.generate(mockReport);
     expect(content).toContain('feature-two');
     expect(content).toContain('ux-two');
   });
 
-  // @facet dx:report-readability
   test('uses visual coverage indicators', () => {
+    facet(Facets.DX_REPORT_READABILITY);
+
     const reporter = new HtmlReporter({ output: { dir: '.reporter-test-fixtures', formats: ['html'] } });
     const content = reporter.generate(mockReport);
     // Should have color-coded elements
@@ -177,8 +187,9 @@ describe('Markdown Reporter', () => {
     }
   });
 
-  // @facet product:markdown-reporter
   test('generates valid Markdown document', () => {
+    facet(Facets.PRODUCT_MARKDOWN_REPORTER);
+
     const reporter = new MarkdownReporter({ output: { dir: '.reporter-test-fixtures', formats: ['markdown'] } });
     const outputPath = reporter.write(mockReport, join(import.meta.dir, '../../..'));
 
@@ -189,31 +200,35 @@ describe('Markdown Reporter', () => {
     expect(content).toContain('|');
   });
 
-  // @facet product:markdown-reporter
   test('includes summary table', () => {
+    facet(Facets.PRODUCT_MARKDOWN_REPORTER);
+
     const reporter = new MarkdownReporter({ output: { dir: '.reporter-test-fixtures', formats: ['markdown'] } });
     const content = reporter.generate(mockReport);
     expect(content).toContain('Total Facets');
     expect(content).toContain('4');
   });
 
-  // @facet product:markdown-reporter
   test('includes coverage by type table', () => {
+    facet(Facets.PRODUCT_MARKDOWN_REPORTER);
+
     const reporter = new MarkdownReporter({ output: { dir: '.reporter-test-fixtures', formats: ['markdown'] } });
     const content = reporter.generate(mockReport);
     expect(content).toContain('product');
     expect(content).toContain('50%');
   });
 
-  // @facet dx:report-readability
   test('uses emoji indicators for status', () => {
+    facet(Facets.DX_REPORT_READABILITY);
+
     const reporter = new MarkdownReporter({ output: { dir: '.reporter-test-fixtures', formats: ['markdown'] } });
     const content = reporter.generate(mockReport);
     expect(content).toMatch(/[✅✓⚠️❌🟡]/);
   });
 
-  // @facet dx:report-accessibility
   test('renders correctly as Markdown', () => {
+    facet(Facets.DX_REPORT_ACCESSIBILITY);
+
     const reporter = new MarkdownReporter({ output: { dir: '.reporter-test-fixtures', formats: ['markdown'] } });
     const content = reporter.generate(mockReport);
     // Check for proper table formatting
