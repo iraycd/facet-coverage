@@ -18,7 +18,7 @@ Parse markdown documentation files to extract sections as facets.
 
 - Extract headings at all levels as sections [](#heading-extraction)
 - Generate URL-friendly slugs from heading text [](#slug-generation)
-- Support explicit anchor syntax via `[](#custom-slug)` on line after heading [](#custom-slug)
+- Support explicit anchor syntax via `[](#id)` on line after heading [](#custom-slug)
 - Support nested heading levels with proper hierarchy [](#heading-hierarchy)
 - Validate that referenced sections exist in source files [](#section-validation)
 - Handle markdown with frontmatter and code blocks [](#frontmatter-handling)

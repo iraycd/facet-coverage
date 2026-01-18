@@ -130,6 +130,7 @@ Overall: 83% (5/6)
 - **Type-safe linking** - Generated TypeScript types prevent broken references
 - **Framework agnostic** - Works with Jest, Vitest, Playwright, Mocha, Bun
 - **Gap detection** - See what's untested across all stakeholder perspectives
+- **Live dashboard** - `facet serve` for real-time coverage with hot reload
 - **CI-ready** - Threshold enforcement and JSON output for pipelines
 
 ---

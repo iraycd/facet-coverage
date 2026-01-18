@@ -3,6 +3,7 @@ import { generateCommand } from './commands/generate.js';
 import { analyzeCommand } from './commands/analyze.js';
 import { validateCommand } from './commands/validate.js';
 import { watchCommand } from './commands/watch.js';
+import { serveCommand } from './commands/serve.js';
 
 const program = new Command();
 
@@ -50,6 +51,16 @@ program
   .option('-c, --config <path>', 'Path to config file')
   .option('-v, --validate', 'Run validation before analysis')
   .action(watchCommand);
+
+// Serve command
+program
+  .command('serve')
+  .description('Start documentation server with hot reload')
+  .option('-p, --port <number>', 'Port number (default: 3000)')
+  .option('--host <host>', 'Host to bind to (default: localhost)')
+  .option('-c, --config <path>', 'Path to config file')
+  .option('--open', 'Open browser automatically')
+  .action(serveCommand);
 
 // Parse arguments
 program.parse();

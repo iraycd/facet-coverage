@@ -101,6 +101,16 @@ Reports generated:
   .facet-coverage/coverage.md
 ```
 
+### 5. (Optional) Start Development Server
+
+For a live dashboard with hot reload:
+
+```bash
+bunx facet serve --open
+```
+
+This opens an interactive UI showing coverage metrics, facet documentation with badges, and linked tests—all updating in real-time as you edit files.
+
 ## Project Structure
 
 ```

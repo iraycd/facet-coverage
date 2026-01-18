@@ -20,8 +20,8 @@ import { Facets, facet } from '../.facet/facets';
 
 test('guest user can complete a purchase', () => {
   // Declare which facets this test covers - type-safe with autocomplete!
-  facet(Facets.BUSINESS_GUEST_PURCHASE_FLOW);
-  facet(Facets.COMPLIANCE_PCI_DSS_PAYMENT_REQUIREMENTS);
+  facet(Facets.FEATURES_CHECKOUT_BUSINESS_GUEST_PURCHASE_FLOW);
+  facet(Facets.FEATURES_CHECKOUT_COMPLIANCE_PCI_DSS);
 
   // Simulate checkout flow
   const cart = { items: [{ id: 1, name: 'Product', price: 99 }] };
@@ -36,7 +36,7 @@ test('guest user can complete a purchase', () => {
 });
 
 test('user can add items to cart', () => {
-  facet(Facets.BUSINESS_CART_MANAGEMENT);
+  facet(Facets.FEATURES_CHECKOUT_BUSINESS_CART_MANAGEMENT);
 
   const cart = createCart();
   cart.add({ id: 1, name: 'Product', price: 50 });
@@ -46,14 +46,14 @@ test('user can add items to cart', () => {
 });
 
 test('checkout form validates email format', () => {
-  facet(Facets.UX_FORM_VALIDATION);
+  facet(Facets.FEATURES_CHECKOUT_UX_FORM_VALIDATION);
 
   expect(validateEmail('invalid')).toBe(false);
   expect(validateEmail('user@example.com')).toBe(true);
 });
 
 test('user data is handled according to GDPR', () => {
-  facet(Facets.COMPLIANCE_GDPR_DATA_HANDLING);
+  facet(Facets.FEATURES_CHECKOUT_COMPLIANCE_GDPR);
 
   const userData = collectUserData({ email: 'user@example.com', consent: true });
 
@@ -64,7 +64,7 @@ test('user data is handled according to GDPR', () => {
 });
 
 test('mobile checkout has touch-friendly buttons', () => {
-  facet(Facets.UX_MOBILE_CHECKOUT_EXPERIENCE);
+  facet(Facets.FEATURES_CHECKOUT_UX_MOBILE_CHECKOUT);
 
   const button = renderCheckoutButton({ mobile: true });
   expect(button.height).toBeGreaterThanOrEqual(44); // iOS minimum touch target
@@ -72,7 +72,7 @@ test('mobile checkout has touch-friendly buttons', () => {
 
 test('payment processing meets all compliance requirements', () => {
   // You can call facet() multiple times or with multiple arguments
-  facet(Facets.COMPLIANCE_PCI_DSS_PAYMENT_REQUIREMENTS, Facets.COMPLIANCE_GDPR_DATA_HANDLING);
+  facet(Facets.FEATURES_CHECKOUT_COMPLIANCE_PCI_DSS, Facets.FEATURES_CHECKOUT_COMPLIANCE_GDPR);
 
   const payment = processPayment({
     card: '4242424242424242',

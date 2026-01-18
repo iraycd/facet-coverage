@@ -79,6 +79,27 @@ bunx facet watch
 bunx facet watch -v    # Validate before analysis
 ```
 
+### `facet serve`
+
+Start development server with live coverage dashboard and hot reload.
+
+```bash
+# Start server on default port 3000
+bunx facet serve
+
+# Options
+bunx facet serve --port 8080       # Custom port
+bunx facet serve --host 0.0.0.0    # Bind to all interfaces
+bunx facet serve --open            # Auto-open browser
+bunx facet serve -c facet.config.js  # Custom config
+```
+
+**Features:**
+- Real-time coverage dashboard with WebSocket updates
+- Hot reload when facet markdown or test files change
+- Interactive facet documentation viewer with coverage badges
+- View test source code directly from the UI
+
 ## Exit Codes
 
 | Code | Meaning |

@@ -25,6 +25,8 @@ export class FacetParser {
    * 1. Comment markers: `<!-- @facet:sub-id -->`
    * 2. Empty link anchors: `[](#sub-id)` - renders invisibly in markdown
    *
+   * Skips content inside fenced code blocks and inline backticks.
+   *
    * @param lines - Array of content lines
    * @param startLineNumber - The 1-indexed line number of the first line in the array
    * @returns Array of SubFacetMarker objects
@@ -38,9 +40,23 @@ export class FacetParser {
     // Pattern for empty link anchors: [](#id) or []( #id ) with optional whitespace
     const emptyLinkPattern = /\[\]\(\s*#([a-z0-9-]+)\s*\)/g;
 
+    // Track if we're inside a fenced code block
+    let inCodeBlock = false;
+
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i];
       const lineNumber = startLineNumber + i;
+
+      // Check for fenced code block markers (``` or ~~~)
+      if (line.trim().startsWith('```') || line.trim().startsWith('~~~')) {
+        inCodeBlock = !inCodeBlock;
+        continue;
+      }
+
+      // Skip lines inside code blocks
+      if (inCodeBlock) {
+        continue;
+      }
 
       // Check for comment markers (can have multiple per line)
       let commentMatch;
@@ -53,9 +69,11 @@ export class FacetParser {
       }
       commentPattern.lastIndex = 0;
 
-      // Check for empty link anchors (can have multiple per line)
+      // Check for empty link anchors, but skip those inside backticks
+      // Remove backticked content before matching
+      const lineWithoutBackticks = line.replace(/`[^`]+`/g, '');
       let linkMatch;
-      while ((linkMatch = emptyLinkPattern.exec(line)) !== null) {
+      while ((linkMatch = emptyLinkPattern.exec(lineWithoutBackticks)) !== null) {
         subFacets.push({
           id: linkMatch[1],
           line: lineNumber,

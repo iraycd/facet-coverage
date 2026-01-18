@@ -9,62 +9,86 @@
  * All valid facet IDs for the "checkout" feature
  */
 export type FacetId =
-  | 'business:business-requirements'
-  | 'business:guest-purchase-flow'
-  | 'business:cart-management'
-  | 'ux:ux-requirements'
-  | 'ux:mobile-checkout'
-  | 'ux:mobile-checkout/responsive'
-  | 'ux:mobile-checkout/responsive/performance'
-  | 'ux:mobile-checkout/accessibility'
-  | 'ux:form-validation'
-  | 'compliance:compliance-requirements'
-  | 'compliance:pci-dss'
-  | 'compliance:pci-dss/tls'
-  | 'compliance:pci-dss/cvv'
-  | 'compliance:pci-dss/masking'
-  | 'compliance:pci-dss/logging'
-  | 'compliance:pci-dss/fraud'
-  | 'compliance:gdpr';
+  | 'features/checkout/compliance:compliance-requirements'
+  | 'features/checkout/compliance:pci-dss'
+  | 'features/checkout/compliance:pci-dss/tls'
+  | 'features/checkout/compliance:pci-dss/cvv'
+  | 'features/checkout/compliance:pci-dss/masking'
+  | 'features/checkout/compliance:pci-dss/logging'
+  | 'features/checkout/compliance:pci-dss/fraud'
+  | 'features/checkout/compliance:gdpr'
+  | 'features/checkout/compliance:gdpr/consent'
+  | 'features/checkout/compliance:gdpr/export'
+  | 'features/checkout/compliance:gdpr/deletion'
+  | 'features/checkout/compliance:gdpr/minimization'
+  | 'features/checkout/compliance:gdpr/privacy-policy'
+  | 'features/checkout/ux:ux-requirements'
+  | 'features/checkout/ux:mobile-checkout'
+  | 'features/checkout/ux:mobile-checkout/responsive'
+  | 'features/checkout/ux:mobile-checkout/responsive/performance'
+  | 'features/checkout/ux:mobile-checkout/accessibility'
+  | 'features/checkout/ux:form-validation'
+  | 'features/checkout/ux:form-validation/realtime'
+  | 'features/checkout/ux:form-validation/error-messages'
+  | 'features/checkout/ux:form-validation/visual-indicators'
+  | 'features/checkout/ux:form-validation/submit-prevention'
+  | 'features/checkout/business:guest-purchase-flow'
+  | 'features/checkout/business:cart-management';
 
 /**
  * Facet ID constants for autocomplete and type-safe references
  */
 export const Facets = {
- /** Business Requirements */
-  BUSINESS_BUSINESS_REQUIREMENTS: 'business:business-requirements' as const,
- /** Guest Purchase Flow */
-  BUSINESS_GUEST_PURCHASE_FLOW: 'business:guest-purchase-flow' as const,
- /** Cart Management */
-  BUSINESS_CART_MANAGEMENT: 'business:cart-management' as const,
- /** UX Requirements */
-  UX_UX_REQUIREMENTS: 'ux:ux-requirements' as const,
- /** Mobile Checkout Experience */
-  UX_MOBILE_CHECKOUT: 'ux:mobile-checkout' as const,
- /** Mobile Layout Requirements */
-  UX_MOBILE_CHECKOUT__RESPONSIVE: 'ux:mobile-checkout/responsive' as const,
-
-  UX_MOBILE_CHECKOUT__RESPONSIVE__PERFORMANCE: 'ux:mobile-checkout/responsive/performance' as const,
- /** Accessibility */
-  UX_MOBILE_CHECKOUT__ACCESSIBILITY: 'ux:mobile-checkout/accessibility' as const,
- /** Form Validation */
-  UX_FORM_VALIDATION: 'ux:form-validation' as const,
  /** Compliance Requirements */
-  COMPLIANCE_COMPLIANCE_REQUIREMENTS: 'compliance:compliance-requirements' as const,
+  FEATURES_CHECKOUT_COMPLIANCE_COMPLIANCE_REQUIREMENTS: 'features/checkout/compliance:compliance-requirements' as const,
  /** PCI-DSS Payment Requirements */
-  COMPLIANCE_PCI_DSS: 'compliance:pci-dss' as const,
- /** Encryption in transit */
-  COMPLIANCE_PCI_DSS__TLS: 'compliance:pci-dss/tls' as const,
- /** No CVV storage */
-  COMPLIANCE_PCI_DSS__CVV: 'compliance:pci-dss/cvv' as const,
- /** Card masking */
-  COMPLIANCE_PCI_DSS__MASKING: 'compliance:pci-dss/masking' as const,
- /** Transaction logging */
-  COMPLIANCE_PCI_DSS__LOGGING: 'compliance:pci-dss/logging' as const,
- /** Fraud monitoring */
-  COMPLIANCE_PCI_DSS__FRAUD: 'compliance:pci-dss/fraud' as const,
+  FEATURES_CHECKOUT_COMPLIANCE_PCI_DSS: 'features/checkout/compliance:pci-dss' as const,
+
+  FEATURES_CHECKOUT_COMPLIANCE_PCI_DSS__TLS: 'features/checkout/compliance:pci-dss/tls' as const,
+
+  FEATURES_CHECKOUT_COMPLIANCE_PCI_DSS__CVV: 'features/checkout/compliance:pci-dss/cvv' as const,
+
+  FEATURES_CHECKOUT_COMPLIANCE_PCI_DSS__MASKING: 'features/checkout/compliance:pci-dss/masking' as const,
+
+  FEATURES_CHECKOUT_COMPLIANCE_PCI_DSS__LOGGING: 'features/checkout/compliance:pci-dss/logging' as const,
+
+  FEATURES_CHECKOUT_COMPLIANCE_PCI_DSS__FRAUD: 'features/checkout/compliance:pci-dss/fraud' as const,
  /** GDPR Data Handling */
-  COMPLIANCE_GDPR: 'compliance:gdpr' as const,
+  FEATURES_CHECKOUT_COMPLIANCE_GDPR: 'features/checkout/compliance:gdpr' as const,
+
+  FEATURES_CHECKOUT_COMPLIANCE_GDPR__CONSENT: 'features/checkout/compliance:gdpr/consent' as const,
+
+  FEATURES_CHECKOUT_COMPLIANCE_GDPR__EXPORT: 'features/checkout/compliance:gdpr/export' as const,
+
+  FEATURES_CHECKOUT_COMPLIANCE_GDPR__DELETION: 'features/checkout/compliance:gdpr/deletion' as const,
+
+  FEATURES_CHECKOUT_COMPLIANCE_GDPR__MINIMIZATION: 'features/checkout/compliance:gdpr/minimization' as const,
+
+  FEATURES_CHECKOUT_COMPLIANCE_GDPR__PRIVACY_POLICY: 'features/checkout/compliance:gdpr/privacy-policy' as const,
+ /** UX Requirements */
+  FEATURES_CHECKOUT_UX_UX_REQUIREMENTS: 'features/checkout/ux:ux-requirements' as const,
+ /** Mobile Checkout Experience */
+  FEATURES_CHECKOUT_UX_MOBILE_CHECKOUT: 'features/checkout/ux:mobile-checkout' as const,
+ /** Mobile Layout Requirements */
+  FEATURES_CHECKOUT_UX_MOBILE_CHECKOUT__RESPONSIVE: 'features/checkout/ux:mobile-checkout/responsive' as const,
+
+  FEATURES_CHECKOUT_UX_MOBILE_CHECKOUT__RESPONSIVE__PERFORMANCE: 'features/checkout/ux:mobile-checkout/responsive/performance' as const,
+ /** Accessibility */
+  FEATURES_CHECKOUT_UX_MOBILE_CHECKOUT__ACCESSIBILITY: 'features/checkout/ux:mobile-checkout/accessibility' as const,
+ /** Form Validation */
+  FEATURES_CHECKOUT_UX_FORM_VALIDATION: 'features/checkout/ux:form-validation' as const,
+
+  FEATURES_CHECKOUT_UX_FORM_VALIDATION__REALTIME: 'features/checkout/ux:form-validation/realtime' as const,
+
+  FEATURES_CHECKOUT_UX_FORM_VALIDATION__ERROR_MESSAGES: 'features/checkout/ux:form-validation/error-messages' as const,
+
+  FEATURES_CHECKOUT_UX_FORM_VALIDATION__VISUAL_INDICATORS: 'features/checkout/ux:form-validation/visual-indicators' as const,
+
+  FEATURES_CHECKOUT_UX_FORM_VALIDATION__SUBMIT_PREVENTION: 'features/checkout/ux:form-validation/submit-prevention' as const,
+ /** Guest Purchase Flow */
+  FEATURES_CHECKOUT_BUSINESS_GUEST_PURCHASE_FLOW: 'features/checkout/business:guest-purchase-flow' as const,
+ /** Cart Management */
+  FEATURES_CHECKOUT_BUSINESS_CART_MANAGEMENT: 'features/checkout/business:cart-management' as const,
 } as const;
 
 /**
@@ -91,21 +115,29 @@ export function facet<T extends FacetId>(...facetIds: T[]): { facets: T[]; toStr
  * Get all facet IDs as an array
  */
 export const allFacetIds: FacetId[] = [
-  'business:business-requirements',
-  'business:guest-purchase-flow',
-  'business:cart-management',
-  'ux:ux-requirements',
-  'ux:mobile-checkout',
-  'ux:mobile-checkout/responsive',
-  'ux:mobile-checkout/responsive/performance',
-  'ux:mobile-checkout/accessibility',
-  'ux:form-validation',
-  'compliance:compliance-requirements',
-  'compliance:pci-dss',
-  'compliance:pci-dss/tls',
-  'compliance:pci-dss/cvv',
-  'compliance:pci-dss/masking',
-  'compliance:pci-dss/logging',
-  'compliance:pci-dss/fraud',
-  'compliance:gdpr',
+  'features/checkout/compliance:compliance-requirements',
+  'features/checkout/compliance:pci-dss',
+  'features/checkout/compliance:pci-dss/tls',
+  'features/checkout/compliance:pci-dss/cvv',
+  'features/checkout/compliance:pci-dss/masking',
+  'features/checkout/compliance:pci-dss/logging',
+  'features/checkout/compliance:pci-dss/fraud',
+  'features/checkout/compliance:gdpr',
+  'features/checkout/compliance:gdpr/consent',
+  'features/checkout/compliance:gdpr/export',
+  'features/checkout/compliance:gdpr/deletion',
+  'features/checkout/compliance:gdpr/minimization',
+  'features/checkout/compliance:gdpr/privacy-policy',
+  'features/checkout/ux:ux-requirements',
+  'features/checkout/ux:mobile-checkout',
+  'features/checkout/ux:mobile-checkout/responsive',
+  'features/checkout/ux:mobile-checkout/responsive/performance',
+  'features/checkout/ux:mobile-checkout/accessibility',
+  'features/checkout/ux:form-validation',
+  'features/checkout/ux:form-validation/realtime',
+  'features/checkout/ux:form-validation/error-messages',
+  'features/checkout/ux:form-validation/visual-indicators',
+  'features/checkout/ux:form-validation/submit-prevention',
+  'features/checkout/business:guest-purchase-flow',
+  'features/checkout/business:cart-management',
 ];

@@ -1,0 +1,401 @@
+{
+  "feature": "server",
+  "facets": [
+    {
+      "id": "features/server/technical:technical-requirements",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "technical-requirements"
+      },
+      "type": "technical",
+      "title": "Technical Requirements"
+    },
+    {
+      "id": "features/server/technical:http",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "http"
+      },
+      "type": "technical",
+      "title": "HTTP Server"
+    },
+    {
+      "id": "features/server/technical:http/static",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "http",
+        "line": 10
+      },
+      "type": "technical",
+      "parentId": "features/server/technical:http",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/server/technical:http/api",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "http",
+        "line": 11
+      },
+      "type": "technical",
+      "parentId": "features/server/technical:http",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/server/technical:http/spa",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "http",
+        "line": 12
+      },
+      "type": "technical",
+      "parentId": "features/server/technical:http",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/server/technical:websocket",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "websocket"
+      },
+      "type": "technical",
+      "title": "WebSocket Server"
+    },
+    {
+      "id": "features/server/technical:websocket/connect",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "websocket",
+        "line": 21
+      },
+      "type": "technical",
+      "parentId": "features/server/technical:websocket",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/server/technical:websocket/broadcast",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "websocket",
+        "line": 22
+      },
+      "type": "technical",
+      "parentId": "features/server/technical:websocket",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/server/technical:websocket/disconnect",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "websocket",
+        "line": 23
+      },
+      "type": "technical",
+      "parentId": "features/server/technical:websocket",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/server/technical:file-watch",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "file-watch"
+      },
+      "type": "technical",
+      "title": "File Watching"
+    },
+    {
+      "id": "features/server/technical:file-watch/glob",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "file-watch",
+        "line": 32
+      },
+      "type": "technical",
+      "parentId": "features/server/technical:file-watch",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/server/technical:file-watch/ignore",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "file-watch",
+        "line": 33
+      },
+      "type": "technical",
+      "parentId": "features/server/technical:file-watch",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/server/technical:file-watch/regenerate",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "file-watch",
+        "line": 34
+      },
+      "type": "technical",
+      "parentId": "features/server/technical:file-watch",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/server/dx:developer-experience",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "developer-experience"
+      },
+      "type": "dx",
+      "title": "Developer Experience"
+    },
+    {
+      "id": "features/server/dx:cli",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "cli"
+      },
+      "type": "dx",
+      "title": "CLI Integration"
+    },
+    {
+      "id": "features/server/dx:cli/command",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "cli",
+        "line": 10
+      },
+      "type": "dx",
+      "parentId": "features/server/dx:cli",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/server/dx:cli/port",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "cli",
+        "line": 11
+      },
+      "type": "dx",
+      "parentId": "features/server/dx:cli",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/server/dx:cli/open",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "cli",
+        "line": 12
+      },
+      "type": "dx",
+      "parentId": "features/server/dx:cli",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/server/dx:errors",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "errors"
+      },
+      "type": "dx",
+      "title": "Error Handling"
+    },
+    {
+      "id": "features/server/dx:errors/missing",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "errors",
+        "line": 21
+      },
+      "type": "dx",
+      "parentId": "features/server/dx:errors",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/server/dx:errors/websocket-errors",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "errors",
+        "line": 22
+      },
+      "type": "dx",
+      "parentId": "features/server/dx:errors",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/server/dx:errors/build",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "errors",
+        "line": 23
+      },
+      "type": "dx",
+      "parentId": "features/server/dx:errors",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/server/product:server-features",
+      "source": {
+        "file": "facets/product.md",
+        "section": "server-features"
+      },
+      "type": "product",
+      "title": "Server Features"
+    },
+    {
+      "id": "features/server/product:dashboard",
+      "source": {
+        "file": "facets/product.md",
+        "section": "dashboard"
+      },
+      "type": "product",
+      "title": "Live Coverage Dashboard"
+    },
+    {
+      "id": "features/server/product:dashboard/counts",
+      "source": {
+        "file": "facets/product.md",
+        "section": "dashboard",
+        "line": 10
+      },
+      "type": "product",
+      "parentId": "features/server/product:dashboard",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/server/product:dashboard/by-type",
+      "source": {
+        "file": "facets/product.md",
+        "section": "dashboard",
+        "line": 11
+      },
+      "type": "product",
+      "parentId": "features/server/product:dashboard",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/server/product:dashboard/features",
+      "source": {
+        "file": "facets/product.md",
+        "section": "dashboard",
+        "line": 12
+      },
+      "type": "product",
+      "parentId": "features/server/product:dashboard",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/server/product:dashboard/uncovered",
+      "source": {
+        "file": "facets/product.md",
+        "section": "dashboard",
+        "line": 13
+      },
+      "type": "product",
+      "parentId": "features/server/product:dashboard",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/server/product:hot-reload",
+      "source": {
+        "file": "facets/product.md",
+        "section": "hot-reload"
+      },
+      "type": "product",
+      "title": "Hot Reload"
+    },
+    {
+      "id": "features/server/product:hot-reload/facets",
+      "source": {
+        "file": "facets/product.md",
+        "section": "hot-reload",
+        "line": 22
+      },
+      "type": "product",
+      "parentId": "features/server/product:hot-reload",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/server/product:hot-reload/tests",
+      "source": {
+        "file": "facets/product.md",
+        "section": "hot-reload",
+        "line": 23
+      },
+      "type": "product",
+      "parentId": "features/server/product:hot-reload",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/server/product:hot-reload/websocket",
+      "source": {
+        "file": "facets/product.md",
+        "section": "hot-reload",
+        "line": 24
+      },
+      "type": "product",
+      "parentId": "features/server/product:hot-reload",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/server/product:hot-reload/debounce",
+      "source": {
+        "file": "facets/product.md",
+        "section": "hot-reload",
+        "line": 25
+      },
+      "type": "product",
+      "parentId": "features/server/product:hot-reload",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/server/product:doc-viewer",
+      "source": {
+        "file": "facets/product.md",
+        "section": "doc-viewer"
+      },
+      "type": "product",
+      "title": "Facet Documentation Viewer"
+    },
+    {
+      "id": "features/server/product:doc-viewer/markdown",
+      "source": {
+        "file": "facets/product.md",
+        "section": "doc-viewer",
+        "line": 34
+      },
+      "type": "product",
+      "parentId": "features/server/product:doc-viewer",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/server/product:doc-viewer/badges",
+      "source": {
+        "file": "facets/product.md",
+        "section": "doc-viewer",
+        "line": 35
+      },
+      "type": "product",
+      "parentId": "features/server/product:doc-viewer",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/server/product:doc-viewer/linked-tests",
+      "source": {
+        "file": "facets/product.md",
+        "section": "doc-viewer",
+        "line": 36
+      },
+      "type": "product",
+      "parentId": "features/server/product:doc-viewer",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/server/product:doc-viewer/source",
+      "source": {
+        "file": "facets/product.md",
+        "section": "doc-viewer",
+        "line": 37
+      },
+      "type": "product",
+      "parentId": "features/server/product:doc-viewer",
+      "isSubFacet": true
+    }
+  ]
+}

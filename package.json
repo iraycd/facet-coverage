@@ -28,7 +28,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "bun run tsc",
+    "build": "bun run tsc && bun run scripts/build-client.ts",
     "dev": "bun run tsc --watch",
     "test": "bun test features/core features/cli features/reporters features/integrations",
     "test:all": "bun test",
@@ -65,9 +65,14 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.40.0",
+    "@types/bun": "latest",
     "@types/node": "^20.10.0",
-    "typescript": "^5.3.0",
-    "@types/bun": "latest"
+    "autoprefixer": "^10.4.23",
+    "postcss": "^8.5.6",
+    "preact": "^10.28.2",
+    "preact-router": "^4.1.2",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.3.0"
   },
   "author": "",
   "license": "MIT",

@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.5.0] - 2026-01-19
+
+### Added
+- **Development server with hot reload** via `facet serve` command
+  - Real-time coverage dashboard with WebSocket updates
+  - Interactive facet documentation viewer with coverage badges
+  - View test source code directly from the UI
+  - Hot reload when facet files or tests change
+- Configurable server options: `--port`, `--host`, `--open` (auto-open browser)
+- Preact-based single-page application for the dashboard
+- File watching with debounced updates for smooth development experience
+
+### Changed
+- **FacetParser** now skips code blocks and inline backticks when parsing sub-facets (prevents false positives)
+- Build process now includes client bundle compilation
+
 ## [0.4.1] - 2026-01-18
 
 ### Changed

@@ -2,96 +2,7 @@
   "feature": "checkout",
   "facets": [
     {
-      "id": "business:business-requirements",
-      "source": {
-        "file": "facets/business.md",
-        "section": "business-requirements"
-      },
-      "type": "business",
-      "title": "Business Requirements"
-    },
-    {
-      "id": "business:guest-purchase-flow",
-      "source": {
-        "file": "facets/business.md",
-        "section": "guest-purchase-flow"
-      },
-      "type": "business",
-      "title": "Guest Purchase Flow"
-    },
-    {
-      "id": "business:cart-management",
-      "source": {
-        "file": "facets/business.md",
-        "section": "cart-management"
-      },
-      "type": "business",
-      "title": "Cart Management"
-    },
-    {
-      "id": "ux:ux-requirements",
-      "source": {
-        "file": "facets/ux.md",
-        "section": "ux-requirements"
-      },
-      "type": "ux",
-      "title": "UX Requirements"
-    },
-    {
-      "id": "ux:mobile-checkout",
-      "source": {
-        "file": "facets/ux.md",
-        "section": "mobile-checkout"
-      },
-      "type": "ux",
-      "title": "Mobile Checkout Experience"
-    },
-    {
-      "id": "ux:mobile-checkout/responsive",
-      "source": {
-        "file": "facets/ux.md",
-        "section": "mobile-checkout",
-        "line": 7
-      },
-      "type": "ux",
-      "title": "Mobile Layout Requirements",
-      "parentId": "ux:mobile-checkout",
-      "isSubFacet": true
-    },
-    {
-      "id": "ux:mobile-checkout/responsive/performance",
-      "source": {
-        "file": "facets/ux.md",
-        "section": "mobile-checkout",
-        "line": 13
-      },
-      "type": "ux",
-      "parentId": "ux:mobile-checkout/responsive",
-      "isSubFacet": true
-    },
-    {
-      "id": "ux:mobile-checkout/accessibility",
-      "source": {
-        "file": "facets/ux.md",
-        "section": "mobile-checkout",
-        "line": 16
-      },
-      "type": "ux",
-      "title": "Accessibility",
-      "parentId": "ux:mobile-checkout",
-      "isSubFacet": true
-    },
-    {
-      "id": "ux:form-validation",
-      "source": {
-        "file": "facets/ux.md",
-        "section": "form-validation"
-      },
-      "type": "ux",
-      "title": "Form Validation"
-    },
-    {
-      "id": "compliance:compliance-requirements",
+      "id": "features/checkout/compliance:compliance-requirements",
       "source": {
         "file": "facets/compliance.md",
         "section": "compliance-requirements"
@@ -100,7 +11,7 @@
       "title": "Compliance Requirements"
     },
     {
-      "id": "compliance:pci-dss",
+      "id": "features/checkout/compliance:pci-dss",
       "source": {
         "file": "facets/compliance.md",
         "section": "pci-dss"
@@ -109,73 +20,247 @@
       "title": "PCI-DSS Payment Requirements"
     },
     {
-      "id": "compliance:pci-dss/tls",
-      "source": {
-        "file": "facets/compliance.md",
-        "section": "pci-dss",
-        "line": 7
-      },
-      "type": "compliance",
-      "title": "Encryption in transit",
-      "parentId": "compliance:pci-dss",
-      "isSubFacet": true
-    },
-    {
-      "id": "compliance:pci-dss/cvv",
+      "id": "features/checkout/compliance:pci-dss/tls",
       "source": {
         "file": "facets/compliance.md",
         "section": "pci-dss",
         "line": 8
       },
       "type": "compliance",
-      "title": "No CVV storage",
-      "parentId": "compliance:pci-dss",
+      "parentId": "features/checkout/compliance:pci-dss",
       "isSubFacet": true
     },
     {
-      "id": "compliance:pci-dss/masking",
+      "id": "features/checkout/compliance:pci-dss/cvv",
       "source": {
         "file": "facets/compliance.md",
         "section": "pci-dss",
         "line": 9
       },
       "type": "compliance",
-      "title": "Card masking",
-      "parentId": "compliance:pci-dss",
+      "parentId": "features/checkout/compliance:pci-dss",
       "isSubFacet": true
     },
     {
-      "id": "compliance:pci-dss/logging",
+      "id": "features/checkout/compliance:pci-dss/masking",
       "source": {
         "file": "facets/compliance.md",
         "section": "pci-dss",
         "line": 10
       },
       "type": "compliance",
-      "title": "Transaction logging",
-      "parentId": "compliance:pci-dss",
+      "parentId": "features/checkout/compliance:pci-dss",
       "isSubFacet": true
     },
     {
-      "id": "compliance:pci-dss/fraud",
+      "id": "features/checkout/compliance:pci-dss/logging",
       "source": {
         "file": "facets/compliance.md",
         "section": "pci-dss",
         "line": 11
       },
       "type": "compliance",
-      "title": "Fraud monitoring",
-      "parentId": "compliance:pci-dss",
+      "parentId": "features/checkout/compliance:pci-dss",
       "isSubFacet": true
     },
     {
-      "id": "compliance:gdpr",
+      "id": "features/checkout/compliance:pci-dss/fraud",
+      "source": {
+        "file": "facets/compliance.md",
+        "section": "pci-dss",
+        "line": 12
+      },
+      "type": "compliance",
+      "parentId": "features/checkout/compliance:pci-dss",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/checkout/compliance:gdpr",
       "source": {
         "file": "facets/compliance.md",
         "section": "gdpr"
       },
       "type": "compliance",
       "title": "GDPR Data Handling"
+    },
+    {
+      "id": "features/checkout/compliance:gdpr/consent",
+      "source": {
+        "file": "facets/compliance.md",
+        "section": "gdpr",
+        "line": 29
+      },
+      "type": "compliance",
+      "parentId": "features/checkout/compliance:gdpr",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/checkout/compliance:gdpr/export",
+      "source": {
+        "file": "facets/compliance.md",
+        "section": "gdpr",
+        "line": 30
+      },
+      "type": "compliance",
+      "parentId": "features/checkout/compliance:gdpr",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/checkout/compliance:gdpr/deletion",
+      "source": {
+        "file": "facets/compliance.md",
+        "section": "gdpr",
+        "line": 31
+      },
+      "type": "compliance",
+      "parentId": "features/checkout/compliance:gdpr",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/checkout/compliance:gdpr/minimization",
+      "source": {
+        "file": "facets/compliance.md",
+        "section": "gdpr",
+        "line": 32
+      },
+      "type": "compliance",
+      "parentId": "features/checkout/compliance:gdpr",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/checkout/compliance:gdpr/privacy-policy",
+      "source": {
+        "file": "facets/compliance.md",
+        "section": "gdpr",
+        "line": 33
+      },
+      "type": "compliance",
+      "parentId": "features/checkout/compliance:gdpr",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/checkout/ux:ux-requirements",
+      "source": {
+        "file": "facets/ux.md",
+        "section": "ux-requirements"
+      },
+      "type": "ux",
+      "title": "UX Requirements"
+    },
+    {
+      "id": "features/checkout/ux:mobile-checkout",
+      "source": {
+        "file": "facets/ux.md",
+        "section": "mobile-checkout"
+      },
+      "type": "ux",
+      "title": "Mobile Checkout Experience"
+    },
+    {
+      "id": "features/checkout/ux:mobile-checkout/responsive",
+      "source": {
+        "file": "facets/ux.md",
+        "section": "mobile-checkout",
+        "line": 8
+      },
+      "type": "ux",
+      "title": "Mobile Layout Requirements",
+      "parentId": "features/checkout/ux:mobile-checkout",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/checkout/ux:mobile-checkout/responsive/performance",
+      "source": {
+        "file": "facets/ux.md",
+        "section": "mobile-checkout",
+        "line": 15
+      },
+      "type": "ux",
+      "parentId": "features/checkout/ux:mobile-checkout/responsive",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/checkout/ux:mobile-checkout/accessibility",
+      "source": {
+        "file": "facets/ux.md",
+        "section": "mobile-checkout",
+        "line": 18
+      },
+      "type": "ux",
+      "title": "Accessibility",
+      "parentId": "features/checkout/ux:mobile-checkout",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/checkout/ux:form-validation",
+      "source": {
+        "file": "facets/ux.md",
+        "section": "form-validation"
+      },
+      "type": "ux",
+      "title": "Form Validation"
+    },
+    {
+      "id": "features/checkout/ux:form-validation/realtime",
+      "source": {
+        "file": "facets/ux.md",
+        "section": "form-validation",
+        "line": 31
+      },
+      "type": "ux",
+      "parentId": "features/checkout/ux:form-validation",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/checkout/ux:form-validation/error-messages",
+      "source": {
+        "file": "facets/ux.md",
+        "section": "form-validation",
+        "line": 32
+      },
+      "type": "ux",
+      "parentId": "features/checkout/ux:form-validation",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/checkout/ux:form-validation/visual-indicators",
+      "source": {
+        "file": "facets/ux.md",
+        "section": "form-validation",
+        "line": 33
+      },
+      "type": "ux",
+      "parentId": "features/checkout/ux:form-validation",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/checkout/ux:form-validation/submit-prevention",
+      "source": {
+        "file": "facets/ux.md",
+        "section": "form-validation",
+        "line": 34
+      },
+      "type": "ux",
+      "parentId": "features/checkout/ux:form-validation",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/checkout/business:guest-purchase-flow",
+      "source": {
+        "file": "facets/business.md",
+        "section": "guest-purchase-flow"
+      },
+      "type": "business",
+      "title": "Guest Purchase Flow"
+    },
+    {
+      "id": "features/checkout/business:cart-management",
+      "source": {
+        "file": "facets/business.md",
+        "section": "cart-management"
+      },
+      "type": "business",
+      "title": "Cart Management"
     }
   ]
 }
