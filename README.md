@@ -33,36 +33,54 @@ Real products serve multiple stakeholders—product owners, compliance teams, UX
 bun add -d @facet-coverage/core
 ```
 
-### 1. Write requirements in Markdown
+### 1. Each stakeholder writes their requirements
 
-**features/checkout/facets/business.md**
+**Business Team** — `facets/business.md`
 ```markdown
 ## Guest Purchase Flow
-
-A user who isn't logged in should be able to buy products.
-They add items to cart, provide payment details, and get confirmation.
+Users should complete purchases without creating an account.
 ```
 
-### 2. Generate types
-
-```bash
-bunx facet generate features/checkout/facets/
+**Compliance Team** — `facets/compliance.md`
+```markdown
+## PCI-DSS Payment Requirements {#pci-dss}
+1. **Encryption in transit** {#tls} - TLS 1.2+ required
+2. **No CVV storage** {#cvv} - Never store CVV
+3. **Card masking** {#masking} - Show only last 4 digits
 ```
 
-### 3. Link tests to facets
+**UX Team** — `facets/ux.md`
+```markdown
+## Mobile Checkout Experience
+Large touch targets (44px min), single column layout, inline validation.
+```
+
+### 2. Tests link to requirements
 
 ```typescript
 import { Facets, facet } from '../.facet/facets';
 
-test('guest user completes purchase', () => {
+test('guest user completes purchase on mobile', () => {
+  // This test proves requirements for 3 different stakeholders
   facet(Facets.BUSINESS_GUEST_PURCHASE_FLOW);
+  facet(Facets.COMPLIANCE_PCI_DSS);
+  facet(Facets.UX_MOBILE_CHECKOUT_EXPERIENCE);
 
-  const order = checkout(cart, email, card);
+  const order = checkout(cart, 'user@example.com', '4242424242424242');
+
   expect(order.confirmed).toBe(true);
+  expect(order.maskedCard).toBe('•••• 4242');  // PCI-DSS compliance
+});
+
+test('TLS encryption enforced', () => {
+  // Track specific compliance sub-requirements
+  facet(Facets.COMPLIANCE_PCI_DSS__TLS);
+
+  expect(paymentEndpoint.protocol).toBe('https');
 });
 ```
 
-### 4. Check coverage
+### 3. See coverage across all perspectives
 
 ```bash
 bunx facet analyze
@@ -70,9 +88,15 @@ bunx facet analyze
 
 ```
 Facet Coverage Report
-Overall: 100%
-  business: 100% (1/1)
+Overall: 83% (5/6)
+
+  business:   100% (1/1)  ✓
+  compliance:  80% (4/5)
+    ✗ pci-dss/cvv - No CVV storage
+  ux:         100% (1/1)  ✓
 ```
+
+**Now you know:** The compliance team's CVV requirement isn't tested yet.
 
 ---
 
