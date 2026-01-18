@@ -21,9 +21,10 @@ export class FacetParser {
 
   /**
    * Parse sub-facet markers from content lines.
-   * Supports two patterns:
+   * Supports three patterns:
    * 1. List item IDs: `1. **Item** {#sub-id} - description` or `- Item {#sub-id}`
    * 2. Comment markers: `<!-- @facet:sub-id -->`
+   * 3. Empty link anchors: `[](#sub-id)` - renders invisibly in markdown
    *
    * @param lines - Array of content lines
    * @param startLineNumber - The 1-indexed line number of the first line in the array
@@ -39,6 +40,9 @@ export class FacetParser {
 
     // Pattern for comment markers: <!-- @facet:id --> or <!-- @facet: id -->
     const commentPattern = /<!--\s*@facet:\s*([a-z0-9-]+)\s*-->/g;
+
+    // Pattern for empty link anchors: [](#id) or []( #id ) with optional whitespace
+    const emptyLinkPattern = /\[\]\(\s*#([a-z0-9-]+)\s*\)/g;
 
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i];
@@ -72,8 +76,18 @@ export class FacetParser {
           type: 'comment',
         });
       }
-      // Reset regex for next line
       commentPattern.lastIndex = 0;
+
+      // Check for empty link anchors (can have multiple per line)
+      let linkMatch;
+      while ((linkMatch = emptyLinkPattern.exec(line)) !== null) {
+        subFacets.push({
+          id: linkMatch[1],
+          line: lineNumber,
+          type: 'link',
+        });
+      }
+      emptyLinkPattern.lastIndex = 0;
     }
 
     return subFacets;
