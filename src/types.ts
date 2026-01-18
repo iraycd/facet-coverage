@@ -243,7 +243,7 @@ export interface MarkdownSection {
 
 /**
  * Represents a sub-facet marker found within a section
- * Can be from list item {#id} syntax, <!-- @facet:id --> comment, or heading with explicit ID
+ * Can be from list item {#id} syntax, <!-- @facet:id --> comment, [](#id) link, or heading with explicit ID
  */
 export interface SubFacetMarker {
   /** The sub-facet ID (local, will be combined with parent) */
@@ -252,8 +252,8 @@ export interface SubFacetMarker {
   title?: string;
   /** Line number where the marker was found */
   line: number;
-  /** Type of marker: 'list-item' for {#id} on list items, 'comment' for <!-- @facet:id -->, 'heading' for h3+ with explicit ID */
-  type: 'list-item' | 'comment' | 'heading';
+  /** Type of marker: 'list-item' for {#id}, 'comment' for <!-- @facet:id -->, 'link' for [](#id), 'heading' for h3+ with explicit ID */
+  type: 'list-item' | 'comment' | 'link' | 'heading';
 }
 
 /**

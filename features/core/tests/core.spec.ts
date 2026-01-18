@@ -231,7 +231,33 @@ Full WCAG 2.1 AA compliance required.
     expect(section.subFacets![1].type).toBe('comment');
   });
 
-  test('parses mixed list item and comment sub-facets', () => {
+  test('parses sub-facets from empty link anchors [](#id)', () => {
+    facet(Facets.FEATURES_CORE_PRODUCT_MARKDOWN_PARSING);
+
+    const parser = new FacetParser();
+    const content = `## Business Requirements {#business}
+
+[](#revenue-tracking)
+Track all revenue-generating events.
+
+[](#user-retention)
+Monitor user retention metrics.
+`;
+    const parsed = parser.parseContent(content, 'business.md');
+
+    const section = parsed.sections[0];
+    expect(section.slug).toBe('business');
+    expect(section.subFacets).toBeDefined();
+    expect(section.subFacets!.length).toBe(2);
+
+    expect(section.subFacets![0].id).toBe('revenue-tracking');
+    expect(section.subFacets![0].type).toBe('link');
+
+    expect(section.subFacets![1].id).toBe('user-retention');
+    expect(section.subFacets![1].type).toBe('link');
+  });
+
+  test('parses mixed sub-facet patterns (list-item, comment, link)', () => {
     facet(Facets.FEATURES_CORE_PRODUCT_MARKDOWN_PARSING);
 
     const parser = new FacetParser();
@@ -242,14 +268,19 @@ Full WCAG 2.1 AA compliance required.
 
 <!-- @facet:extra -->
 Additional requirement.
+
+[](#clean-marker)
+This uses the clean link syntax.
 `;
     const parsed = parser.parseContent(content, 'test.md');
 
     const section = parsed.sections[0];
-    expect(section.subFacets!.length).toBe(3);
+    expect(section.subFacets!.length).toBe(4);
     expect(section.subFacets![0].type).toBe('list-item');
     expect(section.subFacets![1].type).toBe('list-item');
     expect(section.subFacets![2].type).toBe('comment');
+    expect(section.subFacets![3].type).toBe('link');
+    expect(section.subFacets![3].id).toBe('clean-marker');
   });
 
   test('generates hierarchical sub-facet IDs', () => {
