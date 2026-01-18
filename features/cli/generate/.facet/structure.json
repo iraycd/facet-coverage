@@ -11,56 +11,56 @@
       "title": "Generate Command"
     },
     {
-      "id": "features/cli/generate/product:config-discovery",
+      "id": "features/cli/generate/product:config-based-discovery",
       "source": {
         "file": "product.facet.md",
-        "section": "config-discovery"
+        "section": "config-based-discovery"
       },
       "type": "product",
       "title": "Config-Based Discovery"
     },
     {
-      "id": "features/cli/generate/product:config-discovery/read-config",
+      "id": "features/cli/generate/product:config-based-discovery/read-config",
       "source": {
         "file": "product.facet.md",
-        "section": "config-discovery",
+        "section": "config-based-discovery",
+        "line": 10
+      },
+      "type": "product",
+      "parentId": "features/cli/generate/product:config-based-discovery",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/generate/product:config-based-discovery/glob-array",
+      "source": {
+        "file": "product.facet.md",
+        "section": "config-based-discovery",
         "line": 11
       },
       "type": "product",
-      "parentId": "features/cli/generate/product:config-discovery",
+      "parentId": "features/cli/generate/product:config-based-discovery",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/generate/product:config-discovery/glob-array",
+      "id": "features/cli/generate/product:config-based-discovery/recursive-discovery",
       "source": {
         "file": "product.facet.md",
-        "section": "config-discovery",
+        "section": "config-based-discovery",
         "line": 12
       },
       "type": "product",
-      "parentId": "features/cli/generate/product:config-discovery",
+      "parentId": "features/cli/generate/product:config-based-discovery",
       "isSubFacet": true
     },
     {
-      "id": "features/cli/generate/product:config-discovery/recursive-discovery",
+      "id": "features/cli/generate/product:config-based-discovery/group-by-feature",
       "source": {
         "file": "product.facet.md",
-        "section": "config-discovery",
+        "section": "config-based-discovery",
         "line": 13
       },
       "type": "product",
-      "parentId": "features/cli/generate/product:config-discovery",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/cli/generate/product:config-discovery/group-by-feature",
-      "source": {
-        "file": "product.facet.md",
-        "section": "config-discovery",
-        "line": 14
-      },
-      "type": "product",
-      "parentId": "features/cli/generate/product:config-discovery",
+      "parentId": "features/cli/generate/product:config-based-discovery",
       "isSubFacet": true
     },
     {
@@ -77,7 +77,7 @@
       "source": {
         "file": "product.facet.md",
         "section": "type-generation",
-        "line": 22
+        "line": 20
       },
       "type": "product",
       "parentId": "features/cli/generate/product:type-generation",
@@ -88,7 +88,7 @@
       "source": {
         "file": "product.facet.md",
         "section": "type-generation",
-        "line": 23
+        "line": 21
       },
       "type": "product",
       "parentId": "features/cli/generate/product:type-generation",
@@ -99,7 +99,7 @@
       "source": {
         "file": "product.facet.md",
         "section": "type-generation",
-        "line": 24
+        "line": 22
       },
       "type": "product",
       "parentId": "features/cli/generate/product:type-generation",
@@ -110,7 +110,7 @@
       "source": {
         "file": "product.facet.md",
         "section": "type-generation",
-        "line": 25
+        "line": 23
       },
       "type": "product",
       "parentId": "features/cli/generate/product:type-generation",
@@ -130,7 +130,7 @@
       "source": {
         "file": "product.facet.md",
         "section": "global-types",
-        "line": 33
+        "line": 30
       },
       "type": "product",
       "parentId": "features/cli/generate/product:global-types",
@@ -141,7 +141,7 @@
       "source": {
         "file": "product.facet.md",
         "section": "global-types",
-        "line": 34
+        "line": 31
       },
       "type": "product",
       "parentId": "features/cli/generate/product:global-types",
@@ -152,7 +152,7 @@
       "source": {
         "file": "product.facet.md",
         "section": "global-types",
-        "line": 35
+        "line": 32
       },
       "type": "product",
       "parentId": "features/cli/generate/product:global-types",
@@ -163,7 +163,7 @@
       "source": {
         "file": "product.facet.md",
         "section": "global-types",
-        "line": 36
+        "line": 33
       },
       "type": "product",
       "parentId": "features/cli/generate/product:global-types",

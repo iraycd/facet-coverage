@@ -11,226 +11,226 @@
       "title": "Technical Requirements"
     },
     {
-      "id": "features/core/technical:typescript",
+      "id": "features/core/technical:typescript-support",
       "source": {
         "file": "facets/technical.md",
-        "section": "typescript"
+        "section": "typescript-support"
       },
       "type": "technical",
       "title": "TypeScript Support"
     },
     {
-      "id": "features/core/technical:typescript/typescript-source",
+      "id": "features/core/technical:typescript-support/typescript-source",
       "source": {
         "file": "facets/technical.md",
-        "section": "typescript",
+        "section": "typescript-support",
+        "line": 8
+      },
+      "type": "technical",
+      "parentId": "features/core/technical:typescript-support",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/technical:typescript-support/typescript-exports",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "typescript-support",
         "line": 9
       },
       "type": "technical",
-      "parentId": "features/core/technical:typescript",
+      "parentId": "features/core/technical:typescript-support",
       "isSubFacet": true
     },
     {
-      "id": "features/core/technical:typescript/typescript-exports",
+      "id": "features/core/technical:typescript-support/typescript-strict",
       "source": {
         "file": "facets/technical.md",
-        "section": "typescript",
+        "section": "typescript-support",
         "line": 10
       },
       "type": "technical",
-      "parentId": "features/core/technical:typescript",
+      "parentId": "features/core/technical:typescript-support",
       "isSubFacet": true
     },
     {
-      "id": "features/core/technical:typescript/typescript-strict",
+      "id": "features/core/technical:typescript-support/typescript-esm",
       "source": {
         "file": "facets/technical.md",
-        "section": "typescript",
+        "section": "typescript-support",
         "line": 11
       },
       "type": "technical",
-      "parentId": "features/core/technical:typescript",
+      "parentId": "features/core/technical:typescript-support",
       "isSubFacet": true
     },
     {
-      "id": "features/core/technical:typescript/typescript-esm",
+      "id": "features/core/technical:bun-compatibility",
       "source": {
         "file": "facets/technical.md",
-        "section": "typescript",
-        "line": 12
-      },
-      "type": "technical",
-      "parentId": "features/core/technical:typescript",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/core/technical:bun",
-      "source": {
-        "file": "facets/technical.md",
-        "section": "bun"
+        "section": "bun-compatibility"
       },
       "type": "technical",
       "title": "Bun Compatibility"
     },
     {
-      "id": "features/core/technical:bun/bun-deps",
+      "id": "features/core/technical:bun-compatibility/bun-deps",
       "source": {
         "file": "facets/technical.md",
-        "section": "bun",
+        "section": "bun-compatibility",
+        "line": 18
+      },
+      "type": "technical",
+      "parentId": "features/core/technical:bun-compatibility",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/technical:bun-compatibility/bun-scripts",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "bun-compatibility",
+        "line": 19
+      },
+      "type": "technical",
+      "parentId": "features/core/technical:bun-compatibility",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/technical:bun-compatibility/bun-fs",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "bun-compatibility",
         "line": 20
       },
       "type": "technical",
-      "parentId": "features/core/technical:bun",
+      "parentId": "features/core/technical:bun-compatibility",
       "isSubFacet": true
     },
     {
-      "id": "features/core/technical:bun/bun-scripts",
+      "id": "features/core/technical:bun-compatibility/bun-glob",
       "source": {
         "file": "facets/technical.md",
-        "section": "bun",
+        "section": "bun-compatibility",
         "line": 21
       },
       "type": "technical",
-      "parentId": "features/core/technical:bun",
+      "parentId": "features/core/technical:bun-compatibility",
       "isSubFacet": true
     },
     {
-      "id": "features/core/technical:bun/bun-fs",
+      "id": "features/core/technical:glob-pattern-handling",
       "source": {
         "file": "facets/technical.md",
-        "section": "bun",
-        "line": 22
-      },
-      "type": "technical",
-      "parentId": "features/core/technical:bun",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/core/technical:bun/bun-glob",
-      "source": {
-        "file": "facets/technical.md",
-        "section": "bun",
-        "line": 23
-      },
-      "type": "technical",
-      "parentId": "features/core/technical:bun",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/core/technical:glob",
-      "source": {
-        "file": "facets/technical.md",
-        "section": "glob"
+        "section": "glob-pattern-handling"
       },
       "type": "technical",
       "title": "Glob Pattern Handling"
     },
     {
-      "id": "features/core/technical:glob/glob-syntax",
+      "id": "features/core/technical:glob-pattern-handling/glob-syntax",
       "source": {
         "file": "facets/technical.md",
-        "section": "glob",
+        "section": "glob-pattern-handling",
+        "line": 28
+      },
+      "type": "technical",
+      "parentId": "features/core/technical:glob-pattern-handling",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/technical:glob-pattern-handling/glob-multiple",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "glob-pattern-handling",
+        "line": 29
+      },
+      "type": "technical",
+      "parentId": "features/core/technical:glob-pattern-handling",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/technical:glob-pattern-handling/glob-paths",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "glob-pattern-handling",
+        "line": 30
+      },
+      "type": "technical",
+      "parentId": "features/core/technical:glob-pattern-handling",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/technical:glob-pattern-handling/glob-edge-cases",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "glob-pattern-handling",
         "line": 31
       },
       "type": "technical",
-      "parentId": "features/core/technical:glob",
+      "parentId": "features/core/technical:glob-pattern-handling",
       "isSubFacet": true
     },
     {
-      "id": "features/core/technical:glob/glob-multiple",
+      "id": "features/core/technical:markdown-parsing-accuracy",
       "source": {
         "file": "facets/technical.md",
-        "section": "glob",
-        "line": 32
-      },
-      "type": "technical",
-      "parentId": "features/core/technical:glob",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/core/technical:glob/glob-paths",
-      "source": {
-        "file": "facets/technical.md",
-        "section": "glob",
-        "line": 33
-      },
-      "type": "technical",
-      "parentId": "features/core/technical:glob",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/core/technical:glob/glob-edge-cases",
-      "source": {
-        "file": "facets/technical.md",
-        "section": "glob",
-        "line": 34
-      },
-      "type": "technical",
-      "parentId": "features/core/technical:glob",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/core/technical:markdown-parsing",
-      "source": {
-        "file": "facets/technical.md",
-        "section": "markdown-parsing"
+        "section": "markdown-parsing-accuracy"
       },
       "type": "technical",
       "title": "Markdown Parsing Accuracy"
     },
     {
-      "id": "features/core/technical:markdown-parsing/md-heading-levels",
+      "id": "features/core/technical:markdown-parsing-accuracy/md-heading-levels",
       "source": {
         "file": "facets/technical.md",
-        "section": "markdown-parsing",
+        "section": "markdown-parsing-accuracy",
+        "line": 38
+      },
+      "type": "technical",
+      "parentId": "features/core/technical:markdown-parsing-accuracy",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/technical:markdown-parsing-accuracy/md-slug-gen",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "markdown-parsing-accuracy",
+        "line": 39
+      },
+      "type": "technical",
+      "parentId": "features/core/technical:markdown-parsing-accuracy",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/technical:markdown-parsing-accuracy/md-special-chars",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "markdown-parsing-accuracy",
+        "line": 40
+      },
+      "type": "technical",
+      "parentId": "features/core/technical:markdown-parsing-accuracy",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/technical:markdown-parsing-accuracy/md-code-blocks",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "markdown-parsing-accuracy",
+        "line": 41
+      },
+      "type": "technical",
+      "parentId": "features/core/technical:markdown-parsing-accuracy",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/technical:markdown-parsing-accuracy/md-ignore-code-headings",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "markdown-parsing-accuracy",
         "line": 42
       },
       "type": "technical",
-      "parentId": "features/core/technical:markdown-parsing",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/core/technical:markdown-parsing/md-slug-gen",
-      "source": {
-        "file": "facets/technical.md",
-        "section": "markdown-parsing",
-        "line": 43
-      },
-      "type": "technical",
-      "parentId": "features/core/technical:markdown-parsing",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/core/technical:markdown-parsing/md-special-chars",
-      "source": {
-        "file": "facets/technical.md",
-        "section": "markdown-parsing",
-        "line": 44
-      },
-      "type": "technical",
-      "parentId": "features/core/technical:markdown-parsing",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/core/technical:markdown-parsing/md-code-blocks",
-      "source": {
-        "file": "facets/technical.md",
-        "section": "markdown-parsing",
-        "line": 45
-      },
-      "type": "technical",
-      "parentId": "features/core/technical:markdown-parsing",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/core/technical:markdown-parsing/md-ignore-code-headings",
-      "source": {
-        "file": "facets/technical.md",
-        "section": "markdown-parsing",
-        "line": 46
-      },
-      "type": "technical",
-      "parentId": "features/core/technical:markdown-parsing",
+      "parentId": "features/core/technical:markdown-parsing-accuracy",
       "isSubFacet": true
     },
     {
@@ -256,7 +256,7 @@
       "source": {
         "file": "facets/dx.md",
         "section": "error-messages",
-        "line": 9
+        "line": 8
       },
       "type": "dx",
       "parentId": "features/core/dx:error-messages",
@@ -267,7 +267,7 @@
       "source": {
         "file": "facets/dx.md",
         "section": "error-messages",
-        "line": 10
+        "line": 9
       },
       "type": "dx",
       "parentId": "features/core/dx:error-messages",
@@ -278,7 +278,7 @@
       "source": {
         "file": "facets/dx.md",
         "section": "error-messages",
-        "line": 11
+        "line": 10
       },
       "type": "dx",
       "parentId": "features/core/dx:error-messages",
@@ -289,7 +289,7 @@
       "source": {
         "file": "facets/dx.md",
         "section": "error-messages",
-        "line": 12
+        "line": 11
       },
       "type": "dx",
       "parentId": "features/core/dx:error-messages",
@@ -300,7 +300,7 @@
       "source": {
         "file": "facets/dx.md",
         "section": "error-messages",
-        "line": 13
+        "line": 12
       },
       "type": "dx",
       "parentId": "features/core/dx:error-messages",
@@ -320,7 +320,7 @@
       "source": {
         "file": "facets/dx.md",
         "section": "api-design",
-        "line": 21
+        "line": 19
       },
       "type": "dx",
       "parentId": "features/core/dx:api-design",
@@ -331,7 +331,7 @@
       "source": {
         "file": "facets/dx.md",
         "section": "api-design",
-        "line": 22
+        "line": 20
       },
       "type": "dx",
       "parentId": "features/core/dx:api-design",
@@ -342,7 +342,7 @@
       "source": {
         "file": "facets/dx.md",
         "section": "api-design",
-        "line": 23
+        "line": 21
       },
       "type": "dx",
       "parentId": "features/core/dx:api-design",
@@ -353,7 +353,7 @@
       "source": {
         "file": "facets/dx.md",
         "section": "api-design",
-        "line": 24
+        "line": 22
       },
       "type": "dx",
       "parentId": "features/core/dx:api-design",
@@ -364,7 +364,7 @@
       "source": {
         "file": "facets/dx.md",
         "section": "api-design",
-        "line": 25
+        "line": 23
       },
       "type": "dx",
       "parentId": "features/core/dx:api-design",
@@ -393,7 +393,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "structure-reading",
-        "line": 9
+        "line": 8
       },
       "type": "product",
       "parentId": "features/core/product:structure-reading",
@@ -404,7 +404,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "structure-reading",
-        "line": 10
+        "line": 9
       },
       "type": "product",
       "parentId": "features/core/product:structure-reading",
@@ -415,7 +415,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "structure-reading",
-        "line": 11
+        "line": 10
       },
       "type": "product",
       "parentId": "features/core/product:structure-reading",
@@ -426,7 +426,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "structure-reading",
-        "line": 12
+        "line": 11
       },
       "type": "product",
       "parentId": "features/core/product:structure-reading",
@@ -437,7 +437,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "structure-reading",
-        "line": 13
+        "line": 12
       },
       "type": "product",
       "parentId": "features/core/product:structure-reading",
@@ -457,7 +457,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "markdown-parsing",
-        "line": 21
+        "line": 19
       },
       "type": "product",
       "parentId": "features/core/product:markdown-parsing",
@@ -468,7 +468,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "markdown-parsing",
-        "line": 22
+        "line": 20
       },
       "type": "product",
       "parentId": "features/core/product:markdown-parsing",
@@ -479,10 +479,20 @@
       "source": {
         "file": "facets/product.md",
         "section": "markdown-parsing",
-        "line": 23
+        "line": 21
       },
       "type": "product",
-      "title": "Support explicit anchor syntax: `## Heading",
+      "parentId": "features/core/product:markdown-parsing",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/product:markdown-parsing/custom-slug",
+      "source": {
+        "file": "facets/product.md",
+        "section": "markdown-parsing",
+        "line": 21
+      },
+      "type": "product",
       "parentId": "features/core/product:markdown-parsing",
       "isSubFacet": true
     },
@@ -491,7 +501,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "markdown-parsing",
-        "line": 24
+        "line": 22
       },
       "type": "product",
       "parentId": "features/core/product:markdown-parsing",
@@ -502,7 +512,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "markdown-parsing",
-        "line": 25
+        "line": 23
       },
       "type": "product",
       "parentId": "features/core/product:markdown-parsing",
@@ -513,7 +523,18 @@
       "source": {
         "file": "facets/product.md",
         "section": "markdown-parsing",
-        "line": 26
+        "line": 24
+      },
+      "type": "product",
+      "parentId": "features/core/product:markdown-parsing",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/product:markdown-parsing/id",
+      "source": {
+        "file": "facets/product.md",
+        "section": "markdown-parsing",
+        "line": 28
       },
       "type": "product",
       "parentId": "features/core/product:markdown-parsing",
@@ -542,7 +563,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "test-scanning",
-        "line": 44
+        "line": 42
       },
       "type": "product",
       "parentId": "features/core/product:test-scanning",
@@ -553,7 +574,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "test-scanning",
-        "line": 45
+        "line": 43
       },
       "type": "product",
       "parentId": "features/core/product:test-scanning",
@@ -564,7 +585,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "test-scanning",
-        "line": 46
+        "line": 44
       },
       "type": "product",
       "parentId": "features/core/product:test-scanning",
@@ -575,7 +596,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "test-scanning",
-        "line": 47
+        "line": 45
       },
       "type": "product",
       "parentId": "features/core/product:test-scanning",
@@ -586,7 +607,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "test-scanning",
-        "line": 48
+        "line": 46
       },
       "type": "product",
       "parentId": "features/core/product:test-scanning",
@@ -606,7 +627,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "validation",
-        "line": 56
+        "line": 53
       },
       "type": "product",
       "parentId": "features/core/product:validation",
@@ -617,7 +638,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "validation",
-        "line": 57
+        "line": 54
       },
       "type": "product",
       "parentId": "features/core/product:validation",
@@ -628,7 +649,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "validation",
-        "line": 58
+        "line": 55
       },
       "type": "product",
       "parentId": "features/core/product:validation",
@@ -639,7 +660,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "validation",
-        "line": 59
+        "line": 56
       },
       "type": "product",
       "parentId": "features/core/product:validation",
@@ -650,7 +671,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "validation",
-        "line": 60
+        "line": 57
       },
       "type": "product",
       "parentId": "features/core/product:validation",
@@ -661,7 +682,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "validation",
-        "line": 61
+        "line": 58
       },
       "type": "product",
       "parentId": "features/core/product:validation",
@@ -681,7 +702,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "coverage-calculation",
-        "line": 69
+        "line": 65
       },
       "type": "product",
       "parentId": "features/core/product:coverage-calculation",
@@ -692,7 +713,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "coverage-calculation",
-        "line": 70
+        "line": 66
       },
       "type": "product",
       "parentId": "features/core/product:coverage-calculation",
@@ -703,7 +724,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "coverage-calculation",
-        "line": 71
+        "line": 67
       },
       "type": "product",
       "parentId": "features/core/product:coverage-calculation",
@@ -714,7 +735,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "coverage-calculation",
-        "line": 72
+        "line": 68
       },
       "type": "product",
       "parentId": "features/core/product:coverage-calculation",
@@ -725,7 +746,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "coverage-calculation",
-        "line": 73
+        "line": 69
       },
       "type": "product",
       "parentId": "features/core/product:coverage-calculation",

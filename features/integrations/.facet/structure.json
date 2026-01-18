@@ -11,56 +11,56 @@
       "title": "Developer Experience"
     },
     {
-      "id": "features/integrations/dx:simplicity",
+      "id": "features/integrations/dx:integration-simplicity",
       "source": {
         "file": "facets/dx.md",
-        "section": "simplicity"
+        "section": "integration-simplicity"
       },
       "type": "dx",
       "title": "Integration Simplicity"
     },
     {
-      "id": "features/integrations/dx:simplicity/minimal-config",
+      "id": "features/integrations/dx:integration-simplicity/minimal-config",
       "source": {
         "file": "facets/dx.md",
-        "section": "simplicity",
+        "section": "integration-simplicity",
+        "line": 8
+      },
+      "type": "dx",
+      "parentId": "features/integrations/dx:integration-simplicity",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/integrations/dx:integration-simplicity/clear-imports",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "integration-simplicity",
         "line": 9
       },
       "type": "dx",
-      "parentId": "features/integrations/dx:simplicity",
+      "parentId": "features/integrations/dx:integration-simplicity",
       "isSubFacet": true
     },
     {
-      "id": "features/integrations/dx:simplicity/clear-imports",
+      "id": "features/integrations/dx:integration-simplicity/playwright-compat",
       "source": {
         "file": "facets/dx.md",
-        "section": "simplicity",
+        "section": "integration-simplicity",
         "line": 10
       },
       "type": "dx",
-      "parentId": "features/integrations/dx:simplicity",
+      "parentId": "features/integrations/dx:integration-simplicity",
       "isSubFacet": true
     },
     {
-      "id": "features/integrations/dx:simplicity/playwright-compat",
+      "id": "features/integrations/dx:integration-simplicity/no-modifications",
       "source": {
         "file": "facets/dx.md",
-        "section": "simplicity",
+        "section": "integration-simplicity",
         "line": 11
       },
       "type": "dx",
-      "parentId": "features/integrations/dx:simplicity",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/integrations/dx:simplicity/no-modifications",
-      "source": {
-        "file": "facets/dx.md",
-        "section": "simplicity",
-        "line": 12
-      },
-      "type": "dx",
-      "parentId": "features/integrations/dx:simplicity",
+      "parentId": "features/integrations/dx:integration-simplicity",
       "isSubFacet": true
     },
     {
@@ -77,7 +77,7 @@
       "source": {
         "file": "facets/dx.md",
         "section": "annotation-syntax",
-        "line": 20
+        "line": 18
       },
       "type": "dx",
       "parentId": "features/integrations/dx:annotation-syntax",
@@ -88,7 +88,7 @@
       "source": {
         "file": "facets/dx.md",
         "section": "annotation-syntax",
-        "line": 21
+        "line": 19
       },
       "type": "dx",
       "parentId": "features/integrations/dx:annotation-syntax",
@@ -99,7 +99,7 @@
       "source": {
         "file": "facets/dx.md",
         "section": "annotation-syntax",
-        "line": 22
+        "line": 20
       },
       "type": "dx",
       "parentId": "features/integrations/dx:annotation-syntax",
@@ -110,7 +110,7 @@
       "source": {
         "file": "facets/dx.md",
         "section": "annotation-syntax",
-        "line": 23
+        "line": 21
       },
       "type": "dx",
       "parentId": "features/integrations/dx:annotation-syntax",
@@ -126,142 +126,142 @@
       "title": "Integrations"
     },
     {
-      "id": "features/integrations/product:facet-function",
+      "id": "features/integrations/product:type-safe-facet-function",
       "source": {
         "file": "facets/product.md",
-        "section": "facet-function"
+        "section": "type-safe-facet-function"
       },
       "type": "product",
       "title": "Type-Safe Facet Function"
     },
     {
-      "id": "features/integrations/product:facet-function/variadic-args",
+      "id": "features/integrations/product:type-safe-facet-function/variadic-args",
       "source": {
         "file": "facets/product.md",
-        "section": "facet-function",
+        "section": "type-safe-facet-function",
+        "line": 8
+      },
+      "type": "product",
+      "parentId": "features/integrations/product:type-safe-facet-function",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/integrations/product:type-safe-facet-function/typescript-autocomplete",
+      "source": {
+        "file": "facets/product.md",
+        "section": "type-safe-facet-function",
         "line": 9
       },
       "type": "product",
-      "parentId": "features/integrations/product:facet-function",
+      "parentId": "features/integrations/product:type-safe-facet-function",
       "isSubFacet": true
     },
     {
-      "id": "features/integrations/product:facet-function/typescript-autocomplete",
+      "id": "features/integrations/product:type-safe-facet-function/framework-agnostic",
       "source": {
         "file": "facets/product.md",
-        "section": "facet-function",
+        "section": "type-safe-facet-function",
         "line": 10
       },
       "type": "product",
-      "parentId": "features/integrations/product:facet-function",
+      "parentId": "features/integrations/product:type-safe-facet-function",
       "isSubFacet": true
     },
     {
-      "id": "features/integrations/product:facet-function/framework-agnostic",
+      "id": "features/integrations/product:type-safe-facet-function/constant-refs",
       "source": {
         "file": "facets/product.md",
-        "section": "facet-function",
+        "section": "type-safe-facet-function",
         "line": 11
       },
       "type": "product",
-      "parentId": "features/integrations/product:facet-function",
+      "parentId": "features/integrations/product:type-safe-facet-function",
       "isSubFacet": true
     },
     {
-      "id": "features/integrations/product:facet-function/constant-refs",
+      "id": "features/integrations/product:type-safe-facet-function/multiple-ids",
       "source": {
         "file": "facets/product.md",
-        "section": "facet-function",
+        "section": "type-safe-facet-function",
         "line": 12
       },
       "type": "product",
-      "parentId": "features/integrations/product:facet-function",
+      "parentId": "features/integrations/product:type-safe-facet-function",
       "isSubFacet": true
     },
     {
-      "id": "features/integrations/product:facet-function/multiple-ids",
+      "id": "features/integrations/product:type-safe-facet-function/metadata-return",
       "source": {
         "file": "facets/product.md",
-        "section": "facet-function",
+        "section": "type-safe-facet-function",
         "line": 13
       },
       "type": "product",
-      "parentId": "features/integrations/product:facet-function",
+      "parentId": "features/integrations/product:type-safe-facet-function",
       "isSubFacet": true
     },
     {
-      "id": "features/integrations/product:facet-function/metadata-return",
+      "id": "features/integrations/product:type-safe-facet-function/compile-time-check",
       "source": {
         "file": "facets/product.md",
-        "section": "facet-function",
+        "section": "type-safe-facet-function",
         "line": 14
       },
       "type": "product",
-      "parentId": "features/integrations/product:facet-function",
+      "parentId": "features/integrations/product:type-safe-facet-function",
       "isSubFacet": true
     },
     {
-      "id": "features/integrations/product:facet-function/compile-time-check",
+      "id": "features/integrations/product:playwright-annotation-helper",
       "source": {
         "file": "facets/product.md",
-        "section": "facet-function",
-        "line": 15
-      },
-      "type": "product",
-      "parentId": "features/integrations/product:facet-function",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/integrations/product:playwright-helper",
-      "source": {
-        "file": "facets/product.md",
-        "section": "playwright-helper"
+        "section": "playwright-annotation-helper"
       },
       "type": "product",
       "title": "Playwright Annotation Helper"
     },
     {
-      "id": "features/integrations/product:playwright-helper/pw-facet-function",
+      "id": "features/integrations/product:playwright-annotation-helper/pw-facet-function",
       "source": {
         "file": "facets/product.md",
-        "section": "playwright-helper",
+        "section": "playwright-annotation-helper",
+        "line": 32
+      },
+      "type": "product",
+      "parentId": "features/integrations/product:playwright-annotation-helper",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/integrations/product:playwright-annotation-helper/pw-annotation-object",
+      "source": {
+        "file": "facets/product.md",
+        "section": "playwright-annotation-helper",
+        "line": 33
+      },
+      "type": "product",
+      "parentId": "features/integrations/product:playwright-annotation-helper",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/integrations/product:playwright-annotation-helper/pw-multiple-ids",
+      "source": {
+        "file": "facets/product.md",
+        "section": "playwright-annotation-helper",
         "line": 34
       },
       "type": "product",
-      "parentId": "features/integrations/product:playwright-helper",
+      "parentId": "features/integrations/product:playwright-annotation-helper",
       "isSubFacet": true
     },
     {
-      "id": "features/integrations/product:playwright-helper/pw-annotation-object",
+      "id": "features/integrations/product:playwright-annotation-helper/pw-test-syntax",
       "source": {
         "file": "facets/product.md",
-        "section": "playwright-helper",
+        "section": "playwright-annotation-helper",
         "line": 35
       },
       "type": "product",
-      "parentId": "features/integrations/product:playwright-helper",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/integrations/product:playwright-helper/pw-multiple-ids",
-      "source": {
-        "file": "facets/product.md",
-        "section": "playwright-helper",
-        "line": 36
-      },
-      "type": "product",
-      "parentId": "features/integrations/product:playwright-helper",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/integrations/product:playwright-helper/pw-test-syntax",
-      "source": {
-        "file": "facets/product.md",
-        "section": "playwright-helper",
-        "line": 37
-      },
-      "type": "product",
-      "parentId": "features/integrations/product:playwright-helper",
+      "parentId": "features/integrations/product:playwright-annotation-helper",
       "isSubFacet": true
     },
     {
@@ -278,7 +278,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "playwright-reporter",
-        "line": 45
+        "line": 42
       },
       "type": "product",
       "parentId": "features/integrations/product:playwright-reporter",
@@ -289,7 +289,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "playwright-reporter",
-        "line": 46
+        "line": 43
       },
       "type": "product",
       "parentId": "features/integrations/product:playwright-reporter",
@@ -300,7 +300,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "playwright-reporter",
-        "line": 47
+        "line": 44
       },
       "type": "product",
       "parentId": "features/integrations/product:playwright-reporter",
@@ -311,7 +311,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "playwright-reporter",
-        "line": 48
+        "line": 45
       },
       "type": "product",
       "parentId": "features/integrations/product:playwright-reporter",
@@ -322,7 +322,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "playwright-reporter",
-        "line": 49
+        "line": 46
       },
       "type": "product",
       "parentId": "features/integrations/product:playwright-reporter",
@@ -333,7 +333,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "playwright-reporter",
-        "line": 50
+        "line": 47
       },
       "type": "product",
       "parentId": "features/integrations/product:playwright-reporter",
@@ -344,7 +344,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "playwright-reporter",
-        "line": 51
+        "line": 48
       },
       "type": "product",
       "parentId": "features/integrations/product:playwright-reporter",
@@ -355,7 +355,7 @@
       "source": {
         "file": "facets/product.md",
         "section": "playwright-reporter",
-        "line": 52
+        "line": 49
       },
       "type": "product",
       "parentId": "features/integrations/product:playwright-reporter",
