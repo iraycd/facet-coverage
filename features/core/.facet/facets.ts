@@ -87,139 +87,139 @@ export const Facets = {
   FEATURES_CORE_TECHNICAL_TECHNICAL_REQUIREMENTS: 'features/core/technical:technical-requirements' as const,
  /** TypeScript Support */
   FEATURES_CORE_TECHNICAL_TYPESCRIPT: 'features/core/technical:typescript' as const,
- /** All source code written in TypeScript */
+
   FEATURES_CORE_TECHNICAL_TYPESCRIPT__TYPESCRIPT_SOURCE: 'features/core/technical:typescript/typescript-source' as const,
- /** Export type definitions for all public interfaces */
+
   FEATURES_CORE_TECHNICAL_TYPESCRIPT__TYPESCRIPT_EXPORTS: 'features/core/technical:typescript/typescript-exports' as const,
- /** Use strict TypeScript configuration */
+
   FEATURES_CORE_TECHNICAL_TYPESCRIPT__TYPESCRIPT_STRICT: 'features/core/technical:typescript/typescript-strict' as const,
- /** Support ESM module system (NodeNext) */
+
   FEATURES_CORE_TECHNICAL_TYPESCRIPT__TYPESCRIPT_ESM: 'features/core/technical:typescript/typescript-esm' as const,
  /** Bun Compatibility */
   FEATURES_CORE_TECHNICAL_BUN: 'features/core/technical:bun' as const,
- /** All dependencies compatible with Bun */
+
   FEATURES_CORE_TECHNICAL_BUN__BUN_DEPS: 'features/core/technical:bun/bun-deps' as const,
- /** Build scripts work with 'bun run' */
+
   FEATURES_CORE_TECHNICAL_BUN__BUN_SCRIPTS: 'features/core/technical:bun/bun-scripts' as const,
- /** File system operations work in Bun */
+
   FEATURES_CORE_TECHNICAL_BUN__BUN_FS: 'features/core/technical:bun/bun-fs' as const,
- /** Glob patterns work correctly in Bun */
+
   FEATURES_CORE_TECHNICAL_BUN__BUN_GLOB: 'features/core/technical:bun/bun-glob' as const,
  /** Glob Pattern Handling */
   FEATURES_CORE_TECHNICAL_GLOB: 'features/core/technical:glob' as const,
- /** Support standard glob syntax ('', '', etc.) */
+
   FEATURES_CORE_TECHNICAL_GLOB__GLOB_SYNTAX: 'features/core/technical:glob/glob-syntax' as const,
- /** Handle multiple patterns in configuration */
+
   FEATURES_CORE_TECHNICAL_GLOB__GLOB_MULTIPLE: 'features/core/technical:glob/glob-multiple' as const,
- /** Work with both relative and absolute paths */
+
   FEATURES_CORE_TECHNICAL_GLOB__GLOB_PATHS: 'features/core/technical:glob/glob-paths' as const,
- /** Handle edge cases (empty directories, no matches) */
+
   FEATURES_CORE_TECHNICAL_GLOB__GLOB_EDGE_CASES: 'features/core/technical:glob/glob-edge-cases' as const,
  /** Markdown Parsing Accuracy */
   FEATURES_CORE_TECHNICAL_MARKDOWN_PARSING: 'features/core/technical:markdown-parsing' as const,
- /** Handle all heading levels (h1-h6) */
+
   FEATURES_CORE_TECHNICAL_MARKDOWN_PARSING__MD_HEADING_LEVELS: 'features/core/technical:markdown-parsing/md-heading-levels' as const,
- /** Correctly generate slugs from heading text */
+
   FEATURES_CORE_TECHNICAL_MARKDOWN_PARSING__MD_SLUG_GEN: 'features/core/technical:markdown-parsing/md-slug-gen' as const,
- /** Handle special characters in headings */
+
   FEATURES_CORE_TECHNICAL_MARKDOWN_PARSING__MD_SPECIAL_CHARS: 'features/core/technical:markdown-parsing/md-special-chars' as const,
- /** Support markdown with code blocks and fences */
+
   FEATURES_CORE_TECHNICAL_MARKDOWN_PARSING__MD_CODE_BLOCKS: 'features/core/technical:markdown-parsing/md-code-blocks' as const,
- /** Ignore headings inside code blocks */
+
   FEATURES_CORE_TECHNICAL_MARKDOWN_PARSING__MD_IGNORE_CODE_HEADINGS: 'features/core/technical:markdown-parsing/md-ignore-code-headings' as const,
  /** Developer Experience */
   FEATURES_CORE_DX_DEVELOPER_EXPERIENCE: 'features/core/dx:developer-experience' as const,
  /** Error Messages */
   FEATURES_CORE_DX_ERROR_MESSAGES: 'features/core/dx:error-messages' as const,
- /** Include file paths in error messages for easy navigation */
+
   FEATURES_CORE_DX_ERROR_MESSAGES__ERROR_FILE_PATHS: 'features/core/dx:error-messages/error-file-paths' as const,
- /** Include line numbers where applicable */
+
   FEATURES_CORE_DX_ERROR_MESSAGES__ERROR_LINE_NUMBERS: 'features/core/dx:error-messages/error-line-numbers' as const,
- /** Explain what went wrong and how to fix it */
+
   FEATURES_CORE_DX_ERROR_MESSAGES__ERROR_EXPLANATION: 'features/core/dx:error-messages/error-explanation' as const,
- /** Distinguish between errors (blocking) and warnings (informational) */
+
   FEATURES_CORE_DX_ERROR_MESSAGES__ERROR_SEVERITY: 'features/core/dx:error-messages/error-severity' as const,
- /** Use consistent message formatting across all modules */
+
   FEATURES_CORE_DX_ERROR_MESSAGES__ERROR_FORMATTING: 'features/core/dx:error-messages/error-formatting' as const,
  /** API Design */
   FEATURES_CORE_DX_API_DESIGN: 'features/core/dx:api-design' as const,
- /** Export all core classes from main package entry point */
+
   FEATURES_CORE_DX_API_DESIGN__API_EXPORTS: 'features/core/dx:api-design/api-exports' as const,
- /** Use TypeScript interfaces for all configuration and return types */
+
   FEATURES_CORE_DX_API_DESIGN__API_TYPES: 'features/core/dx:api-design/api-types' as const,
- /** Provide sensible defaults for all optional configuration */
+
   FEATURES_CORE_DX_API_DESIGN__API_DEFAULTS: 'features/core/dx:api-design/api-defaults' as const,
- /** Support method chaining where appropriate */
+
   FEATURES_CORE_DX_API_DESIGN__API_CHAINING: 'features/core/dx:api-design/api-chaining' as const,
- /** Document public methods with JSDoc comments */
+
   FEATURES_CORE_DX_API_DESIGN__API_DOCS: 'features/core/dx:api-design/api-docs' as const,
  /** Core Functionality */
   FEATURES_CORE_PRODUCT_CORE_FUNCTIONALITY: 'features/core/product:core-functionality' as const,
  /** Structure Reading */
   FEATURES_CORE_PRODUCT_STRUCTURE_READING: 'features/core/product:structure-reading' as const,
- /** Find structure files via glob patterns from configuration */
+
   FEATURES_CORE_PRODUCT_STRUCTURE_READING__GLOB_PATTERNS: 'features/core/product:structure-reading/glob-patterns' as const,
- /** Parse JSON with proper validation and error handling */
+
   FEATURES_CORE_PRODUCT_STRUCTURE_READING__JSON_PARSING: 'features/core/product:structure-reading/json-parsing' as const,
- /** Support multiple structure files per project */
+
   FEATURES_CORE_PRODUCT_STRUCTURE_READING__MULTIPLE_STRUCTURES: 'features/core/product:structure-reading/multiple-structures' as const,
- /** Resolve file paths relative to structure file location */
+
   FEATURES_CORE_PRODUCT_STRUCTURE_READING__PATH_RESOLUTION: 'features/core/product:structure-reading/path-resolution' as const,
- /** Return all facets across all structures */
+
   FEATURES_CORE_PRODUCT_STRUCTURE_READING__FACET_AGGREGATION: 'features/core/product:structure-reading/facet-aggregation' as const,
  /** Markdown Parsing */
   FEATURES_CORE_PRODUCT_MARKDOWN_PARSING: 'features/core/product:markdown-parsing' as const,
- /** Extract headings at all levels as sections */
+
   FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__HEADING_EXTRACTION: 'features/core/product:markdown-parsing/heading-extraction' as const,
- /** Generate URL-friendly slugs from heading text */
+
   FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__SLUG_GENERATION: 'features/core/product:markdown-parsing/slug-generation' as const,
  /** Support explicit anchor syntax: '## Heading */
   FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__CUSTOM_SLUG: 'features/core/product:markdown-parsing/custom-slug' as const,
- /** Support nested heading levels with proper hierarchy */
+
   FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__HEADING_HIERARCHY: 'features/core/product:markdown-parsing/heading-hierarchy' as const,
- /** Validate that referenced sections exist in source files */
+
   FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__SECTION_VALIDATION: 'features/core/product:markdown-parsing/section-validation' as const,
- /** Handle markdown with frontmatter and code blocks */
+
   FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__FRONTMATTER_HANDLING: 'features/core/product:markdown-parsing/frontmatter-handling' as const,
  /** Guest Purchase Flow */
   FEATURES_CORE_PRODUCT_GUEST_PURCHASE: 'features/core/product:guest-purchase' as const,
  /** Test Scanning */
   FEATURES_CORE_PRODUCT_TEST_SCANNING: 'features/core/product:test-scanning' as const,
- /** Find test files matching configured glob patterns */
+
   FEATURES_CORE_PRODUCT_TEST_SCANNING__TEST_FILE_DISCOVERY: 'features/core/product:test-scanning/test-file-discovery' as const,
- /** Support Playwright-style annotations: 'annotation: facet('id')' */
+
   FEATURES_CORE_PRODUCT_TEST_SCANNING__PLAYWRIGHT_ANNOTATIONS: 'features/core/product:test-scanning/playwright-annotations' as const,
- /** Support comment-based annotations: '// @facet id1, id2' */
+
   FEATURES_CORE_PRODUCT_TEST_SCANNING__COMMENT_ANNOTATIONS: 'features/core/product:test-scanning/comment-annotations' as const,
- /** Track describe block nesting for full test titles */
+
   FEATURES_CORE_PRODUCT_TEST_SCANNING__DESCRIBE_NESTING: 'features/core/product:test-scanning/describe-nesting' as const,
- /** Return test file path, title, and linked facet IDs */
+
   FEATURES_CORE_PRODUCT_TEST_SCANNING__TEST_METADATA: 'features/core/product:test-scanning/test-metadata' as const,
  /** Validation */
   FEATURES_CORE_PRODUCT_VALIDATION: 'features/core/product:validation' as const,
- /** Detect duplicate facet IDs across structure files */
+
   FEATURES_CORE_PRODUCT_VALIDATION__DUPLICATE_DETECTION: 'features/core/product:validation/duplicate-detection' as const,
- /** Verify source markdown files exist */
+
   FEATURES_CORE_PRODUCT_VALIDATION__SOURCE_VERIFICATION: 'features/core/product:validation/source-verification' as const,
- /** Verify referenced sections exist in source files */
+
   FEATURES_CORE_PRODUCT_VALIDATION__SECTION_VERIFICATION: 'features/core/product:validation/section-verification' as const,
- /** Identify tests referencing non-existent facets (orphan tests) */
+
   FEATURES_CORE_PRODUCT_VALIDATION__ORPHAN_TESTS: 'features/core/product:validation/orphan-tests' as const,
- /** Identify facets without any test coverage (uncovered facets) */
+
   FEATURES_CORE_PRODUCT_VALIDATION__UNCOVERED_FACETS: 'features/core/product:validation/uncovered-facets' as const,
- /** Return structured errors and warnings */
+
   FEATURES_CORE_PRODUCT_VALIDATION__ERROR_REPORTING: 'features/core/product:validation/error-reporting' as const,
  /** Coverage Calculation */
   FEATURES_CORE_PRODUCT_COVERAGE_CALCULATION: 'features/core/product:coverage-calculation' as const,
- /** Calculate overall coverage percentage */
+
   FEATURES_CORE_PRODUCT_COVERAGE_CALCULATION__OVERALL_COVERAGE: 'features/core/product:coverage-calculation/overall-coverage' as const,
- /** Calculate coverage by facet type (business, compliance, ux, etc.) */
+
   FEATURES_CORE_PRODUCT_COVERAGE_CALCULATION__TYPE_COVERAGE: 'features/core/product:coverage-calculation/type-coverage' as const,
- /** Calculate coverage per feature */
+
   FEATURES_CORE_PRODUCT_COVERAGE_CALCULATION__FEATURE_COVERAGE: 'features/core/product:coverage-calculation/feature-coverage' as const,
- /** Check coverage against configured thresholds */
+
   FEATURES_CORE_PRODUCT_COVERAGE_CALCULATION__THRESHOLD_CHECKING: 'features/core/product:coverage-calculation/threshold-checking' as const,
- /** Return comprehensive coverage report with all metrics */
+
   FEATURES_CORE_PRODUCT_COVERAGE_CALCULATION__COVERAGE_REPORT: 'features/core/product:coverage-calculation/coverage-report' as const,
 } as const;
 
