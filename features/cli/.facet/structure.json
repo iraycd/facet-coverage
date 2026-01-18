@@ -435,17 +435,6 @@
       "isSubFacet": true
     },
     {
-      "id": "features/cli/product:generate-command/stable-id",
-      "source": {
-        "file": "facets/product.md",
-        "section": "generate-command",
-        "line": 13
-      },
-      "type": "product",
-      "parentId": "features/cli/product:generate-command",
-      "isSubFacet": true
-    },
-    {
       "id": "features/cli/product:generate-command/explicit-anchor-syntax",
       "source": {
         "file": "facets/product.md",

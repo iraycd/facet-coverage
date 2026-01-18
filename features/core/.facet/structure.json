@@ -486,17 +486,6 @@
       "isSubFacet": true
     },
     {
-      "id": "features/core/product:markdown-parsing/custom-slug",
-      "source": {
-        "file": "facets/product.md",
-        "section": "markdown-parsing",
-        "line": 21
-      },
-      "type": "product",
-      "parentId": "features/core/product:markdown-parsing",
-      "isSubFacet": true
-    },
-    {
       "id": "features/core/product:markdown-parsing/heading-hierarchy",
       "source": {
         "file": "facets/product.md",
@@ -524,17 +513,6 @@
         "file": "facets/product.md",
         "section": "markdown-parsing",
         "line": 24
-      },
-      "type": "product",
-      "parentId": "features/core/product:markdown-parsing",
-      "isSubFacet": true
-    },
-    {
-      "id": "features/core/product:markdown-parsing/id",
-      "source": {
-        "file": "facets/product.md",
-        "section": "markdown-parsing",
-        "line": 28
       },
       "type": "product",
       "parentId": "features/core/product:markdown-parsing",

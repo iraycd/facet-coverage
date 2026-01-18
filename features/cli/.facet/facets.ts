@@ -50,7 +50,6 @@ export type FacetId =
   | 'features/cli/product:generate-command/file-scanning'
   | 'features/cli/product:generate-command/heading-parsing'
   | 'features/cli/product:generate-command/auto-ids'
-  | 'features/cli/product:generate-command/stable-id'
   | 'features/cli/product:generate-command/explicit-anchor-syntax'
   | 'features/cli/product:generate-command/structure-output'
   | 'features/cli/product:generate-command/types-generation'
@@ -181,8 +180,6 @@ export const Facets = {
   FEATURES_CLI_PRODUCT_GENERATE_COMMAND__HEADING_PARSING: 'features/cli/product:generate-command/heading-parsing' as const,
 
   FEATURES_CLI_PRODUCT_GENERATE_COMMAND__AUTO_IDS: 'features/cli/product:generate-command/auto-ids' as const,
-
-  FEATURES_CLI_PRODUCT_GENERATE_COMMAND__STABLE_ID: 'features/cli/product:generate-command/stable-id' as const,
 
   FEATURES_CLI_PRODUCT_GENERATE_COMMAND__EXPLICIT_ANCHOR_SYNTAX: 'features/cli/product:generate-command/explicit-anchor-syntax' as const,
 
@@ -336,7 +333,6 @@ export const allFacetIds: FacetId[] = [
   'features/cli/product:generate-command/file-scanning',
   'features/cli/product:generate-command/heading-parsing',
   'features/cli/product:generate-command/auto-ids',
-  'features/cli/product:generate-command/stable-id',
   'features/cli/product:generate-command/explicit-anchor-syntax',
   'features/cli/product:generate-command/structure-output',
   'features/cli/product:generate-command/types-generation',

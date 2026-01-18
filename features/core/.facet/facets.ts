@@ -55,11 +55,9 @@ export type FacetId =
   | 'features/core/product:markdown-parsing/heading-extraction'
   | 'features/core/product:markdown-parsing/slug-generation'
   | 'features/core/product:markdown-parsing/custom-slug'
-  | 'features/core/product:markdown-parsing/custom-slug'
   | 'features/core/product:markdown-parsing/heading-hierarchy'
   | 'features/core/product:markdown-parsing/section-validation'
   | 'features/core/product:markdown-parsing/frontmatter-handling'
-  | 'features/core/product:markdown-parsing/id'
   | 'features/core/product:guest-purchase'
   | 'features/core/product:test-scanning'
   | 'features/core/product:test-scanning/test-file-discovery'
@@ -178,15 +176,11 @@ export const Facets = {
 
   FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__CUSTOM_SLUG: 'features/core/product:markdown-parsing/custom-slug' as const,
 
-  FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__CUSTOM_SLUG: 'features/core/product:markdown-parsing/custom-slug' as const,
-
   FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__HEADING_HIERARCHY: 'features/core/product:markdown-parsing/heading-hierarchy' as const,
 
   FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__SECTION_VALIDATION: 'features/core/product:markdown-parsing/section-validation' as const,
 
   FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__FRONTMATTER_HANDLING: 'features/core/product:markdown-parsing/frontmatter-handling' as const,
-
-  FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__ID: 'features/core/product:markdown-parsing/id' as const,
  /** Guest Purchase Flow */
   FEATURES_CORE_PRODUCT_GUEST_PURCHASE: 'features/core/product:guest-purchase' as const,
  /** Test Scanning */
@@ -299,11 +293,9 @@ export const allFacetIds: FacetId[] = [
   'features/core/product:markdown-parsing/heading-extraction',
   'features/core/product:markdown-parsing/slug-generation',
   'features/core/product:markdown-parsing/custom-slug',
-  'features/core/product:markdown-parsing/custom-slug',
   'features/core/product:markdown-parsing/heading-hierarchy',
   'features/core/product:markdown-parsing/section-validation',
   'features/core/product:markdown-parsing/frontmatter-handling',
-  'features/core/product:markdown-parsing/id',
   'features/core/product:guest-purchase',
   'features/core/product:test-scanning',
   'features/core/product:test-scanning/test-file-discovery',
