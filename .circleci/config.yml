@@ -1,0 +1,68 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@5.2.0
+
+jobs:
+  test:
+    docker:
+      - image: oven/bun:1
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: bun install
+      - run:
+          name: Build
+          command: bun run build
+      - run:
+          name: Test
+          command: bun run test
+
+  publish:
+    docker:
+      - image: oven/bun:1
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: bun install
+      - run:
+          name: Build
+          command: bun run build
+      - run:
+          name: Test
+          command: bun run test
+      - run:
+          name: Setup npm auth
+          command: echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+      - run:
+          name: Publish to npm
+          command: npm publish --access public
+
+workflows:
+  ci:
+    jobs:
+      - test:
+          filters:
+            branches:
+              only: /.*/
+            tags:
+              ignore: /.*/
+
+  release:
+    jobs:
+      - test:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v.*/
+      - publish:
+          requires:
+            - test
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^v.*/
