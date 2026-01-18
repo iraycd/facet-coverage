@@ -2,6 +2,234 @@
   "feature": "cli",
   "facets": [
     {
+      "id": "features/cli/config:configuration",
+      "source": {
+        "file": "config.facet.md",
+        "section": "configuration"
+      },
+      "type": "config",
+      "title": "Configuration"
+    },
+    {
+      "id": "features/cli/config:file-discovery",
+      "source": {
+        "file": "config.facet.md",
+        "section": "file-discovery"
+      },
+      "type": "config",
+      "title": "Config File Discovery"
+    },
+    {
+      "id": "features/cli/config:file-discovery/search-js",
+      "source": {
+        "file": "config.facet.md",
+        "section": "file-discovery",
+        "line": 9
+      },
+      "type": "config",
+      "title": "Search for `facet.config.js` (ESM or CommonJS)",
+      "parentId": "features/cli/config:file-discovery",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/config:file-discovery/search-mjs",
+      "source": {
+        "file": "config.facet.md",
+        "section": "file-discovery",
+        "line": 10
+      },
+      "type": "config",
+      "title": "Search for `facet.config.mjs` (ESM only)",
+      "parentId": "features/cli/config:file-discovery",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/config:file-discovery/search-json",
+      "source": {
+        "file": "config.facet.md",
+        "section": "file-discovery",
+        "line": 11
+      },
+      "type": "config",
+      "title": "Search for `facet.config.json` (JSON)",
+      "parentId": "features/cli/config:file-discovery",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/config:file-discovery/config-flag",
+      "source": {
+        "file": "config.facet.md",
+        "section": "file-discovery",
+        "line": 12
+      },
+      "type": "config",
+      "title": "Support `--config` flag to specify custom path",
+      "parentId": "features/cli/config:file-discovery",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/config:file-discovery/merge-defaults",
+      "source": {
+        "file": "config.facet.md",
+        "section": "file-discovery",
+        "line": 13
+      },
+      "type": "config",
+      "title": "Merge with default configuration values",
+      "parentId": "features/cli/config:file-discovery",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/config:file-discovery/cwd-config",
+      "source": {
+        "file": "config.facet.md",
+        "section": "file-discovery",
+        "line": 14
+      },
+      "type": "config",
+      "title": "Support configuration in current working directory",
+      "parentId": "features/cli/config:file-discovery",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/config:facet-patterns",
+      "source": {
+        "file": "config.facet.md",
+        "section": "facet-patterns"
+      },
+      "type": "config",
+      "title": "Facet Patterns"
+    },
+    {
+      "id": "features/cli/config:facet-patterns/pattern-types",
+      "source": {
+        "file": "config.facet.md",
+        "section": "facet-patterns",
+        "line": 22
+      },
+      "type": "config",
+      "title": "Support `facetPattern` as string or array",
+      "parentId": "features/cli/config:facet-patterns",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/config:facet-patterns/default-patterns",
+      "source": {
+        "file": "config.facet.md",
+        "section": "facet-patterns",
+        "line": 23
+      },
+      "type": "config",
+      "title": "Default patterns: `['features/**/*.facet.md', 'features/**/facets/*.md']`",
+      "parentId": "features/cli/config:facet-patterns",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/config:facet-patterns/relative-expansion",
+      "source": {
+        "file": "config.facet.md",
+        "section": "facet-patterns",
+        "line": 24
+      },
+      "type": "config",
+      "title": "Expand patterns relative to project root",
+      "parentId": "features/cli/config:facet-patterns",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/config:facet-patterns/dedupe",
+      "source": {
+        "file": "config.facet.md",
+        "section": "facet-patterns",
+        "line": 25
+      },
+      "type": "config",
+      "title": "Remove duplicate matches",
+      "parentId": "features/cli/config:facet-patterns",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/config:facet-patterns/group-by-feature",
+      "source": {
+        "file": "config.facet.md",
+        "section": "facet-patterns",
+        "line": 26
+      },
+      "type": "config",
+      "title": "Group discovered files by feature directory",
+      "parentId": "features/cli/config:facet-patterns",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/config:facet-types",
+      "source": {
+        "file": "config.facet.md",
+        "section": "facet-types"
+      },
+      "type": "config",
+      "title": "Facet Types"
+    },
+    {
+      "id": "features/cli/config:facet-types/types-array",
+      "source": {
+        "file": "config.facet.md",
+        "section": "facet-types",
+        "line": 34
+      },
+      "type": "config",
+      "title": "Support `facetTypes` array in configuration",
+      "parentId": "features/cli/config:facet-types",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/config:facet-types/default-types",
+      "source": {
+        "file": "config.facet.md",
+        "section": "facet-types",
+        "line": 35
+      },
+      "type": "config",
+      "title": "Default types: `['product', 'dx', 'technical', 'compliance', 'business', 'ux']`",
+      "parentId": "features/cli/config:facet-types",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/config:facet-types/constant-conversion",
+      "source": {
+        "file": "config.facet.md",
+        "section": "facet-types",
+        "line": 36
+      },
+      "type": "config",
+      "title": "Use for converting `Facets.BUSINESS_X` to `business:x`",
+      "parentId": "features/cli/config:facet-types",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/config:facet-types/hierarchical-ids",
+      "source": {
+        "file": "config.facet.md",
+        "section": "facet-types",
+        "line": 37
+      },
+      "type": "config",
+      "title": "Support hierarchical IDs in nested structures",
+      "parentId": "features/cli/config:facet-types",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/config:facet-types/custom-types",
+      "source": {
+        "file": "config.facet.md",
+        "section": "facet-types",
+        "line": 38
+      },
+      "type": "config",
+      "title": "Allow custom types per project",
+      "parentId": "features/cli/config:facet-types",
+      "isSubFacet": true
+    },
+    {
       "id": "features/cli/dx:developer-experience",
       "source": {
         "file": "facets/dx.md",
@@ -20,13 +248,145 @@
       "title": "CLI Ergonomics"
     },
     {
-      "id": "features/cli/dx:configuration-discovery",
+      "id": "features/cli/dx:cli-ergonomics/command-names",
       "source": {
         "file": "facets/dx.md",
-        "section": "configuration-discovery"
+        "section": "cli-ergonomics",
+        "line": 9
+      },
+      "type": "dx",
+      "title": "Support both `facet` and `facet-coverage` as command names",
+      "parentId": "features/cli/dx:cli-ergonomics",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/dx:cli-ergonomics/help-text",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "cli-ergonomics",
+        "line": 10
+      },
+      "type": "dx",
+      "title": "Display help text with usage examples",
+      "parentId": "features/cli/dx:cli-ergonomics",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/dx:cli-ergonomics/progress-indicators",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "cli-ergonomics",
+        "line": 11
+      },
+      "type": "dx",
+      "title": "Show progress indicators during long operations",
+      "parentId": "features/cli/dx:cli-ergonomics",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/dx:cli-ergonomics/color-coding",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "cli-ergonomics",
+        "line": 12
+      },
+      "type": "dx",
+      "title": "Use color coding for success/warning/error messages",
+      "parentId": "features/cli/dx:cli-ergonomics",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/dx:cli-ergonomics/emoji-indicators",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "cli-ergonomics",
+        "line": 13
+      },
+      "type": "dx",
+      "title": "Display emoji indicators for quick visual scanning",
+      "parentId": "features/cli/dx:cli-ergonomics",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/dx:cli-ergonomics/common-flags",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "cli-ergonomics",
+        "line": 14
+      },
+      "type": "dx",
+      "title": "Support common flags like `--help` and `--version`",
+      "parentId": "features/cli/dx:cli-ergonomics",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/dx:config-discovery",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "config-discovery"
       },
       "type": "dx",
       "title": "Configuration Discovery"
+    },
+    {
+      "id": "features/cli/dx:config-discovery/config-locations",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "config-discovery",
+        "line": 22
+      },
+      "type": "dx",
+      "title": "Look for configuration in standard locations",
+      "parentId": "features/cli/dx:config-discovery",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/dx:config-discovery/config-formats",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "config-discovery",
+        "line": 23
+      },
+      "type": "dx",
+      "title": "Support multiple config file formats (js, mjs, json)",
+      "parentId": "features/cli/dx:config-discovery",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/dx:config-discovery/config-flag",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "config-discovery",
+        "line": 24
+      },
+      "type": "dx",
+      "title": "Support custom config path via `-c` flag",
+      "parentId": "features/cli/dx:config-discovery",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/dx:config-discovery/config-merge",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "config-discovery",
+        "line": 25
+      },
+      "type": "dx",
+      "title": "Merge user config with sensible defaults",
+      "parentId": "features/cli/dx:config-discovery",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/dx:config-discovery/config-warning",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "config-discovery",
+        "line": 26
+      },
+      "type": "dx",
+      "title": "Warn when no config file is found",
+      "parentId": "features/cli/dx:config-discovery",
+      "isSubFacet": true
     },
     {
       "id": "features/cli/product:cli-commands",
@@ -38,40 +398,604 @@
       "title": "CLI Commands"
     },
     {
-      "id": "features/cli/product:generate-command",
+      "id": "features/cli/product:generate",
       "source": {
         "file": "facets/product.md",
-        "section": "generate-command"
+        "section": "generate"
       },
       "type": "product",
       "title": "Generate Command"
     },
     {
-      "id": "features/cli/product:analyze-command",
+      "id": "features/cli/product:generate/directory-argument",
       "source": {
         "file": "facets/product.md",
-        "section": "analyze-command"
+        "section": "generate",
+        "line": 9
+      },
+      "type": "product",
+      "title": "Accept optional directory path as argument",
+      "parentId": "features/cli/product:generate",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:generate/config-pattern",
+      "source": {
+        "file": "facets/product.md",
+        "section": "generate",
+        "line": 10
+      },
+      "type": "product",
+      "title": "When no directory specified, use `facetPattern` from config",
+      "parentId": "features/cli/product:generate",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:generate/file-scanning",
+      "source": {
+        "file": "facets/product.md",
+        "section": "generate",
+        "line": 11
+      },
+      "type": "product",
+      "title": "Scan directory for markdown files (both `*.facet.md` and `facets/*.md`)",
+      "parentId": "features/cli/product:generate",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:generate/heading-parsing",
+      "source": {
+        "file": "facets/product.md",
+        "section": "generate",
+        "line": 12
+      },
+      "type": "product",
+      "title": "Parse each markdown file for heading sections",
+      "parentId": "features/cli/product:generate",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:generate/auto-ids",
+      "source": {
+        "file": "facets/product.md",
+        "section": "generate",
+        "line": 13
+      },
+      "type": "product",
+      "title": "Create facet entries with auto-generated IDs (format: `type:section-slug`)",
+      "parentId": "features/cli/product:generate",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:generate/stable-id",
+      "source": {
+        "file": "facets/product.md",
+        "section": "generate",
+        "line": 14
+      },
+      "type": "product",
+      "title": "Support explicit anchor syntax for stable IDs: `## Heading",
+      "parentId": "features/cli/product:generate",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:generate/structure-output",
+      "source": {
+        "file": "facets/product.md",
+        "section": "generate",
+        "line": 15
+      },
+      "type": "product",
+      "title": "Write structure.json to `.facet/` directory",
+      "parentId": "features/cli/product:generate",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:generate/types-generation",
+      "source": {
+        "file": "facets/product.md",
+        "section": "generate",
+        "line": 16
+      },
+      "type": "product",
+      "title": "Generate TypeScript types file (`facets.ts`) with type-safe constants",
+      "parentId": "features/cli/product:generate",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:generate/output-flag",
+      "source": {
+        "file": "facets/product.md",
+        "section": "generate",
+        "line": 17
+      },
+      "type": "product",
+      "title": "Support custom output directory via `-o` flag",
+      "parentId": "features/cli/product:generate",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:generate/type-flag",
+      "source": {
+        "file": "facets/product.md",
+        "section": "generate",
+        "line": 18
+      },
+      "type": "product",
+      "title": "Support type override via `-t` flag",
+      "parentId": "features/cli/product:generate",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:generate/global-flag",
+      "source": {
+        "file": "facets/product.md",
+        "section": "generate",
+        "line": 19
+      },
+      "type": "product",
+      "title": "Support `--global` flag to generate combined types at root",
+      "parentId": "features/cli/product:generate",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:generate/no-types-flag",
+      "source": {
+        "file": "facets/product.md",
+        "section": "generate",
+        "line": 20
+      },
+      "type": "product",
+      "title": "Support `--no-types` flag to skip TypeScript generation",
+      "parentId": "features/cli/product:generate",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:generate/quiet-flag",
+      "source": {
+        "file": "facets/product.md",
+        "section": "generate",
+        "line": 21
+      },
+      "type": "product",
+      "title": "Support `-q, --quiet` flag to suppress ID change warnings",
+      "parentId": "features/cli/product:generate",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:generate/id-change-detection",
+      "source": {
+        "file": "facets/product.md",
+        "section": "generate",
+        "line": 23
+      },
+      "type": "product",
+      "title": "ID Change Detection",
+      "parentId": "features/cli/product:generate",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:generate/id-change-detection/compare-structures",
+      "source": {
+        "file": "facets/product.md",
+        "section": "generate",
+        "line": 27
+      },
+      "type": "product",
+      "title": "Compare new structure.json with existing",
+      "parentId": "features/cli/product:generate/id-change-detection",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:generate/id-change-detection/warn-renames",
+      "source": {
+        "file": "facets/product.md",
+        "section": "generate",
+        "line": 28
+      },
+      "type": "product",
+      "title": "Warn about renamed IDs (heading text changed)",
+      "parentId": "features/cli/product:generate/id-change-detection",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:generate/id-change-detection/warn-removals",
+      "source": {
+        "file": "facets/product.md",
+        "section": "generate",
+        "line": 29
+      },
+      "type": "product",
+      "title": "Warn about removed IDs",
+      "parentId": "features/cli/product:generate/id-change-detection",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:generate/id-change-detection/show-affected-tests",
+      "source": {
+        "file": "facets/product.md",
+        "section": "generate",
+        "line": 30
+      },
+      "type": "product",
+      "title": "Show affected tests that may need updates",
+      "parentId": "features/cli/product:generate/id-change-detection",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:generate/id-change-detection/suggest-anchors",
+      "source": {
+        "file": "facets/product.md",
+        "section": "generate",
+        "line": 31
+      },
+      "type": "product",
+      "title": "Suggest using explicit anchors for stability",
+      "parentId": "features/cli/product:generate/id-change-detection",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:generate/type-gen",
+      "source": {
+        "file": "facets/product.md",
+        "section": "generate",
+        "line": 33
+      },
+      "type": "product",
+      "title": "Type Generation",
+      "parentId": "features/cli/product:generate",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:generate/type-gen/facet-id-type",
+      "source": {
+        "file": "facets/product.md",
+        "section": "generate",
+        "line": 37
+      },
+      "type": "product",
+      "title": "`FacetId` union type of all valid IDs",
+      "parentId": "features/cli/product:generate/type-gen",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:generate/type-gen/facets-const",
+      "source": {
+        "file": "facets/product.md",
+        "section": "generate",
+        "line": 38
+      },
+      "type": "product",
+      "title": "`Facets` const object for autocomplete",
+      "parentId": "features/cli/product:generate/type-gen",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:generate/type-gen/facet-function",
+      "source": {
+        "file": "facets/product.md",
+        "section": "generate",
+        "line": 39
+      },
+      "type": "product",
+      "title": "`facet()` helper function for test annotations",
+      "parentId": "features/cli/product:generate/type-gen",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:generate/type-gen/all-facet-ids",
+      "source": {
+        "file": "facets/product.md",
+        "section": "generate",
+        "line": 40
+      },
+      "type": "product",
+      "title": "`allFacetIds` array of all IDs",
+      "parentId": "features/cli/product:generate/type-gen",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:analyze",
+      "source": {
+        "file": "facets/product.md",
+        "section": "analyze"
       },
       "type": "product",
       "title": "Analyze Command"
     },
     {
-      "id": "features/cli/product:validate-command",
+      "id": "features/cli/product:analyze/config-loading",
       "source": {
         "file": "facets/product.md",
-        "section": "validate-command"
+        "section": "analyze",
+        "line": 48
+      },
+      "type": "product",
+      "title": "Load configuration from facet.config.json or specified file",
+      "parentId": "features/cli/product:analyze",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:analyze/structure-reading",
+      "source": {
+        "file": "facets/product.md",
+        "section": "analyze",
+        "line": 49
+      },
+      "type": "product",
+      "title": "Read all structure files",
+      "parentId": "features/cli/product:analyze",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:analyze/test-scanning",
+      "source": {
+        "file": "facets/product.md",
+        "section": "analyze",
+        "line": 50
+      },
+      "type": "product",
+      "title": "Scan all test files for facet annotations",
+      "parentId": "features/cli/product:analyze",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:analyze/coverage-metrics",
+      "source": {
+        "file": "facets/product.md",
+        "section": "analyze",
+        "line": 51
+      },
+      "type": "product",
+      "title": "Calculate coverage metrics",
+      "parentId": "features/cli/product:analyze",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:analyze/report-generation",
+      "source": {
+        "file": "facets/product.md",
+        "section": "analyze",
+        "line": 52
+      },
+      "type": "product",
+      "title": "Generate reports in configured formats (JSON, HTML, Markdown)",
+      "parentId": "features/cli/product:analyze",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:analyze/console-summary",
+      "source": {
+        "file": "facets/product.md",
+        "section": "analyze",
+        "line": 53
+      },
+      "type": "product",
+      "title": "Display coverage summary in console",
+      "parentId": "features/cli/product:analyze",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:analyze/threshold-exit",
+      "source": {
+        "file": "facets/product.md",
+        "section": "analyze",
+        "line": 54
+      },
+      "type": "product",
+      "title": "Exit with code 1 if thresholds not met (for CI/CD)",
+      "parentId": "features/cli/product:analyze",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:analyze/json-flag",
+      "source": {
+        "file": "facets/product.md",
+        "section": "analyze",
+        "line": 55
+      },
+      "type": "product",
+      "title": "Support `--json` flag for machine-readable output",
+      "parentId": "features/cli/product:analyze",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:analyze/silent-flag",
+      "source": {
+        "file": "facets/product.md",
+        "section": "analyze",
+        "line": 56
+      },
+      "type": "product",
+      "title": "Support `--silent` flag to suppress console output",
+      "parentId": "features/cli/product:analyze",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:validate",
+      "source": {
+        "file": "facets/product.md",
+        "section": "validate"
       },
       "type": "product",
       "title": "Validate Command"
     },
     {
-      "id": "features/cli/product:watch-command",
+      "id": "features/cli/product:validate/structure-validity",
       "source": {
         "file": "facets/product.md",
-        "section": "watch-command"
+        "section": "validate",
+        "line": 64
+      },
+      "type": "product",
+      "title": "Check all structure files for validity",
+      "parentId": "features/cli/product:validate",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:validate/source-verification",
+      "source": {
+        "file": "facets/product.md",
+        "section": "validate",
+        "line": 65
+      },
+      "type": "product",
+      "title": "Verify source files and sections exist",
+      "parentId": "features/cli/product:validate",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:validate/duplicate-check",
+      "source": {
+        "file": "facets/product.md",
+        "section": "validate",
+        "line": 66
+      },
+      "type": "product",
+      "title": "Check for duplicate facet IDs",
+      "parentId": "features/cli/product:validate",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:validate/orphan-detection",
+      "source": {
+        "file": "facets/product.md",
+        "section": "validate",
+        "line": 67
+      },
+      "type": "product",
+      "title": "Identify orphan tests and uncovered facets",
+      "parentId": "features/cli/product:validate",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:validate/validation-display",
+      "source": {
+        "file": "facets/product.md",
+        "section": "validate",
+        "line": 68
+      },
+      "type": "product",
+      "title": "Display validation results with errors and warnings",
+      "parentId": "features/cli/product:validate",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:validate/strict-mode",
+      "source": {
+        "file": "facets/product.md",
+        "section": "validate",
+        "line": 69
+      },
+      "type": "product",
+      "title": "Support `--strict` mode requiring all tests to be linked",
+      "parentId": "features/cli/product:validate",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:validate/json-output",
+      "source": {
+        "file": "facets/product.md",
+        "section": "validate",
+        "line": 70
+      },
+      "type": "product",
+      "title": "Support `--json` flag for structured output",
+      "parentId": "features/cli/product:validate",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:validate/validation-exit",
+      "source": {
+        "file": "facets/product.md",
+        "section": "validate",
+        "line": 71
+      },
+      "type": "product",
+      "title": "Exit with code 1 if validation fails",
+      "parentId": "features/cli/product:validate",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:watch",
+      "source": {
+        "file": "facets/product.md",
+        "section": "watch"
       },
       "type": "product",
       "title": "Watch Command"
+    },
+    {
+      "id": "features/cli/product:watch/monitor-facets",
+      "source": {
+        "file": "facets/product.md",
+        "section": "watch",
+        "line": 79
+      },
+      "type": "product",
+      "title": "Monitor facet markdown files for changes",
+      "parentId": "features/cli/product:watch",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:watch/monitor-tests",
+      "source": {
+        "file": "facets/product.md",
+        "section": "watch",
+        "line": 80
+      },
+      "type": "product",
+      "title": "Monitor test files for changes",
+      "parentId": "features/cli/product:watch",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:watch/monitor-structures",
+      "source": {
+        "file": "facets/product.md",
+        "section": "watch",
+        "line": 81
+      },
+      "type": "product",
+      "title": "Monitor structure.json files for changes",
+      "parentId": "features/cli/product:watch",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:watch/rerun-analysis",
+      "source": {
+        "file": "facets/product.md",
+        "section": "watch",
+        "line": 82
+      },
+      "type": "product",
+      "title": "Re-run analysis on detected changes",
+      "parentId": "features/cli/product:watch",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:watch/validate-flag",
+      "source": {
+        "file": "facets/product.md",
+        "section": "watch",
+        "line": 83
+      },
+      "type": "product",
+      "title": "Support optional validation before analysis via `-v` flag",
+      "parentId": "features/cli/product:watch",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/product:watch/timestamps",
+      "source": {
+        "file": "facets/product.md",
+        "section": "watch",
+        "line": 84
+      },
+      "type": "product",
+      "title": "Display timestamps for each analysis run",
+      "parentId": "features/cli/product:watch",
+      "isSubFacet": true
     }
   ]
 }

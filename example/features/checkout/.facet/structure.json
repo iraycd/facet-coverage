@@ -29,33 +29,6 @@
       "title": "Cart Management"
     },
     {
-      "id": "compliance:compliance-requirements",
-      "source": {
-        "file": "facets/compliance.md",
-        "section": "compliance-requirements"
-      },
-      "type": "compliance",
-      "title": "Compliance Requirements"
-    },
-    {
-      "id": "compliance:pci-dss-payment-requirements",
-      "source": {
-        "file": "facets/compliance.md",
-        "section": "pci-dss-payment-requirements"
-      },
-      "type": "compliance",
-      "title": "PCI-DSS Payment Requirements"
-    },
-    {
-      "id": "compliance:gdpr-data-handling",
-      "source": {
-        "file": "facets/compliance.md",
-        "section": "gdpr-data-handling"
-      },
-      "type": "compliance",
-      "title": "GDPR Data Handling"
-    },
-    {
       "id": "ux:ux-requirements",
       "source": {
         "file": "facets/ux.md",
@@ -65,13 +38,48 @@
       "title": "UX Requirements"
     },
     {
-      "id": "ux:mobile-checkout-experience",
+      "id": "ux:mobile-checkout",
       "source": {
         "file": "facets/ux.md",
-        "section": "mobile-checkout-experience"
+        "section": "mobile-checkout"
       },
       "type": "ux",
       "title": "Mobile Checkout Experience"
+    },
+    {
+      "id": "ux:mobile-checkout/responsive",
+      "source": {
+        "file": "facets/ux.md",
+        "section": "mobile-checkout",
+        "line": 7
+      },
+      "type": "ux",
+      "title": "Mobile Layout Requirements",
+      "parentId": "ux:mobile-checkout",
+      "isSubFacet": true
+    },
+    {
+      "id": "ux:mobile-checkout/responsive/performance",
+      "source": {
+        "file": "facets/ux.md",
+        "section": "mobile-checkout",
+        "line": 13
+      },
+      "type": "ux",
+      "parentId": "ux:mobile-checkout/responsive",
+      "isSubFacet": true
+    },
+    {
+      "id": "ux:mobile-checkout/accessibility",
+      "source": {
+        "file": "facets/ux.md",
+        "section": "mobile-checkout",
+        "line": 16
+      },
+      "type": "ux",
+      "title": "Accessibility",
+      "parentId": "ux:mobile-checkout",
+      "isSubFacet": true
     },
     {
       "id": "ux:form-validation",
@@ -81,6 +89,93 @@
       },
       "type": "ux",
       "title": "Form Validation"
+    },
+    {
+      "id": "compliance:compliance-requirements",
+      "source": {
+        "file": "facets/compliance.md",
+        "section": "compliance-requirements"
+      },
+      "type": "compliance",
+      "title": "Compliance Requirements"
+    },
+    {
+      "id": "compliance:pci-dss",
+      "source": {
+        "file": "facets/compliance.md",
+        "section": "pci-dss"
+      },
+      "type": "compliance",
+      "title": "PCI-DSS Payment Requirements"
+    },
+    {
+      "id": "compliance:pci-dss/tls",
+      "source": {
+        "file": "facets/compliance.md",
+        "section": "pci-dss",
+        "line": 7
+      },
+      "type": "compliance",
+      "title": "Encryption in transit",
+      "parentId": "compliance:pci-dss",
+      "isSubFacet": true
+    },
+    {
+      "id": "compliance:pci-dss/cvv",
+      "source": {
+        "file": "facets/compliance.md",
+        "section": "pci-dss",
+        "line": 8
+      },
+      "type": "compliance",
+      "title": "No CVV storage",
+      "parentId": "compliance:pci-dss",
+      "isSubFacet": true
+    },
+    {
+      "id": "compliance:pci-dss/masking",
+      "source": {
+        "file": "facets/compliance.md",
+        "section": "pci-dss",
+        "line": 9
+      },
+      "type": "compliance",
+      "title": "Card masking",
+      "parentId": "compliance:pci-dss",
+      "isSubFacet": true
+    },
+    {
+      "id": "compliance:pci-dss/logging",
+      "source": {
+        "file": "facets/compliance.md",
+        "section": "pci-dss",
+        "line": 10
+      },
+      "type": "compliance",
+      "title": "Transaction logging",
+      "parentId": "compliance:pci-dss",
+      "isSubFacet": true
+    },
+    {
+      "id": "compliance:pci-dss/fraud",
+      "source": {
+        "file": "facets/compliance.md",
+        "section": "pci-dss",
+        "line": 11
+      },
+      "type": "compliance",
+      "title": "Fraud monitoring",
+      "parentId": "compliance:pci-dss",
+      "isSubFacet": true
+    },
+    {
+      "id": "compliance:gdpr",
+      "source": {
+        "file": "facets/compliance.md",
+        "section": "gdpr"
+      },
+      "type": "compliance",
+      "title": "GDPR Data Handling"
     }
   ]
 }

@@ -16,17 +16,33 @@ export class TestScanner {
 
   /**
    * Convert a Facets constant name to a facet ID.
-   * Handles hierarchical IDs like:
+   * Handles hierarchical IDs and sub-facets:
    * - FEATURES_CORE_PRODUCT_STRUCTURE_READING -> features/core/product:structure-reading
    * - FEATURES_CLI_DX_CLI_ERGONOMICS -> features/cli/dx:cli-ergonomics
    * - PRODUCT_STRUCTURE_READING -> product:structure-reading (legacy)
+   * - COMPLIANCE_PCI_DSS__TLS -> compliance:pci-dss/tls (sub-facet with __)
+   *
+   * Convention: Double underscore (__) in the constant name indicates a sub-facet separator (/)
    */
   private convertConstantToFacetId(constName: string): string {
     // Get facet types from config
     const knownTypes = this.config.facetTypes || [];
 
-    // Split by underscore and lowercase
-    const parts = constName.toLowerCase().split('_');
+    // First, check for double underscore which indicates sub-facet
+    // We need to handle this before splitting by single underscore
+    let subFacetPart: string | null = null;
+    let mainConstName = constName;
+
+    const doubleUnderscoreIndex = constName.indexOf('__');
+    if (doubleUnderscoreIndex !== -1) {
+      mainConstName = constName.substring(0, doubleUnderscoreIndex);
+      subFacetPart = constName.substring(doubleUnderscoreIndex + 2).toLowerCase().replace(/_/g, '-');
+    }
+
+    // Split by single underscore and lowercase
+    const parts = mainConstName.toLowerCase().split('_');
+
+    let facetId = '';
 
     // Check if it starts with 'features' (hierarchical ID)
     if (parts[0] === 'features' && parts.length > 2) {
@@ -48,23 +64,38 @@ export class TestScanner {
         const path = pathParts.join('/');
         const section = sectionParts.join('-');
 
-        return `${path}/${type}:${section}`;
+        facetId = `${path}/${type}:${section}`;
+      } else {
+        // Fallback for features path without recognized type
+        facetId = `${parts[0]}:${parts.slice(1).join('-')}`;
       }
-    }
+    } else {
+      // Legacy format: PRODUCT_STRUCTURE_READING -> product:structure-reading
+      // Find the type at the beginning
+      let foundType = false;
+      for (const type of knownTypes) {
+        if (parts[0] === type) {
+          const section = parts.slice(1).join('-');
+          facetId = `${type}:${section}`;
+          foundType = true;
+          break;
+        }
+      }
 
-    // Legacy format: PRODUCT_STRUCTURE_READING -> product:structure-reading
-    // Find the type at the beginning
-    for (const type of knownTypes) {
-      if (parts[0] === type) {
+      if (!foundType) {
+        // Fallback: treat first part as type, rest as section
+        const type = parts[0];
         const section = parts.slice(1).join('-');
-        return `${type}:${section}`;
+        facetId = `${type}:${section}`;
       }
     }
 
-    // Fallback: treat first part as type, rest as section
-    const type = parts[0];
-    const section = parts.slice(1).join('-');
-    return `${type}:${section}`;
+    // Append sub-facet if present
+    if (subFacetPart) {
+      facetId = `${facetId}/${subFacetPart}`;
+    }
+
+    return facetId;
   }
 
   /**

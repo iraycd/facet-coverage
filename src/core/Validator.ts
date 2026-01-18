@@ -125,6 +125,9 @@ export class Validator {
     const structureDir = dirname(structureFile);
     const featureDir = dirname(structureDir);
 
+    // Build a set of all facet IDs in this structure for parent validation
+    const facetIdsInStructure = new Set(structure.facets.map(f => f.id));
+
     for (const facet of structure.facets) {
       // Validate source file exists
       if (this.config.validation.requireSourceExists) {
@@ -140,8 +143,8 @@ export class Validator {
           continue; // Skip section check if file doesn't exist
         }
 
-        // Validate section exists
-        if (this.config.validation.requireSectionExists) {
+        // Validate section exists (only for non-sub-facets, sub-facets reference parent's section)
+        if (this.config.validation.requireSectionExists && !facet.isSubFacet) {
           const sectionExists = this.facetParser.sectionExists(sourcePath, facet.source.section);
 
           if (!sectionExists) {
@@ -164,6 +167,18 @@ export class Validator {
           facetId: facet.id,
         });
       }
+
+      // Validate sub-facet parent relationship
+      if (facet.isSubFacet && facet.parentId) {
+        if (!facetIdsInStructure.has(facet.parentId)) {
+          errors.push({
+            type: 'orphan-subfacet',
+            message: `Sub-facet '${facet.id}' references non-existent parent '${facet.parentId}'`,
+            file: structureFile,
+            facetId: facet.id,
+          });
+        }
+      }
     }
 
     return {
@@ -175,10 +190,15 @@ export class Validator {
 
   /**
    * Check if a facet ID is valid
+   * Valid formats:
+   * - type:section (e.g., "business:guest-purchase-flow")
+   * - path/type:section (e.g., "features/cli/product:generate-command")
+   * - type:section/sub-id (e.g., "compliance:pci-dss/tls") - sub-facet
    */
   private isValidFacetId(id: string): boolean {
-    // Allow alphanumeric, hyphens, underscores, and colons
-    return /^[a-zA-Z0-9_-]+(:?[a-zA-Z0-9_-]+)*$/.test(id);
+    // Allow alphanumeric, hyphens, underscores, colons, and slashes
+    // Format: [path/]*type:section[/sub-id]
+    return /^[a-zA-Z0-9/_-]+:[a-zA-Z0-9_-]+(?:\/[a-zA-Z0-9_-]+)?$/.test(id);
   }
 
   /**

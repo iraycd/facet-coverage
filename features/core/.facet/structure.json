@@ -11,40 +11,244 @@
       "title": "Technical Requirements"
     },
     {
-      "id": "features/core/technical:typescript-support",
+      "id": "features/core/technical:typescript",
       "source": {
         "file": "facets/technical.md",
-        "section": "typescript-support"
+        "section": "typescript"
       },
       "type": "technical",
       "title": "TypeScript Support"
     },
     {
-      "id": "features/core/technical:bun-compatibility",
+      "id": "features/core/technical:typescript/typescript-source",
       "source": {
         "file": "facets/technical.md",
-        "section": "bun-compatibility"
+        "section": "typescript",
+        "line": 9
+      },
+      "type": "technical",
+      "title": "All source code written in TypeScript",
+      "parentId": "features/core/technical:typescript",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/technical:typescript/typescript-exports",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "typescript",
+        "line": 10
+      },
+      "type": "technical",
+      "title": "Export type definitions for all public interfaces",
+      "parentId": "features/core/technical:typescript",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/technical:typescript/typescript-strict",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "typescript",
+        "line": 11
+      },
+      "type": "technical",
+      "title": "Use strict TypeScript configuration",
+      "parentId": "features/core/technical:typescript",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/technical:typescript/typescript-esm",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "typescript",
+        "line": 12
+      },
+      "type": "technical",
+      "title": "Support ESM module system (NodeNext)",
+      "parentId": "features/core/technical:typescript",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/technical:bun",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "bun"
       },
       "type": "technical",
       "title": "Bun Compatibility"
     },
     {
-      "id": "features/core/technical:glob-pattern-handling",
+      "id": "features/core/technical:bun/bun-deps",
       "source": {
         "file": "facets/technical.md",
-        "section": "glob-pattern-handling"
+        "section": "bun",
+        "line": 20
+      },
+      "type": "technical",
+      "title": "All dependencies compatible with Bun",
+      "parentId": "features/core/technical:bun",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/technical:bun/bun-scripts",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "bun",
+        "line": 21
+      },
+      "type": "technical",
+      "title": "Build scripts work with `bun run`",
+      "parentId": "features/core/technical:bun",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/technical:bun/bun-fs",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "bun",
+        "line": 22
+      },
+      "type": "technical",
+      "title": "File system operations work in Bun",
+      "parentId": "features/core/technical:bun",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/technical:bun/bun-glob",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "bun",
+        "line": 23
+      },
+      "type": "technical",
+      "title": "Glob patterns work correctly in Bun",
+      "parentId": "features/core/technical:bun",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/technical:glob",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "glob"
       },
       "type": "technical",
       "title": "Glob Pattern Handling"
     },
     {
-      "id": "features/core/technical:markdown-parsing-accuracy",
+      "id": "features/core/technical:glob/glob-syntax",
       "source": {
         "file": "facets/technical.md",
-        "section": "markdown-parsing-accuracy"
+        "section": "glob",
+        "line": 31
+      },
+      "type": "technical",
+      "title": "Support standard glob syntax (`**`, `*`, etc.)",
+      "parentId": "features/core/technical:glob",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/technical:glob/glob-multiple",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "glob",
+        "line": 32
+      },
+      "type": "technical",
+      "title": "Handle multiple patterns in configuration",
+      "parentId": "features/core/technical:glob",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/technical:glob/glob-paths",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "glob",
+        "line": 33
+      },
+      "type": "technical",
+      "title": "Work with both relative and absolute paths",
+      "parentId": "features/core/technical:glob",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/technical:glob/glob-edge-cases",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "glob",
+        "line": 34
+      },
+      "type": "technical",
+      "title": "Handle edge cases (empty directories, no matches)",
+      "parentId": "features/core/technical:glob",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/technical:markdown-parsing",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "markdown-parsing"
       },
       "type": "technical",
       "title": "Markdown Parsing Accuracy"
+    },
+    {
+      "id": "features/core/technical:markdown-parsing/md-heading-levels",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "markdown-parsing",
+        "line": 42
+      },
+      "type": "technical",
+      "title": "Handle all heading levels (h1-h6)",
+      "parentId": "features/core/technical:markdown-parsing",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/technical:markdown-parsing/md-slug-gen",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "markdown-parsing",
+        "line": 43
+      },
+      "type": "technical",
+      "title": "Correctly generate slugs from heading text",
+      "parentId": "features/core/technical:markdown-parsing",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/technical:markdown-parsing/md-special-chars",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "markdown-parsing",
+        "line": 44
+      },
+      "type": "technical",
+      "title": "Handle special characters in headings",
+      "parentId": "features/core/technical:markdown-parsing",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/technical:markdown-parsing/md-code-blocks",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "markdown-parsing",
+        "line": 45
+      },
+      "type": "technical",
+      "title": "Support markdown with code blocks and fences",
+      "parentId": "features/core/technical:markdown-parsing",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/technical:markdown-parsing/md-ignore-code-headings",
+      "source": {
+        "file": "facets/technical.md",
+        "section": "markdown-parsing",
+        "line": 46
+      },
+      "type": "technical",
+      "title": "Ignore headings inside code blocks",
+      "parentId": "features/core/technical:markdown-parsing",
+      "isSubFacet": true
     },
     {
       "id": "features/core/dx:developer-experience",
@@ -65,6 +269,66 @@
       "title": "Error Messages"
     },
     {
+      "id": "features/core/dx:error-messages/error-file-paths",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "error-messages",
+        "line": 9
+      },
+      "type": "dx",
+      "title": "Include file paths in error messages for easy navigation",
+      "parentId": "features/core/dx:error-messages",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/dx:error-messages/error-line-numbers",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "error-messages",
+        "line": 10
+      },
+      "type": "dx",
+      "title": "Include line numbers where applicable",
+      "parentId": "features/core/dx:error-messages",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/dx:error-messages/error-explanation",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "error-messages",
+        "line": 11
+      },
+      "type": "dx",
+      "title": "Explain what went wrong and how to fix it",
+      "parentId": "features/core/dx:error-messages",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/dx:error-messages/error-severity",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "error-messages",
+        "line": 12
+      },
+      "type": "dx",
+      "title": "Distinguish between errors (blocking) and warnings (informational)",
+      "parentId": "features/core/dx:error-messages",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/dx:error-messages/error-formatting",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "error-messages",
+        "line": 13
+      },
+      "type": "dx",
+      "title": "Use consistent message formatting across all modules",
+      "parentId": "features/core/dx:error-messages",
+      "isSubFacet": true
+    },
+    {
       "id": "features/core/dx:api-design",
       "source": {
         "file": "facets/dx.md",
@@ -72,6 +336,66 @@
       },
       "type": "dx",
       "title": "API Design"
+    },
+    {
+      "id": "features/core/dx:api-design/api-exports",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "api-design",
+        "line": 21
+      },
+      "type": "dx",
+      "title": "Export all core classes from main package entry point",
+      "parentId": "features/core/dx:api-design",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/dx:api-design/api-types",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "api-design",
+        "line": 22
+      },
+      "type": "dx",
+      "title": "Use TypeScript interfaces for all configuration and return types",
+      "parentId": "features/core/dx:api-design",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/dx:api-design/api-defaults",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "api-design",
+        "line": 23
+      },
+      "type": "dx",
+      "title": "Provide sensible defaults for all optional configuration",
+      "parentId": "features/core/dx:api-design",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/dx:api-design/api-chaining",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "api-design",
+        "line": 24
+      },
+      "type": "dx",
+      "title": "Support method chaining where appropriate",
+      "parentId": "features/core/dx:api-design",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/dx:api-design/api-docs",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "api-design",
+        "line": 25
+      },
+      "type": "dx",
+      "title": "Document public methods with JSDoc comments",
+      "parentId": "features/core/dx:api-design",
+      "isSubFacet": true
     },
     {
       "id": "features/core/product:core-functionality",
@@ -92,6 +416,66 @@
       "title": "Structure Reading"
     },
     {
+      "id": "features/core/product:structure-reading/glob-patterns",
+      "source": {
+        "file": "facets/product.md",
+        "section": "structure-reading",
+        "line": 9
+      },
+      "type": "product",
+      "title": "Find structure files via glob patterns from configuration",
+      "parentId": "features/core/product:structure-reading",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/product:structure-reading/json-parsing",
+      "source": {
+        "file": "facets/product.md",
+        "section": "structure-reading",
+        "line": 10
+      },
+      "type": "product",
+      "title": "Parse JSON with proper validation and error handling",
+      "parentId": "features/core/product:structure-reading",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/product:structure-reading/multiple-structures",
+      "source": {
+        "file": "facets/product.md",
+        "section": "structure-reading",
+        "line": 11
+      },
+      "type": "product",
+      "title": "Support multiple structure files per project",
+      "parentId": "features/core/product:structure-reading",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/product:structure-reading/path-resolution",
+      "source": {
+        "file": "facets/product.md",
+        "section": "structure-reading",
+        "line": 12
+      },
+      "type": "product",
+      "title": "Resolve file paths relative to structure file location",
+      "parentId": "features/core/product:structure-reading",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/product:structure-reading/facet-aggregation",
+      "source": {
+        "file": "facets/product.md",
+        "section": "structure-reading",
+        "line": 13
+      },
+      "type": "product",
+      "title": "Return all facets across all structures",
+      "parentId": "features/core/product:structure-reading",
+      "isSubFacet": true
+    },
+    {
       "id": "features/core/product:markdown-parsing",
       "source": {
         "file": "facets/product.md",
@@ -99,6 +483,87 @@
       },
       "type": "product",
       "title": "Markdown Parsing"
+    },
+    {
+      "id": "features/core/product:markdown-parsing/heading-extraction",
+      "source": {
+        "file": "facets/product.md",
+        "section": "markdown-parsing",
+        "line": 21
+      },
+      "type": "product",
+      "title": "Extract headings at all levels as sections",
+      "parentId": "features/core/product:markdown-parsing",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/product:markdown-parsing/slug-generation",
+      "source": {
+        "file": "facets/product.md",
+        "section": "markdown-parsing",
+        "line": 22
+      },
+      "type": "product",
+      "title": "Generate URL-friendly slugs from heading text",
+      "parentId": "features/core/product:markdown-parsing",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/product:markdown-parsing/custom-slug",
+      "source": {
+        "file": "facets/product.md",
+        "section": "markdown-parsing",
+        "line": 23
+      },
+      "type": "product",
+      "title": "Support explicit anchor syntax: `## Heading",
+      "parentId": "features/core/product:markdown-parsing",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/product:markdown-parsing/heading-hierarchy",
+      "source": {
+        "file": "facets/product.md",
+        "section": "markdown-parsing",
+        "line": 24
+      },
+      "type": "product",
+      "title": "Support nested heading levels with proper hierarchy",
+      "parentId": "features/core/product:markdown-parsing",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/product:markdown-parsing/section-validation",
+      "source": {
+        "file": "facets/product.md",
+        "section": "markdown-parsing",
+        "line": 25
+      },
+      "type": "product",
+      "title": "Validate that referenced sections exist in source files",
+      "parentId": "features/core/product:markdown-parsing",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/product:markdown-parsing/frontmatter-handling",
+      "source": {
+        "file": "facets/product.md",
+        "section": "markdown-parsing",
+        "line": 26
+      },
+      "type": "product",
+      "title": "Handle markdown with frontmatter and code blocks",
+      "parentId": "features/core/product:markdown-parsing",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/product:guest-purchase",
+      "source": {
+        "file": "facets/product.md",
+        "section": "guest-purchase"
+      },
+      "type": "product",
+      "title": "Guest Purchase Flow"
     },
     {
       "id": "features/core/product:test-scanning",
@@ -110,6 +575,66 @@
       "title": "Test Scanning"
     },
     {
+      "id": "features/core/product:test-scanning/test-file-discovery",
+      "source": {
+        "file": "facets/product.md",
+        "section": "test-scanning",
+        "line": 44
+      },
+      "type": "product",
+      "title": "Find test files matching configured glob patterns",
+      "parentId": "features/core/product:test-scanning",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/product:test-scanning/playwright-annotations",
+      "source": {
+        "file": "facets/product.md",
+        "section": "test-scanning",
+        "line": 45
+      },
+      "type": "product",
+      "title": "Support Playwright-style annotations: `annotation: facet('id')`",
+      "parentId": "features/core/product:test-scanning",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/product:test-scanning/comment-annotations",
+      "source": {
+        "file": "facets/product.md",
+        "section": "test-scanning",
+        "line": 46
+      },
+      "type": "product",
+      "title": "Support comment-based annotations: `// @facet id1, id2`",
+      "parentId": "features/core/product:test-scanning",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/product:test-scanning/describe-nesting",
+      "source": {
+        "file": "facets/product.md",
+        "section": "test-scanning",
+        "line": 47
+      },
+      "type": "product",
+      "title": "Track describe block nesting for full test titles",
+      "parentId": "features/core/product:test-scanning",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/product:test-scanning/test-metadata",
+      "source": {
+        "file": "facets/product.md",
+        "section": "test-scanning",
+        "line": 48
+      },
+      "type": "product",
+      "title": "Return test file path, title, and linked facet IDs",
+      "parentId": "features/core/product:test-scanning",
+      "isSubFacet": true
+    },
+    {
       "id": "features/core/product:validation",
       "source": {
         "file": "facets/product.md",
@@ -119,6 +644,78 @@
       "title": "Validation"
     },
     {
+      "id": "features/core/product:validation/duplicate-detection",
+      "source": {
+        "file": "facets/product.md",
+        "section": "validation",
+        "line": 56
+      },
+      "type": "product",
+      "title": "Detect duplicate facet IDs across structure files",
+      "parentId": "features/core/product:validation",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/product:validation/source-verification",
+      "source": {
+        "file": "facets/product.md",
+        "section": "validation",
+        "line": 57
+      },
+      "type": "product",
+      "title": "Verify source markdown files exist",
+      "parentId": "features/core/product:validation",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/product:validation/section-verification",
+      "source": {
+        "file": "facets/product.md",
+        "section": "validation",
+        "line": 58
+      },
+      "type": "product",
+      "title": "Verify referenced sections exist in source files",
+      "parentId": "features/core/product:validation",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/product:validation/orphan-tests",
+      "source": {
+        "file": "facets/product.md",
+        "section": "validation",
+        "line": 59
+      },
+      "type": "product",
+      "title": "Identify tests referencing non-existent facets (orphan tests)",
+      "parentId": "features/core/product:validation",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/product:validation/uncovered-facets",
+      "source": {
+        "file": "facets/product.md",
+        "section": "validation",
+        "line": 60
+      },
+      "type": "product",
+      "title": "Identify facets without any test coverage (uncovered facets)",
+      "parentId": "features/core/product:validation",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/product:validation/error-reporting",
+      "source": {
+        "file": "facets/product.md",
+        "section": "validation",
+        "line": 61
+      },
+      "type": "product",
+      "title": "Return structured errors and warnings",
+      "parentId": "features/core/product:validation",
+      "isSubFacet": true
+    },
+    {
       "id": "features/core/product:coverage-calculation",
       "source": {
         "file": "facets/product.md",
@@ -126,6 +723,66 @@
       },
       "type": "product",
       "title": "Coverage Calculation"
+    },
+    {
+      "id": "features/core/product:coverage-calculation/overall-coverage",
+      "source": {
+        "file": "facets/product.md",
+        "section": "coverage-calculation",
+        "line": 69
+      },
+      "type": "product",
+      "title": "Calculate overall coverage percentage",
+      "parentId": "features/core/product:coverage-calculation",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/product:coverage-calculation/type-coverage",
+      "source": {
+        "file": "facets/product.md",
+        "section": "coverage-calculation",
+        "line": 70
+      },
+      "type": "product",
+      "title": "Calculate coverage by facet type (business, compliance, ux, etc.)",
+      "parentId": "features/core/product:coverage-calculation",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/product:coverage-calculation/feature-coverage",
+      "source": {
+        "file": "facets/product.md",
+        "section": "coverage-calculation",
+        "line": 71
+      },
+      "type": "product",
+      "title": "Calculate coverage per feature",
+      "parentId": "features/core/product:coverage-calculation",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/product:coverage-calculation/threshold-checking",
+      "source": {
+        "file": "facets/product.md",
+        "section": "coverage-calculation",
+        "line": 72
+      },
+      "type": "product",
+      "title": "Check coverage against configured thresholds",
+      "parentId": "features/core/product:coverage-calculation",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/core/product:coverage-calculation/coverage-report",
+      "source": {
+        "file": "facets/product.md",
+        "section": "coverage-calculation",
+        "line": 73
+      },
+      "type": "product",
+      "title": "Return comprehensive coverage report with all metrics",
+      "parentId": "features/core/product:coverage-calculation",
+      "isSubFacet": true
     }
   ]
 }

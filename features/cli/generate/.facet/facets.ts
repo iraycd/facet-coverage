@@ -10,9 +10,21 @@
  */
 export type FacetId =
   | 'features/cli/generate/product:generate-command'
-  | 'features/cli/generate/product:config-based-discovery'
+  | 'features/cli/generate/product:config-discovery'
+  | 'features/cli/generate/product:config-discovery/read-config'
+  | 'features/cli/generate/product:config-discovery/glob-array'
+  | 'features/cli/generate/product:config-discovery/recursive-discovery'
+  | 'features/cli/generate/product:config-discovery/group-by-feature'
   | 'features/cli/generate/product:type-generation'
-  | 'features/cli/generate/product:global-types';
+  | 'features/cli/generate/product:type-generation/facet-id-union'
+  | 'features/cli/generate/product:type-generation/facets-const-object'
+  | 'features/cli/generate/product:type-generation/facet-helper'
+  | 'features/cli/generate/product:type-generation/no-types-flag'
+  | 'features/cli/generate/product:global-types'
+  | 'features/cli/generate/product:global-types/root-facets-file'
+  | 'features/cli/generate/product:global-types/re-export-types'
+  | 'features/cli/generate/product:global-types/combined-union'
+  | 'features/cli/generate/product:global-types/combined-const';
 
 /**
  * Facet ID constants for autocomplete and type-safe references
@@ -21,11 +33,35 @@ export const Facets = {
  /** Generate Command */
   FEATURES_CLI_GENERATE_PRODUCT_GENERATE_COMMAND: 'features/cli/generate/product:generate-command' as const,
  /** Config-Based Discovery */
-  FEATURES_CLI_GENERATE_PRODUCT_CONFIG_BASED_DISCOVERY: 'features/cli/generate/product:config-based-discovery' as const,
+  FEATURES_CLI_GENERATE_PRODUCT_CONFIG_DISCOVERY: 'features/cli/generate/product:config-discovery' as const,
+ /** Read facetPattern from facet.config.json, .js, or .mjs */
+  FEATURES_CLI_GENERATE_PRODUCT_CONFIG_DISCOVERY__READ_CONFIG: 'features/cli/generate/product:config-discovery/read-config' as const,
+ /** Support both single string and array of glob patterns */
+  FEATURES_CLI_GENERATE_PRODUCT_CONFIG_DISCOVERY__GLOB_ARRAY: 'features/cli/generate/product:config-discovery/glob-array' as const,
+ /** Discover files matching patterns recursively */
+  FEATURES_CLI_GENERATE_PRODUCT_CONFIG_DISCOVERY__RECURSIVE_DISCOVERY: 'features/cli/generate/product:config-discovery/recursive-discovery' as const,
+ /** Group discovered files by their parent feature directory */
+  FEATURES_CLI_GENERATE_PRODUCT_CONFIG_DISCOVERY__GROUP_BY_FEATURE: 'features/cli/generate/product:config-discovery/group-by-feature' as const,
  /** Type Generation */
   FEATURES_CLI_GENERATE_PRODUCT_TYPE_GENERATION: 'features/cli/generate/product:type-generation' as const,
+ /** Generate 'FacetId' union type with all valid facet IDs */
+  FEATURES_CLI_GENERATE_PRODUCT_TYPE_GENERATION__FACET_ID_UNION: 'features/cli/generate/product:type-generation/facet-id-union' as const,
+ /** Generate 'Facets' const object for autocomplete */
+  FEATURES_CLI_GENERATE_PRODUCT_TYPE_GENERATION__FACETS_CONST_OBJECT: 'features/cli/generate/product:type-generation/facets-const-object' as const,
+ /** Generate 'facet()' helper function for test annotations */
+  FEATURES_CLI_GENERATE_PRODUCT_TYPE_GENERATION__FACET_HELPER: 'features/cli/generate/product:type-generation/facet-helper' as const,
+ /** Support '--no-types' flag to skip TypeScript generation */
+  FEATURES_CLI_GENERATE_PRODUCT_TYPE_GENERATION__NO_TYPES_FLAG: 'features/cli/generate/product:type-generation/no-types-flag' as const,
  /** Global Types */
   FEATURES_CLI_GENERATE_PRODUCT_GLOBAL_TYPES: 'features/cli/generate/product:global-types' as const,
+ /** Create '.facet/facets.ts' at project root */
+  FEATURES_CLI_GENERATE_PRODUCT_GLOBAL_TYPES__ROOT_FACETS_FILE: 'features/cli/generate/product:global-types/root-facets-file' as const,
+ /** Re-export all feature-specific types */
+  FEATURES_CLI_GENERATE_PRODUCT_GLOBAL_TYPES__RE_EXPORT_TYPES: 'features/cli/generate/product:global-types/re-export-types' as const,
+ /** Generate combined 'FacetId' union across all features */
+  FEATURES_CLI_GENERATE_PRODUCT_GLOBAL_TYPES__COMBINED_UNION: 'features/cli/generate/product:global-types/combined-union' as const,
+ /** Generate combined 'Facets' const with all facet IDs */
+  FEATURES_CLI_GENERATE_PRODUCT_GLOBAL_TYPES__COMBINED_CONST: 'features/cli/generate/product:global-types/combined-const' as const,
 } as const;
 
 /**
@@ -53,7 +89,19 @@ export function facet<T extends FacetId>(...facetIds: T[]): { facets: T[]; toStr
  */
 export const allFacetIds: FacetId[] = [
   'features/cli/generate/product:generate-command',
-  'features/cli/generate/product:config-based-discovery',
+  'features/cli/generate/product:config-discovery',
+  'features/cli/generate/product:config-discovery/read-config',
+  'features/cli/generate/product:config-discovery/glob-array',
+  'features/cli/generate/product:config-discovery/recursive-discovery',
+  'features/cli/generate/product:config-discovery/group-by-feature',
   'features/cli/generate/product:type-generation',
+  'features/cli/generate/product:type-generation/facet-id-union',
+  'features/cli/generate/product:type-generation/facets-const-object',
+  'features/cli/generate/product:type-generation/facet-helper',
+  'features/cli/generate/product:type-generation/no-types-flag',
   'features/cli/generate/product:global-types',
+  'features/cli/generate/product:global-types/root-facets-file',
+  'features/cli/generate/product:global-types/re-export-types',
+  'features/cli/generate/product:global-types/combined-union',
+  'features/cli/generate/product:global-types/combined-const',
 ];

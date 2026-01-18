@@ -10,12 +10,48 @@
  */
 export type FacetId =
   | 'features/reporters/dx:developer-experience'
-  | 'features/reporters/dx:report-readability'
-  | 'features/reporters/dx:report-accessibility'
+  | 'features/reporters/dx:readability'
+  | 'features/reporters/dx:readability/clear-headings'
+  | 'features/reporters/dx:readability/visual-indicators'
+  | 'features/reporters/dx:readability/info-priority'
+  | 'features/reporters/dx:readability/logical-grouping'
+  | 'features/reporters/dx:readability/consistent-formatting'
+  | 'features/reporters/dx:accessibility'
+  | 'features/reporters/dx:accessibility/no-js-required'
+  | 'features/reporters/dx:accessibility/github-compatible'
+  | 'features/reporters/dx:accessibility/valid-json'
+  | 'features/reporters/dx:accessibility/timestamps'
+  | 'features/reporters/dx:accessibility/relative-paths'
   | 'features/reporters/product:report-generation'
-  | 'features/reporters/product:json-reporter'
-  | 'features/reporters/product:html-reporter'
-  | 'features/reporters/product:markdown-reporter';
+  | 'features/reporters/product:json'
+  | 'features/reporters/product:json/json-output'
+  | 'features/reporters/product:json/json-timestamp'
+  | 'features/reporters/product:json/json-summary'
+  | 'features/reporters/product:json/json-type-breakdown'
+  | 'features/reporters/product:json/json-feature-breakdown'
+  | 'features/reporters/product:json/json-test-list'
+  | 'features/reporters/product:json/json-uncovered'
+  | 'features/reporters/product:json/json-output-dir'
+  | 'features/reporters/product:html'
+  | 'features/reporters/product:html/html-self-contained'
+  | 'features/reporters/product:html/html-overall-display'
+  | 'features/reporters/product:html/html-color-bars'
+  | 'features/reporters/product:html/html-type-grid'
+  | 'features/reporters/product:html/html-feature-cards'
+  | 'features/reporters/product:html/html-uncovered-list'
+  | 'features/reporters/product:html/html-test-coverage'
+  | 'features/reporters/product:html/html-dark-theme'
+  | 'features/reporters/product:html/html-responsive'
+  | 'features/reporters/product:markdown'
+  | 'features/reporters/product:markdown/md-valid'
+  | 'features/reporters/product:markdown/md-timestamp'
+  | 'features/reporters/product:markdown/md-summary-table'
+  | 'features/reporters/product:markdown/md-type-table'
+  | 'features/reporters/product:markdown/md-feature-sections'
+  | 'features/reporters/product:markdown/md-emoji-indicators'
+  | 'features/reporters/product:markdown/md-test-list'
+  | 'features/reporters/product:markdown/md-uncovered-list'
+  | 'features/reporters/product:markdown/md-git-friendly';
 
 /**
  * Facet ID constants for autocomplete and type-safe references
@@ -24,17 +60,89 @@ export const Facets = {
  /** Developer Experience */
   FEATURES_REPORTERS_DX_DEVELOPER_EXPERIENCE: 'features/reporters/dx:developer-experience' as const,
  /** Report Readability */
-  FEATURES_REPORTERS_DX_REPORT_READABILITY: 'features/reporters/dx:report-readability' as const,
+  FEATURES_REPORTERS_DX_READABILITY: 'features/reporters/dx:readability' as const,
+ /** Use clear headings and section organization */
+  FEATURES_REPORTERS_DX_READABILITY__CLEAR_HEADINGS: 'features/reporters/dx:readability/clear-headings' as const,
+ /** Include visual coverage indicators (bars, percentages, emoji) */
+  FEATURES_REPORTERS_DX_READABILITY__VISUAL_INDICATORS: 'features/reporters/dx:readability/visual-indicators' as const,
+ /** Show most important information first (overall coverage) */
+  FEATURES_REPORTERS_DX_READABILITY__INFO_PRIORITY: 'features/reporters/dx:readability/info-priority' as const,
+ /** Group related information logically */
+  FEATURES_REPORTERS_DX_READABILITY__LOGICAL_GROUPING: 'features/reporters/dx:readability/logical-grouping' as const,
+ /** Use consistent formatting throughout */
+  FEATURES_REPORTERS_DX_READABILITY__CONSISTENT_FORMATTING: 'features/reporters/dx:readability/consistent-formatting' as const,
  /** Report Accessibility */
-  FEATURES_REPORTERS_DX_REPORT_ACCESSIBILITY: 'features/reporters/dx:report-accessibility' as const,
+  FEATURES_REPORTERS_DX_ACCESSIBILITY: 'features/reporters/dx:accessibility' as const,
+ /** HTML reports work without JavaScript for basic viewing */
+  FEATURES_REPORTERS_DX_ACCESSIBILITY__NO_JS_REQUIRED: 'features/reporters/dx:accessibility/no-js-required' as const,
+ /** Markdown reports render correctly in GitHub/GitLab */
+  FEATURES_REPORTERS_DX_ACCESSIBILITY__GITHUB_COMPATIBLE: 'features/reporters/dx:accessibility/github-compatible' as const,
+ /** JSON reports are valid and parseable */
+  FEATURES_REPORTERS_DX_ACCESSIBILITY__VALID_JSON: 'features/reporters/dx:accessibility/valid-json' as const,
+ /** Reports include timestamps for tracking history */
+  FEATURES_REPORTERS_DX_ACCESSIBILITY__TIMESTAMPS: 'features/reporters/dx:accessibility/timestamps' as const,
+ /** File paths are relative for portability */
+  FEATURES_REPORTERS_DX_ACCESSIBILITY__RELATIVE_PATHS: 'features/reporters/dx:accessibility/relative-paths' as const,
  /** Report Generation */
   FEATURES_REPORTERS_PRODUCT_REPORT_GENERATION: 'features/reporters/product:report-generation' as const,
  /** JSON Reporter */
-  FEATURES_REPORTERS_PRODUCT_JSON_REPORTER: 'features/reporters/product:json-reporter' as const,
+  FEATURES_REPORTERS_PRODUCT_JSON: 'features/reporters/product:json' as const,
+ /** Output complete coverage data as JSON */
+  FEATURES_REPORTERS_PRODUCT_JSON__JSON_OUTPUT: 'features/reporters/product:json/json-output' as const,
+ /** Include timestamp of report generation */
+  FEATURES_REPORTERS_PRODUCT_JSON__JSON_TIMESTAMP: 'features/reporters/product:json/json-timestamp' as const,
+ /** Include summary with total, covered, uncovered counts and percentage */
+  FEATURES_REPORTERS_PRODUCT_JSON__JSON_SUMMARY: 'features/reporters/product:json/json-summary' as const,
+ /** Include coverage breakdown by type */
+  FEATURES_REPORTERS_PRODUCT_JSON__JSON_TYPE_BREAKDOWN: 'features/reporters/product:json/json-type-breakdown' as const,
+ /** Include coverage breakdown by feature */
+  FEATURES_REPORTERS_PRODUCT_JSON__JSON_FEATURE_BREAKDOWN: 'features/reporters/product:json/json-feature-breakdown' as const,
+ /** Include list of all tests with their facet linkages */
+  FEATURES_REPORTERS_PRODUCT_JSON__JSON_TEST_LIST: 'features/reporters/product:json/json-test-list' as const,
+ /** Include list of uncovered facets */
+  FEATURES_REPORTERS_PRODUCT_JSON__JSON_UNCOVERED: 'features/reporters/product:json/json-uncovered' as const,
+ /** Write to configurable output directory */
+  FEATURES_REPORTERS_PRODUCT_JSON__JSON_OUTPUT_DIR: 'features/reporters/product:json/json-output-dir' as const,
  /** HTML Reporter */
-  FEATURES_REPORTERS_PRODUCT_HTML_REPORTER: 'features/reporters/product:html-reporter' as const,
+  FEATURES_REPORTERS_PRODUCT_HTML: 'features/reporters/product:html' as const,
+ /** Generate self-contained HTML file (no external dependencies) */
+  FEATURES_REPORTERS_PRODUCT_HTML__HTML_SELF_CONTAINED: 'features/reporters/product:html/html-self-contained' as const,
+ /** Display overall coverage percentage prominently */
+  FEATURES_REPORTERS_PRODUCT_HTML__HTML_OVERALL_DISPLAY: 'features/reporters/product:html/html-overall-display' as const,
+ /** Show color-coded coverage bars (green/yellow/red) */
+  FEATURES_REPORTERS_PRODUCT_HTML__HTML_COLOR_BARS: 'features/reporters/product:html/html-color-bars' as const,
+ /** Show coverage breakdown by type in grid layout */
+  FEATURES_REPORTERS_PRODUCT_HTML__HTML_TYPE_GRID: 'features/reporters/product:html/html-type-grid' as const,
+ /** Show expandable feature cards with facet details */
+  FEATURES_REPORTERS_PRODUCT_HTML__HTML_FEATURE_CARDS: 'features/reporters/product:html/html-feature-cards' as const,
+ /** List uncovered facets with source information */
+  FEATURES_REPORTERS_PRODUCT_HTML__HTML_UNCOVERED_LIST: 'features/reporters/product:html/html-uncovered-list' as const,
+ /** Show which tests cover each facet */
+  FEATURES_REPORTERS_PRODUCT_HTML__HTML_TEST_COVERAGE: 'features/reporters/product:html/html-test-coverage' as const,
+ /** Support dark theme for readability */
+  FEATURES_REPORTERS_PRODUCT_HTML__HTML_DARK_THEME: 'features/reporters/product:html/html-dark-theme' as const,
+ /** Include responsive design for various screen sizes */
+  FEATURES_REPORTERS_PRODUCT_HTML__HTML_RESPONSIVE: 'features/reporters/product:html/html-responsive' as const,
  /** Markdown Reporter */
-  FEATURES_REPORTERS_PRODUCT_MARKDOWN_REPORTER: 'features/reporters/product:markdown-reporter' as const,
+  FEATURES_REPORTERS_PRODUCT_MARKDOWN: 'features/reporters/product:markdown' as const,
+ /** Generate valid Markdown document */
+  FEATURES_REPORTERS_PRODUCT_MARKDOWN__MD_VALID: 'features/reporters/product:markdown/md-valid' as const,
+ /** Include generation timestamp */
+  FEATURES_REPORTERS_PRODUCT_MARKDOWN__MD_TIMESTAMP: 'features/reporters/product:markdown/md-timestamp' as const,
+ /** Include summary table with key metrics */
+  FEATURES_REPORTERS_PRODUCT_MARKDOWN__MD_SUMMARY_TABLE: 'features/reporters/product:markdown/md-summary-table' as const,
+ /** Include coverage by type table */
+  FEATURES_REPORTERS_PRODUCT_MARKDOWN__MD_TYPE_TABLE: 'features/reporters/product:markdown/md-type-table' as const,
+ /** Include per-feature sections with facet lists */
+  FEATURES_REPORTERS_PRODUCT_MARKDOWN__MD_FEATURE_SECTIONS: 'features/reporters/product:markdown/md-feature-sections' as const,
+ /** Use emoji indicators for coverage status */
+  FEATURES_REPORTERS_PRODUCT_MARKDOWN__MD_EMOJI_INDICATORS: 'features/reporters/product:markdown/md-emoji-indicators' as const,
+ /** List tests covering each facet */
+  FEATURES_REPORTERS_PRODUCT_MARKDOWN__MD_TEST_LIST: 'features/reporters/product:markdown/md-test-list' as const,
+ /** List all uncovered facets at the end */
+  FEATURES_REPORTERS_PRODUCT_MARKDOWN__MD_UNCOVERED_LIST: 'features/reporters/product:markdown/md-uncovered-list' as const,
+ /** Suitable for Git repositories and documentation */
+  FEATURES_REPORTERS_PRODUCT_MARKDOWN__MD_GIT_FRIENDLY: 'features/reporters/product:markdown/md-git-friendly' as const,
 } as const;
 
 /**
@@ -62,10 +170,46 @@ export function facet<T extends FacetId>(...facetIds: T[]): { facets: T[]; toStr
  */
 export const allFacetIds: FacetId[] = [
   'features/reporters/dx:developer-experience',
-  'features/reporters/dx:report-readability',
-  'features/reporters/dx:report-accessibility',
+  'features/reporters/dx:readability',
+  'features/reporters/dx:readability/clear-headings',
+  'features/reporters/dx:readability/visual-indicators',
+  'features/reporters/dx:readability/info-priority',
+  'features/reporters/dx:readability/logical-grouping',
+  'features/reporters/dx:readability/consistent-formatting',
+  'features/reporters/dx:accessibility',
+  'features/reporters/dx:accessibility/no-js-required',
+  'features/reporters/dx:accessibility/github-compatible',
+  'features/reporters/dx:accessibility/valid-json',
+  'features/reporters/dx:accessibility/timestamps',
+  'features/reporters/dx:accessibility/relative-paths',
   'features/reporters/product:report-generation',
-  'features/reporters/product:json-reporter',
-  'features/reporters/product:html-reporter',
-  'features/reporters/product:markdown-reporter',
+  'features/reporters/product:json',
+  'features/reporters/product:json/json-output',
+  'features/reporters/product:json/json-timestamp',
+  'features/reporters/product:json/json-summary',
+  'features/reporters/product:json/json-type-breakdown',
+  'features/reporters/product:json/json-feature-breakdown',
+  'features/reporters/product:json/json-test-list',
+  'features/reporters/product:json/json-uncovered',
+  'features/reporters/product:json/json-output-dir',
+  'features/reporters/product:html',
+  'features/reporters/product:html/html-self-contained',
+  'features/reporters/product:html/html-overall-display',
+  'features/reporters/product:html/html-color-bars',
+  'features/reporters/product:html/html-type-grid',
+  'features/reporters/product:html/html-feature-cards',
+  'features/reporters/product:html/html-uncovered-list',
+  'features/reporters/product:html/html-test-coverage',
+  'features/reporters/product:html/html-dark-theme',
+  'features/reporters/product:html/html-responsive',
+  'features/reporters/product:markdown',
+  'features/reporters/product:markdown/md-valid',
+  'features/reporters/product:markdown/md-timestamp',
+  'features/reporters/product:markdown/md-summary-table',
+  'features/reporters/product:markdown/md-type-table',
+  'features/reporters/product:markdown/md-feature-sections',
+  'features/reporters/product:markdown/md-emoji-indicators',
+  'features/reporters/product:markdown/md-test-list',
+  'features/reporters/product:markdown/md-uncovered-list',
+  'features/reporters/product:markdown/md-git-friendly',
 ];

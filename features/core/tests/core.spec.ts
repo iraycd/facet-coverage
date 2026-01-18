@@ -176,6 +176,104 @@ Content.
     expect(section.title).toBe('Guest Purchase Flow');
     expect(section.title).not.toContain('{#');
   });
+
+  test('parses sub-facets from list items with {#id}', () => {
+    facet(Facets.FEATURES_CORE_PRODUCT_MARKDOWN_PARSING);
+
+    const parser = new FacetParser();
+    const content = `## PCI-DSS Requirements {#pci-dss}
+
+1. **Encryption in transit** {#tls} - TLS 1.2+ required
+2. **No CVV storage** {#cvv} - Never store CVV
+3. **Card masking** {#masking} - Display only last 4 digits
+`;
+    const parsed = parser.parseContent(content, 'compliance.md');
+
+    const section = parsed.sections[0];
+    expect(section.slug).toBe('pci-dss');
+    expect(section.subFacets).toBeDefined();
+    expect(section.subFacets!.length).toBe(3);
+
+    expect(section.subFacets![0].id).toBe('tls');
+    expect(section.subFacets![0].title).toBe('Encryption in transit');
+    expect(section.subFacets![0].type).toBe('list-item');
+
+    expect(section.subFacets![1].id).toBe('cvv');
+    expect(section.subFacets![1].title).toBe('No CVV storage');
+
+    expect(section.subFacets![2].id).toBe('masking');
+    expect(section.subFacets![2].title).toBe('Card masking');
+  });
+
+  test('parses sub-facets from comment markers', () => {
+    facet(Facets.FEATURES_CORE_PRODUCT_MARKDOWN_PARSING);
+
+    const parser = new FacetParser();
+    const content = `## Mobile Checkout {#mobile}
+
+<!-- @facet:performance -->
+Load time must be under 2 seconds.
+
+<!-- @facet:accessibility -->
+Full WCAG 2.1 AA compliance required.
+`;
+    const parsed = parser.parseContent(content, 'ux.md');
+
+    const section = parsed.sections[0];
+    expect(section.slug).toBe('mobile');
+    expect(section.subFacets).toBeDefined();
+    expect(section.subFacets!.length).toBe(2);
+
+    expect(section.subFacets![0].id).toBe('performance');
+    expect(section.subFacets![0].type).toBe('comment');
+
+    expect(section.subFacets![1].id).toBe('accessibility');
+    expect(section.subFacets![1].type).toBe('comment');
+  });
+
+  test('parses mixed list item and comment sub-facets', () => {
+    facet(Facets.FEATURES_CORE_PRODUCT_MARKDOWN_PARSING);
+
+    const parser = new FacetParser();
+    const content = `## Requirements {#reqs}
+
+- Item one {#item-one}
+- Item two {#item-two}
+
+<!-- @facet:extra -->
+Additional requirement.
+`;
+    const parsed = parser.parseContent(content, 'test.md');
+
+    const section = parsed.sections[0];
+    expect(section.subFacets!.length).toBe(3);
+    expect(section.subFacets![0].type).toBe('list-item');
+    expect(section.subFacets![1].type).toBe('list-item');
+    expect(section.subFacets![2].type).toBe('comment');
+  });
+
+  test('generates hierarchical sub-facet IDs', () => {
+    facet(Facets.FEATURES_CORE_PRODUCT_MARKDOWN_PARSING);
+
+    const parentId = 'compliance:pci-dss';
+    const subFacetId = FacetParser.generateSubFacetId(parentId, 'tls');
+    expect(subFacetId).toBe('compliance:pci-dss/tls');
+  });
+
+  test('identifies sub-facet IDs', () => {
+    facet(Facets.FEATURES_CORE_PRODUCT_MARKDOWN_PARSING);
+
+    expect(FacetParser.isSubFacetId('compliance:pci-dss/tls')).toBe(true);
+    expect(FacetParser.isSubFacetId('compliance:pci-dss')).toBe(false);
+    expect(FacetParser.isSubFacetId('features/cli/product:generate-command')).toBe(false);
+  });
+
+  test('extracts parent facet ID from sub-facet', () => {
+    facet(Facets.FEATURES_CORE_PRODUCT_MARKDOWN_PARSING);
+
+    expect(FacetParser.getParentFacetId('compliance:pci-dss/tls')).toBe('compliance:pci-dss');
+    expect(FacetParser.getParentFacetId('compliance:pci-dss')).toBeNull();
+  });
 });
 
 describe('TestScanner', () => {
@@ -249,6 +347,40 @@ describe('Outer', () => {
     const links = scanner.scanContent(content, 'test.spec.ts', '/');
     expect(links.length).toBe(1);
     expect(links[0].fullTitle).toBe('Outer > Inner > nested test');
+  });
+
+  test('handles sub-facet constants with double underscore', () => {
+    facet(Facets.FEATURES_CORE_PRODUCT_TEST_SCANNING);
+
+    const scanner = new TestScanner({
+      facetTypes: ['compliance', 'business', 'ux']
+    });
+    const content = `
+test('TLS enforcement test', () => {
+  facet(Facets.COMPLIANCE_PCI_DSS__TLS);
+});
+`;
+    const links = scanner.scanContent(content, 'test.spec.ts', '/');
+    expect(links.length).toBe(1);
+    expect(links[0].facetIds).toContain('compliance:pci-dss/tls');
+  });
+
+  test('handles regular facet constants alongside sub-facet constants', () => {
+    facet(Facets.FEATURES_CORE_PRODUCT_TEST_SCANNING);
+
+    const scanner = new TestScanner({
+      facetTypes: ['compliance', 'business', 'ux']
+    });
+    const content = `
+test('payment test', () => {
+  facet(Facets.COMPLIANCE_PCI_DSS);
+  facet(Facets.COMPLIANCE_PCI_DSS__CVV);
+});
+`;
+    const links = scanner.scanContent(content, 'test.spec.ts', '/');
+    expect(links.length).toBe(1);
+    expect(links[0].facetIds).toContain('compliance:pci-dss');
+    expect(links[0].facetIds).toContain('compliance:pci-dss/cvv');
   });
 });
 

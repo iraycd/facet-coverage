@@ -9,35 +9,269 @@
  * All valid facet IDs for the "cli" feature
  */
 export type FacetId =
+  | 'features/cli/config:configuration'
+  | 'features/cli/config:file-discovery'
+  | 'features/cli/config:file-discovery/search-js'
+  | 'features/cli/config:file-discovery/search-mjs'
+  | 'features/cli/config:file-discovery/search-json'
+  | 'features/cli/config:file-discovery/config-flag'
+  | 'features/cli/config:file-discovery/merge-defaults'
+  | 'features/cli/config:file-discovery/cwd-config'
+  | 'features/cli/config:facet-patterns'
+  | 'features/cli/config:facet-patterns/pattern-types'
+  | 'features/cli/config:facet-patterns/default-patterns'
+  | 'features/cli/config:facet-patterns/relative-expansion'
+  | 'features/cli/config:facet-patterns/dedupe'
+  | 'features/cli/config:facet-patterns/group-by-feature'
+  | 'features/cli/config:facet-types'
+  | 'features/cli/config:facet-types/types-array'
+  | 'features/cli/config:facet-types/default-types'
+  | 'features/cli/config:facet-types/constant-conversion'
+  | 'features/cli/config:facet-types/hierarchical-ids'
+  | 'features/cli/config:facet-types/custom-types'
   | 'features/cli/dx:developer-experience'
   | 'features/cli/dx:cli-ergonomics'
-  | 'features/cli/dx:configuration-discovery'
+  | 'features/cli/dx:cli-ergonomics/command-names'
+  | 'features/cli/dx:cli-ergonomics/help-text'
+  | 'features/cli/dx:cli-ergonomics/progress-indicators'
+  | 'features/cli/dx:cli-ergonomics/color-coding'
+  | 'features/cli/dx:cli-ergonomics/emoji-indicators'
+  | 'features/cli/dx:cli-ergonomics/common-flags'
+  | 'features/cli/dx:config-discovery'
+  | 'features/cli/dx:config-discovery/config-locations'
+  | 'features/cli/dx:config-discovery/config-formats'
+  | 'features/cli/dx:config-discovery/config-flag'
+  | 'features/cli/dx:config-discovery/config-merge'
+  | 'features/cli/dx:config-discovery/config-warning'
   | 'features/cli/product:cli-commands'
-  | 'features/cli/product:generate-command'
-  | 'features/cli/product:analyze-command'
-  | 'features/cli/product:validate-command'
-  | 'features/cli/product:watch-command';
+  | 'features/cli/product:generate'
+  | 'features/cli/product:generate/directory-argument'
+  | 'features/cli/product:generate/config-pattern'
+  | 'features/cli/product:generate/file-scanning'
+  | 'features/cli/product:generate/heading-parsing'
+  | 'features/cli/product:generate/auto-ids'
+  | 'features/cli/product:generate/stable-id'
+  | 'features/cli/product:generate/structure-output'
+  | 'features/cli/product:generate/types-generation'
+  | 'features/cli/product:generate/output-flag'
+  | 'features/cli/product:generate/type-flag'
+  | 'features/cli/product:generate/global-flag'
+  | 'features/cli/product:generate/no-types-flag'
+  | 'features/cli/product:generate/quiet-flag'
+  | 'features/cli/product:generate/id-change-detection'
+  | 'features/cli/product:generate/id-change-detection/compare-structures'
+  | 'features/cli/product:generate/id-change-detection/warn-renames'
+  | 'features/cli/product:generate/id-change-detection/warn-removals'
+  | 'features/cli/product:generate/id-change-detection/show-affected-tests'
+  | 'features/cli/product:generate/id-change-detection/suggest-anchors'
+  | 'features/cli/product:generate/type-gen'
+  | 'features/cli/product:generate/type-gen/facet-id-type'
+  | 'features/cli/product:generate/type-gen/facets-const'
+  | 'features/cli/product:generate/type-gen/facet-function'
+  | 'features/cli/product:generate/type-gen/all-facet-ids'
+  | 'features/cli/product:analyze'
+  | 'features/cli/product:analyze/config-loading'
+  | 'features/cli/product:analyze/structure-reading'
+  | 'features/cli/product:analyze/test-scanning'
+  | 'features/cli/product:analyze/coverage-metrics'
+  | 'features/cli/product:analyze/report-generation'
+  | 'features/cli/product:analyze/console-summary'
+  | 'features/cli/product:analyze/threshold-exit'
+  | 'features/cli/product:analyze/json-flag'
+  | 'features/cli/product:analyze/silent-flag'
+  | 'features/cli/product:validate'
+  | 'features/cli/product:validate/structure-validity'
+  | 'features/cli/product:validate/source-verification'
+  | 'features/cli/product:validate/duplicate-check'
+  | 'features/cli/product:validate/orphan-detection'
+  | 'features/cli/product:validate/validation-display'
+  | 'features/cli/product:validate/strict-mode'
+  | 'features/cli/product:validate/json-output'
+  | 'features/cli/product:validate/validation-exit'
+  | 'features/cli/product:watch'
+  | 'features/cli/product:watch/monitor-facets'
+  | 'features/cli/product:watch/monitor-tests'
+  | 'features/cli/product:watch/monitor-structures'
+  | 'features/cli/product:watch/rerun-analysis'
+  | 'features/cli/product:watch/validate-flag'
+  | 'features/cli/product:watch/timestamps';
 
 /**
  * Facet ID constants for autocomplete and type-safe references
  */
 export const Facets = {
+ /** Configuration */
+  FEATURES_CLI_CONFIG_CONFIGURATION: 'features/cli/config:configuration' as const,
+ /** Config File Discovery */
+  FEATURES_CLI_CONFIG_FILE_DISCOVERY: 'features/cli/config:file-discovery' as const,
+ /** Search for 'facet.config.js' (ESM or CommonJS) */
+  FEATURES_CLI_CONFIG_FILE_DISCOVERY__SEARCH_JS: 'features/cli/config:file-discovery/search-js' as const,
+ /** Search for 'facet.config.mjs' (ESM only) */
+  FEATURES_CLI_CONFIG_FILE_DISCOVERY__SEARCH_MJS: 'features/cli/config:file-discovery/search-mjs' as const,
+ /** Search for 'facet.config.json' (JSON) */
+  FEATURES_CLI_CONFIG_FILE_DISCOVERY__SEARCH_JSON: 'features/cli/config:file-discovery/search-json' as const,
+ /** Support '--config' flag to specify custom path */
+  FEATURES_CLI_CONFIG_FILE_DISCOVERY__CONFIG_FLAG: 'features/cli/config:file-discovery/config-flag' as const,
+ /** Merge with default configuration values */
+  FEATURES_CLI_CONFIG_FILE_DISCOVERY__MERGE_DEFAULTS: 'features/cli/config:file-discovery/merge-defaults' as const,
+ /** Support configuration in current working directory */
+  FEATURES_CLI_CONFIG_FILE_DISCOVERY__CWD_CONFIG: 'features/cli/config:file-discovery/cwd-config' as const,
+ /** Facet Patterns */
+  FEATURES_CLI_CONFIG_FACET_PATTERNS: 'features/cli/config:facet-patterns' as const,
+ /** Support 'facetPattern' as string or array */
+  FEATURES_CLI_CONFIG_FACET_PATTERNS__PATTERN_TYPES: 'features/cli/config:facet-patterns/pattern-types' as const,
+ /** Default patterns: '['features//.facet.md', 'features//facets/.md']' */
+  FEATURES_CLI_CONFIG_FACET_PATTERNS__DEFAULT_PATTERNS: 'features/cli/config:facet-patterns/default-patterns' as const,
+ /** Expand patterns relative to project root */
+  FEATURES_CLI_CONFIG_FACET_PATTERNS__RELATIVE_EXPANSION: 'features/cli/config:facet-patterns/relative-expansion' as const,
+ /** Remove duplicate matches */
+  FEATURES_CLI_CONFIG_FACET_PATTERNS__DEDUPE: 'features/cli/config:facet-patterns/dedupe' as const,
+ /** Group discovered files by feature directory */
+  FEATURES_CLI_CONFIG_FACET_PATTERNS__GROUP_BY_FEATURE: 'features/cli/config:facet-patterns/group-by-feature' as const,
+ /** Facet Types */
+  FEATURES_CLI_CONFIG_FACET_TYPES: 'features/cli/config:facet-types' as const,
+ /** Support 'facetTypes' array in configuration */
+  FEATURES_CLI_CONFIG_FACET_TYPES__TYPES_ARRAY: 'features/cli/config:facet-types/types-array' as const,
+ /** Default types: '['product', 'dx', 'technical', 'compliance', 'business', 'ux']' */
+  FEATURES_CLI_CONFIG_FACET_TYPES__DEFAULT_TYPES: 'features/cli/config:facet-types/default-types' as const,
+ /** Use for converting 'Facets.BUSINESS_X' to 'business:x' */
+  FEATURES_CLI_CONFIG_FACET_TYPES__CONSTANT_CONVERSION: 'features/cli/config:facet-types/constant-conversion' as const,
+ /** Support hierarchical IDs in nested structures */
+  FEATURES_CLI_CONFIG_FACET_TYPES__HIERARCHICAL_IDS: 'features/cli/config:facet-types/hierarchical-ids' as const,
+ /** Allow custom types per project */
+  FEATURES_CLI_CONFIG_FACET_TYPES__CUSTOM_TYPES: 'features/cli/config:facet-types/custom-types' as const,
  /** Developer Experience */
   FEATURES_CLI_DX_DEVELOPER_EXPERIENCE: 'features/cli/dx:developer-experience' as const,
  /** CLI Ergonomics */
   FEATURES_CLI_DX_CLI_ERGONOMICS: 'features/cli/dx:cli-ergonomics' as const,
+ /** Support both 'facet' and 'facet-coverage' as command names */
+  FEATURES_CLI_DX_CLI_ERGONOMICS__COMMAND_NAMES: 'features/cli/dx:cli-ergonomics/command-names' as const,
+ /** Display help text with usage examples */
+  FEATURES_CLI_DX_CLI_ERGONOMICS__HELP_TEXT: 'features/cli/dx:cli-ergonomics/help-text' as const,
+ /** Show progress indicators during long operations */
+  FEATURES_CLI_DX_CLI_ERGONOMICS__PROGRESS_INDICATORS: 'features/cli/dx:cli-ergonomics/progress-indicators' as const,
+ /** Use color coding for success/warning/error messages */
+  FEATURES_CLI_DX_CLI_ERGONOMICS__COLOR_CODING: 'features/cli/dx:cli-ergonomics/color-coding' as const,
+ /** Display emoji indicators for quick visual scanning */
+  FEATURES_CLI_DX_CLI_ERGONOMICS__EMOJI_INDICATORS: 'features/cli/dx:cli-ergonomics/emoji-indicators' as const,
+ /** Support common flags like '--help' and '--version' */
+  FEATURES_CLI_DX_CLI_ERGONOMICS__COMMON_FLAGS: 'features/cli/dx:cli-ergonomics/common-flags' as const,
  /** Configuration Discovery */
-  FEATURES_CLI_DX_CONFIGURATION_DISCOVERY: 'features/cli/dx:configuration-discovery' as const,
+  FEATURES_CLI_DX_CONFIG_DISCOVERY: 'features/cli/dx:config-discovery' as const,
+ /** Look for configuration in standard locations */
+  FEATURES_CLI_DX_CONFIG_DISCOVERY__CONFIG_LOCATIONS: 'features/cli/dx:config-discovery/config-locations' as const,
+ /** Support multiple config file formats (js, mjs, json) */
+  FEATURES_CLI_DX_CONFIG_DISCOVERY__CONFIG_FORMATS: 'features/cli/dx:config-discovery/config-formats' as const,
+ /** Support custom config path via '-c' flag */
+  FEATURES_CLI_DX_CONFIG_DISCOVERY__CONFIG_FLAG: 'features/cli/dx:config-discovery/config-flag' as const,
+ /** Merge user config with sensible defaults */
+  FEATURES_CLI_DX_CONFIG_DISCOVERY__CONFIG_MERGE: 'features/cli/dx:config-discovery/config-merge' as const,
+ /** Warn when no config file is found */
+  FEATURES_CLI_DX_CONFIG_DISCOVERY__CONFIG_WARNING: 'features/cli/dx:config-discovery/config-warning' as const,
  /** CLI Commands */
   FEATURES_CLI_PRODUCT_CLI_COMMANDS: 'features/cli/product:cli-commands' as const,
  /** Generate Command */
-  FEATURES_CLI_PRODUCT_GENERATE_COMMAND: 'features/cli/product:generate-command' as const,
+  FEATURES_CLI_PRODUCT_GENERATE: 'features/cli/product:generate' as const,
+ /** Accept optional directory path as argument */
+  FEATURES_CLI_PRODUCT_GENERATE__DIRECTORY_ARGUMENT: 'features/cli/product:generate/directory-argument' as const,
+ /** When no directory specified, use 'facetPattern' from config */
+  FEATURES_CLI_PRODUCT_GENERATE__CONFIG_PATTERN: 'features/cli/product:generate/config-pattern' as const,
+ /** Scan directory for markdown files (both '.facet.md' and 'facets/.md') */
+  FEATURES_CLI_PRODUCT_GENERATE__FILE_SCANNING: 'features/cli/product:generate/file-scanning' as const,
+ /** Parse each markdown file for heading sections */
+  FEATURES_CLI_PRODUCT_GENERATE__HEADING_PARSING: 'features/cli/product:generate/heading-parsing' as const,
+ /** Create facet entries with auto-generated IDs (format: 'type:section-slug') */
+  FEATURES_CLI_PRODUCT_GENERATE__AUTO_IDS: 'features/cli/product:generate/auto-ids' as const,
+ /** Support explicit anchor syntax for stable IDs: '## Heading */
+  FEATURES_CLI_PRODUCT_GENERATE__STABLE_ID: 'features/cli/product:generate/stable-id' as const,
+ /** Write structure.json to '.facet/' directory */
+  FEATURES_CLI_PRODUCT_GENERATE__STRUCTURE_OUTPUT: 'features/cli/product:generate/structure-output' as const,
+ /** Generate TypeScript types file ('facets.ts') with type-safe constants */
+  FEATURES_CLI_PRODUCT_GENERATE__TYPES_GENERATION: 'features/cli/product:generate/types-generation' as const,
+ /** Support custom output directory via '-o' flag */
+  FEATURES_CLI_PRODUCT_GENERATE__OUTPUT_FLAG: 'features/cli/product:generate/output-flag' as const,
+ /** Support type override via '-t' flag */
+  FEATURES_CLI_PRODUCT_GENERATE__TYPE_FLAG: 'features/cli/product:generate/type-flag' as const,
+ /** Support '--global' flag to generate combined types at root */
+  FEATURES_CLI_PRODUCT_GENERATE__GLOBAL_FLAG: 'features/cli/product:generate/global-flag' as const,
+ /** Support '--no-types' flag to skip TypeScript generation */
+  FEATURES_CLI_PRODUCT_GENERATE__NO_TYPES_FLAG: 'features/cli/product:generate/no-types-flag' as const,
+ /** Support '-q, --quiet' flag to suppress ID change warnings */
+  FEATURES_CLI_PRODUCT_GENERATE__QUIET_FLAG: 'features/cli/product:generate/quiet-flag' as const,
+ /** ID Change Detection */
+  FEATURES_CLI_PRODUCT_GENERATE__ID_CHANGE_DETECTION: 'features/cli/product:generate/id-change-detection' as const,
+ /** Compare new structure.json with existing */
+  FEATURES_CLI_PRODUCT_GENERATE__ID_CHANGE_DETECTION__COMPARE_STRUCTURES: 'features/cli/product:generate/id-change-detection/compare-structures' as const,
+ /** Warn about renamed IDs (heading text changed) */
+  FEATURES_CLI_PRODUCT_GENERATE__ID_CHANGE_DETECTION__WARN_RENAMES: 'features/cli/product:generate/id-change-detection/warn-renames' as const,
+ /** Warn about removed IDs */
+  FEATURES_CLI_PRODUCT_GENERATE__ID_CHANGE_DETECTION__WARN_REMOVALS: 'features/cli/product:generate/id-change-detection/warn-removals' as const,
+ /** Show affected tests that may need updates */
+  FEATURES_CLI_PRODUCT_GENERATE__ID_CHANGE_DETECTION__SHOW_AFFECTED_TESTS: 'features/cli/product:generate/id-change-detection/show-affected-tests' as const,
+ /** Suggest using explicit anchors for stability */
+  FEATURES_CLI_PRODUCT_GENERATE__ID_CHANGE_DETECTION__SUGGEST_ANCHORS: 'features/cli/product:generate/id-change-detection/suggest-anchors' as const,
+ /** Type Generation */
+  FEATURES_CLI_PRODUCT_GENERATE__TYPE_GEN: 'features/cli/product:generate/type-gen' as const,
+ /** 'FacetId' union type of all valid IDs */
+  FEATURES_CLI_PRODUCT_GENERATE__TYPE_GEN__FACET_ID_TYPE: 'features/cli/product:generate/type-gen/facet-id-type' as const,
+ /** 'Facets' const object for autocomplete */
+  FEATURES_CLI_PRODUCT_GENERATE__TYPE_GEN__FACETS_CONST: 'features/cli/product:generate/type-gen/facets-const' as const,
+ /** 'facet()' helper function for test annotations */
+  FEATURES_CLI_PRODUCT_GENERATE__TYPE_GEN__FACET_FUNCTION: 'features/cli/product:generate/type-gen/facet-function' as const,
+ /** 'allFacetIds' array of all IDs */
+  FEATURES_CLI_PRODUCT_GENERATE__TYPE_GEN__ALL_FACET_IDS: 'features/cli/product:generate/type-gen/all-facet-ids' as const,
  /** Analyze Command */
-  FEATURES_CLI_PRODUCT_ANALYZE_COMMAND: 'features/cli/product:analyze-command' as const,
+  FEATURES_CLI_PRODUCT_ANALYZE: 'features/cli/product:analyze' as const,
+ /** Load configuration from facet.config.json or specified file */
+  FEATURES_CLI_PRODUCT_ANALYZE__CONFIG_LOADING: 'features/cli/product:analyze/config-loading' as const,
+ /** Read all structure files */
+  FEATURES_CLI_PRODUCT_ANALYZE__STRUCTURE_READING: 'features/cli/product:analyze/structure-reading' as const,
+ /** Scan all test files for facet annotations */
+  FEATURES_CLI_PRODUCT_ANALYZE__TEST_SCANNING: 'features/cli/product:analyze/test-scanning' as const,
+ /** Calculate coverage metrics */
+  FEATURES_CLI_PRODUCT_ANALYZE__COVERAGE_METRICS: 'features/cli/product:analyze/coverage-metrics' as const,
+ /** Generate reports in configured formats (JSON, HTML, Markdown) */
+  FEATURES_CLI_PRODUCT_ANALYZE__REPORT_GENERATION: 'features/cli/product:analyze/report-generation' as const,
+ /** Display coverage summary in console */
+  FEATURES_CLI_PRODUCT_ANALYZE__CONSOLE_SUMMARY: 'features/cli/product:analyze/console-summary' as const,
+ /** Exit with code 1 if thresholds not met (for CI/CD) */
+  FEATURES_CLI_PRODUCT_ANALYZE__THRESHOLD_EXIT: 'features/cli/product:analyze/threshold-exit' as const,
+ /** Support '--json' flag for machine-readable output */
+  FEATURES_CLI_PRODUCT_ANALYZE__JSON_FLAG: 'features/cli/product:analyze/json-flag' as const,
+ /** Support '--silent' flag to suppress console output */
+  FEATURES_CLI_PRODUCT_ANALYZE__SILENT_FLAG: 'features/cli/product:analyze/silent-flag' as const,
  /** Validate Command */
-  FEATURES_CLI_PRODUCT_VALIDATE_COMMAND: 'features/cli/product:validate-command' as const,
+  FEATURES_CLI_PRODUCT_VALIDATE: 'features/cli/product:validate' as const,
+ /** Check all structure files for validity */
+  FEATURES_CLI_PRODUCT_VALIDATE__STRUCTURE_VALIDITY: 'features/cli/product:validate/structure-validity' as const,
+ /** Verify source files and sections exist */
+  FEATURES_CLI_PRODUCT_VALIDATE__SOURCE_VERIFICATION: 'features/cli/product:validate/source-verification' as const,
+ /** Check for duplicate facet IDs */
+  FEATURES_CLI_PRODUCT_VALIDATE__DUPLICATE_CHECK: 'features/cli/product:validate/duplicate-check' as const,
+ /** Identify orphan tests and uncovered facets */
+  FEATURES_CLI_PRODUCT_VALIDATE__ORPHAN_DETECTION: 'features/cli/product:validate/orphan-detection' as const,
+ /** Display validation results with errors and warnings */
+  FEATURES_CLI_PRODUCT_VALIDATE__VALIDATION_DISPLAY: 'features/cli/product:validate/validation-display' as const,
+ /** Support '--strict' mode requiring all tests to be linked */
+  FEATURES_CLI_PRODUCT_VALIDATE__STRICT_MODE: 'features/cli/product:validate/strict-mode' as const,
+ /** Support '--json' flag for structured output */
+  FEATURES_CLI_PRODUCT_VALIDATE__JSON_OUTPUT: 'features/cli/product:validate/json-output' as const,
+ /** Exit with code 1 if validation fails */
+  FEATURES_CLI_PRODUCT_VALIDATE__VALIDATION_EXIT: 'features/cli/product:validate/validation-exit' as const,
  /** Watch Command */
-  FEATURES_CLI_PRODUCT_WATCH_COMMAND: 'features/cli/product:watch-command' as const,
+  FEATURES_CLI_PRODUCT_WATCH: 'features/cli/product:watch' as const,
+ /** Monitor facet markdown files for changes */
+  FEATURES_CLI_PRODUCT_WATCH__MONITOR_FACETS: 'features/cli/product:watch/monitor-facets' as const,
+ /** Monitor test files for changes */
+  FEATURES_CLI_PRODUCT_WATCH__MONITOR_TESTS: 'features/cli/product:watch/monitor-tests' as const,
+ /** Monitor structure.json files for changes */
+  FEATURES_CLI_PRODUCT_WATCH__MONITOR_STRUCTURES: 'features/cli/product:watch/monitor-structures' as const,
+ /** Re-run analysis on detected changes */
+  FEATURES_CLI_PRODUCT_WATCH__RERUN_ANALYSIS: 'features/cli/product:watch/rerun-analysis' as const,
+ /** Support optional validation before analysis via '-v' flag */
+  FEATURES_CLI_PRODUCT_WATCH__VALIDATE_FLAG: 'features/cli/product:watch/validate-flag' as const,
+ /** Display timestamps for each analysis run */
+  FEATURES_CLI_PRODUCT_WATCH__TIMESTAMPS: 'features/cli/product:watch/timestamps' as const,
 } as const;
 
 /**
@@ -64,12 +298,90 @@ export function facet<T extends FacetId>(...facetIds: T[]): { facets: T[]; toStr
  * Get all facet IDs as an array
  */
 export const allFacetIds: FacetId[] = [
+  'features/cli/config:configuration',
+  'features/cli/config:file-discovery',
+  'features/cli/config:file-discovery/search-js',
+  'features/cli/config:file-discovery/search-mjs',
+  'features/cli/config:file-discovery/search-json',
+  'features/cli/config:file-discovery/config-flag',
+  'features/cli/config:file-discovery/merge-defaults',
+  'features/cli/config:file-discovery/cwd-config',
+  'features/cli/config:facet-patterns',
+  'features/cli/config:facet-patterns/pattern-types',
+  'features/cli/config:facet-patterns/default-patterns',
+  'features/cli/config:facet-patterns/relative-expansion',
+  'features/cli/config:facet-patterns/dedupe',
+  'features/cli/config:facet-patterns/group-by-feature',
+  'features/cli/config:facet-types',
+  'features/cli/config:facet-types/types-array',
+  'features/cli/config:facet-types/default-types',
+  'features/cli/config:facet-types/constant-conversion',
+  'features/cli/config:facet-types/hierarchical-ids',
+  'features/cli/config:facet-types/custom-types',
   'features/cli/dx:developer-experience',
   'features/cli/dx:cli-ergonomics',
-  'features/cli/dx:configuration-discovery',
+  'features/cli/dx:cli-ergonomics/command-names',
+  'features/cli/dx:cli-ergonomics/help-text',
+  'features/cli/dx:cli-ergonomics/progress-indicators',
+  'features/cli/dx:cli-ergonomics/color-coding',
+  'features/cli/dx:cli-ergonomics/emoji-indicators',
+  'features/cli/dx:cli-ergonomics/common-flags',
+  'features/cli/dx:config-discovery',
+  'features/cli/dx:config-discovery/config-locations',
+  'features/cli/dx:config-discovery/config-formats',
+  'features/cli/dx:config-discovery/config-flag',
+  'features/cli/dx:config-discovery/config-merge',
+  'features/cli/dx:config-discovery/config-warning',
   'features/cli/product:cli-commands',
-  'features/cli/product:generate-command',
-  'features/cli/product:analyze-command',
-  'features/cli/product:validate-command',
-  'features/cli/product:watch-command',
+  'features/cli/product:generate',
+  'features/cli/product:generate/directory-argument',
+  'features/cli/product:generate/config-pattern',
+  'features/cli/product:generate/file-scanning',
+  'features/cli/product:generate/heading-parsing',
+  'features/cli/product:generate/auto-ids',
+  'features/cli/product:generate/stable-id',
+  'features/cli/product:generate/structure-output',
+  'features/cli/product:generate/types-generation',
+  'features/cli/product:generate/output-flag',
+  'features/cli/product:generate/type-flag',
+  'features/cli/product:generate/global-flag',
+  'features/cli/product:generate/no-types-flag',
+  'features/cli/product:generate/quiet-flag',
+  'features/cli/product:generate/id-change-detection',
+  'features/cli/product:generate/id-change-detection/compare-structures',
+  'features/cli/product:generate/id-change-detection/warn-renames',
+  'features/cli/product:generate/id-change-detection/warn-removals',
+  'features/cli/product:generate/id-change-detection/show-affected-tests',
+  'features/cli/product:generate/id-change-detection/suggest-anchors',
+  'features/cli/product:generate/type-gen',
+  'features/cli/product:generate/type-gen/facet-id-type',
+  'features/cli/product:generate/type-gen/facets-const',
+  'features/cli/product:generate/type-gen/facet-function',
+  'features/cli/product:generate/type-gen/all-facet-ids',
+  'features/cli/product:analyze',
+  'features/cli/product:analyze/config-loading',
+  'features/cli/product:analyze/structure-reading',
+  'features/cli/product:analyze/test-scanning',
+  'features/cli/product:analyze/coverage-metrics',
+  'features/cli/product:analyze/report-generation',
+  'features/cli/product:analyze/console-summary',
+  'features/cli/product:analyze/threshold-exit',
+  'features/cli/product:analyze/json-flag',
+  'features/cli/product:analyze/silent-flag',
+  'features/cli/product:validate',
+  'features/cli/product:validate/structure-validity',
+  'features/cli/product:validate/source-verification',
+  'features/cli/product:validate/duplicate-check',
+  'features/cli/product:validate/orphan-detection',
+  'features/cli/product:validate/validation-display',
+  'features/cli/product:validate/strict-mode',
+  'features/cli/product:validate/json-output',
+  'features/cli/product:validate/validation-exit',
+  'features/cli/product:watch',
+  'features/cli/product:watch/monitor-facets',
+  'features/cli/product:watch/monitor-tests',
+  'features/cli/product:watch/monitor-structures',
+  'features/cli/product:watch/rerun-analysis',
+  'features/cli/product:watch/validate-flag',
+  'features/cli/product:watch/timestamps',
 ];

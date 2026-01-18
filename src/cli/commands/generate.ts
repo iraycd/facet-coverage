@@ -17,15 +17,49 @@ interface GenerateOptions {
 }
 
 /**
- * Convert a facet ID to a valid TypeScript identifier
- * e.g., "business:guest-purchase-flow" -> "BUSINESS_GUEST_PURCHASE_FLOW"
- * e.g., "checkout/payments/pci:card-storage" -> "CHECKOUT_PAYMENTS_PCI_CARD_STORAGE"
+ * Convert a facet ID to a valid TypeScript identifier.
+ *
+ * Uses these conventions:
+ * - `:` and `-` become single underscore `_`
+ * - `/` in path (before `:`) becomes single underscore `_`
+ * - `/` after `:` (sub-facet separator) becomes double underscore `__`
+ *
+ * Examples:
+ * - "business:guest-purchase-flow" -> "BUSINESS_GUEST_PURCHASE_FLOW"
+ * - "checkout/payments/pci:card-storage" -> "CHECKOUT_PAYMENTS_PCI_CARD_STORAGE"
+ * - "compliance:pci-dss/tls" -> "COMPLIANCE_PCI_DSS__TLS" (sub-facet uses __)
  */
 function toConstantName(facetId: string): string {
-  return facetId
-    .toUpperCase()
-    .replace(/[/:-]/g, '_')
-    .replace(/[^A-Z0-9_]/g, '');
+  const colonIndex = facetId.indexOf(':');
+
+  if (colonIndex === -1) {
+    // No colon, simple conversion
+    return facetId.toUpperCase().replace(/[/-]/g, '_').replace(/[^A-Z0-9_]/g, '');
+  }
+
+  // Split into path+type part and section part
+  const pathAndType = facetId.substring(0, colonIndex);
+  const section = facetId.substring(colonIndex + 1);
+
+  // For path+type: / and - become _
+  const pathPart = pathAndType.toUpperCase().replace(/[/-]/g, '_').replace(/[^A-Z0-9_]/g, '');
+
+  // For section: - becomes _, / becomes __ (sub-facet separator)
+  const sectionPart = section.toUpperCase().replace(/\//g, '__').replace(/-/g, '_').replace(/[^A-Z0-9_]/g, '');
+
+  return `${pathPart}_${sectionPart}`;
+}
+
+/**
+ * Escape a title for use in JSDoc comments.
+ * Removes backticks and other problematic characters.
+ */
+function escapeJsDocTitle(title: string): string {
+  return title
+    .replace(/`/g, "'") // Replace backticks with single quotes
+    .replace(/\*/g, '') // Remove asterisks (would close JSDoc)
+    .replace(/\n/g, ' ') // Replace newlines with spaces
+    .trim();
 }
 
 /**
@@ -42,7 +76,7 @@ function generateTypesFile(facets: Facet[], featureName: string): string {
   // Generate constants for each facet ID (for autocomplete)
   const constants = facets.map(f => {
     const constName = toConstantName(f.id);
-    const comment = f.title ? ` /** ${f.title} */` : '';
+    const comment = f.title ? ` /** ${escapeJsDocTitle(f.title)} */` : '';
     return `${comment}\n  ${constName}: '${f.id}' as const,`;
   }).join('\n');
 
@@ -113,7 +147,7 @@ function generateGlobalTypesFile(
   // Generate constants for each facet ID
   const constants = allFacets.map(f => {
     const constName = toConstantName(f.id);
-    const comment = f.title ? ` /** ${f.title} */` : '';
+    const comment = f.title ? ` /** ${escapeJsDocTitle(f.title)} */` : '';
     return `${comment}\n  ${constName}: '${f.id}' as const,`;
   }).join('\n');
 
@@ -256,6 +290,9 @@ async function processFeature(
 
   console.log(`\n  Feature: ${featureName}`);
 
+  // Get configured sub-facet heading levels (default: none - only list items and comment markers)
+  const subFacetHeadingLevels = config?.subFacetHeadingLevels || [];
+
   for (const filePath of files) {
     const parsed = parser.parseFile(filePath);
     const type = getFacetType(filePath, options);
@@ -263,22 +300,30 @@ async function processFeature(
 
     console.log(`    📄 ${fileName}`);
 
-    for (const section of parsed.sections) {
-      // Only include top-level sections (h2 or the first h1 if no h2s)
-      if (section.level <= 2) {
-        // Use hierarchical ID if nested, simple ID otherwise
-        const relPath = relative(rootDir, featureDir);
-        const isNested = relPath.includes('/') || relPath !== basename(featureDir);
+    // Track current parent facet for h3+ sub-facets
+    let currentParentFacetId: string | null = null;
+    let currentParentSection: string | null = null;
 
+    // Determine relative source path
+    const sourcePath = FacetParser.isFacetMdFile(filePath)
+      ? fileName
+      : `facets/${fileName}`;
+
+    for (const section of parsed.sections) {
+      // Use hierarchical ID if nested, simple ID otherwise
+      const relPath = relative(rootDir, featureDir);
+      const isNested = relPath.includes('/') || relPath !== basename(featureDir);
+
+      // Check if this section level should be a sub-facet
+      const isSubFacetLevel = subFacetHeadingLevels.includes(section.level);
+
+      // Top-level sections (h2 or h1) become parent facets
+      if (section.level <= 2) {
         const facetId = isNested
           ? FacetParser.generateHierarchicalFacetId(rootDir, filePath, section.slug)
           : FacetParser.generateFacetId(filePath, section.slug);
 
-        // Determine relative source path
-        const sourcePath = FacetParser.isFacetMdFile(filePath)
-          ? fileName
-          : `facets/${fileName}`;
-
+        // Add parent facet
         facets.push({
           id: facetId,
           source: {
@@ -290,6 +335,94 @@ async function processFeature(
         });
 
         console.log(`      ✓ ${facetId}`);
+
+        // Track as current parent for h3+ sections
+        currentParentFacetId = facetId;
+        currentParentSection = section.slug;
+
+        // Process sub-facets from list items and comments if present
+        if (section.subFacets && section.subFacets.length > 0) {
+          for (const subFacet of section.subFacets) {
+            const subFacetId = FacetParser.generateSubFacetId(facetId, subFacet.id);
+
+            facets.push({
+              id: subFacetId,
+              source: {
+                file: sourcePath,
+                section: section.slug,
+                line: subFacet.line,
+              },
+              type,
+              title: subFacet.title,
+              parentId: facetId,
+              isSubFacet: true,
+            });
+
+            console.log(`        └─ ${subFacetId}`);
+          }
+        }
+      }
+      // h3+ sections with explicit IDs become sub-facets if configured
+      else if (isSubFacetLevel && section.explicitId && currentParentFacetId) {
+        const subFacetId = FacetParser.generateSubFacetId(currentParentFacetId, section.explicitId);
+
+        facets.push({
+          id: subFacetId,
+          source: {
+            file: sourcePath,
+            section: currentParentSection || section.slug,
+            line: section.startLine,
+          },
+          type,
+          title: section.title,
+          parentId: currentParentFacetId,
+          isSubFacet: true,
+        });
+
+        console.log(`        └─ ${subFacetId}`);
+
+        // Also process any sub-facets within this h3+ section (list items, comments)
+        if (section.subFacets && section.subFacets.length > 0) {
+          for (const subFacet of section.subFacets) {
+            const nestedSubFacetId = FacetParser.generateSubFacetId(subFacetId, subFacet.id);
+
+            facets.push({
+              id: nestedSubFacetId,
+              source: {
+                file: sourcePath,
+                section: currentParentSection || section.slug,
+                line: subFacet.line,
+              },
+              type,
+              title: subFacet.title,
+              parentId: subFacetId,
+              isSubFacet: true,
+            });
+
+            console.log(`          └─ ${nestedSubFacetId}`);
+          }
+        }
+      }
+      // h3+ sections without explicit IDs: attach their sub-facets to current parent
+      else if (section.level > 2 && currentParentFacetId && section.subFacets && section.subFacets.length > 0) {
+        for (const subFacet of section.subFacets) {
+          const subFacetId = FacetParser.generateSubFacetId(currentParentFacetId, subFacet.id);
+
+          facets.push({
+            id: subFacetId,
+            source: {
+              file: sourcePath,
+              section: currentParentSection || section.slug,
+              line: subFacet.line,
+            },
+            type,
+            title: subFacet.title,
+            parentId: currentParentFacetId,
+            isSubFacet: true,
+          });
+
+          console.log(`        └─ ${subFacetId}`);
+        }
       }
     }
   }
@@ -356,7 +489,8 @@ async function processFeature(
  */
 async function generateFromDirectory(
   dir: string,
-  options: GenerateOptions
+  options: GenerateOptions,
+  config?: FacetConfig
 ): Promise<void> {
   const facetsDir = resolve(process.cwd(), dir);
 
@@ -378,6 +512,9 @@ async function generateFromDirectory(
   const parser = new FacetParser();
   const facets: Facet[] = [];
 
+  // Get configured sub-facet heading levels (default: none)
+  const subFacetHeadingLevels = config?.subFacetHeadingLevels || [];
+
   for (const filePath of files) {
     const parsed = parser.parseFile(filePath);
     const file = basename(filePath);
@@ -385,14 +522,22 @@ async function generateFromDirectory(
 
     console.log(`  📄 ${file}`);
 
+    // Track current parent facet for h3+ sub-facets
+    let currentParentFacetId: string | null = null;
+    let currentParentSection: string | null = null;
+
+    // Determine source path based on file type
+    const sourcePath = FacetParser.isFacetMdFile(filePath)
+      ? file
+      : `facets/${file}`;
+
     for (const section of parsed.sections) {
+      // Check if this section level should be a sub-facet
+      const isSubFacetLevel = subFacetHeadingLevels.includes(section.level);
+
+      // Top-level sections (h2 or h1) become parent facets
       if (section.level <= 2) {
         const facetId = FacetParser.generateFacetId(file, section.slug);
-
-        // Determine source path based on file type
-        const sourcePath = FacetParser.isFacetMdFile(filePath)
-          ? file
-          : `facets/${file}`;
 
         facets.push({
           id: facetId,
@@ -405,6 +550,94 @@ async function generateFromDirectory(
         });
 
         console.log(`    ✓ ${facetId}`);
+
+        // Track as current parent for h3+ sections
+        currentParentFacetId = facetId;
+        currentParentSection = section.slug;
+
+        // Process sub-facets from list items and comments if present
+        if (section.subFacets && section.subFacets.length > 0) {
+          for (const subFacet of section.subFacets) {
+            const subFacetId = FacetParser.generateSubFacetId(facetId, subFacet.id);
+
+            facets.push({
+              id: subFacetId,
+              source: {
+                file: sourcePath,
+                section: section.slug,
+                line: subFacet.line,
+              },
+              type,
+              title: subFacet.title,
+              parentId: facetId,
+              isSubFacet: true,
+            });
+
+            console.log(`      └─ ${subFacetId}`);
+          }
+        }
+      }
+      // h3+ sections with explicit IDs become sub-facets if configured
+      else if (isSubFacetLevel && section.explicitId && currentParentFacetId) {
+        const subFacetId = FacetParser.generateSubFacetId(currentParentFacetId, section.explicitId);
+
+        facets.push({
+          id: subFacetId,
+          source: {
+            file: sourcePath,
+            section: currentParentSection || section.slug,
+            line: section.startLine,
+          },
+          type,
+          title: section.title,
+          parentId: currentParentFacetId,
+          isSubFacet: true,
+        });
+
+        console.log(`      └─ ${subFacetId}`);
+
+        // Also process any sub-facets within this h3+ section
+        if (section.subFacets && section.subFacets.length > 0) {
+          for (const subFacet of section.subFacets) {
+            const nestedSubFacetId = FacetParser.generateSubFacetId(subFacetId, subFacet.id);
+
+            facets.push({
+              id: nestedSubFacetId,
+              source: {
+                file: sourcePath,
+                section: currentParentSection || section.slug,
+                line: subFacet.line,
+              },
+              type,
+              title: subFacet.title,
+              parentId: subFacetId,
+              isSubFacet: true,
+            });
+
+            console.log(`        └─ ${nestedSubFacetId}`);
+          }
+        }
+      }
+      // h3+ sections without explicit IDs: attach their sub-facets to current parent
+      else if (section.level > 2 && currentParentFacetId && section.subFacets && section.subFacets.length > 0) {
+        for (const subFacet of section.subFacets) {
+          const subFacetId = FacetParser.generateSubFacetId(currentParentFacetId, subFacet.id);
+
+          facets.push({
+            id: subFacetId,
+            source: {
+              file: sourcePath,
+              section: currentParentSection || section.slug,
+              line: subFacet.line,
+            },
+            type,
+            title: subFacet.title,
+            parentId: currentParentFacetId,
+            isSubFacet: true,
+          });
+
+          console.log(`      └─ ${subFacetId}`);
+        }
       }
     }
   }
@@ -524,12 +757,14 @@ export async function generateCommand(
 ): Promise<void> {
   const cwd = process.cwd();
 
+  // Always try to load config for options like subFacetHeadingLevels
+  const config = await loadConfig(options.config, cwd);
+
   if (dir) {
-    // Backwards compatible: explicit directory provided
-    await generateFromDirectory(dir, options);
+    // Backwards compatible: explicit directory provided, but pass config for options
+    await generateFromDirectory(dir, options, config);
   } else {
     // New behavior: use config to find facet files
-    const config = await loadConfig(options.config, cwd);
     await generateFromConfig(config, options);
   }
 }

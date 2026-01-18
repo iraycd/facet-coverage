@@ -9,6 +9,7 @@
     "features/**/facets/*.md"
   ],
   "facetTypes": ["product", "dx", "technical"],
+  "subFacetHeadingLevels": [3],
   "validation": {
     "requireSourceExists": true,
     "requireSectionExists": true,
