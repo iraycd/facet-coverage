@@ -1,0 +1,41 @@
+{
+  "feature": "generate",
+  "facets": [
+    {
+      "id": "features/cli/generate/product:generate-command",
+      "source": {
+        "file": "product.facet.md",
+        "section": "generate-command"
+      },
+      "type": "product",
+      "title": "Generate Command"
+    },
+    {
+      "id": "features/cli/generate/product:config-based-discovery",
+      "source": {
+        "file": "product.facet.md",
+        "section": "config-based-discovery"
+      },
+      "type": "product",
+      "title": "Config-Based Discovery"
+    },
+    {
+      "id": "features/cli/generate/product:type-generation",
+      "source": {
+        "file": "product.facet.md",
+        "section": "type-generation"
+      },
+      "type": "product",
+      "title": "Type Generation"
+    },
+    {
+      "id": "features/cli/generate/product:global-types",
+      "source": {
+        "file": "product.facet.md",
+        "section": "global-types"
+      },
+      "type": "product",
+      "title": "Global Types"
+    }
+  ]
+}

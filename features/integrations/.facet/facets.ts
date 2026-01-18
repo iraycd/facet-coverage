@@ -9,29 +9,29 @@
  * All valid facet IDs for the "integrations" feature
  */
 export type FacetId =
-  | 'product:integrations'
-  | 'product:playwright-annotation-helper'
-  | 'product:playwright-reporter'
-  | 'dx:developer-experience'
-  | 'dx:integration-simplicity'
-  | 'dx:annotation-syntax';
+  | 'features/integrations/dx:developer-experience'
+  | 'features/integrations/dx:integration-simplicity'
+  | 'features/integrations/dx:annotation-syntax'
+  | 'features/integrations/product:integrations'
+  | 'features/integrations/product:playwright-annotation-helper'
+  | 'features/integrations/product:playwright-reporter';
 
 /**
  * Facet ID constants for autocomplete and type-safe references
  */
 export const Facets = {
- /** Integrations */
-  PRODUCT_INTEGRATIONS: 'product:integrations' as const,
- /** Playwright Annotation Helper */
-  PRODUCT_PLAYWRIGHT_ANNOTATION_HELPER: 'product:playwright-annotation-helper' as const,
- /** Playwright Reporter */
-  PRODUCT_PLAYWRIGHT_REPORTER: 'product:playwright-reporter' as const,
  /** Developer Experience */
-  DX_DEVELOPER_EXPERIENCE: 'dx:developer-experience' as const,
+  FEATURES_INTEGRATIONS_DX_DEVELOPER_EXPERIENCE: 'features/integrations/dx:developer-experience' as const,
  /** Integration Simplicity */
-  DX_INTEGRATION_SIMPLICITY: 'dx:integration-simplicity' as const,
+  FEATURES_INTEGRATIONS_DX_INTEGRATION_SIMPLICITY: 'features/integrations/dx:integration-simplicity' as const,
  /** Annotation Syntax */
-  DX_ANNOTATION_SYNTAX: 'dx:annotation-syntax' as const,
+  FEATURES_INTEGRATIONS_DX_ANNOTATION_SYNTAX: 'features/integrations/dx:annotation-syntax' as const,
+ /** Integrations */
+  FEATURES_INTEGRATIONS_PRODUCT_INTEGRATIONS: 'features/integrations/product:integrations' as const,
+ /** Playwright Annotation Helper */
+  FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_ANNOTATION_HELPER: 'features/integrations/product:playwright-annotation-helper' as const,
+ /** Playwright Reporter */
+  FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_REPORTER: 'features/integrations/product:playwright-reporter' as const,
 } as const;
 
 /**
@@ -58,10 +58,10 @@ export function facet<T extends FacetId>(...facetIds: T[]): { facets: T[]; toStr
  * Get all facet IDs as an array
  */
 export const allFacetIds: FacetId[] = [
-  'product:integrations',
-  'product:playwright-annotation-helper',
-  'product:playwright-reporter',
-  'dx:developer-experience',
-  'dx:integration-simplicity',
-  'dx:annotation-syntax',
+  'features/integrations/dx:developer-experience',
+  'features/integrations/dx:integration-simplicity',
+  'features/integrations/dx:annotation-syntax',
+  'features/integrations/product:integrations',
+  'features/integrations/product:playwright-annotation-helper',
+  'features/integrations/product:playwright-reporter',
 ];

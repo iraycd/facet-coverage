@@ -15,6 +15,59 @@ export class TestScanner {
   }
 
   /**
+   * Convert a Facets constant name to a facet ID.
+   * Handles hierarchical IDs like:
+   * - FEATURES_CORE_PRODUCT_STRUCTURE_READING -> features/core/product:structure-reading
+   * - FEATURES_CLI_DX_CLI_ERGONOMICS -> features/cli/dx:cli-ergonomics
+   * - PRODUCT_STRUCTURE_READING -> product:structure-reading (legacy)
+   */
+  private convertConstantToFacetId(constName: string): string {
+    // Get facet types from config
+    const knownTypes = this.config.facetTypes || [];
+
+    // Split by underscore and lowercase
+    const parts = constName.toLowerCase().split('_');
+
+    // Check if it starts with 'features' (hierarchical ID)
+    if (parts[0] === 'features' && parts.length > 2) {
+      // Find where the type is in the parts
+      let typeIndex = -1;
+      for (let i = 1; i < parts.length; i++) {
+        if (knownTypes.includes(parts[i])) {
+          typeIndex = i;
+          break;
+        }
+      }
+
+      if (typeIndex > 1) {
+        // Build hierarchical ID: features/path/type:section
+        const pathParts = parts.slice(0, typeIndex); // includes 'features' and path
+        const type = parts[typeIndex];
+        const sectionParts = parts.slice(typeIndex + 1);
+
+        const path = pathParts.join('/');
+        const section = sectionParts.join('-');
+
+        return `${path}/${type}:${section}`;
+      }
+    }
+
+    // Legacy format: PRODUCT_STRUCTURE_READING -> product:structure-reading
+    // Find the type at the beginning
+    for (const type of knownTypes) {
+      if (parts[0] === type) {
+        const section = parts.slice(1).join('-');
+        return `${type}:${section}`;
+      }
+    }
+
+    // Fallback: treat first part as type, rest as section
+    const type = parts[0];
+    const section = parts.slice(1).join('-');
+    return `${type}:${section}`;
+  }
+
+  /**
    * Find all test files matching configured patterns
    */
   async findTestFiles(cwd: string = process.cwd()): Promise<string[]> {
@@ -140,13 +193,9 @@ export class TestScanner {
           facetIdsPattern.lastIndex = 0;
 
           // Extract Facets.CONSTANT references - convert to facet ID format
-          // The actual ID resolution happens at scan time by looking at the constant value
           while ((idMatch = facetsConstPattern.exec(facetArgs)) !== null) {
-            // Store the constant name - we'll need to resolve it from the file's imports
-            // For now, we'll extract the value if it's defined inline
             const constName = idMatch[1];
-            // Convert BUSINESS_GUEST_PURCHASE_FLOW to business:guest-purchase-flow
-            const facetId = constName.toLowerCase().replace(/_/g, '-').replace(/^([^-]+)-/, '$1:');
+            const facetId = this.convertConstantToFacetId(constName);
             currentTestFacetIds.push(facetId);
           }
           facetsConstPattern.lastIndex = 0;
@@ -215,7 +264,7 @@ export class TestScanner {
             // Also check for Facets.CONSTANT in annotation
             while ((idMatch = facetsConstPattern.exec(facetArgs)) !== null) {
               const constName = idMatch[1];
-              const facetId = constName.toLowerCase().replace(/_/g, '-').replace(/^([^-]+)-/, '$1:');
+              const facetId = this.convertConstantToFacetId(constName);
               facetIds.push(facetId);
             }
             facetsConstPattern.lastIndex = 0;

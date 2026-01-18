@@ -4,6 +4,11 @@
   ],
   "testDir": "./features/**/tests",
   "testPatterns": ["**/*.spec.ts", "**/*.test.ts"],
+  "facetPattern": [
+    "features/**/*.facet.md",
+    "features/**/facets/*.md"
+  ],
+  "facetTypes": ["product", "dx", "technical"],
   "validation": {
     "requireSourceExists": true,
     "requireSectionExists": true,

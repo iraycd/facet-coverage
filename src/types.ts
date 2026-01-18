@@ -158,6 +158,10 @@ export interface FacetConfig {
   testDir: string;
   /** Test file patterns */
   testPatterns?: string[];
+  /** Glob pattern(s) for finding facet markdown files */
+  facetPattern?: string | string[];
+  /** Known facet types used in this project (for resolving Facets.CONSTANT references) */
+  facetTypes?: string[];
   /** Validation options */
   validation: {
     /** Verify facet source files exist */
@@ -190,6 +194,8 @@ export const defaultConfig: FacetConfig = {
   structureFiles: ['features/**/.facet/structure.json'],
   testDir: './features/**/tests',
   testPatterns: ['**/*.spec.ts', '**/*.test.ts'],
+  facetPattern: ['features/**/*.facet.md', 'features/**/facets/*.md'],
+  facetTypes: ['product', 'dx', 'technical', 'compliance', 'business', 'ux'],
   validation: {
     requireSourceExists: true,
     requireSectionExists: true,
@@ -211,7 +217,7 @@ export const defaultConfig: FacetConfig = {
 export interface MarkdownSection {
   /** Section title */
   title: string;
-  /** Slug (URL-friendly version of title) */
+  /** Slug (URL-friendly version of title, or explicit anchor if provided) */
   slug: string;
   /** Heading level (1-6) */
   level: number;
@@ -221,6 +227,8 @@ export interface MarkdownSection {
   endLine: number;
   /** Section content */
   content: string;
+  /** Explicit anchor ID if provided via {#anchor} syntax */
+  explicitId?: string;
 }
 
 /**

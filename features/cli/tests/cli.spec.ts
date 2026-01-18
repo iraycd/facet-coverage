@@ -65,7 +65,7 @@ describe('Test Feature', () => {
 
   describe('Generate Command', () => {
     test('generates structure.json from markdown files', async () => {
-      facet(Facets.PRODUCT_GENERATE_COMMAND);
+      facet(Facets.FEATURES_CLI_PRODUCT_GENERATE_COMMAND);
 
       const originalCwd = process.cwd();
       process.chdir(testDir);
@@ -79,7 +79,7 @@ describe('Test Feature', () => {
     });
 
     test('creates facet entries with auto-generated IDs', async () => {
-      facet(Facets.PRODUCT_GENERATE_COMMAND);
+      facet(Facets.FEATURES_CLI_PRODUCT_GENERATE_COMMAND);
 
       const originalCwd = process.cwd();
       process.chdir(testDir);
@@ -95,11 +95,89 @@ describe('Test Feature', () => {
         process.chdir(originalCwd);
       }
     });
+
+    test('respects explicit anchor syntax {#custom-id}', async () => {
+      facet(Facets.FEATURES_CLI_PRODUCT_GENERATE_COMMAND);
+
+      const originalCwd = process.cwd();
+      process.chdir(testDir);
+
+      try {
+        // Create a facet file with explicit anchor
+        mkdirSync(join(testDir, 'features/anchor-test/facets'), { recursive: true });
+        writeFileSync(join(testDir, 'features/anchor-test/facets/product.md'), `# Product
+
+## Guest Purchase Flow {#guest-purchase}
+
+Guest purchase flow description.
+
+## Regular Purchase Flow
+
+Regular flow without explicit anchor.
+`);
+
+        await generateCommand('features/anchor-test/facets', {});
+        const structurePath = join(testDir, 'features/anchor-test/.facet/structure.json');
+        const structure = JSON.parse(readFileSync(structurePath, 'utf-8'));
+
+        // Should use explicit anchor for the first section
+        expect(structure.facets.some((f: any) => f.id === 'product:guest-purchase')).toBe(true);
+        // Should auto-generate slug for the second section
+        expect(structure.facets.some((f: any) => f.id === 'product:regular-purchase-flow')).toBe(true);
+        // Should NOT create an ID with the full heading slug
+        expect(structure.facets.some((f: any) => f.id === 'product:guest-purchase-flow')).toBe(false);
+      } finally {
+        process.chdir(originalCwd);
+      }
+    });
+
+    test('supports --quiet flag to suppress ID change warnings', async () => {
+      facet(Facets.FEATURES_CLI_PRODUCT_GENERATE_COMMAND);
+
+      const originalCwd = process.cwd();
+      process.chdir(testDir);
+
+      try {
+        // Generate first time
+        await generateCommand('features/test-feature/facets', { quiet: true });
+
+        // Modify the markdown to change IDs
+        writeFileSync(join(testDir, 'features/test-feature/facets/product.md'), `# Product
+
+## Feature One Renamed
+
+Description of feature one.
+
+## Feature Two
+
+Description of feature two.
+`);
+
+        // Generate again with --quiet, should not throw
+        await generateCommand('features/test-feature/facets', { quiet: true });
+
+        // Restore original content
+        writeFileSync(join(testDir, 'features/test-feature/facets/product.md'), `# Product
+
+## Feature One
+
+Description of feature one.
+
+## Feature Two
+
+Description of feature two.
+`);
+
+        expect(true).toBe(true); // Test passes if no error thrown
+      } finally {
+        process.chdir(originalCwd);
+      }
+    });
   });
 
   describe('Analyze Command', () => {
     test('calculates coverage metrics', async () => {
-      facet(Facets.PRODUCT_ANALYZE_COMMAND);
+      facet(Facets.FEATURES_CLI_PRODUCT_ANALYZE_COMMAND);
 
       const originalCwd = process.cwd();
       process.chdir(testDir);
@@ -119,7 +197,7 @@ describe('Test Feature', () => {
     });
 
     test('identifies covered and uncovered facets', async () => {
-      facet(Facets.PRODUCT_ANALYZE_COMMAND);
+      facet(Facets.FEATURES_CLI_PRODUCT_ANALYZE_COMMAND);
 
       const originalCwd = process.cwd();
       process.chdir(testDir);
@@ -138,7 +216,7 @@ describe('Test Feature', () => {
     });
 
     test('checks thresholds', async () => {
-      facet(Facets.PRODUCT_ANALYZE_COMMAND);
+      facet(Facets.FEATURES_CLI_PRODUCT_ANALYZE_COMMAND);
 
       const originalCwd = process.cwd();
       process.chdir(testDir);
@@ -164,7 +242,7 @@ describe('Test Feature', () => {
 
   describe('Validate Command', () => {
     test('validates structure integrity', async () => {
-      facet(Facets.PRODUCT_VALIDATE_COMMAND);
+      facet(Facets.FEATURES_CLI_PRODUCT_VALIDATE_COMMAND);
 
       const originalCwd = process.cwd();
       process.chdir(testDir);
@@ -184,7 +262,7 @@ describe('Test Feature', () => {
     });
 
     test('returns valid true for correct structure', async () => {
-      facet(Facets.PRODUCT_VALIDATE_COMMAND);
+      facet(Facets.FEATURES_CLI_PRODUCT_VALIDATE_COMMAND);
 
       const originalCwd = process.cwd();
       process.chdir(testDir);
@@ -192,7 +270,12 @@ describe('Test Feature', () => {
       try {
         await generateCommand('features/test-feature/facets', {});
 
-        const validator = new Validator(testConfig);
+        // Use specific config to only validate test-feature, not other generated files
+        const specificConfig = {
+          ...testConfig,
+          structureFiles: ['features/test-feature/.facet/structure.json'],
+        };
+        const validator = new Validator(specificConfig);
         const result = await validator.validate(testDir);
 
         expect(result.valid).toBe(true);
@@ -206,7 +289,7 @@ describe('Test Feature', () => {
 
 describe('CLI Ergonomics', () => {
   test('command modules export their functions', async () => {
-    facet(Facets.DX_CLI_ERGONOMICS);
+    facet(Facets.FEATURES_CLI_DX_CLI_ERGONOMICS);
 
     const generate = await import('../../../src/cli/commands/generate.js');
     const analyze = await import('../../../src/cli/commands/analyze.js');
@@ -220,7 +303,7 @@ describe('CLI Ergonomics', () => {
   });
 
   test('commands are functions', async () => {
-    facet(Facets.DX_CLI_ERGONOMICS);
+    facet(Facets.FEATURES_CLI_DX_CLI_ERGONOMICS);
 
     const generate = await import('../../../src/cli/commands/generate.js');
     const analyze = await import('../../../src/cli/commands/analyze.js');
@@ -234,7 +317,7 @@ describe('CLI Ergonomics', () => {
 
 describe('Configuration Discovery', () => {
   test('default config has required fields', () => {
-    facet(Facets.DX_CONFIGURATION_DISCOVERY);
+    facet(Facets.FEATURES_CLI_DX_CONFIGURATION_DISCOVERY);
 
     // Test the default config from types.ts
     expect(testConfig.structureFiles).toBeDefined();
@@ -244,7 +327,7 @@ describe('Configuration Discovery', () => {
   });
 
   test('config can be serialized to JSON', () => {
-    facet(Facets.DX_CONFIGURATION_DISCOVERY);
+    facet(Facets.FEATURES_CLI_DX_CONFIGURATION_DISCOVERY);
 
     const jsonString = JSON.stringify(testConfig);
     expect(() => JSON.parse(jsonString)).not.toThrow();

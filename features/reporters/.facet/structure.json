@@ -2,43 +2,7 @@
   "feature": "reporters",
   "facets": [
     {
-      "id": "product:report-generation",
-      "source": {
-        "file": "facets/product.md",
-        "section": "report-generation"
-      },
-      "type": "product",
-      "title": "Report Generation"
-    },
-    {
-      "id": "product:json-reporter",
-      "source": {
-        "file": "facets/product.md",
-        "section": "json-reporter"
-      },
-      "type": "product",
-      "title": "JSON Reporter"
-    },
-    {
-      "id": "product:html-reporter",
-      "source": {
-        "file": "facets/product.md",
-        "section": "html-reporter"
-      },
-      "type": "product",
-      "title": "HTML Reporter"
-    },
-    {
-      "id": "product:markdown-reporter",
-      "source": {
-        "file": "facets/product.md",
-        "section": "markdown-reporter"
-      },
-      "type": "product",
-      "title": "Markdown Reporter"
-    },
-    {
-      "id": "dx:developer-experience",
+      "id": "features/reporters/dx:developer-experience",
       "source": {
         "file": "facets/dx.md",
         "section": "developer-experience"
@@ -47,7 +11,7 @@
       "title": "Developer Experience"
     },
     {
-      "id": "dx:report-readability",
+      "id": "features/reporters/dx:report-readability",
       "source": {
         "file": "facets/dx.md",
         "section": "report-readability"
@@ -56,13 +20,49 @@
       "title": "Report Readability"
     },
     {
-      "id": "dx:report-accessibility",
+      "id": "features/reporters/dx:report-accessibility",
       "source": {
         "file": "facets/dx.md",
         "section": "report-accessibility"
       },
       "type": "dx",
       "title": "Report Accessibility"
+    },
+    {
+      "id": "features/reporters/product:report-generation",
+      "source": {
+        "file": "facets/product.md",
+        "section": "report-generation"
+      },
+      "type": "product",
+      "title": "Report Generation"
+    },
+    {
+      "id": "features/reporters/product:json-reporter",
+      "source": {
+        "file": "facets/product.md",
+        "section": "json-reporter"
+      },
+      "type": "product",
+      "title": "JSON Reporter"
+    },
+    {
+      "id": "features/reporters/product:html-reporter",
+      "source": {
+        "file": "facets/product.md",
+        "section": "html-reporter"
+      },
+      "type": "product",
+      "title": "HTML Reporter"
+    },
+    {
+      "id": "features/reporters/product:markdown-reporter",
+      "source": {
+        "file": "facets/product.md",
+        "section": "markdown-reporter"
+      },
+      "type": "product",
+      "title": "Markdown Reporter"
     }
   ]
 }

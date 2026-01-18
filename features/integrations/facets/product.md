@@ -1,5 +1,30 @@
 # Integrations
 
+## Type-Safe Facet Function
+
+Export a generated `facet()` function for any testing framework with full TypeScript support.
+
+### Requirements
+
+- Accept variable number of facet IDs
+- Provide TypeScript autocomplete via generated types
+- Work with any testing framework (bun:test, jest, vitest, mocha, Playwright)
+- Support constant references: `facet(Facets.BUSINESS_GUEST_PURCHASE)`
+- Support multiple IDs: `facet(Facets.A, Facets.B)`
+- Return metadata object for debugging and runtime introspection
+- Type-check at compile time to prevent invalid facet IDs
+
+### Usage
+
+```typescript
+import { Facets, facet } from '../.facet/facets';
+
+test('guest can purchase', () => {
+  facet(Facets.BUSINESS_GUEST_PURCHASE_FLOW);
+  // ... test code
+});
+```
+
 ## Playwright Annotation Helper
 
 Provide a helper function for annotating Playwright tests with facet IDs.

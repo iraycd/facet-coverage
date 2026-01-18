@@ -1,11 +1,9 @@
-import { existsSync, readFileSync } from 'fs';
-import { join, resolve } from 'path';
 import { CoverageCalculator } from '../../core/CoverageCalculator.js';
 import { JsonReporter } from '../../reporters/JsonReporter.js';
 import { HtmlReporter } from '../../reporters/HtmlReporter.js';
 import { MarkdownReporter } from '../../reporters/MarkdownReporter.js';
 import type { FacetConfig } from '../../types.js';
-import { defaultConfig } from '../../types.js';
+import { loadConfig } from '../utils/config.js';
 
 interface AnalyzeOptions {
   config?: string;
@@ -90,39 +88,6 @@ export async function analyzeCommand(options: AnalyzeOptions = {}): Promise<void
     }
     process.exit(1);
   }
-}
-
-/**
- * Load configuration from file or use defaults
- */
-async function loadConfig(configPath: string | undefined, cwd: string): Promise<FacetConfig> {
-  const configFiles = [
-    configPath,
-    'facet.config.js',
-    'facet.config.mjs',
-    'facet.config.json',
-  ].filter(Boolean) as string[];
-
-  for (const file of configFiles) {
-    const fullPath = resolve(cwd, file);
-
-    if (existsSync(fullPath)) {
-      if (file.endsWith('.json')) {
-        const content = readFileSync(fullPath, 'utf-8');
-        return { ...defaultConfig, ...JSON.parse(content) };
-      } else {
-        // Dynamic import for JS config
-        try {
-          const imported = await import(fullPath);
-          return { ...defaultConfig, ...(imported.default || imported) };
-        } catch (error) {
-          console.warn(`Warning: Could not load config from ${file}`);
-        }
-      }
-    }
-  }
-
-  return defaultConfig;
 }
 
 /**

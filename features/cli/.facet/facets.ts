@@ -9,35 +9,35 @@
  * All valid facet IDs for the "cli" feature
  */
 export type FacetId =
-  | 'product:cli-commands'
-  | 'product:generate-command'
-  | 'product:analyze-command'
-  | 'product:validate-command'
-  | 'product:watch-command'
-  | 'dx:developer-experience'
-  | 'dx:cli-ergonomics'
-  | 'dx:configuration-discovery';
+  | 'features/cli/dx:developer-experience'
+  | 'features/cli/dx:cli-ergonomics'
+  | 'features/cli/dx:configuration-discovery'
+  | 'features/cli/product:cli-commands'
+  | 'features/cli/product:generate-command'
+  | 'features/cli/product:analyze-command'
+  | 'features/cli/product:validate-command'
+  | 'features/cli/product:watch-command';
 
 /**
  * Facet ID constants for autocomplete and type-safe references
  */
 export const Facets = {
- /** CLI Commands */
-  PRODUCT_CLI_COMMANDS: 'product:cli-commands' as const,
- /** Generate Command */
-  PRODUCT_GENERATE_COMMAND: 'product:generate-command' as const,
- /** Analyze Command */
-  PRODUCT_ANALYZE_COMMAND: 'product:analyze-command' as const,
- /** Validate Command */
-  PRODUCT_VALIDATE_COMMAND: 'product:validate-command' as const,
- /** Watch Command */
-  PRODUCT_WATCH_COMMAND: 'product:watch-command' as const,
  /** Developer Experience */
-  DX_DEVELOPER_EXPERIENCE: 'dx:developer-experience' as const,
+  FEATURES_CLI_DX_DEVELOPER_EXPERIENCE: 'features/cli/dx:developer-experience' as const,
  /** CLI Ergonomics */
-  DX_CLI_ERGONOMICS: 'dx:cli-ergonomics' as const,
+  FEATURES_CLI_DX_CLI_ERGONOMICS: 'features/cli/dx:cli-ergonomics' as const,
  /** Configuration Discovery */
-  DX_CONFIGURATION_DISCOVERY: 'dx:configuration-discovery' as const,
+  FEATURES_CLI_DX_CONFIGURATION_DISCOVERY: 'features/cli/dx:configuration-discovery' as const,
+ /** CLI Commands */
+  FEATURES_CLI_PRODUCT_CLI_COMMANDS: 'features/cli/product:cli-commands' as const,
+ /** Generate Command */
+  FEATURES_CLI_PRODUCT_GENERATE_COMMAND: 'features/cli/product:generate-command' as const,
+ /** Analyze Command */
+  FEATURES_CLI_PRODUCT_ANALYZE_COMMAND: 'features/cli/product:analyze-command' as const,
+ /** Validate Command */
+  FEATURES_CLI_PRODUCT_VALIDATE_COMMAND: 'features/cli/product:validate-command' as const,
+ /** Watch Command */
+  FEATURES_CLI_PRODUCT_WATCH_COMMAND: 'features/cli/product:watch-command' as const,
 } as const;
 
 /**
@@ -64,12 +64,12 @@ export function facet<T extends FacetId>(...facetIds: T[]): { facets: T[]; toStr
  * Get all facet IDs as an array
  */
 export const allFacetIds: FacetId[] = [
-  'product:cli-commands',
-  'product:generate-command',
-  'product:analyze-command',
-  'product:validate-command',
-  'product:watch-command',
-  'dx:developer-experience',
-  'dx:cli-ergonomics',
-  'dx:configuration-discovery',
+  'features/cli/dx:developer-experience',
+  'features/cli/dx:cli-ergonomics',
+  'features/cli/dx:configuration-discovery',
+  'features/cli/product:cli-commands',
+  'features/cli/product:generate-command',
+  'features/cli/product:analyze-command',
+  'features/cli/product:validate-command',
+  'features/cli/product:watch-command',
 ];

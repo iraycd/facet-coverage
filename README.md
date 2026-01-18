@@ -384,14 +384,24 @@ test('comprehensive test', {
 
 ## Configuration
 
-**facet.config.js:**
+Facet Coverage supports multiple configuration file formats. The CLI looks for config files in this order:
+
+1. `facet.config.js` (ESM or CommonJS)
+2. `facet.config.mjs` (ESM only)
+3. `facet.config.json` (JSON)
+
+### Configuration Formats
+
+**JavaScript (ESM):**
 
 ```javascript
+// facet.config.js
 export default {
-  // Where structure files live
-  structureFiles: [
-    'features/**/.facet/structure.json'
-  ],
+  // Glob pattern(s) for finding facet markdown files
+  facetPattern: ['features/**/*.facet.md', 'features/**/facets/*.md'],
+
+  // Where structure files are generated
+  structureFiles: ['features/**/.facet/structure.json'],
 
   // Where tests live
   testDir: './features/**/tests',
@@ -421,6 +431,48 @@ export default {
   }
 };
 ```
+
+**JSON:**
+
+```json
+{
+  "facetPattern": ["features/**/*.facet.md", "features/**/facets/*.md"],
+  "structureFiles": ["features/**/.facet/structure.json"],
+  "testDir": "./features/**/tests",
+  "testPatterns": ["**/*.spec.ts", "**/*.test.ts"],
+  "validation": {
+    "requireSourceExists": true,
+    "requireSectionExists": true,
+    "requireAllTestsLinked": false
+  },
+  "output": {
+    "dir": ".facet-coverage",
+    "formats": ["json", "html", "markdown"]
+  },
+  "thresholds": {
+    "global": 75,
+    "byType": {
+      "compliance": 100
+    }
+  }
+}
+```
+
+### Configuration Options
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `facetPattern` | `string \| string[]` | `['features/**/*.facet.md', 'features/**/facets/*.md']` | Glob pattern(s) for finding facet files |
+| `structureFiles` | `string[]` | `['features/**/.facet/structure.json']` | Glob patterns for structure files |
+| `testDir` | `string` | `'./features/**/tests'` | Test directory pattern |
+| `testPatterns` | `string[]` | `['**/*.spec.ts', '**/*.test.ts']` | Test file patterns |
+| `validation.requireSourceExists` | `boolean` | `true` | Check if source files exist |
+| `validation.requireSectionExists` | `boolean` | `true` | Check if sections exist in files |
+| `validation.requireAllTestsLinked` | `boolean` | `false` | Require every test links to a facet |
+| `output.dir` | `string` | `'.facet-coverage'` | Output directory for reports |
+| `output.formats` | `string[]` | `['json', 'html', 'markdown']` | Report formats to generate |
+| `thresholds.global` | `number` | `75` | Overall coverage threshold % |
+| `thresholds.byType` | `object` | `{}` | Per-type coverage thresholds |
 
 ---
 

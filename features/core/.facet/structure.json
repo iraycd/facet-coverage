@@ -2,88 +2,7 @@
   "feature": "core",
   "facets": [
     {
-      "id": "product:core-functionality",
-      "source": {
-        "file": "facets/product.md",
-        "section": "core-functionality"
-      },
-      "type": "product",
-      "title": "Core Functionality"
-    },
-    {
-      "id": "product:structure-reading",
-      "source": {
-        "file": "facets/product.md",
-        "section": "structure-reading"
-      },
-      "type": "product",
-      "title": "Structure Reading"
-    },
-    {
-      "id": "product:markdown-parsing",
-      "source": {
-        "file": "facets/product.md",
-        "section": "markdown-parsing"
-      },
-      "type": "product",
-      "title": "Markdown Parsing"
-    },
-    {
-      "id": "product:test-scanning",
-      "source": {
-        "file": "facets/product.md",
-        "section": "test-scanning"
-      },
-      "type": "product",
-      "title": "Test Scanning"
-    },
-    {
-      "id": "product:validation",
-      "source": {
-        "file": "facets/product.md",
-        "section": "validation"
-      },
-      "type": "product",
-      "title": "Validation"
-    },
-    {
-      "id": "product:coverage-calculation",
-      "source": {
-        "file": "facets/product.md",
-        "section": "coverage-calculation"
-      },
-      "type": "product",
-      "title": "Coverage Calculation"
-    },
-    {
-      "id": "dx:developer-experience",
-      "source": {
-        "file": "facets/dx.md",
-        "section": "developer-experience"
-      },
-      "type": "dx",
-      "title": "Developer Experience"
-    },
-    {
-      "id": "dx:error-messages",
-      "source": {
-        "file": "facets/dx.md",
-        "section": "error-messages"
-      },
-      "type": "dx",
-      "title": "Error Messages"
-    },
-    {
-      "id": "dx:api-design",
-      "source": {
-        "file": "facets/dx.md",
-        "section": "api-design"
-      },
-      "type": "dx",
-      "title": "API Design"
-    },
-    {
-      "id": "technical:technical-requirements",
+      "id": "features/core/technical:technical-requirements",
       "source": {
         "file": "facets/technical.md",
         "section": "technical-requirements"
@@ -92,7 +11,7 @@
       "title": "Technical Requirements"
     },
     {
-      "id": "technical:typescript-support",
+      "id": "features/core/technical:typescript-support",
       "source": {
         "file": "facets/technical.md",
         "section": "typescript-support"
@@ -101,7 +20,7 @@
       "title": "TypeScript Support"
     },
     {
-      "id": "technical:bun-compatibility",
+      "id": "features/core/technical:bun-compatibility",
       "source": {
         "file": "facets/technical.md",
         "section": "bun-compatibility"
@@ -110,7 +29,7 @@
       "title": "Bun Compatibility"
     },
     {
-      "id": "technical:glob-pattern-handling",
+      "id": "features/core/technical:glob-pattern-handling",
       "source": {
         "file": "facets/technical.md",
         "section": "glob-pattern-handling"
@@ -119,13 +38,94 @@
       "title": "Glob Pattern Handling"
     },
     {
-      "id": "technical:markdown-parsing-accuracy",
+      "id": "features/core/technical:markdown-parsing-accuracy",
       "source": {
         "file": "facets/technical.md",
         "section": "markdown-parsing-accuracy"
       },
       "type": "technical",
       "title": "Markdown Parsing Accuracy"
+    },
+    {
+      "id": "features/core/dx:developer-experience",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "developer-experience"
+      },
+      "type": "dx",
+      "title": "Developer Experience"
+    },
+    {
+      "id": "features/core/dx:error-messages",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "error-messages"
+      },
+      "type": "dx",
+      "title": "Error Messages"
+    },
+    {
+      "id": "features/core/dx:api-design",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "api-design"
+      },
+      "type": "dx",
+      "title": "API Design"
+    },
+    {
+      "id": "features/core/product:core-functionality",
+      "source": {
+        "file": "facets/product.md",
+        "section": "core-functionality"
+      },
+      "type": "product",
+      "title": "Core Functionality"
+    },
+    {
+      "id": "features/core/product:structure-reading",
+      "source": {
+        "file": "facets/product.md",
+        "section": "structure-reading"
+      },
+      "type": "product",
+      "title": "Structure Reading"
+    },
+    {
+      "id": "features/core/product:markdown-parsing",
+      "source": {
+        "file": "facets/product.md",
+        "section": "markdown-parsing"
+      },
+      "type": "product",
+      "title": "Markdown Parsing"
+    },
+    {
+      "id": "features/core/product:test-scanning",
+      "source": {
+        "file": "facets/product.md",
+        "section": "test-scanning"
+      },
+      "type": "product",
+      "title": "Test Scanning"
+    },
+    {
+      "id": "features/core/product:validation",
+      "source": {
+        "file": "facets/product.md",
+        "section": "validation"
+      },
+      "type": "product",
+      "title": "Validation"
+    },
+    {
+      "id": "features/core/product:coverage-calculation",
+      "source": {
+        "file": "facets/product.md",
+        "section": "coverage-calculation"
+      },
+      "type": "product",
+      "title": "Coverage Calculation"
     }
   ]
 }

@@ -9,53 +9,53 @@
  * All valid facet IDs for the "core" feature
  */
 export type FacetId =
-  | 'product:core-functionality'
-  | 'product:structure-reading'
-  | 'product:markdown-parsing'
-  | 'product:test-scanning'
-  | 'product:validation'
-  | 'product:coverage-calculation'
-  | 'dx:developer-experience'
-  | 'dx:error-messages'
-  | 'dx:api-design'
-  | 'technical:technical-requirements'
-  | 'technical:typescript-support'
-  | 'technical:bun-compatibility'
-  | 'technical:glob-pattern-handling'
-  | 'technical:markdown-parsing-accuracy';
+  | 'features/core/technical:technical-requirements'
+  | 'features/core/technical:typescript-support'
+  | 'features/core/technical:bun-compatibility'
+  | 'features/core/technical:glob-pattern-handling'
+  | 'features/core/technical:markdown-parsing-accuracy'
+  | 'features/core/dx:developer-experience'
+  | 'features/core/dx:error-messages'
+  | 'features/core/dx:api-design'
+  | 'features/core/product:core-functionality'
+  | 'features/core/product:structure-reading'
+  | 'features/core/product:markdown-parsing'
+  | 'features/core/product:test-scanning'
+  | 'features/core/product:validation'
+  | 'features/core/product:coverage-calculation';
 
 /**
  * Facet ID constants for autocomplete and type-safe references
  */
 export const Facets = {
- /** Core Functionality */
-  PRODUCT_CORE_FUNCTIONALITY: 'product:core-functionality' as const,
- /** Structure Reading */
-  PRODUCT_STRUCTURE_READING: 'product:structure-reading' as const,
- /** Markdown Parsing */
-  PRODUCT_MARKDOWN_PARSING: 'product:markdown-parsing' as const,
- /** Test Scanning */
-  PRODUCT_TEST_SCANNING: 'product:test-scanning' as const,
- /** Validation */
-  PRODUCT_VALIDATION: 'product:validation' as const,
- /** Coverage Calculation */
-  PRODUCT_COVERAGE_CALCULATION: 'product:coverage-calculation' as const,
- /** Developer Experience */
-  DX_DEVELOPER_EXPERIENCE: 'dx:developer-experience' as const,
- /** Error Messages */
-  DX_ERROR_MESSAGES: 'dx:error-messages' as const,
- /** API Design */
-  DX_API_DESIGN: 'dx:api-design' as const,
  /** Technical Requirements */
-  TECHNICAL_TECHNICAL_REQUIREMENTS: 'technical:technical-requirements' as const,
+  FEATURES_CORE_TECHNICAL_TECHNICAL_REQUIREMENTS: 'features/core/technical:technical-requirements' as const,
  /** TypeScript Support */
-  TECHNICAL_TYPESCRIPT_SUPPORT: 'technical:typescript-support' as const,
+  FEATURES_CORE_TECHNICAL_TYPESCRIPT_SUPPORT: 'features/core/technical:typescript-support' as const,
  /** Bun Compatibility */
-  TECHNICAL_BUN_COMPATIBILITY: 'technical:bun-compatibility' as const,
+  FEATURES_CORE_TECHNICAL_BUN_COMPATIBILITY: 'features/core/technical:bun-compatibility' as const,
  /** Glob Pattern Handling */
-  TECHNICAL_GLOB_PATTERN_HANDLING: 'technical:glob-pattern-handling' as const,
+  FEATURES_CORE_TECHNICAL_GLOB_PATTERN_HANDLING: 'features/core/technical:glob-pattern-handling' as const,
  /** Markdown Parsing Accuracy */
-  TECHNICAL_MARKDOWN_PARSING_ACCURACY: 'technical:markdown-parsing-accuracy' as const,
+  FEATURES_CORE_TECHNICAL_MARKDOWN_PARSING_ACCURACY: 'features/core/technical:markdown-parsing-accuracy' as const,
+ /** Developer Experience */
+  FEATURES_CORE_DX_DEVELOPER_EXPERIENCE: 'features/core/dx:developer-experience' as const,
+ /** Error Messages */
+  FEATURES_CORE_DX_ERROR_MESSAGES: 'features/core/dx:error-messages' as const,
+ /** API Design */
+  FEATURES_CORE_DX_API_DESIGN: 'features/core/dx:api-design' as const,
+ /** Core Functionality */
+  FEATURES_CORE_PRODUCT_CORE_FUNCTIONALITY: 'features/core/product:core-functionality' as const,
+ /** Structure Reading */
+  FEATURES_CORE_PRODUCT_STRUCTURE_READING: 'features/core/product:structure-reading' as const,
+ /** Markdown Parsing */
+  FEATURES_CORE_PRODUCT_MARKDOWN_PARSING: 'features/core/product:markdown-parsing' as const,
+ /** Test Scanning */
+  FEATURES_CORE_PRODUCT_TEST_SCANNING: 'features/core/product:test-scanning' as const,
+ /** Validation */
+  FEATURES_CORE_PRODUCT_VALIDATION: 'features/core/product:validation' as const,
+ /** Coverage Calculation */
+  FEATURES_CORE_PRODUCT_COVERAGE_CALCULATION: 'features/core/product:coverage-calculation' as const,
 } as const;
 
 /**
@@ -82,18 +82,18 @@ export function facet<T extends FacetId>(...facetIds: T[]): { facets: T[]; toStr
  * Get all facet IDs as an array
  */
 export const allFacetIds: FacetId[] = [
-  'product:core-functionality',
-  'product:structure-reading',
-  'product:markdown-parsing',
-  'product:test-scanning',
-  'product:validation',
-  'product:coverage-calculation',
-  'dx:developer-experience',
-  'dx:error-messages',
-  'dx:api-design',
-  'technical:technical-requirements',
-  'technical:typescript-support',
-  'technical:bun-compatibility',
-  'technical:glob-pattern-handling',
-  'technical:markdown-parsing-accuracy',
+  'features/core/technical:technical-requirements',
+  'features/core/technical:typescript-support',
+  'features/core/technical:bun-compatibility',
+  'features/core/technical:glob-pattern-handling',
+  'features/core/technical:markdown-parsing-accuracy',
+  'features/core/dx:developer-experience',
+  'features/core/dx:error-messages',
+  'features/core/dx:api-design',
+  'features/core/product:core-functionality',
+  'features/core/product:structure-reading',
+  'features/core/product:markdown-parsing',
+  'features/core/product:test-scanning',
+  'features/core/product:validation',
+  'features/core/product:coverage-calculation',
 ];

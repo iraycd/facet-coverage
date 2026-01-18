@@ -9,16 +9,19 @@ const program = new Command();
 program
   .name('facet')
   .description('💎 Test every facet of your features - natural specifications with rigorous coverage tracking')
-  .version('0.1.0');
+  .version('0.3.0');
 
 // Generate command
 program
-  .command('generate <dir>')
+  .command('generate [dir]')
   .description('Generate structure.json and TypeScript types from facet markdown files')
   .option('-o, --output <path>', 'Output directory for structure.json and facets.ts')
   .option('-t, --type <type>', 'Override facet type (default: derived from filename)')
+  .option('-c, --config <path>', 'Path to config file')
+  .option('--global', 'Generate global combined types at root .facet/')
   .option('--no-types', 'Skip TypeScript types generation')
-  .action(generateCommand);
+  .option('-q, --quiet', 'Suppress ID change warnings')
+  .action((dir, options) => generateCommand(dir, options));
 
 // Analyze command
 program

@@ -81,7 +81,7 @@ describe('JSON Reporter', () => {
   });
 
   test('outputs complete coverage data as JSON', () => {
-    facet(Facets.PRODUCT_JSON_REPORTER);
+    facet(Facets.FEATURES_REPORTERS_PRODUCT_JSON_REPORTER);
 
     const reporter = new JsonReporter({ output: { dir: '.reporter-test-fixtures', formats: ['json'] } });
     const outputPath = reporter.write(mockReport, join(import.meta.dir, '../../..'));
@@ -94,7 +94,7 @@ describe('JSON Reporter', () => {
   });
 
   test('includes timestamp in report', () => {
-    facet(Facets.PRODUCT_JSON_REPORTER);
+    facet(Facets.FEATURES_REPORTERS_PRODUCT_JSON_REPORTER);
 
     const reporter = new JsonReporter({ output: { dir: '.reporter-test-fixtures', formats: ['json'] } });
     reporter.write(mockReport, join(import.meta.dir, '../../..'));
@@ -104,7 +104,7 @@ describe('JSON Reporter', () => {
   });
 
   test('includes coverage breakdown by type', () => {
-    facet(Facets.PRODUCT_JSON_REPORTER);
+    facet(Facets.FEATURES_REPORTERS_PRODUCT_JSON_REPORTER);
 
     const reporter = new JsonReporter({ output: { dir: '.reporter-test-fixtures', formats: ['json'] } });
     reporter.write(mockReport, join(import.meta.dir, '../../..'));
@@ -115,7 +115,7 @@ describe('JSON Reporter', () => {
   });
 
   test('generates valid parseable JSON', () => {
-    facet(Facets.DX_REPORT_ACCESSIBILITY);
+    facet(Facets.FEATURES_REPORTERS_DX_REPORT_ACCESSIBILITY);
 
     const reporter = new JsonReporter({ output: { dir: '.reporter-test-fixtures', formats: ['json'] } });
     const jsonString = reporter.generate(mockReport);
@@ -131,7 +131,7 @@ describe('HTML Reporter', () => {
   });
 
   test('generates self-contained HTML file', () => {
-    facet(Facets.PRODUCT_HTML_REPORTER);
+    facet(Facets.FEATURES_REPORTERS_PRODUCT_HTML_REPORTER);
 
     const reporter = new HtmlReporter({ output: { dir: '.reporter-test-fixtures', formats: ['html'] } });
     const outputPath = reporter.write(mockReport, join(import.meta.dir, '../../..'));
@@ -145,7 +145,7 @@ describe('HTML Reporter', () => {
   });
 
   test('displays overall coverage percentage', () => {
-    facet(Facets.PRODUCT_HTML_REPORTER);
+    facet(Facets.FEATURES_REPORTERS_PRODUCT_HTML_REPORTER);
 
     const reporter = new HtmlReporter({ output: { dir: '.reporter-test-fixtures', formats: ['html'] } });
     const content = reporter.generate(mockReport);
@@ -153,7 +153,7 @@ describe('HTML Reporter', () => {
   });
 
   test('shows coverage breakdown by type', () => {
-    facet(Facets.PRODUCT_HTML_REPORTER);
+    facet(Facets.FEATURES_REPORTERS_PRODUCT_HTML_REPORTER);
 
     const reporter = new HtmlReporter({ output: { dir: '.reporter-test-fixtures', formats: ['html'] } });
     const content = reporter.generate(mockReport);
@@ -162,7 +162,7 @@ describe('HTML Reporter', () => {
   });
 
   test('lists uncovered facets', () => {
-    facet(Facets.PRODUCT_HTML_REPORTER);
+    facet(Facets.FEATURES_REPORTERS_PRODUCT_HTML_REPORTER);
 
     const reporter = new HtmlReporter({ output: { dir: '.reporter-test-fixtures', formats: ['html'] } });
     const content = reporter.generate(mockReport);
@@ -171,7 +171,7 @@ describe('HTML Reporter', () => {
   });
 
   test('uses visual coverage indicators', () => {
-    facet(Facets.DX_REPORT_READABILITY);
+    facet(Facets.FEATURES_REPORTERS_DX_REPORT_READABILITY);
 
     const reporter = new HtmlReporter({ output: { dir: '.reporter-test-fixtures', formats: ['html'] } });
     const content = reporter.generate(mockReport);
@@ -188,7 +188,7 @@ describe('Markdown Reporter', () => {
   });
 
   test('generates valid Markdown document', () => {
-    facet(Facets.PRODUCT_MARKDOWN_REPORTER);
+    facet(Facets.FEATURES_REPORTERS_PRODUCT_MARKDOWN_REPORTER);
 
     const reporter = new MarkdownReporter({ output: { dir: '.reporter-test-fixtures', formats: ['markdown'] } });
     const outputPath = reporter.write(mockReport, join(import.meta.dir, '../../..'));
@@ -201,7 +201,7 @@ describe('Markdown Reporter', () => {
   });
 
   test('includes summary table', () => {
-    facet(Facets.PRODUCT_MARKDOWN_REPORTER);
+    facet(Facets.FEATURES_REPORTERS_PRODUCT_MARKDOWN_REPORTER);
 
     const reporter = new MarkdownReporter({ output: { dir: '.reporter-test-fixtures', formats: ['markdown'] } });
     const content = reporter.generate(mockReport);
@@ -210,7 +210,7 @@ describe('Markdown Reporter', () => {
   });
 
   test('includes coverage by type table', () => {
-    facet(Facets.PRODUCT_MARKDOWN_REPORTER);
+    facet(Facets.FEATURES_REPORTERS_PRODUCT_MARKDOWN_REPORTER);
 
     const reporter = new MarkdownReporter({ output: { dir: '.reporter-test-fixtures', formats: ['markdown'] } });
     const content = reporter.generate(mockReport);
@@ -219,7 +219,7 @@ describe('Markdown Reporter', () => {
   });
 
   test('uses emoji indicators for status', () => {
-    facet(Facets.DX_REPORT_READABILITY);
+    facet(Facets.FEATURES_REPORTERS_DX_REPORT_READABILITY);
 
     const reporter = new MarkdownReporter({ output: { dir: '.reporter-test-fixtures', formats: ['markdown'] } });
     const content = reporter.generate(mockReport);
@@ -227,7 +227,7 @@ describe('Markdown Reporter', () => {
   });
 
   test('renders correctly as Markdown', () => {
-    facet(Facets.DX_REPORT_ACCESSIBILITY);
+    facet(Facets.FEATURES_REPORTERS_DX_REPORT_ACCESSIBILITY);
 
     const reporter = new MarkdownReporter({ output: { dir: '.reporter-test-fixtures', formats: ['markdown'] } });
     const content = reporter.generate(mockReport);

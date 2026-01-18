@@ -2,17 +2,42 @@
 
 ## Generate Command
 
-Generate structure.json from markdown facet files.
+Generate structure.json and TypeScript types from markdown facet files.
 
 ### Requirements
 
-- Accept directory path as argument
-- Scan directory for markdown files
+- Accept optional directory path as argument
+- When no directory specified, use `facetPattern` from config
+- Scan directory for markdown files (both `*.facet.md` and `facets/*.md`)
 - Parse each markdown file for heading sections
 - Create facet entries with auto-generated IDs (format: `type:section-slug`)
+- Support explicit anchor syntax for stable IDs: `## Heading {#stable-id}`
 - Write structure.json to `.facet/` directory
+- Generate TypeScript types file (`facets.ts`) with type-safe constants
 - Support custom output directory via `-o` flag
 - Support type override via `-t` flag
+- Support `--global` flag to generate combined types at root
+- Support `--no-types` flag to skip TypeScript generation
+- Support `-q, --quiet` flag to suppress ID change warnings
+
+### ID Change Detection
+
+When regenerating, detect changes to facet IDs:
+
+- Compare new structure.json with existing
+- Warn about renamed IDs (heading text changed)
+- Warn about removed IDs
+- Show affected tests that may need updates
+- Suggest using explicit anchors for stability
+
+### Type Generation
+
+Generate TypeScript types for type-safe facet references:
+
+- `FacetId` union type of all valid IDs
+- `Facets` const object for autocomplete
+- `facet()` helper function for test annotations
+- `allFacetIds` array of all IDs
 
 ## Analyze Command
 

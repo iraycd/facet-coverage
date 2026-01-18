@@ -9,32 +9,32 @@
  * All valid facet IDs for the "reporters" feature
  */
 export type FacetId =
-  | 'product:report-generation'
-  | 'product:json-reporter'
-  | 'product:html-reporter'
-  | 'product:markdown-reporter'
-  | 'dx:developer-experience'
-  | 'dx:report-readability'
-  | 'dx:report-accessibility';
+  | 'features/reporters/dx:developer-experience'
+  | 'features/reporters/dx:report-readability'
+  | 'features/reporters/dx:report-accessibility'
+  | 'features/reporters/product:report-generation'
+  | 'features/reporters/product:json-reporter'
+  | 'features/reporters/product:html-reporter'
+  | 'features/reporters/product:markdown-reporter';
 
 /**
  * Facet ID constants for autocomplete and type-safe references
  */
 export const Facets = {
- /** Report Generation */
-  PRODUCT_REPORT_GENERATION: 'product:report-generation' as const,
- /** JSON Reporter */
-  PRODUCT_JSON_REPORTER: 'product:json-reporter' as const,
- /** HTML Reporter */
-  PRODUCT_HTML_REPORTER: 'product:html-reporter' as const,
- /** Markdown Reporter */
-  PRODUCT_MARKDOWN_REPORTER: 'product:markdown-reporter' as const,
  /** Developer Experience */
-  DX_DEVELOPER_EXPERIENCE: 'dx:developer-experience' as const,
+  FEATURES_REPORTERS_DX_DEVELOPER_EXPERIENCE: 'features/reporters/dx:developer-experience' as const,
  /** Report Readability */
-  DX_REPORT_READABILITY: 'dx:report-readability' as const,
+  FEATURES_REPORTERS_DX_REPORT_READABILITY: 'features/reporters/dx:report-readability' as const,
  /** Report Accessibility */
-  DX_REPORT_ACCESSIBILITY: 'dx:report-accessibility' as const,
+  FEATURES_REPORTERS_DX_REPORT_ACCESSIBILITY: 'features/reporters/dx:report-accessibility' as const,
+ /** Report Generation */
+  FEATURES_REPORTERS_PRODUCT_REPORT_GENERATION: 'features/reporters/product:report-generation' as const,
+ /** JSON Reporter */
+  FEATURES_REPORTERS_PRODUCT_JSON_REPORTER: 'features/reporters/product:json-reporter' as const,
+ /** HTML Reporter */
+  FEATURES_REPORTERS_PRODUCT_HTML_REPORTER: 'features/reporters/product:html-reporter' as const,
+ /** Markdown Reporter */
+  FEATURES_REPORTERS_PRODUCT_MARKDOWN_REPORTER: 'features/reporters/product:markdown-reporter' as const,
 } as const;
 
 /**
@@ -61,11 +61,11 @@ export function facet<T extends FacetId>(...facetIds: T[]): { facets: T[]; toStr
  * Get all facet IDs as an array
  */
 export const allFacetIds: FacetId[] = [
-  'product:report-generation',
-  'product:json-reporter',
-  'product:html-reporter',
-  'product:markdown-reporter',
-  'dx:developer-experience',
-  'dx:report-readability',
-  'dx:report-accessibility',
+  'features/reporters/dx:developer-experience',
+  'features/reporters/dx:report-readability',
+  'features/reporters/dx:report-accessibility',
+  'features/reporters/product:report-generation',
+  'features/reporters/product:json-reporter',
+  'features/reporters/product:html-reporter',
+  'features/reporters/product:markdown-reporter',
 ];

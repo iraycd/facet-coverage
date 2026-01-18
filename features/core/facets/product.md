@@ -20,9 +20,20 @@ Parse markdown documentation files to extract sections as facets.
 
 - Extract headings at all levels as sections
 - Generate URL-friendly slugs from heading text
+- Support explicit anchor syntax: `## Heading {#custom-slug}`
 - Support nested heading levels with proper hierarchy
 - Validate that referenced sections exist in source files
 - Handle markdown with frontmatter and code blocks
+
+### Explicit Anchor Syntax
+
+Create stable facet IDs that survive heading renames:
+
+```markdown
+## Guest Purchase Flow {#guest-purchase}
+```
+
+Generates `business:guest-purchase` instead of `business:guest-purchase-flow`. When the heading text changes, the facet ID remains stable.
 
 ## Test Scanning
 

@@ -4,6 +4,24 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.3.0] - 2026-01-18
+
+### Added
+- Config-based facet discovery via `facetPattern` option - run `generate` without arguments
+- Support for `*.facet.md` naming convention alongside `facets/*.md`
+- Nested feature support with hierarchical facet IDs (e.g., `checkout/payments/pci:section`)
+- `--global` flag to generate combined types at project root `.facet/facets.ts`
+- `facetTypes` config option for resolving `Facets.CONSTANT` references in tests
+- Explicit ID anchors in markdown: `## Heading {#stable-id}` for stable facet IDs
+- ID change detection with warnings when facet IDs change during `generate`
+- `--quiet` flag to suppress ID change warnings
+- Comprehensive tests for explicit anchor parsing and ID change detection
+
+### Changed
+- TestScanner now resolves `Facets.CONSTANT` references using configured `facetTypes`
+- Updated facet documentation to reflect all v0.2.0 and v0.3.0 features
+- Shared config loading via `loadConfig()` utility across CLI commands
+
 ## [0.2.0] - 2026-01-18
 
 ### Added
