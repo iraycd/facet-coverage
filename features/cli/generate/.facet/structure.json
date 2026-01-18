@@ -11,13 +11,61 @@
       "title": "Generate Command"
     },
     {
-      "id": "features/cli/generate/product:config-based-discovery",
+      "id": "features/cli/generate/product:config-discovery",
       "source": {
         "file": "product.facet.md",
-        "section": "config-based-discovery"
+        "section": "config-discovery"
       },
       "type": "product",
       "title": "Config-Based Discovery"
+    },
+    {
+      "id": "features/cli/generate/product:config-discovery/read-config",
+      "source": {
+        "file": "product.facet.md",
+        "section": "config-discovery",
+        "line": 11
+      },
+      "type": "product",
+      "title": "Read facetPattern from facet.config.json, .js, or .mjs",
+      "parentId": "features/cli/generate/product:config-discovery",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/generate/product:config-discovery/glob-array",
+      "source": {
+        "file": "product.facet.md",
+        "section": "config-discovery",
+        "line": 12
+      },
+      "type": "product",
+      "title": "Support both single string and array of glob patterns",
+      "parentId": "features/cli/generate/product:config-discovery",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/generate/product:config-discovery/recursive-discovery",
+      "source": {
+        "file": "product.facet.md",
+        "section": "config-discovery",
+        "line": 13
+      },
+      "type": "product",
+      "title": "Discover files matching patterns recursively",
+      "parentId": "features/cli/generate/product:config-discovery",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/generate/product:config-discovery/group-by-feature",
+      "source": {
+        "file": "product.facet.md",
+        "section": "config-discovery",
+        "line": 14
+      },
+      "type": "product",
+      "title": "Group discovered files by their parent feature directory",
+      "parentId": "features/cli/generate/product:config-discovery",
+      "isSubFacet": true
     },
     {
       "id": "features/cli/generate/product:type-generation",
@@ -29,6 +77,54 @@
       "title": "Type Generation"
     },
     {
+      "id": "features/cli/generate/product:type-generation/facet-id-union",
+      "source": {
+        "file": "product.facet.md",
+        "section": "type-generation",
+        "line": 22
+      },
+      "type": "product",
+      "title": "Generate `FacetId` union type with all valid facet IDs",
+      "parentId": "features/cli/generate/product:type-generation",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/generate/product:type-generation/facets-const-object",
+      "source": {
+        "file": "product.facet.md",
+        "section": "type-generation",
+        "line": 23
+      },
+      "type": "product",
+      "title": "Generate `Facets` const object for autocomplete",
+      "parentId": "features/cli/generate/product:type-generation",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/generate/product:type-generation/facet-helper",
+      "source": {
+        "file": "product.facet.md",
+        "section": "type-generation",
+        "line": 24
+      },
+      "type": "product",
+      "title": "Generate `facet()` helper function for test annotations",
+      "parentId": "features/cli/generate/product:type-generation",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/generate/product:type-generation/no-types-flag",
+      "source": {
+        "file": "product.facet.md",
+        "section": "type-generation",
+        "line": 25
+      },
+      "type": "product",
+      "title": "Support `--no-types` flag to skip TypeScript generation",
+      "parentId": "features/cli/generate/product:type-generation",
+      "isSubFacet": true
+    },
+    {
       "id": "features/cli/generate/product:global-types",
       "source": {
         "file": "product.facet.md",
@@ -36,6 +132,54 @@
       },
       "type": "product",
       "title": "Global Types"
+    },
+    {
+      "id": "features/cli/generate/product:global-types/root-facets-file",
+      "source": {
+        "file": "product.facet.md",
+        "section": "global-types",
+        "line": 33
+      },
+      "type": "product",
+      "title": "Create `.facet/facets.ts` at project root",
+      "parentId": "features/cli/generate/product:global-types",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/generate/product:global-types/re-export-types",
+      "source": {
+        "file": "product.facet.md",
+        "section": "global-types",
+        "line": 34
+      },
+      "type": "product",
+      "title": "Re-export all feature-specific types",
+      "parentId": "features/cli/generate/product:global-types",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/generate/product:global-types/combined-union",
+      "source": {
+        "file": "product.facet.md",
+        "section": "global-types",
+        "line": 35
+      },
+      "type": "product",
+      "title": "Generate combined `FacetId` union across all features",
+      "parentId": "features/cli/generate/product:global-types",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/cli/generate/product:global-types/combined-const",
+      "source": {
+        "file": "product.facet.md",
+        "section": "global-types",
+        "line": 36
+      },
+      "type": "product",
+      "title": "Generate combined `Facets` const with all facet IDs",
+      "parentId": "features/cli/generate/product:global-types",
+      "isSubFacet": true
     }
   ]
 }

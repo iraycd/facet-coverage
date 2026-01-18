@@ -12,12 +12,20 @@ export type FacetId =
   | 'business:business-requirements'
   | 'business:guest-purchase-flow'
   | 'business:cart-management'
-  | 'compliance:compliance-requirements'
-  | 'compliance:pci-dss-payment-requirements'
-  | 'compliance:gdpr-data-handling'
   | 'ux:ux-requirements'
-  | 'ux:mobile-checkout-experience'
-  | 'ux:form-validation';
+  | 'ux:mobile-checkout'
+  | 'ux:mobile-checkout/responsive'
+  | 'ux:mobile-checkout/responsive/performance'
+  | 'ux:mobile-checkout/accessibility'
+  | 'ux:form-validation'
+  | 'compliance:compliance-requirements'
+  | 'compliance:pci-dss'
+  | 'compliance:pci-dss/tls'
+  | 'compliance:pci-dss/cvv'
+  | 'compliance:pci-dss/masking'
+  | 'compliance:pci-dss/logging'
+  | 'compliance:pci-dss/fraud'
+  | 'compliance:gdpr';
 
 /**
  * Facet ID constants for autocomplete and type-safe references
@@ -29,18 +37,34 @@ export const Facets = {
   BUSINESS_GUEST_PURCHASE_FLOW: 'business:guest-purchase-flow' as const,
  /** Cart Management */
   BUSINESS_CART_MANAGEMENT: 'business:cart-management' as const,
- /** Compliance Requirements */
-  COMPLIANCE_COMPLIANCE_REQUIREMENTS: 'compliance:compliance-requirements' as const,
- /** PCI-DSS Payment Requirements */
-  COMPLIANCE_PCI_DSS_PAYMENT_REQUIREMENTS: 'compliance:pci-dss-payment-requirements' as const,
- /** GDPR Data Handling */
-  COMPLIANCE_GDPR_DATA_HANDLING: 'compliance:gdpr-data-handling' as const,
  /** UX Requirements */
   UX_UX_REQUIREMENTS: 'ux:ux-requirements' as const,
  /** Mobile Checkout Experience */
-  UX_MOBILE_CHECKOUT_EXPERIENCE: 'ux:mobile-checkout-experience' as const,
+  UX_MOBILE_CHECKOUT: 'ux:mobile-checkout' as const,
+ /** Mobile Layout Requirements */
+  UX_MOBILE_CHECKOUT__RESPONSIVE: 'ux:mobile-checkout/responsive' as const,
+
+  UX_MOBILE_CHECKOUT__RESPONSIVE__PERFORMANCE: 'ux:mobile-checkout/responsive/performance' as const,
+ /** Accessibility */
+  UX_MOBILE_CHECKOUT__ACCESSIBILITY: 'ux:mobile-checkout/accessibility' as const,
  /** Form Validation */
   UX_FORM_VALIDATION: 'ux:form-validation' as const,
+ /** Compliance Requirements */
+  COMPLIANCE_COMPLIANCE_REQUIREMENTS: 'compliance:compliance-requirements' as const,
+ /** PCI-DSS Payment Requirements */
+  COMPLIANCE_PCI_DSS: 'compliance:pci-dss' as const,
+ /** Encryption in transit */
+  COMPLIANCE_PCI_DSS__TLS: 'compliance:pci-dss/tls' as const,
+ /** No CVV storage */
+  COMPLIANCE_PCI_DSS__CVV: 'compliance:pci-dss/cvv' as const,
+ /** Card masking */
+  COMPLIANCE_PCI_DSS__MASKING: 'compliance:pci-dss/masking' as const,
+ /** Transaction logging */
+  COMPLIANCE_PCI_DSS__LOGGING: 'compliance:pci-dss/logging' as const,
+ /** Fraud monitoring */
+  COMPLIANCE_PCI_DSS__FRAUD: 'compliance:pci-dss/fraud' as const,
+ /** GDPR Data Handling */
+  COMPLIANCE_GDPR: 'compliance:gdpr' as const,
 } as const;
 
 /**
@@ -70,10 +94,18 @@ export const allFacetIds: FacetId[] = [
   'business:business-requirements',
   'business:guest-purchase-flow',
   'business:cart-management',
-  'compliance:compliance-requirements',
-  'compliance:pci-dss-payment-requirements',
-  'compliance:gdpr-data-handling',
   'ux:ux-requirements',
-  'ux:mobile-checkout-experience',
+  'ux:mobile-checkout',
+  'ux:mobile-checkout/responsive',
+  'ux:mobile-checkout/responsive/performance',
+  'ux:mobile-checkout/accessibility',
   'ux:form-validation',
+  'compliance:compliance-requirements',
+  'compliance:pci-dss',
+  'compliance:pci-dss/tls',
+  'compliance:pci-dss/cvv',
+  'compliance:pci-dss/masking',
+  'compliance:pci-dss/logging',
+  'compliance:pci-dss/fraud',
+  'compliance:gdpr',
 ];

@@ -11,22 +11,142 @@
       "title": "Developer Experience"
     },
     {
-      "id": "features/reporters/dx:report-readability",
+      "id": "features/reporters/dx:readability",
       "source": {
         "file": "facets/dx.md",
-        "section": "report-readability"
+        "section": "readability"
       },
       "type": "dx",
       "title": "Report Readability"
     },
     {
-      "id": "features/reporters/dx:report-accessibility",
+      "id": "features/reporters/dx:readability/clear-headings",
       "source": {
         "file": "facets/dx.md",
-        "section": "report-accessibility"
+        "section": "readability",
+        "line": 9
+      },
+      "type": "dx",
+      "title": "Use clear headings and section organization",
+      "parentId": "features/reporters/dx:readability",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/dx:readability/visual-indicators",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "readability",
+        "line": 10
+      },
+      "type": "dx",
+      "title": "Include visual coverage indicators (bars, percentages, emoji)",
+      "parentId": "features/reporters/dx:readability",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/dx:readability/info-priority",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "readability",
+        "line": 11
+      },
+      "type": "dx",
+      "title": "Show most important information first (overall coverage)",
+      "parentId": "features/reporters/dx:readability",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/dx:readability/logical-grouping",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "readability",
+        "line": 12
+      },
+      "type": "dx",
+      "title": "Group related information logically",
+      "parentId": "features/reporters/dx:readability",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/dx:readability/consistent-formatting",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "readability",
+        "line": 13
+      },
+      "type": "dx",
+      "title": "Use consistent formatting throughout",
+      "parentId": "features/reporters/dx:readability",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/dx:accessibility",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "accessibility"
       },
       "type": "dx",
       "title": "Report Accessibility"
+    },
+    {
+      "id": "features/reporters/dx:accessibility/no-js-required",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "accessibility",
+        "line": 21
+      },
+      "type": "dx",
+      "title": "HTML reports work without JavaScript for basic viewing",
+      "parentId": "features/reporters/dx:accessibility",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/dx:accessibility/github-compatible",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "accessibility",
+        "line": 22
+      },
+      "type": "dx",
+      "title": "Markdown reports render correctly in GitHub/GitLab",
+      "parentId": "features/reporters/dx:accessibility",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/dx:accessibility/valid-json",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "accessibility",
+        "line": 23
+      },
+      "type": "dx",
+      "title": "JSON reports are valid and parseable",
+      "parentId": "features/reporters/dx:accessibility",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/dx:accessibility/timestamps",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "accessibility",
+        "line": 24
+      },
+      "type": "dx",
+      "title": "Reports include timestamps for tracking history",
+      "parentId": "features/reporters/dx:accessibility",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/dx:accessibility/relative-paths",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "accessibility",
+        "line": 25
+      },
+      "type": "dx",
+      "title": "File paths are relative for portability",
+      "parentId": "features/reporters/dx:accessibility",
+      "isSubFacet": true
     },
     {
       "id": "features/reporters/product:report-generation",
@@ -38,31 +158,343 @@
       "title": "Report Generation"
     },
     {
-      "id": "features/reporters/product:json-reporter",
+      "id": "features/reporters/product:json",
       "source": {
         "file": "facets/product.md",
-        "section": "json-reporter"
+        "section": "json"
       },
       "type": "product",
       "title": "JSON Reporter"
     },
     {
-      "id": "features/reporters/product:html-reporter",
+      "id": "features/reporters/product:json/json-output",
       "source": {
         "file": "facets/product.md",
-        "section": "html-reporter"
+        "section": "json",
+        "line": 9
+      },
+      "type": "product",
+      "title": "Output complete coverage data as JSON",
+      "parentId": "features/reporters/product:json",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/product:json/json-timestamp",
+      "source": {
+        "file": "facets/product.md",
+        "section": "json",
+        "line": 10
+      },
+      "type": "product",
+      "title": "Include timestamp of report generation",
+      "parentId": "features/reporters/product:json",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/product:json/json-summary",
+      "source": {
+        "file": "facets/product.md",
+        "section": "json",
+        "line": 11
+      },
+      "type": "product",
+      "title": "Include summary with total, covered, uncovered counts and percentage",
+      "parentId": "features/reporters/product:json",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/product:json/json-type-breakdown",
+      "source": {
+        "file": "facets/product.md",
+        "section": "json",
+        "line": 12
+      },
+      "type": "product",
+      "title": "Include coverage breakdown by type",
+      "parentId": "features/reporters/product:json",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/product:json/json-feature-breakdown",
+      "source": {
+        "file": "facets/product.md",
+        "section": "json",
+        "line": 13
+      },
+      "type": "product",
+      "title": "Include coverage breakdown by feature",
+      "parentId": "features/reporters/product:json",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/product:json/json-test-list",
+      "source": {
+        "file": "facets/product.md",
+        "section": "json",
+        "line": 14
+      },
+      "type": "product",
+      "title": "Include list of all tests with their facet linkages",
+      "parentId": "features/reporters/product:json",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/product:json/json-uncovered",
+      "source": {
+        "file": "facets/product.md",
+        "section": "json",
+        "line": 15
+      },
+      "type": "product",
+      "title": "Include list of uncovered facets",
+      "parentId": "features/reporters/product:json",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/product:json/json-output-dir",
+      "source": {
+        "file": "facets/product.md",
+        "section": "json",
+        "line": 16
+      },
+      "type": "product",
+      "title": "Write to configurable output directory",
+      "parentId": "features/reporters/product:json",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/product:html",
+      "source": {
+        "file": "facets/product.md",
+        "section": "html"
       },
       "type": "product",
       "title": "HTML Reporter"
     },
     {
-      "id": "features/reporters/product:markdown-reporter",
+      "id": "features/reporters/product:html/html-self-contained",
       "source": {
         "file": "facets/product.md",
-        "section": "markdown-reporter"
+        "section": "html",
+        "line": 24
+      },
+      "type": "product",
+      "title": "Generate self-contained HTML file (no external dependencies)",
+      "parentId": "features/reporters/product:html",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/product:html/html-overall-display",
+      "source": {
+        "file": "facets/product.md",
+        "section": "html",
+        "line": 25
+      },
+      "type": "product",
+      "title": "Display overall coverage percentage prominently",
+      "parentId": "features/reporters/product:html",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/product:html/html-color-bars",
+      "source": {
+        "file": "facets/product.md",
+        "section": "html",
+        "line": 26
+      },
+      "type": "product",
+      "title": "Show color-coded coverage bars (green/yellow/red)",
+      "parentId": "features/reporters/product:html",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/product:html/html-type-grid",
+      "source": {
+        "file": "facets/product.md",
+        "section": "html",
+        "line": 27
+      },
+      "type": "product",
+      "title": "Show coverage breakdown by type in grid layout",
+      "parentId": "features/reporters/product:html",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/product:html/html-feature-cards",
+      "source": {
+        "file": "facets/product.md",
+        "section": "html",
+        "line": 28
+      },
+      "type": "product",
+      "title": "Show expandable feature cards with facet details",
+      "parentId": "features/reporters/product:html",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/product:html/html-uncovered-list",
+      "source": {
+        "file": "facets/product.md",
+        "section": "html",
+        "line": 29
+      },
+      "type": "product",
+      "title": "List uncovered facets with source information",
+      "parentId": "features/reporters/product:html",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/product:html/html-test-coverage",
+      "source": {
+        "file": "facets/product.md",
+        "section": "html",
+        "line": 30
+      },
+      "type": "product",
+      "title": "Show which tests cover each facet",
+      "parentId": "features/reporters/product:html",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/product:html/html-dark-theme",
+      "source": {
+        "file": "facets/product.md",
+        "section": "html",
+        "line": 31
+      },
+      "type": "product",
+      "title": "Support dark theme for readability",
+      "parentId": "features/reporters/product:html",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/product:html/html-responsive",
+      "source": {
+        "file": "facets/product.md",
+        "section": "html",
+        "line": 32
+      },
+      "type": "product",
+      "title": "Include responsive design for various screen sizes",
+      "parentId": "features/reporters/product:html",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/product:markdown",
+      "source": {
+        "file": "facets/product.md",
+        "section": "markdown"
       },
       "type": "product",
       "title": "Markdown Reporter"
+    },
+    {
+      "id": "features/reporters/product:markdown/md-valid",
+      "source": {
+        "file": "facets/product.md",
+        "section": "markdown",
+        "line": 40
+      },
+      "type": "product",
+      "title": "Generate valid Markdown document",
+      "parentId": "features/reporters/product:markdown",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/product:markdown/md-timestamp",
+      "source": {
+        "file": "facets/product.md",
+        "section": "markdown",
+        "line": 41
+      },
+      "type": "product",
+      "title": "Include generation timestamp",
+      "parentId": "features/reporters/product:markdown",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/product:markdown/md-summary-table",
+      "source": {
+        "file": "facets/product.md",
+        "section": "markdown",
+        "line": 42
+      },
+      "type": "product",
+      "title": "Include summary table with key metrics",
+      "parentId": "features/reporters/product:markdown",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/product:markdown/md-type-table",
+      "source": {
+        "file": "facets/product.md",
+        "section": "markdown",
+        "line": 43
+      },
+      "type": "product",
+      "title": "Include coverage by type table",
+      "parentId": "features/reporters/product:markdown",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/product:markdown/md-feature-sections",
+      "source": {
+        "file": "facets/product.md",
+        "section": "markdown",
+        "line": 44
+      },
+      "type": "product",
+      "title": "Include per-feature sections with facet lists",
+      "parentId": "features/reporters/product:markdown",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/product:markdown/md-emoji-indicators",
+      "source": {
+        "file": "facets/product.md",
+        "section": "markdown",
+        "line": 45
+      },
+      "type": "product",
+      "title": "Use emoji indicators for coverage status",
+      "parentId": "features/reporters/product:markdown",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/product:markdown/md-test-list",
+      "source": {
+        "file": "facets/product.md",
+        "section": "markdown",
+        "line": 46
+      },
+      "type": "product",
+      "title": "List tests covering each facet",
+      "parentId": "features/reporters/product:markdown",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/product:markdown/md-uncovered-list",
+      "source": {
+        "file": "facets/product.md",
+        "section": "markdown",
+        "line": 47
+      },
+      "type": "product",
+      "title": "List all uncovered facets at the end",
+      "parentId": "features/reporters/product:markdown",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/reporters/product:markdown/md-git-friendly",
+      "source": {
+        "file": "facets/product.md",
+        "section": "markdown",
+        "line": 48
+      },
+      "type": "product",
+      "title": "Suitable for Git repositories and documentation",
+      "parentId": "features/reporters/product:markdown",
+      "isSubFacet": true
     }
   ]
 }

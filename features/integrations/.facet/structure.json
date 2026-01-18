@@ -11,13 +11,61 @@
       "title": "Developer Experience"
     },
     {
-      "id": "features/integrations/dx:integration-simplicity",
+      "id": "features/integrations/dx:simplicity",
       "source": {
         "file": "facets/dx.md",
-        "section": "integration-simplicity"
+        "section": "simplicity"
       },
       "type": "dx",
       "title": "Integration Simplicity"
+    },
+    {
+      "id": "features/integrations/dx:simplicity/minimal-config",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "simplicity",
+        "line": 9
+      },
+      "type": "dx",
+      "title": "Minimal configuration required to get started",
+      "parentId": "features/integrations/dx:simplicity",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/integrations/dx:simplicity/clear-imports",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "simplicity",
+        "line": 10
+      },
+      "type": "dx",
+      "title": "Clear import paths for integration modules",
+      "parentId": "features/integrations/dx:simplicity",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/integrations/dx:simplicity/playwright-compat",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "simplicity",
+        "line": 11
+      },
+      "type": "dx",
+      "title": "Work with standard Playwright setup",
+      "parentId": "features/integrations/dx:simplicity",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/integrations/dx:simplicity/no-modifications",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "simplicity",
+        "line": 12
+      },
+      "type": "dx",
+      "title": "No modifications to existing tests required for basic usage",
+      "parentId": "features/integrations/dx:simplicity",
+      "isSubFacet": true
     },
     {
       "id": "features/integrations/dx:annotation-syntax",
@@ -29,6 +77,54 @@
       "title": "Annotation Syntax"
     },
     {
+      "id": "features/integrations/dx:annotation-syntax/multi-id-annotation",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "annotation-syntax",
+        "line": 20
+      },
+      "type": "dx",
+      "title": "Support multiple facet IDs in single annotation",
+      "parentId": "features/integrations/dx:annotation-syntax",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/integrations/dx:annotation-syntax/natural-syntax",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "annotation-syntax",
+        "line": 21
+      },
+      "type": "dx",
+      "title": "Annotation syntax feels natural in test code",
+      "parentId": "features/integrations/dx:annotation-syntax",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/integrations/dx:annotation-syntax/separation",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "annotation-syntax",
+        "line": 22
+      },
+      "type": "dx",
+      "title": "Clear separation between annotation and test logic",
+      "parentId": "features/integrations/dx:annotation-syntax",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/integrations/dx:annotation-syntax/annotation-types",
+      "source": {
+        "file": "facets/dx.md",
+        "section": "annotation-syntax",
+        "line": 23
+      },
+      "type": "dx",
+      "title": "Support both inline and comment-based annotations",
+      "parentId": "features/integrations/dx:annotation-syntax",
+      "isSubFacet": true
+    },
+    {
       "id": "features/integrations/product:integrations",
       "source": {
         "file": "facets/product.md",
@@ -38,13 +134,154 @@
       "title": "Integrations"
     },
     {
-      "id": "features/integrations/product:playwright-annotation-helper",
+      "id": "features/integrations/product:facet-function",
       "source": {
         "file": "facets/product.md",
-        "section": "playwright-annotation-helper"
+        "section": "facet-function"
+      },
+      "type": "product",
+      "title": "Type-Safe Facet Function"
+    },
+    {
+      "id": "features/integrations/product:facet-function/variadic-args",
+      "source": {
+        "file": "facets/product.md",
+        "section": "facet-function",
+        "line": 9
+      },
+      "type": "product",
+      "title": "Accept variable number of facet IDs",
+      "parentId": "features/integrations/product:facet-function",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/integrations/product:facet-function/typescript-autocomplete",
+      "source": {
+        "file": "facets/product.md",
+        "section": "facet-function",
+        "line": 10
+      },
+      "type": "product",
+      "title": "Provide TypeScript autocomplete via generated types",
+      "parentId": "features/integrations/product:facet-function",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/integrations/product:facet-function/framework-agnostic",
+      "source": {
+        "file": "facets/product.md",
+        "section": "facet-function",
+        "line": 11
+      },
+      "type": "product",
+      "title": "Work with any testing framework (bun:test, jest, vitest, mocha, Playwright)",
+      "parentId": "features/integrations/product:facet-function",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/integrations/product:facet-function/constant-refs",
+      "source": {
+        "file": "facets/product.md",
+        "section": "facet-function",
+        "line": 12
+      },
+      "type": "product",
+      "title": "Support constant references: `facet(Facets.BUSINESS_GUEST_PURCHASE)`",
+      "parentId": "features/integrations/product:facet-function",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/integrations/product:facet-function/multiple-ids",
+      "source": {
+        "file": "facets/product.md",
+        "section": "facet-function",
+        "line": 13
+      },
+      "type": "product",
+      "title": "Support multiple IDs: `facet(Facets.A, Facets.B)`",
+      "parentId": "features/integrations/product:facet-function",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/integrations/product:facet-function/metadata-return",
+      "source": {
+        "file": "facets/product.md",
+        "section": "facet-function",
+        "line": 14
+      },
+      "type": "product",
+      "title": "Return metadata object for debugging and runtime introspection",
+      "parentId": "features/integrations/product:facet-function",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/integrations/product:facet-function/compile-time-check",
+      "source": {
+        "file": "facets/product.md",
+        "section": "facet-function",
+        "line": 15
+      },
+      "type": "product",
+      "title": "Type-check at compile time to prevent invalid facet IDs",
+      "parentId": "features/integrations/product:facet-function",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/integrations/product:playwright-helper",
+      "source": {
+        "file": "facets/product.md",
+        "section": "playwright-helper"
       },
       "type": "product",
       "title": "Playwright Annotation Helper"
+    },
+    {
+      "id": "features/integrations/product:playwright-helper/pw-facet-function",
+      "source": {
+        "file": "facets/product.md",
+        "section": "playwright-helper",
+        "line": 34
+      },
+      "type": "product",
+      "title": "Export `facet()` function that accepts variable number of facet IDs",
+      "parentId": "features/integrations/product:playwright-helper",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/integrations/product:playwright-helper/pw-annotation-object",
+      "source": {
+        "file": "facets/product.md",
+        "section": "playwright-helper",
+        "line": 35
+      },
+      "type": "product",
+      "title": "Return Playwright-compatible annotation object with type and description",
+      "parentId": "features/integrations/product:playwright-helper",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/integrations/product:playwright-helper/pw-multiple-ids",
+      "source": {
+        "file": "facets/product.md",
+        "section": "playwright-helper",
+        "line": 36
+      },
+      "type": "product",
+      "title": "Support single or multiple facet IDs per test",
+      "parentId": "features/integrations/product:playwright-helper",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/integrations/product:playwright-helper/pw-test-syntax",
+      "source": {
+        "file": "facets/product.md",
+        "section": "playwright-helper",
+        "line": 37
+      },
+      "type": "product",
+      "title": "Work with Playwright's test annotation syntax",
+      "parentId": "features/integrations/product:playwright-helper",
+      "isSubFacet": true
     },
     {
       "id": "features/integrations/product:playwright-reporter",
@@ -54,6 +291,102 @@
       },
       "type": "product",
       "title": "Playwright Reporter"
+    },
+    {
+      "id": "features/integrations/product:playwright-reporter/pw-reporter-interface",
+      "source": {
+        "file": "facets/product.md",
+        "section": "playwright-reporter",
+        "line": 45
+      },
+      "type": "product",
+      "title": "Implement Playwright Reporter interface (onBegin, onTestEnd, onEnd)",
+      "parentId": "features/integrations/product:playwright-reporter",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/integrations/product:playwright-reporter/pw-extract-annotations",
+      "source": {
+        "file": "facets/product.md",
+        "section": "playwright-reporter",
+        "line": 46
+      },
+      "type": "product",
+      "title": "Extract facet annotations from test metadata during execution",
+      "parentId": "features/integrations/product:playwright-reporter",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/integrations/product:playwright-reporter/pw-passed-only",
+      "source": {
+        "file": "facets/product.md",
+        "section": "playwright-reporter",
+        "line": 47
+      },
+      "type": "product",
+      "title": "Only count passed tests toward coverage (failed tests excluded)",
+      "parentId": "features/integrations/product:playwright-reporter",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/integrations/product:playwright-reporter/pw-merge-data",
+      "source": {
+        "file": "facets/product.md",
+        "section": "playwright-reporter",
+        "line": 48
+      },
+      "type": "product",
+      "title": "Merge runtime execution data with static scanning",
+      "parentId": "features/integrations/product:playwright-reporter",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/integrations/product:playwright-reporter/pw-report-formats",
+      "source": {
+        "file": "facets/product.md",
+        "section": "playwright-reporter",
+        "line": 49
+      },
+      "type": "product",
+      "title": "Generate all configured report formats on test suite completion",
+      "parentId": "features/integrations/product:playwright-reporter",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/integrations/product:playwright-reporter/pw-console-summary",
+      "source": {
+        "file": "facets/product.md",
+        "section": "playwright-reporter",
+        "line": 50
+      },
+      "type": "product",
+      "title": "Print coverage summary to console",
+      "parentId": "features/integrations/product:playwright-reporter",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/integrations/product:playwright-reporter/pw-config-options",
+      "source": {
+        "file": "facets/product.md",
+        "section": "playwright-reporter",
+        "line": 51
+      },
+      "type": "product",
+      "title": "Support configuration via reporter options",
+      "parentId": "features/integrations/product:playwright-reporter",
+      "isSubFacet": true
+    },
+    {
+      "id": "features/integrations/product:playwright-reporter/pw-other-reporters",
+      "source": {
+        "file": "facets/product.md",
+        "section": "playwright-reporter",
+        "line": 52
+      },
+      "type": "product",
+      "title": "Work alongside other Playwright reporters (html, json, etc.)",
+      "parentId": "features/integrations/product:playwright-reporter",
+      "isSubFacet": true
     }
   ]
 }

@@ -4,6 +4,7 @@
   ],
   "testDir": "./features/**/tests",
   "testPatterns": ["**/*.spec.ts", "**/*.test.ts"],
+  "subFacetHeadingLevels": [3],
   "validation": {
     "requireSourceExists": true,
     "requireSectionExists": true,

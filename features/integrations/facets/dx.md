@@ -1,23 +1,23 @@
 # Developer Experience
 
-## Integration Simplicity
+## Integration Simplicity {#simplicity}
 
 Make integrations easy to set up and use.
 
 ### Requirements
 
-- Minimal configuration required to get started
-- Clear import paths for integration modules
-- Work with standard Playwright setup
-- No modifications to existing tests required for basic usage
+- Minimal configuration required to get started {#minimal-config}
+- Clear import paths for integration modules {#clear-imports}
+- Work with standard Playwright setup {#playwright-compat}
+- No modifications to existing tests required for basic usage {#no-modifications}
 
-## Annotation Syntax
+## Annotation Syntax {#annotation-syntax}
 
 Provide intuitive syntax for annotating tests with facets.
 
 ### Requirements
 
-- Support multiple facet IDs in single annotation
-- Annotation syntax feels natural in test code
-- Clear separation between annotation and test logic
-- Support both inline and comment-based annotations
+- Support multiple facet IDs in single annotation {#multi-id-annotation}
+- Annotation syntax feels natural in test code {#natural-syntax}
+- Clear separation between annotation and test logic {#separation}
+- Support both inline and comment-based annotations {#annotation-types}

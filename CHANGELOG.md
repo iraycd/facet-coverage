@@ -4,6 +4,25 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.4.0] - 2026-01-18
+
+### Added
+- **Sub-facet support** for fine-grained requirement tracking within sections
+- Three ways to define sub-facets:
+  - List item IDs: `1. **Item** {#sub-id} - description`
+  - Comment markers: `<!-- @facet:sub-id -->`
+  - Configurable h3+ headings: `### Subsection {#sub-id}` (requires `subFacetHeadingLevels` config)
+- Hierarchical facet IDs with parent/child relationships (e.g., `compliance:pci-dss/tls`)
+- `subFacetHeadingLevels` config option to control which heading levels become sub-facets
+- Double underscore (`__`) convention in TypeScript constants for sub-facets (e.g., `COMPLIANCE_PCI_DSS__TLS`)
+- `parentId` and `isSubFacet` fields in structure.json for sub-facet metadata
+- Tests for sub-facet parsing (list items, comments, nested sub-facets)
+
+### Changed
+- TestScanner now handles `__` in constant names for sub-facet ID conversion
+- Validator now validates sub-facet parent relationships
+- SubFacetMarker type extended with `'heading'` type option
+
 ## [0.3.0] - 2026-01-18
 
 ### Added

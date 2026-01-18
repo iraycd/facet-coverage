@@ -14,6 +14,8 @@ export interface Facet {
     file: string;
     /** Section identifier within the file (slug) */
     section: string;
+    /** Line number for sub-facets */
+    line?: number;
   };
   /** Type of facet (business, compliance, ux, etc.) */
   type: string;
@@ -21,6 +23,10 @@ export interface Facet {
   title?: string;
   /** Optional description */
   description?: string;
+  /** Parent facet ID for sub-facets (hierarchical structure) */
+  parentId?: string;
+  /** Whether this is a sub-facet (from list item ID or comment marker) */
+  isSubFacet?: boolean;
 }
 
 /**
@@ -125,7 +131,7 @@ export interface CoverageReport {
  */
 export interface ValidationError {
   /** Error type */
-  type: 'missing-source' | 'missing-section' | 'invalid-facet-id' | 'orphan-test' | 'duplicate-id';
+  type: 'missing-source' | 'missing-section' | 'invalid-facet-id' | 'orphan-test' | 'duplicate-id' | 'orphan-subfacet';
   /** Error message */
   message: string;
   /** File where the error occurred */
@@ -162,6 +168,8 @@ export interface FacetConfig {
   facetPattern?: string | string[];
   /** Known facet types used in this project (for resolving Facets.CONSTANT references) */
   facetTypes?: string[];
+  /** Heading levels that become sub-facets when they have explicit {#id} (e.g., [3] for h3, [3, 4] for h3 and h4) */
+  subFacetHeadingLevels?: number[];
   /** Validation options */
   validation: {
     /** Verify facet source files exist */
@@ -229,6 +237,23 @@ export interface MarkdownSection {
   content: string;
   /** Explicit anchor ID if provided via {#anchor} syntax */
   explicitId?: string;
+  /** Sub-facet markers found within this section */
+  subFacets?: SubFacetMarker[];
+}
+
+/**
+ * Represents a sub-facet marker found within a section
+ * Can be from list item {#id} syntax, <!-- @facet:id --> comment, or heading with explicit ID
+ */
+export interface SubFacetMarker {
+  /** The sub-facet ID (local, will be combined with parent) */
+  id: string;
+  /** Title extracted from the list item, heading, or nearby content */
+  title?: string;
+  /** Line number where the marker was found */
+  line: number;
+  /** Type of marker: 'list-item' for {#id} on list items, 'comment' for <!-- @facet:id -->, 'heading' for h3+ with explicit ID */
+  type: 'list-item' | 'comment' | 'heading';
 }
 
 /**

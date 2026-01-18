@@ -1,6 +1,6 @@
 import { readFileSync, existsSync } from 'fs';
 import { dirname, relative } from 'path';
-import type { MarkdownSection, ParsedMarkdown } from '../types.js';
+import type { MarkdownSection, ParsedMarkdown, SubFacetMarker } from '../types.js';
 
 /**
  * Parses markdown files and extracts sections
@@ -17,6 +17,66 @@ export class FacetParser {
       .replace(/\s+/g, '-') // Replace spaces with hyphens
       .replace(/-+/g, '-') // Replace multiple hyphens with single
       .replace(/^-|-$/g, ''); // Remove leading/trailing hyphens
+  }
+
+  /**
+   * Parse sub-facet markers from content lines.
+   * Supports two patterns:
+   * 1. List item IDs: `1. **Item** {#sub-id} - description` or `- Item {#sub-id}`
+   * 2. Comment markers: `<!-- @facet:sub-id -->`
+   *
+   * @param lines - Array of content lines
+   * @param startLineNumber - The 1-indexed line number of the first line in the array
+   * @returns Array of SubFacetMarker objects
+   */
+  static parseSubFacets(lines: string[], startLineNumber: number): SubFacetMarker[] {
+    const subFacets: SubFacetMarker[] = [];
+
+    // Pattern for list item with {#id}: matches "1. **text** {#id} - rest", "- text {#id}", "* text {#id}"
+    // The {#id} can appear anywhere in the list item, followed by optional content
+    // Captures: list marker, text before {#id}, the ID, and optional rest
+    const listItemPattern = /^(\s*(?:[-*]|\d+\.)\s+)(.+?)\s*\{#([a-z0-9-]+)\}(.*)$/;
+
+    // Pattern for comment markers: <!-- @facet:id --> or <!-- @facet: id -->
+    const commentPattern = /<!--\s*@facet:\s*([a-z0-9-]+)\s*-->/g;
+
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+      const lineNumber = startLineNumber + i;
+
+      // Check for list item with {#id}
+      const listMatch = line.match(listItemPattern);
+      if (listMatch) {
+        // Extract title: the text before {#id}
+        let title = listMatch[2].trim();
+        // Remove markdown bold: **text** -> text
+        title = title.replace(/\*\*([^*]+)\*\*/g, '$1');
+        // Clean up any trailing punctuation
+        title = title.replace(/[:\s-]+$/, '').trim();
+
+        subFacets.push({
+          id: listMatch[3],
+          title: title,
+          line: lineNumber,
+          type: 'list-item',
+        });
+        continue;
+      }
+
+      // Check for comment markers (can have multiple per line)
+      let commentMatch;
+      while ((commentMatch = commentPattern.exec(line)) !== null) {
+        subFacets.push({
+          id: commentMatch[1],
+          line: lineNumber,
+          type: 'comment',
+        });
+      }
+      // Reset regex for next line
+      commentPattern.lastIndex = 0;
+    }
+
+    return subFacets;
   }
 
   /**
@@ -69,6 +129,10 @@ export class FacetParser {
       const contentLines = lines.slice(startLine, endLine - 1);
       const sectionContent = contentLines.join('\n').trim();
 
+      // Parse sub-facets from section content
+      // Content starts at line after heading (startLine is the heading itself)
+      const subFacets = FacetParser.parseSubFacets(contentLines, startLine + 1);
+
       sections.push({
         title: heading.title,
         slug: heading.explicitId || FacetParser.slugify(heading.title),
@@ -77,6 +141,7 @@ export class FacetParser {
         endLine,
         content: sectionContent,
         explicitId: heading.explicitId,
+        subFacets: subFacets.length > 0 ? subFacets : undefined,
       });
     }
 
@@ -174,5 +239,45 @@ export class FacetParser {
       return `${relativePath}/${prefix}:${sectionSlug}`;
     }
     return `${prefix}:${sectionSlug}`;
+  }
+
+  /**
+   * Generate a sub-facet ID from a parent facet ID and sub-facet marker ID.
+   * Creates hierarchical ID like "type:parent/child"
+   *
+   * @param parentFacetId - The parent facet ID (e.g., "compliance:pci-dss")
+   * @param subFacetId - The local sub-facet ID from marker (e.g., "tls")
+   * @returns Combined ID like "compliance:pci-dss/tls"
+   */
+  static generateSubFacetId(parentFacetId: string, subFacetId: string): string {
+    return `${parentFacetId}/${subFacetId}`;
+  }
+
+  /**
+   * Check if a facet ID is a sub-facet (contains "/" after the ":")
+   *
+   * @param facetId - The facet ID to check
+   * @returns true if this is a sub-facet ID
+   */
+  static isSubFacetId(facetId: string): boolean {
+    const colonIndex = facetId.indexOf(':');
+    if (colonIndex === -1) return false;
+    return facetId.indexOf('/', colonIndex) !== -1;
+  }
+
+  /**
+   * Extract parent facet ID from a sub-facet ID
+   *
+   * @param subFacetId - The sub-facet ID (e.g., "compliance:pci-dss/tls")
+   * @returns The parent ID (e.g., "compliance:pci-dss") or null if not a sub-facet
+   */
+  static getParentFacetId(subFacetId: string): string | null {
+    const colonIndex = subFacetId.indexOf(':');
+    if (colonIndex === -1) return null;
+
+    const slashIndex = subFacetId.indexOf('/', colonIndex);
+    if (slashIndex === -1) return null;
+
+    return subFacetId.substring(0, slashIndex);
   }
 }

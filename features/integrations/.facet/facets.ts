@@ -10,11 +10,39 @@
  */
 export type FacetId =
   | 'features/integrations/dx:developer-experience'
-  | 'features/integrations/dx:integration-simplicity'
+  | 'features/integrations/dx:simplicity'
+  | 'features/integrations/dx:simplicity/minimal-config'
+  | 'features/integrations/dx:simplicity/clear-imports'
+  | 'features/integrations/dx:simplicity/playwright-compat'
+  | 'features/integrations/dx:simplicity/no-modifications'
   | 'features/integrations/dx:annotation-syntax'
+  | 'features/integrations/dx:annotation-syntax/multi-id-annotation'
+  | 'features/integrations/dx:annotation-syntax/natural-syntax'
+  | 'features/integrations/dx:annotation-syntax/separation'
+  | 'features/integrations/dx:annotation-syntax/annotation-types'
   | 'features/integrations/product:integrations'
-  | 'features/integrations/product:playwright-annotation-helper'
-  | 'features/integrations/product:playwright-reporter';
+  | 'features/integrations/product:facet-function'
+  | 'features/integrations/product:facet-function/variadic-args'
+  | 'features/integrations/product:facet-function/typescript-autocomplete'
+  | 'features/integrations/product:facet-function/framework-agnostic'
+  | 'features/integrations/product:facet-function/constant-refs'
+  | 'features/integrations/product:facet-function/multiple-ids'
+  | 'features/integrations/product:facet-function/metadata-return'
+  | 'features/integrations/product:facet-function/compile-time-check'
+  | 'features/integrations/product:playwright-helper'
+  | 'features/integrations/product:playwright-helper/pw-facet-function'
+  | 'features/integrations/product:playwright-helper/pw-annotation-object'
+  | 'features/integrations/product:playwright-helper/pw-multiple-ids'
+  | 'features/integrations/product:playwright-helper/pw-test-syntax'
+  | 'features/integrations/product:playwright-reporter'
+  | 'features/integrations/product:playwright-reporter/pw-reporter-interface'
+  | 'features/integrations/product:playwright-reporter/pw-extract-annotations'
+  | 'features/integrations/product:playwright-reporter/pw-passed-only'
+  | 'features/integrations/product:playwright-reporter/pw-merge-data'
+  | 'features/integrations/product:playwright-reporter/pw-report-formats'
+  | 'features/integrations/product:playwright-reporter/pw-console-summary'
+  | 'features/integrations/product:playwright-reporter/pw-config-options'
+  | 'features/integrations/product:playwright-reporter/pw-other-reporters';
 
 /**
  * Facet ID constants for autocomplete and type-safe references
@@ -23,15 +51,71 @@ export const Facets = {
  /** Developer Experience */
   FEATURES_INTEGRATIONS_DX_DEVELOPER_EXPERIENCE: 'features/integrations/dx:developer-experience' as const,
  /** Integration Simplicity */
-  FEATURES_INTEGRATIONS_DX_INTEGRATION_SIMPLICITY: 'features/integrations/dx:integration-simplicity' as const,
+  FEATURES_INTEGRATIONS_DX_SIMPLICITY: 'features/integrations/dx:simplicity' as const,
+ /** Minimal configuration required to get started */
+  FEATURES_INTEGRATIONS_DX_SIMPLICITY__MINIMAL_CONFIG: 'features/integrations/dx:simplicity/minimal-config' as const,
+ /** Clear import paths for integration modules */
+  FEATURES_INTEGRATIONS_DX_SIMPLICITY__CLEAR_IMPORTS: 'features/integrations/dx:simplicity/clear-imports' as const,
+ /** Work with standard Playwright setup */
+  FEATURES_INTEGRATIONS_DX_SIMPLICITY__PLAYWRIGHT_COMPAT: 'features/integrations/dx:simplicity/playwright-compat' as const,
+ /** No modifications to existing tests required for basic usage */
+  FEATURES_INTEGRATIONS_DX_SIMPLICITY__NO_MODIFICATIONS: 'features/integrations/dx:simplicity/no-modifications' as const,
  /** Annotation Syntax */
   FEATURES_INTEGRATIONS_DX_ANNOTATION_SYNTAX: 'features/integrations/dx:annotation-syntax' as const,
+ /** Support multiple facet IDs in single annotation */
+  FEATURES_INTEGRATIONS_DX_ANNOTATION_SYNTAX__MULTI_ID_ANNOTATION: 'features/integrations/dx:annotation-syntax/multi-id-annotation' as const,
+ /** Annotation syntax feels natural in test code */
+  FEATURES_INTEGRATIONS_DX_ANNOTATION_SYNTAX__NATURAL_SYNTAX: 'features/integrations/dx:annotation-syntax/natural-syntax' as const,
+ /** Clear separation between annotation and test logic */
+  FEATURES_INTEGRATIONS_DX_ANNOTATION_SYNTAX__SEPARATION: 'features/integrations/dx:annotation-syntax/separation' as const,
+ /** Support both inline and comment-based annotations */
+  FEATURES_INTEGRATIONS_DX_ANNOTATION_SYNTAX__ANNOTATION_TYPES: 'features/integrations/dx:annotation-syntax/annotation-types' as const,
  /** Integrations */
   FEATURES_INTEGRATIONS_PRODUCT_INTEGRATIONS: 'features/integrations/product:integrations' as const,
+ /** Type-Safe Facet Function */
+  FEATURES_INTEGRATIONS_PRODUCT_FACET_FUNCTION: 'features/integrations/product:facet-function' as const,
+ /** Accept variable number of facet IDs */
+  FEATURES_INTEGRATIONS_PRODUCT_FACET_FUNCTION__VARIADIC_ARGS: 'features/integrations/product:facet-function/variadic-args' as const,
+ /** Provide TypeScript autocomplete via generated types */
+  FEATURES_INTEGRATIONS_PRODUCT_FACET_FUNCTION__TYPESCRIPT_AUTOCOMPLETE: 'features/integrations/product:facet-function/typescript-autocomplete' as const,
+ /** Work with any testing framework (bun:test, jest, vitest, mocha, Playwright) */
+  FEATURES_INTEGRATIONS_PRODUCT_FACET_FUNCTION__FRAMEWORK_AGNOSTIC: 'features/integrations/product:facet-function/framework-agnostic' as const,
+ /** Support constant references: 'facet(Facets.BUSINESS_GUEST_PURCHASE)' */
+  FEATURES_INTEGRATIONS_PRODUCT_FACET_FUNCTION__CONSTANT_REFS: 'features/integrations/product:facet-function/constant-refs' as const,
+ /** Support multiple IDs: 'facet(Facets.A, Facets.B)' */
+  FEATURES_INTEGRATIONS_PRODUCT_FACET_FUNCTION__MULTIPLE_IDS: 'features/integrations/product:facet-function/multiple-ids' as const,
+ /** Return metadata object for debugging and runtime introspection */
+  FEATURES_INTEGRATIONS_PRODUCT_FACET_FUNCTION__METADATA_RETURN: 'features/integrations/product:facet-function/metadata-return' as const,
+ /** Type-check at compile time to prevent invalid facet IDs */
+  FEATURES_INTEGRATIONS_PRODUCT_FACET_FUNCTION__COMPILE_TIME_CHECK: 'features/integrations/product:facet-function/compile-time-check' as const,
  /** Playwright Annotation Helper */
-  FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_ANNOTATION_HELPER: 'features/integrations/product:playwright-annotation-helper' as const,
+  FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_HELPER: 'features/integrations/product:playwright-helper' as const,
+ /** Export 'facet()' function that accepts variable number of facet IDs */
+  FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_HELPER__PW_FACET_FUNCTION: 'features/integrations/product:playwright-helper/pw-facet-function' as const,
+ /** Return Playwright-compatible annotation object with type and description */
+  FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_HELPER__PW_ANNOTATION_OBJECT: 'features/integrations/product:playwright-helper/pw-annotation-object' as const,
+ /** Support single or multiple facet IDs per test */
+  FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_HELPER__PW_MULTIPLE_IDS: 'features/integrations/product:playwright-helper/pw-multiple-ids' as const,
+ /** Work with Playwright's test annotation syntax */
+  FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_HELPER__PW_TEST_SYNTAX: 'features/integrations/product:playwright-helper/pw-test-syntax' as const,
  /** Playwright Reporter */
   FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_REPORTER: 'features/integrations/product:playwright-reporter' as const,
+ /** Implement Playwright Reporter interface (onBegin, onTestEnd, onEnd) */
+  FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_REPORTER__PW_REPORTER_INTERFACE: 'features/integrations/product:playwright-reporter/pw-reporter-interface' as const,
+ /** Extract facet annotations from test metadata during execution */
+  FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_REPORTER__PW_EXTRACT_ANNOTATIONS: 'features/integrations/product:playwright-reporter/pw-extract-annotations' as const,
+ /** Only count passed tests toward coverage (failed tests excluded) */
+  FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_REPORTER__PW_PASSED_ONLY: 'features/integrations/product:playwright-reporter/pw-passed-only' as const,
+ /** Merge runtime execution data with static scanning */
+  FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_REPORTER__PW_MERGE_DATA: 'features/integrations/product:playwright-reporter/pw-merge-data' as const,
+ /** Generate all configured report formats on test suite completion */
+  FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_REPORTER__PW_REPORT_FORMATS: 'features/integrations/product:playwright-reporter/pw-report-formats' as const,
+ /** Print coverage summary to console */
+  FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_REPORTER__PW_CONSOLE_SUMMARY: 'features/integrations/product:playwright-reporter/pw-console-summary' as const,
+ /** Support configuration via reporter options */
+  FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_REPORTER__PW_CONFIG_OPTIONS: 'features/integrations/product:playwright-reporter/pw-config-options' as const,
+ /** Work alongside other Playwright reporters (html, json, etc.) */
+  FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_REPORTER__PW_OTHER_REPORTERS: 'features/integrations/product:playwright-reporter/pw-other-reporters' as const,
 } as const;
 
 /**
@@ -59,9 +143,37 @@ export function facet<T extends FacetId>(...facetIds: T[]): { facets: T[]; toStr
  */
 export const allFacetIds: FacetId[] = [
   'features/integrations/dx:developer-experience',
-  'features/integrations/dx:integration-simplicity',
+  'features/integrations/dx:simplicity',
+  'features/integrations/dx:simplicity/minimal-config',
+  'features/integrations/dx:simplicity/clear-imports',
+  'features/integrations/dx:simplicity/playwright-compat',
+  'features/integrations/dx:simplicity/no-modifications',
   'features/integrations/dx:annotation-syntax',
+  'features/integrations/dx:annotation-syntax/multi-id-annotation',
+  'features/integrations/dx:annotation-syntax/natural-syntax',
+  'features/integrations/dx:annotation-syntax/separation',
+  'features/integrations/dx:annotation-syntax/annotation-types',
   'features/integrations/product:integrations',
-  'features/integrations/product:playwright-annotation-helper',
+  'features/integrations/product:facet-function',
+  'features/integrations/product:facet-function/variadic-args',
+  'features/integrations/product:facet-function/typescript-autocomplete',
+  'features/integrations/product:facet-function/framework-agnostic',
+  'features/integrations/product:facet-function/constant-refs',
+  'features/integrations/product:facet-function/multiple-ids',
+  'features/integrations/product:facet-function/metadata-return',
+  'features/integrations/product:facet-function/compile-time-check',
+  'features/integrations/product:playwright-helper',
+  'features/integrations/product:playwright-helper/pw-facet-function',
+  'features/integrations/product:playwright-helper/pw-annotation-object',
+  'features/integrations/product:playwright-helper/pw-multiple-ids',
+  'features/integrations/product:playwright-helper/pw-test-syntax',
   'features/integrations/product:playwright-reporter',
+  'features/integrations/product:playwright-reporter/pw-reporter-interface',
+  'features/integrations/product:playwright-reporter/pw-extract-annotations',
+  'features/integrations/product:playwright-reporter/pw-passed-only',
+  'features/integrations/product:playwright-reporter/pw-merge-data',
+  'features/integrations/product:playwright-reporter/pw-report-formats',
+  'features/integrations/product:playwright-reporter/pw-console-summary',
+  'features/integrations/product:playwright-reporter/pw-config-options',
+  'features/integrations/product:playwright-reporter/pw-other-reporters',
 ];

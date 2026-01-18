@@ -1,38 +1,38 @@
 # Configuration
 
-## Config File Discovery
+## Config File Discovery {#file-discovery}
 
 Auto-discover configuration files in multiple formats.
 
 ### Requirements
 
-- Search for `facet.config.js` (ESM or CommonJS)
-- Search for `facet.config.mjs` (ESM only)
-- Search for `facet.config.json` (JSON)
-- Support `--config` flag to specify custom path
-- Merge with default configuration values
-- Support configuration in current working directory
+- Search for `facet.config.js` (ESM or CommonJS) {#search-js}
+- Search for `facet.config.mjs` (ESM only) {#search-mjs}
+- Search for `facet.config.json` (JSON) {#search-json}
+- Support `--config` flag to specify custom path {#config-flag}
+- Merge with default configuration values {#merge-defaults}
+- Support configuration in current working directory {#cwd-config}
 
-## Facet Patterns
+## Facet Patterns {#facet-patterns}
 
 Configure glob patterns for discovering facet markdown files.
 
 ### Requirements
 
-- Support `facetPattern` as string or array
-- Default patterns: `['features/**/*.facet.md', 'features/**/facets/*.md']`
-- Expand patterns relative to project root
-- Remove duplicate matches
-- Group discovered files by feature directory
+- Support `facetPattern` as string or array {#pattern-types}
+- Default patterns: `['features/**/*.facet.md', 'features/**/facets/*.md']` {#default-patterns}
+- Expand patterns relative to project root {#relative-expansion}
+- Remove duplicate matches {#dedupe}
+- Group discovered files by feature directory {#group-by-feature}
 
-## Facet Types
+## Facet Types {#facet-types}
 
 Configure known facet types for constant-to-ID conversion.
 
 ### Requirements
 
-- Support `facetTypes` array in configuration
-- Default types: `['product', 'dx', 'technical', 'compliance', 'business', 'ux']`
-- Use for converting `Facets.BUSINESS_X` to `business:x`
-- Support hierarchical IDs in nested structures
-- Allow custom types per project
+- Support `facetTypes` array in configuration {#types-array}
+- Default types: `['product', 'dx', 'technical', 'compliance', 'business', 'ux']` {#default-types}
+- Use for converting `Facets.BUSINESS_X` to `business:x` {#constant-conversion}
+- Support hierarchical IDs in nested structures {#hierarchical-ids}
+- Allow custom types per project {#custom-types}
