@@ -31,7 +31,7 @@ describe('StructureReader', () => {
   });
 
   test('finds structure files via glob patterns', async () => {
-    facet(Facets.FEATURES_CORE_PRODUCT_STRUCTURE_READING);
+    facet(Facets.FEATURES_CORE_PRODUCT_STRUCTURE_READING__GLOB_PATTERNS);
 
     const reader = new StructureReader({
       structureFiles: ['.test-fixtures/**/.facet/structure.json']
@@ -42,7 +42,7 @@ describe('StructureReader', () => {
   });
 
   test('parses structure.json with validation', async () => {
-    facet(Facets.FEATURES_CORE_PRODUCT_STRUCTURE_READING);
+    facet(Facets.FEATURES_CORE_PRODUCT_STRUCTURE_READING__JSON_PARSING);
 
     const reader = new StructureReader();
     const structure = await reader.readStructure(join(testDir, 'feature1/.facet/structure.json'));
@@ -52,7 +52,7 @@ describe('StructureReader', () => {
   });
 
   test('returns all facets across structures', async () => {
-    facet(Facets.FEATURES_CORE_PRODUCT_STRUCTURE_READING);
+    facet(Facets.FEATURES_CORE_PRODUCT_STRUCTURE_READING__FACET_AGGREGATION);
 
     const reader = new StructureReader({
       structureFiles: ['.test-fixtures/**/.facet/structure.json']
@@ -64,7 +64,7 @@ describe('StructureReader', () => {
 
 describe('FacetParser', () => {
   test('extracts headings as sections', async () => {
-    facet(Facets.FEATURES_CORE_PRODUCT_MARKDOWN_PARSING);
+    facet(Facets.FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__HEADING_EXTRACTION);
 
     const parser = new FacetParser();
     const parsed = await parser.parseFile(join(testDir, 'feature1/facets/test.md'));
@@ -73,7 +73,7 @@ describe('FacetParser', () => {
   });
 
   test('generates URL-friendly slugs', () => {
-    facet(Facets.FEATURES_CORE_PRODUCT_MARKDOWN_PARSING);
+    facet(Facets.FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__SLUG_GENERATION);
 
     expect(FacetParser.slugify('Hello World')).toBe('hello-world');
     expect(FacetParser.slugify('PCI-DSS Requirements')).toBe('pci-dss-requirements');
@@ -81,7 +81,7 @@ describe('FacetParser', () => {
   });
 
   test('validates section existence', async () => {
-    facet(Facets.FEATURES_CORE_PRODUCT_MARKDOWN_PARSING);
+    facet(Facets.FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__SECTION_VALIDATION);
 
     const parser = new FacetParser();
     const exists = await parser.sectionExists(join(testDir, 'feature1/facets/test.md'), 'facet-one');
@@ -91,7 +91,7 @@ describe('FacetParser', () => {
   });
 
   test('supports explicit anchor syntax {#custom-id}', () => {
-    facet(Facets.FEATURES_CORE_PRODUCT_MARKDOWN_PARSING);
+    facet(Facets.FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__CUSTOM_SLUG);
 
     const parser = new FacetParser();
     const content = `# Main Title
@@ -120,7 +120,7 @@ More content.
   });
 
   test('explicit anchors work at all heading levels', () => {
-    facet(Facets.FEATURES_CORE_PRODUCT_MARKDOWN_PARSING);
+    facet(Facets.FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__HEADING_HIERARCHY);
 
     const parser = new FacetParser();
     const content = `# H1 {#h1-anchor}
@@ -146,7 +146,7 @@ More content.
   });
 
   test('explicit anchor overrides auto-generated slug', () => {
-    facet(Facets.FEATURES_CORE_PRODUCT_MARKDOWN_PARSING);
+    facet(Facets.FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__CUSTOM_SLUG);
 
     const parser = new FacetParser();
     const content = `## Very Long Heading That Would Make A Long Slug {#short}
@@ -162,7 +162,7 @@ Content.
   });
 
   test('preserves heading title when using explicit anchor', () => {
-    facet(Facets.FEATURES_CORE_PRODUCT_MARKDOWN_PARSING);
+    facet(Facets.FEATURES_CORE_PRODUCT_MARKDOWN_PARSING__CUSTOM_SLUG);
 
     const parser = new FacetParser();
     const content = `## Guest Purchase Flow {#guest-purchase}
@@ -323,7 +323,7 @@ describe('Example', () => {
   });
 
   test('finds test files matching patterns', async () => {
-    facet(Facets.FEATURES_CORE_PRODUCT_TEST_SCANNING);
+    facet(Facets.FEATURES_CORE_PRODUCT_TEST_SCANNING__TEST_FILE_DISCOVERY);
 
     const scanner = new TestScanner({
       testDir: '.test-fixtures/tests',
@@ -334,7 +334,7 @@ describe('Example', () => {
   });
 
   test('supports comment-based annotations', () => {
-    facet(Facets.FEATURES_CORE_PRODUCT_TEST_SCANNING);
+    facet(Facets.FEATURES_CORE_PRODUCT_TEST_SCANNING__COMMENT_ANNOTATIONS);
 
     const scanner = new TestScanner();
     const content = `
@@ -350,7 +350,7 @@ describe('Test', () => {
   });
 
   test('supports Playwright-style annotations', () => {
-    facet(Facets.FEATURES_CORE_PRODUCT_TEST_SCANNING);
+    facet(Facets.FEATURES_CORE_PRODUCT_TEST_SCANNING__PLAYWRIGHT_ANNOTATIONS);
 
     const scanner = new TestScanner();
     const content = `
@@ -364,7 +364,7 @@ test('my test', {
   });
 
   test('tracks describe block nesting', () => {
-    facet(Facets.FEATURES_CORE_PRODUCT_TEST_SCANNING);
+    facet(Facets.FEATURES_CORE_PRODUCT_TEST_SCANNING__DESCRIBE_NESTING);
 
     const scanner = new TestScanner();
     const content = `
