@@ -537,6 +537,87 @@ describe('TypeScript Support', () => {
   });
 });
 
+describe('Unlinked Tests Tracking', () => {
+  test('scanContentWithUnlinked returns both linked and unlinked tests', () => {
+    facet(Facets.FEATURES_CORE_PRODUCT_TEST_SCANNING);
+
+    const scanner = new TestScanner();
+    const content = `
+describe('Example', () => {
+  // @facet product:feature-a
+  test('linked test', () => {});
+
+  test('unlinked test without annotations', () => {});
+});
+`;
+    const result = scanner.scanContentWithUnlinked(content, 'test.spec.ts', '/');
+
+    expect(result.linkedTests.length).toBe(1);
+    expect(result.linkedTests[0].title).toBe('linked test');
+    expect(result.linkedTests[0].facetIds).toContain('product:feature-a');
+
+    expect(result.unlinkedTests.length).toBe(1);
+    expect(result.unlinkedTests[0].title).toBe('unlinked test without annotations');
+  });
+
+  test('tests with facet() calls inside body are linked, not unlinked', () => {
+    facet(Facets.FEATURES_CORE_PRODUCT_TEST_SCANNING);
+
+    const scanner = new TestScanner({
+      facetTypes: ['product', 'compliance']
+    });
+    const content = `
+test('test with facet call inside', () => {
+  facet(Facets.PRODUCT_FEATURE);
+});
+
+test('test without any facet', () => {
+  expect(true).toBe(true);
+});
+`;
+    const result = scanner.scanContentWithUnlinked(content, 'test.spec.ts', '/');
+
+    expect(result.linkedTests.length).toBe(1);
+    expect(result.linkedTests[0].title).toBe('test with facet call inside');
+
+    expect(result.unlinkedTests.length).toBe(1);
+    expect(result.unlinkedTests[0].title).toBe('test without any facet');
+  });
+
+  test('unlinked tests include file, title, fullTitle, and line', () => {
+    facet(Facets.FEATURES_CORE_PRODUCT_TEST_SCANNING);
+
+    const scanner = new TestScanner();
+    const content = `
+describe('Suite', () => {
+  test('unlinked test', () => {});
+});
+`;
+    const result = scanner.scanContentWithUnlinked(content, '/path/to/test.spec.ts', '/path/to');
+
+    expect(result.unlinkedTests.length).toBe(1);
+    const unlinked = result.unlinkedTests[0];
+    expect(unlinked.file).toBe('test.spec.ts');
+    expect(unlinked.title).toBe('unlinked test');
+    expect(unlinked.fullTitle).toBe('Suite > unlinked test');
+    expect(unlinked.line).toBeDefined();
+  });
+
+  test('CoverageReport includes unlinkedTests array', async () => {
+    facet(Facets.FEATURES_CORE_PRODUCT_COVERAGE_CALCULATION);
+
+    const calculator = new CoverageCalculator({
+      structureFiles: ['.test-fixtures/feature1/.facet/structure.json'],
+      testDir: '.test-fixtures/tests',
+      testPatterns: ['**/*.spec.ts']
+    });
+    const report = await calculator.calculateCoverage(join(import.meta.dir, '../../..'));
+
+    expect(report).toHaveProperty('unlinkedTests');
+    expect(Array.isArray(report.unlinkedTests)).toBe(true);
+  });
+});
+
 describe('IDChangeDetector', () => {
   const changeTestDir = join(testDir, 'id-changes');
 

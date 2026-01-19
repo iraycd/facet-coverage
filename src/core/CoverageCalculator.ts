@@ -4,6 +4,7 @@ import type {
   FacetStructure,
   Facet,
   TestLink,
+  UnlinkedTest,
   FacetCoverage,
   TypeCoverage,
   FeatureCoverage,
@@ -31,9 +32,11 @@ export class CoverageCalculator {
    * Calculate complete coverage report
    */
   async calculateCoverage(cwd: string = process.cwd()): Promise<CoverageReport> {
-    // Get all structures and test links
+    // Get all structures and test links (including unlinked tests)
     const structures = await this.structureReader.readAllStructures(cwd);
-    const testLinks = await this.testScanner.scanAllTests(cwd);
+    const scanResult = await this.testScanner.scanAllTestsWithUnlinked(cwd);
+    const testLinks = scanResult.linkedTests;
+    const unlinkedTests = scanResult.unlinkedTests;
 
     // Build facet ID to test links map
     const facetToTests = new Map<string, TestLink[]>();
@@ -90,6 +93,7 @@ export class CoverageCalculator {
       features,
       tests: testLinks,
       uncovered,
+      unlinkedTests,
     };
   }
 

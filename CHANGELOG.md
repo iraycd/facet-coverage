@@ -4,6 +4,22 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.6.0] - 2026-01-19
+
+### Added
+- **Unified facet() return type** for Playwright compatibility
+  - Generated `facet()` now returns `{ type, description, facets, toString }`
+  - Works directly with Playwright's `annotation:` config without importing from playwright integration
+  - Both generated and playwright `facet()` implementations return matching types
+- **Unlinked tests tracking** to surface tests without facet annotations
+  - New `UnlinkedTest` interface and `unlinkedTests` field in `CoverageReport`
+  - HTML reporter shows "Unlinked Tests" section with yellow border styling
+  - Markdown reporter includes unlinked tests list
+  - JSON reporter summary includes `unlinkedTests` count
+  - Console output shows unlinked tests that could be linked for better coverage
+- `scanContentWithUnlinked()` and `scanAllTestsWithUnlinked()` methods in TestScanner
+- `TestScanResult` interface for returning both linked and unlinked tests
+
 ## [0.5.0] - 2026-01-19
 
 ### Added

@@ -46,6 +46,7 @@ export class JsonReporter {
       total: report.summary.totalFacets,
       covered: report.summary.coveredFacets,
       uncovered: report.summary.uncoveredFacets,
+      unlinkedTests: report.unlinkedTests ? report.unlinkedTests.length : 0,
       byType: report.byType.reduce((acc, t) => {
         acc[t.type] = t.percentage;
         return acc;
