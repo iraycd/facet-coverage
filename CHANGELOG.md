@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.6.1] - 2026-01-20
+
+### Fixed
+- **TestScanner** `convertConstantToFacetId` now correctly handles `feature/type:section` format
+  - Constants like `AUTH_BUSINESS_USER_LOGIN` now produce `auth/business:user-login` instead of `auth:business-user-login`
+  - Fixes 0% coverage issue when using non-`features/` prefixed facet paths
+
 ## [0.6.0] - 2026-01-19
 
 ### Added

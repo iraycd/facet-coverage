@@ -426,6 +426,38 @@ test('payment test', () => {
     expect(links[0].facetIds).toContain('compliance:pci-dss');
     expect(links[0].facetIds).toContain('compliance:pci-dss/cvv');
   });
+
+  test('handles feature/type:section format constants', () => {
+    facet(Facets.FEATURES_CORE_PRODUCT_TEST_SCANNING);
+
+    const scanner = new TestScanner({
+      facetTypes: ['compliance', 'business', 'ux']
+    });
+    const content = `
+test('user login test', () => {
+  facet(Facets.AUTH_BUSINESS_USER_LOGIN);
+});
+`;
+    const links = scanner.scanContent(content, 'test.spec.ts', '/');
+    expect(links.length).toBe(1);
+    expect(links[0].facetIds).toContain('auth/business:user-login');
+  });
+
+  test('handles feature/type:section format with sub-facets', () => {
+    facet(Facets.FEATURES_CORE_PRODUCT_TEST_SCANNING);
+
+    const scanner = new TestScanner({
+      facetTypes: ['compliance', 'business', 'ux']
+    });
+    const content = `
+test('user login credentials test', () => {
+  facet(Facets.AUTH_BUSINESS_USER_LOGIN__CREDENTIALS);
+});
+`;
+    const links = scanner.scanContent(content, 'test.spec.ts', '/');
+    expect(links.length).toBe(1);
+    expect(links[0].facetIds).toContain('auth/business:user-login/credentials');
+  });
 });
 
 describe('Validator', () => {

@@ -78,23 +78,32 @@ export class TestScanner {
         facetId = `${parts[0]}:${parts.slice(1).join('-')}`;
       }
     } else {
-      // Legacy format: PRODUCT_STRUCTURE_READING -> product:structure-reading
-      // Find the type at the beginning
-      let foundType = false;
-      for (const type of knownTypes) {
-        if (parts[0] === type) {
+      // Check for feature/type:section format (e.g., AUTH_BUSINESS_USER_LOGIN)
+      // where parts[0] is feature and parts[1] is the type
+      if (parts.length > 2 && knownTypes.includes(parts[1]) && !knownTypes.includes(parts[0])) {
+        const feature = parts[0];
+        const type = parts[1];
+        const section = parts.slice(2).join('-');
+        facetId = `${feature}/${type}:${section}`;
+      } else {
+        // Legacy format: PRODUCT_STRUCTURE_READING -> product:structure-reading
+        // Find the type at the beginning
+        let foundType = false;
+        for (const type of knownTypes) {
+          if (parts[0] === type) {
+            const section = parts.slice(1).join('-');
+            facetId = `${type}:${section}`;
+            foundType = true;
+            break;
+          }
+        }
+
+        if (!foundType) {
+          // Fallback: treat first part as type, rest as section
+          const type = parts[0];
           const section = parts.slice(1).join('-');
           facetId = `${type}:${section}`;
-          foundType = true;
-          break;
         }
-      }
-
-      if (!foundType) {
-        // Fallback: treat first part as type, rest as section
-        const type = parts[0];
-        const section = parts.slice(1).join('-');
-        facetId = `${type}:${section}`;
       }
     }
 
