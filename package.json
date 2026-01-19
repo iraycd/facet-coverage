@@ -1,6 +1,6 @@
 {
   "name": "@facet-coverage/core",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Test every facet of your features - natural specifications with rigorous coverage tracking",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
