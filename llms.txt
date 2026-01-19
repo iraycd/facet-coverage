@@ -1,0 +1,45 @@
+# Facet Coverage
+
+> Multi-stakeholder test coverage tracking for JavaScript/TypeScript projects
+
+Facet Coverage lets teams write requirements in Markdown and automatically tracks whether tests cover them. Different stakeholders (product, compliance, UX, security) can write their requirements naturally, and the tool tracks coverage across all perspectives.
+
+## Quick Start
+
+```bash
+bun add -d @facet-coverage/core
+bunx facet generate    # Generate structures from markdown
+bunx facet analyze     # Run coverage analysis
+bunx facet serve       # Start live dashboard
+```
+
+## How It Works
+
+1. Stakeholders write requirements as Markdown headings in `facets/*.md` files
+2. Run `facet generate` to create `.facet/structure.json` and TypeScript constants
+3. Tests import constants and call `facet(Facets.SOME_REQUIREMENT)` to link
+4. Run `facet analyze` to see coverage across all requirements
+
+## Key Files
+
+- src/types.ts - All TypeScript interfaces
+- src/core/FacetParser.ts - Parses markdown into facets
+- src/core/TestScanner.ts - Finds facet() calls in tests
+- src/core/CoverageCalculator.ts - Calculates coverage metrics
+- src/cli/commands/ - CLI command implementations
+
+## Commands
+
+- `bun run build` - Build the project
+- `bun run test` - Run tests
+- `bunx facet generate` - Generate .facet structures
+- `bunx facet analyze` - Analyze coverage
+- `bunx facet serve` - Start dev server
+
+## Documentation
+
+- docs/getting-started.md - Full quickstart guide
+- docs/concepts.md - Core concepts explained
+- docs/configuration.md - All config options
+- docs/cli.md - CLI reference
+- docs/id-patterns.md - ID and sub-facet patterns
