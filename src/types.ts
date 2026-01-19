@@ -58,6 +58,20 @@ export interface TestLink {
 }
 
 /**
+ * A test without facet links
+ */
+export interface UnlinkedTest {
+  /** Test file path */
+  file: string;
+  /** Test title/name */
+  title: string;
+  /** Full test name including describe blocks */
+  fullTitle: string;
+  /** Line number in the test file */
+  line?: number;
+}
+
+/**
  * Coverage information for a single facet
  */
 export interface FacetCoverage {
@@ -124,6 +138,8 @@ export interface CoverageReport {
   tests: TestLink[];
   /** Uncovered facets for easy access */
   uncovered: Facet[];
+  /** Tests without facet annotations */
+  unlinkedTests: UnlinkedTest[];
 }
 
 /**

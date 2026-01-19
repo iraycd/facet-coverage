@@ -1,8 +1,16 @@
 import { readFileSync, existsSync } from 'fs';
 import { glob } from 'glob';
 import { resolve, relative } from 'path';
-import type { TestLink, FacetConfig } from '../types.js';
+import type { TestLink, FacetConfig, UnlinkedTest } from '../types.js';
 import { defaultConfig } from '../types.js';
+
+/**
+ * Result of scanning test files, including both linked and unlinked tests
+ */
+export interface TestScanResult {
+  linkedTests: TestLink[];
+  unlinkedTests: UnlinkedTest[];
+}
 
 /**
  * Scans test files for facet annotations
@@ -145,7 +153,16 @@ export class TestScanner {
    * - Comment: // @facet id1, id2 \n test('name', ...)
    */
   scanContent(content: string, filePath: string, cwd: string = process.cwd()): TestLink[] {
+    const result = this.scanContentWithUnlinked(content, filePath, cwd);
+    return result.linkedTests;
+  }
+
+  /**
+   * Scan test content and return both linked and unlinked tests
+   */
+  scanContentWithUnlinked(content: string, filePath: string, cwd: string = process.cwd()): TestScanResult {
     const testLinks: TestLink[] = [];
+    const unlinkedTests: UnlinkedTest[] = [];
     const lines = content.split('\n');
 
     // Track describe blocks for full title
@@ -243,13 +260,22 @@ export class TestScanner {
 
       // Check if we're exiting the current test
       if (currentTest && braceDepth <= currentTest.startBrace) {
-        // Save the test with collected facet IDs
+        const relativeFile = relative(cwd, filePath);
+        // Save the test - either as linked or unlinked
         if (currentTestFacetIds.length > 0) {
           testLinks.push({
-            file: relative(cwd, filePath),
+            file: relativeFile,
             title: currentTest.title,
             fullTitle: currentTest.fullTitle,
             facetIds: [...new Set(currentTestFacetIds)], // Deduplicate
+            line: currentTest.line,
+          });
+        } else {
+          // Test has no facet IDs - add to unlinked tests
+          unlinkedTests.push({
+            file: relativeFile,
+            title: currentTest.title,
+            fullTitle: currentTest.fullTitle,
             line: currentTest.line,
           });
         }
@@ -333,36 +359,69 @@ export class TestScanner {
     }
 
     // Handle case where file ends while still in a test
-    if (currentTest && currentTestFacetIds.length > 0) {
-      testLinks.push({
-        file: relative(cwd, filePath),
-        title: currentTest.title,
-        fullTitle: currentTest.fullTitle,
-        facetIds: [...new Set(currentTestFacetIds)],
-        line: currentTest.line,
-      });
+    if (currentTest) {
+      const relativeFile = relative(cwd, filePath);
+      if (currentTestFacetIds.length > 0) {
+        testLinks.push({
+          file: relativeFile,
+          title: currentTest.title,
+          fullTitle: currentTest.fullTitle,
+          facetIds: [...new Set(currentTestFacetIds)],
+          line: currentTest.line,
+        });
+      } else {
+        // Test has no facet IDs - add to unlinked tests
+        unlinkedTests.push({
+          file: relativeFile,
+          title: currentTest.title,
+          fullTitle: currentTest.fullTitle,
+          line: currentTest.line,
+        });
+      }
     }
 
-    return testLinks;
+    return { linkedTests: testLinks, unlinkedTests };
   }
 
   /**
    * Scan all test files for facet annotations
    */
   async scanAllTests(cwd: string = process.cwd()): Promise<TestLink[]> {
+    const result = await this.scanAllTestsWithUnlinked(cwd);
+    return result.linkedTests;
+  }
+
+  /**
+   * Scan a single test file and return both linked and unlinked tests
+   */
+  scanFileWithUnlinked(filePath: string, cwd: string = process.cwd()): TestScanResult {
+    if (!existsSync(filePath)) {
+      throw new Error(`Test file not found: ${filePath}`);
+    }
+
+    const content = readFileSync(filePath, 'utf-8');
+    return this.scanContentWithUnlinked(content, filePath, cwd);
+  }
+
+  /**
+   * Scan all test files and return both linked and unlinked tests
+   */
+  async scanAllTestsWithUnlinked(cwd: string = process.cwd()): Promise<TestScanResult> {
     const files = await this.findTestFiles(cwd);
-    const allLinks: TestLink[] = [];
+    const allLinkedTests: TestLink[] = [];
+    const allUnlinkedTests: UnlinkedTest[] = [];
 
     for (const file of files) {
       try {
-        const links = this.scanFile(file, cwd);
-        allLinks.push(...links);
+        const result = this.scanFileWithUnlinked(file, cwd);
+        allLinkedTests.push(...result.linkedTests);
+        allUnlinkedTests.push(...result.unlinkedTests);
       } catch (error) {
         console.warn(`Warning: Could not scan test file ${file}: ${error}`);
       }
     }
 
-    return allLinks;
+    return { linkedTests: allLinkedTests, unlinkedTests: allUnlinkedTests };
   }
 
   /**

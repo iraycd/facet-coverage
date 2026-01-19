@@ -120,7 +120,13 @@ export const Facets = {
 
 /**
  * Type-safe facet annotation helper
- * Works with any testing framework
+ * Works with any testing framework including Playwright
+ *
+ * @example
+ * // Use with Playwright test annotations
+ * test('my test', {
+ *   annotation: facet(Facets.BUSINESS_GUEST_PURCHASE_FLOW)
+ * }, async ({ page }) => { ... });
  *
  * @example
  * // Use with constants (recommended - full autocomplete)
@@ -131,8 +137,15 @@ export const Facets = {
  * // Use with facet() for runtime metadata
  * const metadata = facet(Facets.BUSINESS_GUEST_PURCHASE_FLOW, Facets.COMPLIANCE_PCI_DSS);
  */
-export function facet<T extends FacetId>(...facetIds: T[]): { facets: T[]; toString: () => string } {
+export function facet<T extends FacetId>(...facetIds: T[]): {
+  type: 'facet-coverage';
+  description: string;
+  facets: T[];
+  toString: () => string;
+} {
   return {
+    type: 'facet-coverage',
+    description: facetIds.join(','),
     facets: facetIds,
     toString: () => facetIds.join(', '),
   };

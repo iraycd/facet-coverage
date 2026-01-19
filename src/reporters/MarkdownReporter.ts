@@ -75,6 +75,23 @@ export class MarkdownReporter {
       lines.push('');
     }
 
+    // Unlinked Tests
+    if (report.unlinkedTests && report.unlinkedTests.length > 0) {
+      lines.push('## Unlinked Tests');
+      lines.push('');
+      lines.push(`The following ${report.unlinkedTests.length} tests don't have facet annotations. Consider linking them to facets for better coverage tracking:`);
+      lines.push('');
+
+      for (const test of report.unlinkedTests) {
+        lines.push(`- **${test.title}**`);
+        lines.push(`  - File: \`${test.file}${test.line ? `:${test.line}` : ''}\``);
+        if (test.fullTitle && test.fullTitle !== test.title) {
+          lines.push(`  - Full title: ${test.fullTitle}`);
+        }
+      }
+      lines.push('');
+    }
+
     return lines.join('\n');
   }
 

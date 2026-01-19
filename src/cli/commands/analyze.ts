@@ -98,7 +98,7 @@ function printReport(
   config: FacetConfig,
   outputPaths: string[]
 ): void {
-  const { summary, byType, features, uncovered } = report;
+  const { summary, byType, features, uncovered, unlinkedTests } = report;
 
   // Overall summary
   const overallIcon = summary.percentage >= 80 ? '✅' : summary.percentage >= 50 ? '🟡' : '❌';
@@ -138,6 +138,19 @@ function printReport(
     }
     if (uncovered.length > maxDisplay) {
       console.log(`  ... and ${uncovered.length - maxDisplay} more`);
+    }
+  }
+
+  // Unlinked tests
+  if (unlinkedTests && unlinkedTests.length > 0) {
+    console.log(`\n📋 Unlinked Tests (${unlinkedTests.length}):`);
+    console.log('   Tests that could be linked to facets for better coverage tracking:');
+    const maxDisplay = 5;
+    for (const test of unlinkedTests.slice(0, maxDisplay)) {
+      console.log(`  - ${test.file}${test.line ? `:${test.line}` : ''} "${test.title}"`);
+    }
+    if (unlinkedTests.length > maxDisplay) {
+      console.log(`  ... and ${unlinkedTests.length - maxDisplay} more`);
     }
   }
 

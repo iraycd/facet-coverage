@@ -96,6 +96,66 @@ describe('Annotation Syntax', () => {
     // It doesn't interfere with test execution
     const annotation = playwrightFacet('test:facet');
     expect(typeof annotation).toBe('object');
-    expect(Object.keys(annotation)).toEqual(['type', 'description']);
+    // Unified return type has type, description for Playwright and facets, toString for generic usage
+    expect(annotation).toHaveProperty('type');
+    expect(annotation).toHaveProperty('description');
+    expect(annotation).toHaveProperty('facets');
+    expect(typeof annotation.toString).toBe('function');
+  });
+});
+
+describe('Unified facet() Return Type', () => {
+  test('generated facet() has type and description for Playwright compatibility', () => {
+    const annotation = facet(Facets.FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_ANNOTATION_HELPER);
+
+    // Playwright-compatible properties
+    expect(annotation.type).toBe('facet-coverage');
+    expect(annotation.description).toBeDefined();
+    expect(typeof annotation.description).toBe('string');
+  });
+
+  test('generated facet() has facets array and toString for generic usage', () => {
+    const annotation = facet(Facets.FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_ANNOTATION_HELPER);
+
+    // Generic usage properties
+    expect(annotation.facets).toBeDefined();
+    expect(Array.isArray(annotation.facets)).toBe(true);
+    expect(typeof annotation.toString).toBe('function');
+  });
+
+  test('generated facet() can be used directly in Playwright test config', () => {
+    // Simulating Playwright test configuration
+    const testConfig = {
+      annotation: facet(Facets.FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_ANNOTATION_HELPER)
+    };
+
+    expect(testConfig.annotation.type).toBe('facet-coverage');
+    expect(testConfig.annotation.description).toContain('features/integrations/product:playwright-annotation-helper');
+  });
+
+  test('both facet() implementations return matching types', () => {
+    const generatedAnnotation = facet(Facets.FEATURES_INTEGRATIONS_PRODUCT_PLAYWRIGHT_ANNOTATION_HELPER);
+    const playwrightAnnotation = playwrightFacet('features/integrations/product:playwright-annotation-helper');
+
+    // Both should have the same properties
+    expect(generatedAnnotation.type).toBe(playwrightAnnotation.type);
+    expect(typeof generatedAnnotation.description).toBe(typeof playwrightAnnotation.description);
+    expect(Array.isArray(generatedAnnotation.facets)).toBe(Array.isArray(playwrightAnnotation.facets));
+    expect(typeof generatedAnnotation.toString).toBe(typeof playwrightAnnotation.toString);
+  });
+
+  test('toString() formats facet IDs correctly', () => {
+    const singleAnnotation = playwrightFacet('facet-a');
+    const multiAnnotation = playwrightFacet('facet-a', 'facet-b', 'facet-c');
+
+    expect(singleAnnotation.toString()).toBe('facet-a');
+    expect(multiAnnotation.toString()).toBe('facet-a, facet-b, facet-c');
+  });
+
+  test('description uses comma separator for Playwright parsing', () => {
+    const annotation = playwrightFacet('facet-a', 'facet-b', 'facet-c');
+
+    // Description uses comma without spaces (for easier parsing)
+    expect(annotation.description).toBe('facet-a,facet-b,facet-c');
   });
 });

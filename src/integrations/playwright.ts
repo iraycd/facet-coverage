@@ -1,6 +1,6 @@
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from 'fs';
 import { join } from 'path';
-import type { FacetConfig, CoverageReport, TestLink } from '../types.js';
+import type { FacetConfig, CoverageReport, TestLink, UnlinkedTest } from '../types.js';
 import { defaultConfig } from '../types.js';
 import { CoverageCalculator } from '../core/CoverageCalculator.js';
 import { JsonReporter } from '../reporters/JsonReporter.js';
@@ -9,6 +9,7 @@ import { MarkdownReporter } from '../reporters/MarkdownReporter.js';
 
 /**
  * Helper function to link tests to facets
+ * Returns a unified type that works with Playwright annotations and generic usage
  *
  * @example
  * test('my test', {
@@ -17,19 +18,24 @@ import { MarkdownReporter } from '../reporters/MarkdownReporter.js';
  *   // test code
  * });
  */
-export function facet(...facetIds: string[]): { type: string; description: string } {
+export function facet(...facetIds: string[]): FacetAnnotation {
   return {
     type: 'facet-coverage',
     description: facetIds.join(','),
+    facets: facetIds,
+    toString: () => facetIds.join(', '),
   };
 }
 
 /**
- * Type for Playwright test annotations
+ * Type for Playwright test annotations with unified interface
+ * Compatible with both Playwright and generic usage
  */
 export interface FacetAnnotation {
   type: 'facet-coverage';
   description: string;
+  facets: string[];
+  toString: () => string;
 }
 
 /**
@@ -77,6 +83,7 @@ interface PlaywrightSuite {
 export class FacetCoverageReporter {
   private config: FacetConfig;
   private testLinks: TestLink[] = [];
+  private unlinkedTests: UnlinkedTest[] = [];
   private rootDir: string = process.cwd();
 
   constructor(options: Partial<FacetConfig> = {}) {
@@ -86,6 +93,7 @@ export class FacetCoverageReporter {
   onBegin(config: PlaywrightFullConfig, suite: PlaywrightSuite): void {
     this.rootDir = config.rootDir;
     this.testLinks = [];
+    this.unlinkedTests = [];
   }
 
   onTestEnd(test: PlaywrightTestCase, result: PlaywrightTestResult): void {
@@ -99,21 +107,29 @@ export class FacetCoverageReporter {
       a => a.type === 'facet-coverage' && a.description
     );
 
-    for (const annotation of facetAnnotations) {
-      const facetIds = annotation.description!.split(',').map(id => id.trim());
+    const titlePath = test.titlePath();
+    const fullTitle = titlePath.join(' > ');
+    const testInfo = {
+      file: test.location.file.replace(this.rootDir + '/', ''),
+      title: test.title,
+      fullTitle,
+      line: test.location.line,
+    };
 
-      if (facetIds.length > 0) {
-        const titlePath = test.titlePath();
-        const fullTitle = titlePath.join(' > ');
+    if (facetAnnotations.length > 0) {
+      for (const annotation of facetAnnotations) {
+        const facetIds = annotation.description!.split(',').map(id => id.trim());
 
-        this.testLinks.push({
-          file: test.location.file.replace(this.rootDir + '/', ''),
-          title: test.title,
-          fullTitle,
-          facetIds,
-          line: test.location.line,
-        });
+        if (facetIds.length > 0) {
+          this.testLinks.push({
+            ...testInfo,
+            facetIds,
+          });
+        }
       }
+    } else {
+      // Test has no facet annotations - track as unlinked
+      this.unlinkedTests.push(testInfo);
     }
   }
 
@@ -210,6 +226,17 @@ export class FacetCoverageReporter {
       }
       if (report.uncovered.length > 5) {
         console.log(`  ... and ${report.uncovered.length - 5} more`);
+      }
+    }
+
+    if (report.unlinkedTests.length > 0) {
+      console.log(`\n📋 Unlinked Tests (${report.unlinkedTests.length}):`);
+      console.log('   These tests could be linked to facets for better coverage tracking:');
+      for (const test of report.unlinkedTests.slice(0, 5)) {
+        console.log(`  - ${test.file}:${test.line} "${test.title}"`);
+      }
+      if (report.unlinkedTests.length > 5) {
+        console.log(`  ... and ${report.unlinkedTests.length - 5} more`);
       }
     }
 
